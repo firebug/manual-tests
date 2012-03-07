@@ -1,0 +1,41 @@
+<html>
+<script>
+function later ()
+{
+    var paddedSource =
+        "<div class='topSourcePadding'>" +
+            "<div class='sourceRow'><div class='sourceLine'></div>"+
+            "<div class='sourceRowText'>T</div></div>"+
+        "</div>"+
+        "<div class='sourceViewport'></div>"+
+        "<div class='bottomSourcePadding'>"+
+            "<div class='sourceRow'><div class='sourceLine'>L</div>"+
+            "<div class='sourceRowText'>R</div></div>"+
+        "</div>";
+
+    function appendInnerHTML(element, html, referenceElement)
+    {
+        var doc = element.ownerDocument;
+        var range = doc.createRange();
+        range.selectNode(doc.body);
+
+        var fragment = range.createContextualFragment(html);
+        var firstChild = fragment.firstChild;
+        element.insertBefore(fragment, referenceElement);
+        return firstChild;
+    }
+
+    var sourceBox = document.createElement("div");
+
+    appendInnerHTML(sourceBox, paddedSource);
+
+    var b = document.getElementsByTagName("body")[0];
+    b.appendChild(sourceBox);
+}
+
+window.addEventListener("load", later, false);
+
+</script>
+<body>
+</body>
+</html>

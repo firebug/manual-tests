@@ -1,0 +1,61 @@
+<html>
+<head>
+<script>
+var myIter = {
+          __iterator__: function(opt_keys) {
+            var i = 0;
+            return {
+              next: function() {
+                if (i >= 5) throw StopIteration;
+                return i++;
+              }
+            };
+          }
+        };
+
+function foo()
+{
+        console.info(myIter);
+}
+</script>
+</head>
+<body onload="foo();">
+<h1>Issue 413</h1>
+<pre>
+Run the following code:
+
+var myIter = {
+  __iterator__: function(opt_keys) {
+    var i = 0;
+    return {
+      next: function() {
+        if (i >= 5) throw StopIteration;
+        return i++;
+      }
+    };
+  }
+};
+
+console.info(myIter);
+
+This will print Object which can be clicked.  However the displayed result is:
+
+0   undefined
+1   undefined
+2   undefined
+3   undefined
+4   undefined
+
+This is probably because Firebug is using a for in loop to iterate over the iterator just like it would on a normal object.
+
+for (var key in obj) {
+  print(key + '\t' + obj[key]);
+}
+
+If the object is an iterator it should not try to do obj[key] in the pseudo code above.
+
+
+
+</pre>
+</body>
+</html>

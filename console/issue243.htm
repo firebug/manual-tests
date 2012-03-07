@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Issue 243: $$ function broken</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      body {
+        background: #ffffff;
+        font: small arial, sans-serif;
+        margin: 5px auto;
+        width: 815px;
+      }
+      h1 {
+        font-size: large;
+        font-weight: normal;
+        padding: 1em 0;
+        text-transform: uppercase;
+      }
+      h2 {
+        font-size: medium;
+        font-weight: normal;
+        padding: 0.5em 0;
+        text-transform: uppercase;
+        margin: 0;
+      }
+      ol {
+        margin:0;
+      }
+      ol li {
+        padding-bottom: 1em;
+      }
+      ul li {
+        padding: 0;
+      }
+      #content {
+        background: #9acbe4;
+        padding: 10px 20px;
+      }
+      #content div {
+        width: 200px;
+        margin: 5px 0;
+        padding: 5px;
+      }
+      #parent {
+        width: auto!important;
+        background: #e8f0ff;
+      }
+      .target_class {
+        background: #ffff8c;
+      }
+      .other {
+        background: #8cff8c;
+      }
+      .not_target_class {
+        background: #ff8c8c;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Issue 243: $$ function broken</h1>
+    <div id="content">
+      <div id="parent">
+        <div class="target_class">Assigned class<br/><code>target_class</code></div>
+        <div class="other target_class">Assigned classes<br/><code>other target_class</code></div>
+        <div class="not_target_class">Assigned class<br/><code>not_target_class</code></div>
+      </div>
+      <ol>
+        <li>Enable and switch to the Console Panel</li>
+        <li>Reload the page</li>
+        <li>Type <code>$$('.target_class')</code> into the Command Line and press Enter</li>
+      </ol>
+      <ul>
+        <li><strong>Observed:</strong> All three DIV elements are selected</li>
+        <li><strong>Expected:</strong> Just the yellow and green one should be selected, because the class <code>not_target_class</code> of the red DIV is not exactly matching the selector</li>
+      </ul>
+    </div>
+  </body>
+</html>

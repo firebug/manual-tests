@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Issue 4549: Proxy elements for disabled form fields are influenced by page styles</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+      <link href="https://getfirebug.com/tests/content/templates/default/testcase.css" type="text/css" rel="stylesheet"/>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=4549">Issue 4549</a>: Proxy elements for disabled form fields are influenced by page styles</h1>
+        </header>
+        <div>
+            <section id="content">
+                <input type="text" id="disabledTextField" disabled="disabled"/>
+            </section>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Start inspecting by clicking the Inspect button</li>
+                    <li>Inspect the disabled text input field above (<code>#disabledTextField</code>)</li>
+                </ol>
+                <h3>Expected Result</h3>
+                <ul>
+                    <li>Input field can be inspected normally</li>
+                    <li>Proxy element lying above the input field is not visible</li>
+                </ul>
+            </section>
+            <footer>
+                Sebastian Zartner, sebastianzartner@gmx.de
+            </footer>
+        </div>
+    </body>
+</html>

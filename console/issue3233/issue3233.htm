@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Issue 3233: Break on This Error for CSS errors causes internal errors</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link type="text/css" href="issue3233.css" rel="stylesheet"/>
+    <style type="text/css">
+      #output {
+        background-color: #e8;
+      }
+    </style>
+    <script type="text/javascript">
+      function init() {
+        document.getElementById('content').style.backgroundColor = 'foo';
+      }
+
+      window.addEventListener('load',init,false);
+
+      var test = asdf;
+    </script>
+  </head>
+  <body>
+    <h1>Issue 3233: Break on This Error for CSS errors causes internal errors</h1>
+    <div id="content">
+      <ol>
+        <li>Enable and switch to the Console Panel</li>
+        <li>Enable <em>Show JavaScript Errors</em>, <em>Show CSS Errors</em> and <em>Show Chrome Errors</em> via the Options Mini Menu</li>
+        <li>Reload the page</li>
+        <li>Click the breakpoint at the first CSS error</li>
+        <li>Click the breakpoint at the second CSS error</li>
+        <li>Right-click on a CSS error and choose <em>Break on This Error</em> from the context menu</li>
+        <li>Reload the page</li>
+      </ol>
+      <ul>
+        <li><strong>Observed:</strong>
+          <ul>
+            <li>Enabling <em>Break on This Error</em> for the first CSS error is not causing an error, but doesn't have any effect when reloading the page the breakpoint</li>
+            <li>Clicking the breakpoint at the second CSS error as well as using the context menu to enable <em>Break on This Error</em> is causing internal errors</li>
+            <li>There's no possibility to enable <em>Break on This Error</em> for the last warning, which was caused applying an incorrect style via JavaScript</li>
+          </ul>
+        </li>
+        <li><strong>Expected:</strong>
+          <ul>
+            <li>CSS errors shouldn't give the possibility for breaking script execution as long as they were not applied via JavaScript</li>
+            <li>Generally all errors, for which no source file is available shouldn't offer the option to break script execution at them</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

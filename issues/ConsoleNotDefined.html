@@ -1,0 +1,18 @@
+<html>
+<body onload="javascript:onLoad();">
+<script>
+function onTimeout() {
+        location.reload(true);
+}
+
+function onLoad() {
+        if (console && typeof console.log == "function")
+            console.log("Hello world");
+        // switch to a different tab then allow the timer to expire.
+        // it will die with javascript error here.
+        // Next statement will never execute and the page will stop reloading! -- BUG
+        setTimeout(onTimeout, 3000);
+}
+
+</script>
+</html>

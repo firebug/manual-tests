@@ -1,0 +1,18 @@
+<html>
+<head>
+</head>
+<body>
+Test case to demonstrate firebug (or moz DOM) bug for textarea elements.
+<ol>
+<li>Go to HTML panel</li>
+<li>Navigate to the form element below.</li>
+<li>Click Edit for the HTML panel,</li>
+<li>Add content to the action tag, "javascript:alert('ok')"</li>
+<li>Click Edit for the HTML panel,</li>
+<li>The textarea end tag gets shoved to the end of the form</li>
+</ol>
+<form action="">
+<textarea id="ccomment" class="{required:true}"></textarea>
+<p>This para will be sucked into the textarea!</p>
+</form>
+</body>

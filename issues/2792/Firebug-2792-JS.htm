@@ -1,0 +1,25 @@
+<html>
+  <head>
+    <script type="text/javascript">
+var innerFunction = function(){
+    thisFunctionDoesNotExist();
+};
+
+var errorFunction = function(){
+    innerFunction();
+};
+errorFunction();
+    </script>
+  </head>
+  <body>
+  <h1>Issue 2792:  	 "Copy Error" function on error displayed in Console should copy all details, including any available stack trace</h1>
+    <p>Open the Firebug console to see the error.</p>
+    <p>Currently, under Firebug 1.5.0 and Firefox 3.6, viewing a JavaScript error
+in the Console, right-clicking, and choosing "Copy Error" only copies a
+limited portion of the data available / displayed.  Either this function
+should include more of the available details, or a 2nd option "e.g. Copy
+Error with extended details" should be provided on the pop-up.
+
+    </p>
+  </body>
+</html>

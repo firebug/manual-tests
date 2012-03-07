@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html><head>
+<title> Issue 726:    	 commandline window doesn't obey prototype invariants.</title>
+</head><body>
+<p>In script tag</p><div id="result"></div>
+<p>In with(stuff){eval()}</p><div id="evalresult"></div>
+
+<script>
+
+var stuff = {};
+
+function Foo(){};
+var comparison = (Foo.__proto__ === Function.prototype);
+var str = "(Foo.__proto__ === Function.prototype) = "+comparison;
+document.getElementById("result").innerHTML = str;
+
+with (stuff) {
+    eval('function Bar(){};var comparison = (Bar.__proto__ === Function.prototype); var str = "(Bar.__proto__ === Function.prototype) = "+comparison;document.getElementById("evalresult").innerHTML = str;');
+}
+
+</script>
+</body>
+</html>

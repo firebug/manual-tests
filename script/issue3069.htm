@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Issue 3069: Stack Trace should show filenames</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      body {
+        background: #ffffff;
+        font: small arial, sans-serif;
+        margin: 5px auto;
+        width: 815px;
+      }
+      h1 {
+        font-size: large;
+        font-weight: normal;
+        padding: 1em 0;
+        text-transform: uppercase;
+      }
+      h2 {
+        font-size: medium;
+        font-weight: normal;
+        padding: 0.5em 0;
+        text-transform: uppercase;
+        margin: 0;
+      }
+      ol {
+        margin:0;
+      }
+      ol li {
+        padding-bottom: 1em;
+      }
+      ul li {
+        padding: 0;
+      }
+      #content {
+        background: #9acbe4;
+        padding: 10px 20px;
+      }
+      #content div {
+        width: 200px;
+        margin: 5px 0;
+        padding: 5px;
+      }
+      #output {
+        width: auto!important;
+        background: #e8f0ff;
+      }
+    </style>
+    <script type="text/javascript">
+      <!--
+      function firstFunction() {
+        secondFunction('I am a function argument.');
+      }
+
+      function secondFunction(argument) {
+        thirdFunction(argument);
+      }
+
+      function thirdFunction(output) {
+        debugger;
+        alert(output);
+      }
+
+      window.addEventListener('load',firstFunction,false);
+      //-->
+    </script>
+  </head>
+  <body>
+    <h1>Issue 3069: Stack Trace should show filenames</h1>
+    <div id="content">
+      <ol>
+        <li>Enable and switch to the Script Panel</li>
+        <li>Reload the page</li>
+      </ol>
+      <ul>
+        <li><strong>Observed:</strong> The Stack Side Panel displays the function names</li>
+        <li><strong>Expected:</strong>
+          <ul>
+            <li>The Stack Side Panel should display the file name and line number as in the Style Side Panel of the HTML Panel</li>
+            <li>(Optionally) it should also display the function arguments like in the DOM Panel</li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

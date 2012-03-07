@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <script type='text/javascript'>
+            var x = 1;
+            function callback()
+            {
+                document.getElementById("result").innerHTML = x;
+                x += 1;
+            }
+
+            function init()
+            {
+                window.open("child.html", "child");
+            }
+        </script>
+    </head>
+    <body>
+    <h1>Issue 894: 	 Script not shown when breakpoint hits an opener function </h1>
+    <pre>
+    Reported by frsantos, Jun 30, 2008
+
+What steps will reproduce the problem?
+1. Open "parent.html" and set a breakpoint inside "callback" function
+2. Click the "click me" button
+3. When in breakpoint try to step (F10 or F11)
+
+What is the expected output? What do you see instead?
+The pointer should go through all lines of function "callback" with
+"parent.html" code shown. Instead, although variables and stack are OK, the
+"child.html" code is shown, and there is no clue about which is the current
+executed line.
+
+What version of the product are you using? On what operating system?
+Firebug 1.2.0b4, Firefox 3.0. Mozilla/5.0 (X11; U; Linux i686; es-ES;
+rv:1.9) Gecko/2008061015 Firefox/3.0
+
+Please provide any additional information below.
+It apparently works as intended with local files ("file:///...") but fails
+when accessed through a web server ("http://localhost/...")
+
+
+    </pre>
+        <input type="button" onClick="init()" value="click me" >
+        <div>Number of callbacks: <span id="result"></span></div>
+    </body>
+</html>

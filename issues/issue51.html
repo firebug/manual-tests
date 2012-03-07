@@ -1,0 +1,85 @@
+<html>
+<head>
+
+<title>Issue 51: Function name appearing as "(no name)" when it should be discernable </title>
+
+<script language="JavaScript" type="text/javascript">
+function doTheThing(someParam, otherParam) {
+   var_eq_fn_arg_com_ret_arg_ret_par_ret_brc(someParam, otherParam);
+   fn_name___arg_com_ret_arg_ret_par_ret_brc(someParam, otherParam);
+
+   var_eq_fn_arg_com_ret_arg_ret_par_____brc(someParam, otherParam);
+   var_eq_fn_arg_com_ret_arg_____par_ret_brc(someParam, otherParam);
+   var_eq_fn_arg_com_____arg_ret_par_ret_brc(someParam, otherParam);
+}
+
+var_eq_fn_arg_com_ret_arg_ret_par_ret_brc = function (someParam,
+otherParam
+)
+{
+   // Not recognized - shows as '(no name)'
+   var i = 0;
+}
+
+function fn_name___arg_com_ret_arg_ret_par_ret_brc (someParam,
+otherParam
+)
+{
+   // Recognized
+   var i = 0;
+}
+
+var_eq_fn_arg_com_ret_arg_ret_par_____brc = function (someParam,
+otherParam
+) {
+   // Recognized
+   var i = 0;
+}
+
+var_eq_fn_arg_com_ret_arg_____par_ret_brc = function (someParam,
+otherParam)
+{
+   // Recognized
+   var i = 0;
+}
+
+var_eq_fn_arg_com_____arg_ret_par_ret_brc = function (someParam, otherParam
+)
+{
+   // Recognized
+   var i = 0;
+}
+
+</script>
+
+</head>
+<body>
+<a href="javascript: doTheThing('hello');">Do the thing</a>
+<pre>
+What steps will reproduce the problem?
+1. Load the attached page
+2. Enable Firebug, and start the profiler
+3. Click the link
+4. Stop the profiler
+
+What is the expected output? What do you see instead?
+
+I expect to see all function names identified properly.  The combination of
+a var = function construct, with an embedded return in the argument list, a
+return before the closing paren, and a return before the opening brace,
+means Firebug does not recognize the function name.  Specifically for the
+page below, one sees "(no name)" for the function named
+var_eq_fn_arg_com_ret_arg_ret_par_ret_brc .
+
+
+What version of the product are you using? On what operating system?
+
+FF 2.0.0.2, Firebug 1.01, Windows XP SP2
+</pre>
+<hr>
+3/07 fireclipse branch uses 4 line walkback to get correct function name guess.
+Set break point on line 21.
+<b>BP fails!</b>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+<head>
+<script type="text/javascript">
+	function addDiscountItem() {
+    var url = '../products/adddiscountitem.aspx?sid=' + getSession() + "&id="+id+ "&disclId=" + document.getElementById("dicountListId").value + '&type=' + percentageOrAmount + '&discountType=' + discountType;
+    var qString = "";
+    var optstr = 'channelmode=0,directories=0,location=0,menubar=0,resizable=1,scrollbars=0,status=1,titlebar=0,toolbar=0,height=395,width=520,left=100,top=0';
+    var objProducts = window.open(url, 'discountItem', optstr);
+    objProducts.focus();
+}
+</script>
+</head>
+<body>
+<button onclick="addDiscountItem()">click me</button>
+</body>
+</html>

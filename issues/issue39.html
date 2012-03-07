@@ -1,0 +1,78 @@
+<html>
+<head>
+<style>
+.static {
+    border-top-style: solid;
+    border-bottom-style: solid;
+}
+.dynamic {
+    background-color: red;
+}
+.useFirebug {
+    color: red;
+}
+</style>
+<script>
+function addBorders()
+{
+    var p = document.getElementById("dynamicPara");
+    var styleDeclaration = p.style;
+    styleDeclaration.removeProperty("border-top-style");
+    styleDeclaration.setProperty("border-top-style","solid", "");
+    styleDeclaration.removeProperty("border-bottom-style");
+    styleDeclaration.setProperty("border-bottom-style","solid", "");
+}
+function addBorderTopThenBorders()
+{
+    var p = document.getElementById("comingAndGoing");
+    var s = p.style;
+
+    s.setProperty("border-top-style","solid", "");  // simulate user input border-top-style
+    s.setProperty("border","dashed", "");  // simulate user autocomplete 'border'
+    s.removeProperty("border");
+    s.setProperty("border-bottom-style","solid", "");  // simulate user completes border-bottom-style
+}
+function addBorderTopStyleThenBorderBottom()
+{
+    var p = document.getElementById("topStyleBottom");
+    var s = p.style;
+
+    s.setProperty("border-top-style","solid", "");  // simulate user input border-top-style
+    s.setProperty("border-bottom","dashed", "");  // simulate user autocomplete 'border'
+}
+function addBorderTopStyleThenGetBorderTop()
+{
+    var p = document.getElementById("borderTopValue");
+    var s = p.style;
+
+    s.setProperty("border-top-style","solid", "");  // simulate user input border-top-style
+    var borderTopStyleValue = s.getPropertyValue("border-top-style");
+    var borderTopValue = s.getPropertyValue("border-top");
+    p.innerHTML= "border-top-style: "+borderTopStyleValue+"; border-top: "+borderTopValue;
+}
+</script>
+</head>
+<body>
+<h2><a href="http://code.google.com/p/fbug/issues/detail?id=39">Issue 39</a></h2>
+<p class="static">This paragraph should have top and bottom solid borders</p>
+<br />
+<button onclick="addBorders()">Add Borders</button>
+<br />
+<p class="dynamic" id="dynamicPara">This paragraph should start with no top and bottom solid borders until you click the add borders</p>
+<br />
+<button onclick="addBorderTopThenBorders()">Add border-top-style:solde then border: dashed then remove border then set border-bottom-style:solid</button>
+<br />
+<p class="useFirebug" id="comingAndGoing">This paragraph should start with no top and bottom solid borders until you click the add borders</p>
+<br />
+<button onclick="addBorderTopStyleThenBorderBottom()">Add border-top-style: solid then border-bottom: dashed</button>
+<br />
+<p class="useFirebug" id="topStyleBottom">This paragraph should start with no top and bottom solid borders until you click the add borders</p>
+<br />
+<hr />
+<p class="useFirebug">This paragraph should start with no top and bottom solid borders until you add borders in Firebug</p>
+<br />
+<button onclick="addBorderTopStyleThenGetBorderTop()">Add border-top-style: solid then write border-top shorthand</button>
+<br />
+<p id="borderTopValue"></p>
+</body>
+<style>

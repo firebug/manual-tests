@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>
+  window.applicationCache</title>
+
+
+    </head>
+    <body>
+        <h1> window.applicationCache</h1>
+        <div id="result"></div>
+        
+        <hr />
+        <p>Broken in Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9) Gecko/2008052906 Firefox/3.0</p>
+    </body>
+<script type="application/javascript;version=1.7">
+
+try 
+{
+	var elt = document.getElementById("result");
+	var size = window.applicationCache.length;
+	elt.innerHTML="window.applicationCache.length = "+ size+"\n";
+} 
+catch(exc) 
+{
+    elt.innerHTML = exc;
+}
+</script> 
+</html>

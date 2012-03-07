@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 4627: String.prototype methods not showing up</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/content/templates/default/testcase.css" type="text/css" rel="stylesheet"/>
+        <script type="text/javascript">
+        function userDefFunc()
+        {
+            alert("I am a user-defined function.");
+        }
+
+        var parentObj = {
+            prototypeProp: 1
+        };
+        childObj = Object.create(parentObj);
+        childObj.ownProp = 2;
+        childObj.ownFunc = function test() { alert("Hello Firebug user!") };
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=4627">Issue 4627</a>: String.prototype methods not showing up</h1>
+        </header>
+        <div>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Switch to the <em>DOM</em> panel</li>
+                    <li>
+                        Inside the <em>DOM</em> panel's options menu uncheck <em>Show Own Properties Only</em> and <em>Show Enumerable Properties Only</em><br/>
+                        <span class="ok">&rArr; The <em>DOM</em> panel should list all properties (enumerable and non-enumerable own properties and prototype chain properties) of <code>window</code></span>
+                    </li>
+                    <li>
+                        Check the <em>Show Own Properties Only</em> option<br/>
+                        <span class="ok">&rArr; The <em>DOM</em> panel should just list all properties (enumerable and non-enumerable), that directly belong to the <code>window</code> object</span>
+                    </li>
+                    <li>
+                        Check the <em>Show Enumerable Properties Only</em> option<br/>
+                        <span class="ok">&rArr; The <em>DOM</em> panel should just list enumerable properties, that directly belong to the <code>window</code> object</span>
+                    </li>
+                    <li>
+                        Uncheck the <em>Show Own Properties Only</em> option<br/>
+                        <span class="ok">&rArr; The <em>DOM</em> panel should just list all enumerable properties (own properties and prototype chain properties)</span>
+                    </li>
+                </ol>
+                <h3>Observed result</h3>
+                <ul>
+                    <li class="error">If <em>Show Own Properties Only</em> is checked, the prototype chain is displayed</li>
+                    <li class="error">If both options (<em>Show Own Properties Only</em> and <em>Show Enumerable Properties Only</em>) are unchecked, only enumerable properties are shown</li>
+                    <li class="error">The option <em>Show Enumerable Properties Only</em> can't be check independently of <em>Show Own Properties Only</em></li>
+                </ul>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>Both options should be available independently from each other</li>
+                    <li>The <em>DOM</em> panel display needs to be adjusted according to the selected options</li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmx.de</footer>
+        </div>
+    </body>
+</html>

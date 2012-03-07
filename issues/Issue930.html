@@ -1,0 +1,49 @@
+<html>
+<head>
+	<script type="text/javascript" src="http://www.google-analytics.com/ga.js"></script>
+	<script>
+		function dummyFunc() {
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		}
+		
+		function enterDebug() {
+			debugger;
+		}
+	</script>
+</head>
+<body>
+    
+<h1>Test for <a href="http://code.google.com/p/fbug/issues/detail?id=930">Issue 930</a></h1>
+<ol>
+    <li>Enable Console and Script panels</li>
+    <li>Reload this page</li>
+    <li>In the command line in the Console panel, type <i>enterDebug</i> and enter. An
+<i>enterDebug()</i> function link is written to the console</li>
+    <li>Clicking the <i>enterDebug()</i> function link should open it in the Script
+panel, but nothing really happens. - BUG</li>
+</ol>
+	<form>
+		<input type="button" value="debugger;" onclick="enterDebug()">
+	</form>
+</body>
+</html>

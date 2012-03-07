@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <title>Test Case for bug 609663</title>
+</head>
+<body>
+<script type="text/javascript">
+function onExecuteTest()
+{
+    var text = [];
+    for (var i=3; i<2; i++)
+        text.push(i);
+    var result = text.join(", ");
+}
+</script>
+
+<h1>Bug 609663</h1>
+
+<p>This test-case is intended for <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=609663">Bug 609663</a>
+- <span class="h3">JSD doesn't support jsdIDebuggerService.interruptHook</span>.
+<br/>
+<i>Jan Odvarko, odvarko@gmail.com</i>
+</p>
+
+<ol>
+<li>Install extension from <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=609663">Bug 609663</a></li>
+<li>Open Firefox -> Tools -> Error Console. Make sure you have
+<i>javascript.options.showInConsole</i> set to true.</li>
+<li>Click on the <code style="color:green">Execute Test</code> button below.</li>
+<li>You should see following interrupts (lines with the executed code):
+<pre>
+Error: onInterrupt; Line: 1
+Error: onInterrupt; Line: 8
+Error: onInterrupt; Line: 10
+Error: onInterrupt; Line: 11
+Error: onInterrupt; Line: 13
+Error: onInterrupt; Line: 1
+</pre>
+</li>
+</ol>
+
+<div id="content"></div>
+
+<button id="testButton" onclick="onExecuteTest()">Execute Test</button>
+<br/><br/>
+<i>This does work on Firefox 3.6, but does not on Firefox 4.0</i>
+
+</body>
+</html>

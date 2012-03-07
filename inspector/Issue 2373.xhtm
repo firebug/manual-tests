@@ -1,0 +1,1826 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.1 plus MathML 2.0//EN"
+         "http://www.w3.org/Math/DTD/mathml2/xhtml-math11-f.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <meta name="language" content="en-US"/>
+    <meta name="description" content="MathML Browser Test (Presentation Markup)"/>
+    <meta name="keywords" content="MathML Browser Test (Presentation Markup)"/>
+
+    <title>MathML Browser Test (Presentation Markup)</title>
+
+    <style type="text/css">
+      html
+      {
+        color: black;
+        background-color:white;
+        font-size: 12pt;
+      }
+
+      table
+      {
+        border: solid thin;
+      }
+
+      th
+      {
+        background-color: #DDD;
+        border: solid thin;
+        padding: 3px;
+      }
+
+      td
+      {
+        border: solid thin;
+        padding: 3px;
+        text-align: center;
+      }
+
+      table img
+      {
+        border: none;
+      }
+
+      mtd
+      {
+        padding-top: 0;
+        padding-bottom: 0;
+        vertical-align: middle;
+      }      
+
+      .tighter mtd
+      {
+        padding-left: 0.1ex;
+        padding-right: 0.1ex;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>MathML Browser Test (Presentation Markup)</h1>
+
+    <p>
+      Click on a formula/equation to see the source code that generated it.
+    </p>
+
+    <table>
+
+      <tr>
+        <th> 
+          Formula
+        </th>
+        <th>
+          Image of TeX rendering
+          <br />
+          (TeXShop 2.26)
+        </th>
+        <th>
+          Image of MathML rendering
+          <br />
+          (Firefox 3.5 with <a href="http://www.mozilla.org/projects/mathml/fonts/">STIX Beta Fonts</a>)
+        </th>
+        <th>
+          MathML rendering
+          <br />
+          (by this browser)
+        </th>
+      </tr>
+
+      <tr>
+        <td>
+          <a style="font-size: smaller" href="http://en.wikipedia.org/wiki/Axiom_of_power_set">
+            Axiom of <br />power set
+          </a>
+        </td>
+        <td>
+          <a href="Code/TeX/axiom_of_power_set.tex">
+            <img src="Images/TeX/axiom_of_power_set.png" 
+              alt="TeX rendering of the Axiom of power set" 
+              title="TeX rendering of the Axiom of power set"
+            />
+          </a>
+        </td>
+        <td>
+          <a href="Code/MathML/axiom_of_power_set.txt">
+            <img src="Images/MathML/axiom_of_power_set.png" 
+              alt="MathML rendering of the Axiom of power set" 
+              title="MathML rendering of the Axiom of power set"
+            />
+          </a>
+        </td>
+        <td>
+          <a style="color: black; text-decoration: none;" href="Code/MathML/axiom_of_power_set.txt">
+            <math mode="display" xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                <mo rspace="0">&#x2200;<!-- &forall; --></mo>
+                <mi>A</mi>
+                <mo lspace="mediummathspace" rspace="0">&#x2203;<!-- &exist; --></mo>
+                <mi>P</mi>
+                <mo lspace="mediummathspace" rspace="0">&#x2200;<!-- &forall; --></mo>
+                <mi>B</mi>
+                <mspace width="thinmathspace" />
+                <mfenced open="[" close="]" separators="">
+                  <mi>B</mi>
+                  <mo>&#x2208;<!-- &isin; --></mo>
+                  <mi>P</mi>
+                  <mo lspace="1ex" rspace="1ex">&#x27FA;<!-- &Longleftrightarrow; --></mo>
+                  <mo rspace="0">&#x2200;<!-- &forall; --></mo>
+                  <mi>C</mi>
+                  <mspace width="thinmathspace" />
+                  <mfenced separators="">
+                    <mi>C</mi>
+                    <mo>&#x2208;<!-- &isin; --></mo>
+                    <mi>B</mi>
+                    <mo>&#x21D2;<!-- &Implies; --></mo>
+                    <mi>C</mi>
+                    <mo>&#x2208;<!-- &isin; --></mo>
+                    <mi>A</mi>
+                  </mfenced>
+                </mfenced>
+              </mrow>
+            </math>
+          </a>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <a style="font-size: smaller" href="http://en.wikipedia.org/wiki/Demorgans_law">
+            De Morgan's law
+          </a>
+        </td>
+        <td>
+          <a href="Code/TeX/deMorgans_law.tex">
+            <img src="Images/TeX/deMorgans_law.png" 
+              alt="TeX rendering of De Morgan's law" 
+              title="TeX rendering of De Morgan's law"
+            />
+          </a>
+        </td>
+        <td>
+          <a href="Code/MathML/deMorgans_law.txt">
+            <img src="Images/MathML/deMorgans_law.png" 
+              alt="MathML rendering of De Morgan's law" 
+              title="MathML rendering of De Morgan's law"
+            />
+          </a>
+        </td>
+        <td>
+          <a style="color: black; text-decoration: none;" href="Code/MathML/deMorgans_law.txt">
+            <math mode="display" xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+		<mtext>
+		  Logic:&#x00A0;<!-- &nbsp; -->
+		</mtext>
+		<mo>&#x00AC;<!-- &not; --></mo>
+		<mfenced separators="">
+		  <mi>p</mi>
+		  <mo lspace="mediummathspace" rspace="mediummathspace">&#x2227;<!-- &and; --></mo>
+		  <mi>q</mi>
+		</mfenced>
+		<mo lspace="1ex" rspace="1ex">&#x27FA;<!-- &Longleftrightarrow; --></mo>
+		<mfenced separators="">
+		  <mo>&#x00AC;<!-- &not; --></mo>
+		  <mi>p</mi>
+		</mfenced>
+		<mo lspace="mediummathspace" rspace="mediummathspace">&#x2228;<!-- &or; --></mo>
+		<mfenced separators="">
+		  <mo>&#x00AC;<!-- &not; --></mo>
+		  <mi>q</mi>
+		</mfenced>
+              </mrow>
+	    </math>
+            <math mode="display" xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+		<mtext>
+		  Boolean algebra:&#x00A0;<!-- &nbsp; -->
+		</mtext>
+		<mover>
+		  <mrow>
+		    <munderover>
+                      <mo style="font-size:larger;">&#x22C3;<!-- &bigcup; --></mo>
+                      <mrow>
+			<mi>i</mi>
+			<mo>=</mo>
+			<mn>1</mn>
+                      </mrow>
+                      <mi>n</mi>
+		    </munderover>
+		    <msub>
+                      <mi>A</mi>
+                      <mi>i</mi>
+		    </msub>
+		  </mrow>
+		  <mo>&#x00AF;<!-- &OverBar; --></mo>
+		</mover>
+		<mo rspace="0">=</mo>
+		<munderover>
+		  <mo style="font-size:larger;">&#x22C2;<!-- &bigcap; --></mo>
+		  <mrow>
+		    <mi>i</mi>
+		    <mo>=</mo>
+		    <mn>1</mn>
+		  </mrow>
+		  <mi>n</mi>
+		</munderover>
+		<mover accent="true">
+		  <msub>
+		    <mi>A</mi>
+		    <mi>i</mi>
+		  </msub>
+		  <mo>&#x00AF;<!-- &OverBar; --></mo>
+		</mover>
+              </mrow>
+	    </math>
+          </a>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <a style="font-size: smaller" href="http://en.wikipedia.org/wiki/Quadratic_equation">
+            Quadratic <br /> Formula
+          </a>
+        </td>
+        <td>
+          <a href="Code/TeX/quadratic_formula.tex">
+            <img src="Images/TeX/quadratic_formula.png" 
+              alt="TeX rendering of the Quadratic Formula" 
+              title="TeX rendering of the Quadratic Formula"
+            />
+          </a>
+        </td>
+        <td>
+          <a href="Code/MathML/quadratic_formula.txt">
+            <img src="Images/MathML/quadratic_formula.png" 
+              alt="MathML rendering of the Quadratic Formula" 
+              title="MathML rendering of the Quadratic Formula"
+            />
+          </a>
+        </td>
+        <td>
+          <a style="color: black; text-decoration: none;" href="Code/MathML/quadratic_formula.txt">
+            <math mode="display" xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                <mi>x</mi>
+                <mo>=</mo>
+                <mfrac>
+                  <mrow>
+                    <mo form="prefix">&#x2212;<!-- &minus; --></mo>
+                    <mi>b</mi>
+                    <mo>&#x00B1;<!-- &PlusMinus; --></mo>
+                    <msqrt>
+                      <msup>
+                        <mi>b</mi>
+                        <mn>2</mn>
+                      </msup>
+                      <mo>&#x2212;<!-- &minus; --></mo>
+                      <mn>4</mn>
+                      <mo>&#x2062;<!-- &InvisibleTimes; --></mo>
+                      <mi>a</mi>
+                      <mo>&#x2062;<!-- &InvisibleTimes; --></mo>
+                      <mi>c</mi>
+                    </msqrt>
+                  </mrow>
+                  <mrow>
+                    <mn>2</mn>
+                    <mo>&#x2062;<!-- &InvisibleTimes; --></mo>
+                    <mi>a</mi>
+                  </mrow>
+                </mfrac>
+              </mrow>
+            </math>
+          </a>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <a style="font-size: smaller" href="http://en.wikipedia.org/wiki/Combination">
+            Binomial <br /> Coefficient
+          </a>
+        </td>
+        <td>
+          <a href="Code/TeX/binomial_coefficient.tex">
+            <img src="Images/TeX/binomial_coefficient.png" 
+              alt="TeX rendering of the Binomial Coefficient" 
+              title="TeX rendering of the Binomial Coefficient"
+            />
+          </a>
+        </td>
+        <td>
+          <a href="Code/MathML/binomial_coefficient.txt">
+            <img src="Images/MathML/binomial_coefficient.png" 
+              alt="MathML rendering of the Binomial Coefficient" 
+              title="MathML rendering of the Binomial Coefficient"
+            />
+          </a>
+        </td>
+        <td>
+          <a style="color: black; text-decoration: none;" href="Code/MathML/binomial_coefficient.txt">
+            <math mode="display" xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                <mi>C</mi>
+                <mfenced>
+                  <mi>n</mi>
+                  <mi>k</mi>
+                </mfenced>
+                <mo>=</mo>
+                <msubsup>
+                  <mi>C</mi>
+                  <mi>k</mi>
+                  <mi>n</mi>
+                </msubsup>
+                <mo>=</mo>
+                <mmultiscripts>
+                  <mi>C</mi>
+                  <mi>k</mi>
+                  <none />
+                  <mprescripts />
+                  <mi>n</mi>
+                  <none />
+                </mmultiscripts>
+                <mo>=</mo>
+                <mfenced>
+                  <mfrac linethickness="0">
+                    <mi>n</mi>
+                    <mi>k</mi>
+                  </mfrac>
+                </mfenced>
+                <mo>=</mo>
+                <mfrac>
+                  <mrow>
+                    <mi>n</mi>
+                    <mo lspace="0">!</mo>
+                  </mrow>
+                  <mrow>
+                    <mi>k</mi>
+                    <mo lspace="0">!</mo>
+                    <mo rspace="mediummathspace">&#x2062;<!-- &InvisibleTimes; --></mo>
+                    <!-- <mfenced separators="&minus;"> -->
+                    <mfenced separators="&#x2212;">
+                      <mi>n</mi>
+                      <mi>k</mi>
+                    </mfenced>
+                    <mo lspace="0">!</mo>
+                  </mrow>
+                </mfrac>
+              </mrow>
+            </math>
+          </a>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <a style="font-size: smaller" href="http://en.wikipedia.org/wiki/Sophomore's_dream">
+            Sophomore's <br /> dream
+          </a>
+        </td>
+        <td>
+          <a href="Code/TeX/sophomores_dream.tex">
+            <img src="Images/TeX/sophomores_dream.png" 
+              alt="TeX rendering of the Sophomore's Dream" 
+              title="TeX rendering of the Sophomore's Dream"
+            />
+          </a>
+        </td>
+        <td>
+          <a href="Code/MathML/sophomores_dream.txt">
+            <img src="Images/MathML/sophomores_dream.png" 
+              alt="MathML rendering of the Sophomore's Dream" 
+              title="MathML rendering of the Sophomore's Dream"
+            />
+          </a>
+        </td>
+        <td>
+          <a style="color: black; text-decoration: none;" href="Code/MathML/sophomores_dream.txt">
+            <math mode="display" xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                <msubsup>
+                  <mo style="font-size:larger;">&#x222B;<!-- &Integral; --></mo>
+                  <mn>0</mn>
+                  <mn>1</mn>
+                </msubsup>
+                <msup>
+                  <mi>x</mi>
+                  <mi>x</mi>
+                </msup>
+                <mo rspace="mediummathspace">&#x2062;<!-- &InvisibleTimes; --></mo>
+                <mo rspace="0">&#x2146;<!-- &DifferentialD; --></mo>
+                <mi>x</mi>
+                <mo>=</mo>
+                <munderover>
+                  <mo style="font-size:larger;">&#x2211;<!-- &Sum; --></mo>
+                  <mrow>
+                    <mi>n</mi>
+                    <mo>=</mo>
+                    <mn>1</mn>
+                  </mrow>
+                  <mn>&#x221E;<!-- &infin; --></mn>
+                </munderover>
+                <msup>
+                  <mfenced>
+                    <mrow>
+                      <mo form="prefix">&#x2212;<!-- &minus; --></mo>
+                     <mn>1</mn>
+                    </mrow>
+                  </mfenced>
+                  <mrow>
+                    <mi>n</mi>
+                    <mo>+</mo>
+                    <mn>1</mn>
+                  </mrow>
+                </msup>
+                <mo>&#x2062;<!-- &InvisibleTimes; --></mo>
+                <msup>
+                  <mi>n</mi>
+                  <mrow>
+                    <mo form="prefix">&#x2212;<!-- &minus; --></mo>
+                    <mi>n</mi>
+                  </mrow>
+                </msup>
+              </mrow>
+            </math>
+          </a>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <a style="font-size: smaller" href="http://en.wikipedia.org/wiki/Divergence">Divergence</a>
+        </td>
+        <td>
+          <a href="Code/TeX/divergence.tex">
+            <img src="Images/TeX/divergence.png" 
+              alt="TeX rendering of the divergence of vector calculus" 
+              title="TeX rendering of the divergence of vector calculus"
+            />
+          </a>
+        </td>
+        <td>
+          <a href="Code/MathML/divergence.txt">
+            <img src="Images/MathML/divergence.png" 
+              alt="MathML rendering of the divergence of vector calculus" 
+              title="MathML rendering of the divergence of vector calculus"
+            />
+          </a>
+        </td>
+        <td>
+          <a style="color: black; text-decoration: none;" href="Code/MathML/divergence.txt">
+            <math mode="display" xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                <mo>&#x2207;<!-- &nabla; --></mo>
+                <mo>&#x00B7;<!-- &middot; --></mo>
+                <mover accent="true">
+                  <mi>v</mi>
+                  <mo style="font-size:smaller">&#x2192;<!-- &RightArrow; --></mo>
+                </mover>
+                <mo>=</mo>
+                <mfrac>
+                  <mrow>
+                    <mo rspace="0">&#x2202;<!-- &PartialD; --></mo>
+                    <msub>
+                      <mi>v</mi>
+                      <mi>x</mi>
+                    </msub>
+                  </mrow>
+                  <mrow>
+                    <mo rspace="0">&#x2202;<!-- &PartialD; --></mo>
+                    <mi>x</mi>
+                  </mrow>
+                </mfrac>
+                <mo>+</mo>
+                <mfrac>
+                  <mrow>
+                    <mo rspace="0">&#x2202;<!-- &PartialD; --></mo>
+                    <msub>
+                      <mi>v</mi>
+                      <mi>y</mi>
+                    </msub>
+                  </mrow>
+                  <mrow>
+                    <mo rspace="0">&#x2202;<!-- &PartialD; --></mo>
+                    <mi>y</mi>
+                  </mrow>
+                </mfrac>
+                <mo>+</mo>
+                <mfrac>
+                  <mrow>
+                    <mo rspace="0">&#x2202;<!-- &PartialD; --></mo>
+                    <msub>
+                      <mi>v</mi>
+                      <mi>z</mi>
+                    </msub>
+                  </mrow>
+                  <mrow>
+                    <mo rspace="0">&#x2202;<!-- &PartialD; --></mo>
+                    <mi>z</mi>
+                  </mrow>
+                </mfrac>
+              </mrow>
+            </math>
+          </a>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <a style="font-size: smaller" href="http://en.wikipedia.org/wiki/Complex_number">
+            Complex<br /> number
+          </a>
+        </td>
+        <td>
+          <a href="Code/TeX/complex_number.tex">
+            <img src="Images/TeX/complex_number.png" 
+              alt="TeX rendering of the complex number" 
+              title="TeX rendering of the complex mumber"
+            />
+          </a>
+        </td>
+        <td>
+          <a href="Code/MathML/sophomores_dream.txt">
+            <img src="Images/MathML/complex_number.png" 
+              alt="MathML rendering of the complex number" 
+              title="MathML rendering of the complex mumber"
+            />
+          </a>
+        </td>
+        <td>
+          <a style="color: black; text-decoration: none;" href="Code/MathML/complex_number.txt">
+            <math mode="display" xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                <mi>c</mi>
+                <mo>=</mo>
+                <mover>
+                  <mover>
+                    <mrow>
+                      <munder>
+                        <munder>
+                          <mrow>
+                            <mspace width="0.8em" />
+                            <mi>a</mi>
+                            <mspace width="0.8em" />
+                          </mrow>
+                          <mo style="font-size:smaller">&#xFE38;<!-- &UnderBrace; --></mo>
+                        </munder>
+                        <mtext>real</mtext>
+                      </munder>
+                      <mo>+</mo>
+                      <munder>
+                        <munder>
+                          <mrow>
+                            <mspace width="0.7em" />
+                            <mi>b</mi>
+                            <mo>&#x2062;<!-- &InvisibleTimes; --></mo>
+                            <mn>&#x2148;<!-- &ImaginaryI; --></mn>
+                            <mspace width="0.7em" />
+                          </mrow>
+                          <mo style="font-size:smaller">&#xFE38;<!-- &UnderBrace; --></mo>
+                        </munder>
+                        <mtext>imaginary</mtext>
+                      </munder>
+                     </mrow>
+                    <mo style="font-size:smaller">&#xFE37;<!-- &OverBrace; --></mo>
+                  </mover>
+                  <mtext>complex number</mtext>
+                </mover>
+              </mrow>
+            </math>
+          </a>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <a style="font-size: smaller" href="http://en.wikipedia.org/wiki/Moore_matrix">
+            Moore <br /> determinant
+          </a>
+        </td>
+        <td>
+          <a href="Code/TeX/moore_determinant.tex">
+            <img src="Images/TeX/moore_determinant.png" 
+              alt="TeX rendering of the Moore Determinant" 
+              title="TeX rendering of the Moore Determinant"
+            />
+          </a>
+        </td>
+        <td>
+          <a href="Code/MathML/moore_determinant.txt">
+            <img src="Images/MathML/moore_determinant.png" 
+              alt="MathML rendering of the Moore Determinant" 
+              title="MathML rendering of the Moore Determinant"
+            />
+          </a>
+        </td>
+        <td>
+          <a style="color: black; text-decoration: none;" href="Code/MathML/moore_determinant.txt">
+            <math mode="display" xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                <mi>M</mi>
+                <mo>=</mo>
+                <mfenced open="[" close="]">
+                  <mtable>
+                    <mtr>
+                      <mtd>
+                        <msub>
+                          <mi>&#x03B1;<!-- &alpha; --></mi>
+                          <mn>1</mn>
+                        </msub>
+                      </mtd>
+                      <mtd>
+                        <msubsup>
+                          <mi>&#x03B1;<!-- &alpha; --></mi>
+                          <mn>1</mn>
+                          <mi>q</mi>
+                        </msubsup>
+                      </mtd>
+                      <mtd>
+                        <mi>&#x2026;<!-- &hellip; --></mi>
+                      </mtd>
+                      <mtd>
+                        <msubsup>
+                          <mi>&#x03B1;<!-- &alpha; --></mi>
+                          <mn>1</mn>
+                          <mrow>
+                            <msup>
+                              <mi>q</mi>
+                              <mrow>
+                                <mi>n</mi>
+                                <mo>&#x2212;<!-- &minus; --></mo>
+                                <mn>1</mn>
+                              </mrow>
+                            </msup>
+                          </mrow>
+                        </msubsup>
+                      </mtd>
+                    </mtr>
+                    <mtr>
+                      <mtd>
+                        <msub>
+                          <mi>&#x03B1;<!-- &alpha; --></mi>
+                          <mn>2</mn>
+                        </msub>
+                      </mtd>
+                      <mtd>
+                        <msubsup>
+                          <mi>&#x03B1;<!-- &alpha; --></mi>
+                          <mn>2</mn>
+                          <mi>q</mi>
+                        </msubsup>
+                      </mtd>
+                      <mtd>
+                        <mi>&#x2026;<!-- &hellip; --></mi>
+                      </mtd>
+                      <mtd>
+                        <msubsup>
+                          <mi>&#x03B1;<!-- &alpha; --></mi>
+                          <mn>2</mn>
+                          <mrow>
+                            <msup>
+                              <mi>q</mi>
+                              <mrow>
+                                <mi>n</mi>
+                                <mo>&#x2212;<!-- &minus; --></mo>
+                                <mn>1</mn>
+                              </mrow>
+                            </msup>
+                          </mrow>
+                        </msubsup>
+                      </mtd>
+                    </mtr>
+                    <mtr>
+                      <mtd>
+                        <mi>&#x22EE;<!-- &vellip; --></mi>
+                      </mtd>
+                      <mtd>
+                        <mi>&#x22EE;<!-- &vellip; --></mi>
+                      </mtd>
+                      <mtd>
+                        <mi>&#x22F1;<!-- &dtdot; --></mi>
+                      </mtd>
+                      <mtd>
+                        <mi>&#x22EE;<!-- &vellip; --></mi>
+                      </mtd>
+                    </mtr>
+                    <mtr>
+                      <mtd>
+                        <msub>
+                          <mi>&#x03B1;<!-- &alpha; --></mi>
+                          <mi>m</mi>
+                        </msub>
+                      </mtd>
+                      <mtd>
+                        <msubsup>
+                          <mi>&#x03B1;<!-- &alpha; --></mi>
+                          <mi>m</mi>
+                          <mi>q</mi>
+                        </msubsup>
+                      </mtd>
+                      <mtd>
+                        <mi>&#x2026;<!-- &hellip; --></mi>
+                      </mtd>
+                      <mtd>
+                        <msubsup>
+                          <mi>&#x03B1;<!-- &alpha; --></mi>
+                          <mi>m</mi>
+                          <mrow>
+                            <msup>
+                              <mi>q</mi>
+                              <mrow>
+                                <mi>n</mi>
+                                <mo>&#x2212;<!-- &minus; --></mo>
+                                <mn>1</mn>
+                              </mrow>
+                            </msup>
+                          </mrow>
+                        </msubsup>
+                      </mtd>
+                    </mtr>
+                  </mtable>
+                </mfenced>
+              </mrow>
+            </math>
+          </a>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <a style="font-size: smaller" href="http://en.wikipedia.org/wiki/Sphere">Sphere <br /> volume</a>
+        </td>
+        <td>
+          <a href="Code/TeX/sphere_volume.tex">
+            <img src="Images/TeX/sphere_volume.png" 
+              alt="TeX rendering of the Sphere Volume derivation" 
+              title="TeX rendering of the Sphere Volume derivation"
+            />
+          </a>
+        </td>
+        <td>
+          <a href="Code/MathML/sphere_volume.txt">
+            <img src="Images/MathML/sphere_volume.png" 
+              alt="MathML rendering of the Sphere Volume derivation" 
+              title="MathML rendering of the Sphere Volume derivation"
+            />
+          </a>
+        </td>
+        <td>
+          <a style="color: black; text-decoration: none;" href="Code/MathML/sphere_volume.txt">
+            <span style="font-size: 8pt;">
+              <span style="display: table; margin-left: auto; margin-right: auto; white-space: nowrap; text-align: left; line-height: 0.75">
+                &#x00A0;<!-- &nbsp; --> &#x00A0;<!-- &nbsp; --> Spherical coordinates derivation of the volume of a sphere
+                <math xmlns="http://www.w3.org/1998/Math/MathML" style="font-size: xx-small">
+                  <mfenced separators="">
+                    <mfrac>
+                      <mn>4</mn>
+                      <mn>3</mn>
+                    </mfrac>
+                    <mo>&#x2062;<!-- &InvisibleTimes; --></mo>
+                    <mi>&#x03C0;<!-- &pi; --></mi>
+                    <msup>
+                      <mi>R</mi>
+                      <mn>3</mn>
+                    </msup>
+                  </mfenced>
+                </math>
+                .<br />
+                The formula
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                  <mi>S</mi>
+                </math>
+                for a sphere of radius
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                  <mi>R</mi>
+                </math>
+                in spherical coordinates is:
+                <br />
+                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                  <mrow>
+                    <mi>S</mi>
+                    <mo>=</mo>
+                    <mfenced open="{" close="}">
+                      <mrow>
+                        <mn>0</mn>
+                        <mo>&#x2264;<!-- &leq; --></mo>
+                        <mi>&#x03D5;<!-- &straightphi; --></mi>
+                        <mo>&#x2264;<!-- &leq; --></mo>
+                        <mn>2</mn>
+                        <mo>&#x2062;<!-- &InvisibleTimes; --></mo>
+                        <mi>&#x03C0;<!-- &pi; --></mi>
+                      </mrow>
+                      <mrow>
+                        <mn>0</mn>
+                        <mo>&#x2264;<!-- &leq; --></mo>
+                        <mi>&#x03B8;<!-- &theta; --></mi>
+                        <mo>&#x2264;<!-- &leq; --></mo>
+                        <mi>&#x03C0;<!-- &pi; --></mi>
+                      </mrow>
+                      <mrow>
+                        <mn>0</mn>
+                        <mo>&#x2264;<!-- &leq; --></mo>
+                        <mi>&#x03C1;<!-- &rho; --></mi>
+                        <mo>&#x2264;<!-- &leq; --></mo>
+                        <mi>R</mi>
+                      </mrow>
+                    </mfenced>
+                  </mrow>
+                </math>
+              </span>
+              <math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mtable class="tighter" columnalign="right left">
+                  <mtr>
+                    <mtd style="text-align: right;">
+                      <mrow>
+                        <mtext>Volume</mtext>
+                      </mrow>
+                    </mtd>
+                    <mtd style="text-align: left">
+                      <mrow>
+                        <mo>=</mo>
+                        <munder>
+                          <mo style="font-size: large;">&#x222D;<!-- &iiint; --></mo>
+                          <mi>S</mi>
+                        </munder>
+                        <msup>
+                          <mi>&#x03C1;<!-- &rho; --></mi>
+                          <mn>2</mn>
+                        </msup>
+                        <mo>&#x2062;<!-- &InvisibleTimes; --></mo>
+                        <mo>sin</mo>
+                        <mo rspace="thinmathspace">&#x2061;<!-- &ApplyFunction; --></mo>
+                        <mi>&#x03B8;<!-- &theta; --></mi>
+                        <mo rspace="mediummathspace">&#x2062;<!-- &InvisibleTimes; --></mo>
+                        <mo rspace="0">&#x2146;<!-- &DifferentialD; --></mo>
+                        <mi>&#x03C1;<!-- &rho; --></mi>
+                        <mo rspace="mediummathspace">&#x2062;<!-- &InvisibleTimes; --></mo>
+                        <mo rspace="0">&#x2146;<!-- &DifferentialD; --></mo>
+                        <mi>&#x03B8;<!-- &theta; --></mi>
+                        <mo rspace="mediummathspace">&#x2062;<!-- &InvisibleTimes; --></mo>
+                        <mo rspace="0">&#x2146;<!-- &DifferentialD; --></mo>
+                        <mi>&#x03D5;<!-- &straightphi; --></mi>
+                        <mphantom>
+                          <mo maxsize="4.0" minsize="4.0">&#x007C;<!-- &vert; --></mo>
+                        </mphantom>
+                      </mrow>
+                    </mtd>
+                  </mtr>
+                  <mtr>
+                    <mtd>
+                    </mtd>
+                    <mtd style="text-align: left">
+                      <mrow>
+                        <mo>=</mo>
+                        <msubsup>
+                          <mo style="font-size: large;">&#x222B;<!-- &Integral; --></mo>
+                          <mn>0</mn>
+                          <mrow>
+                            <mn>2</mn>
+                            <mo>&#x2062;<!-- &InvisibleTimes; --></mo>
+                            <mi>&#x03C0;<!-- &pi; --></mi>
+                          </mrow>
+                        </msubsup>
+                        <mo rspace="0">&#x2146;<!-- &DifferentialD; --></mo>
+                        <mi>&#x03D5;<!-- &straightphi; --></mi>
+                        <mo lspace="thickmathspace">&#x2062;<!-- &InvisibleTimes; --></mo>
+                        <msubsup>
+                          <mo style="font-size: large;">&#x222B;<!-- &Integral; --></mo>
+                          <mn>0</mn>
+                          <mi>&#x03C0;<!-- &pi; --></mi>
+                        </msubsup>
+                        <mo>sin</mo>
+                        <mo rspace="thinmathspace">&#x2061;<!-- &ApplyFunction; --></mo>
+                        <mi>&#x03B8;<!-- &theta; --></mi>
+                        <mo rspace="mediummathspace">&#x2062;<!-- &InvisibleTimes; --></mo>
+                        <mo rspace="0">&#x2146;<!-- &DifferentialD; --></mo>
+                        <mi>&#x03B8;<!-- &theta; --></mi>
+                        <mo lspace="thickmathspace">&#x2062;<!-- &InvisibleTimes; --></mo>
+                        <msubsup>
+                          <mo style="font-size: large;">&#x222B;<!-- &Integral; --></mo>
+                          <mn>0</mn>
+                          <mi>R</mi>
+                        </msubsup>
+                        <msup>
+                          <mi>&#x03C1;<!-- &rho; --></mi>
+                          <mn>2</mn>
+                        </msup>
+                        <mo rspace="mediummathspace">&#x2062;<!-- &InvisibleTimes; --></mo>
+                        <mo rspace="0">&#x2146;<!-- &DifferentialD; --></mo>
+                        <mi>&#x03C1;<!-- &rho; --></mi>
+                      </mrow>
+                    </mtd>
+                  </mtr>
+                  <mtr>
+                    <mtd>
+                    </mtd>
+                    <mtd style="text-align: left">
+                      <mrow>
+                        <mo>=</mo>
+                        <mspace width="mediummathspace" />
+                        <mi>&#x03D5;<!-- &straightphi; --></mi>
+                        <msubsup>
+                          <mo maxsize="2.5" minsize="2.5">&#x007C;<!-- &vert; --></mo>
+                          <mn>0</mn>
+                          <mrow>
+                            <mn>2</mn>
+                            <mo>&#x2062;<!-- &InvisibleTimes; --></mo>
+                            <mi>&#x03C0;<!-- &pi; --></mi>
+                          </mrow>
+                        </msubsup>
+                        <mo rspace="mediummathspace">&#x2062;<!-- &InvisibleTimes; --></mo>
+                        <mfenced>
+                          <mrow>
+                            <mo form="prefix">&#x2212;<!-- &minus; --></mo>
+                            <mi>cos</mi>
+                            <mo rspace="thinmathspace">&#x2061;<!-- &ApplyFunction; --></mo>
+                            <mi>&#x03B8;<!-- &theta; --></mi>
+                          </mrow>
+                        </mfenced>
+                        <msubsup>
+                          <mo maxsize="2.5" minsize="2.5">&#x007C;<!-- &vert; --></mo>
+                          <mn>0</mn>
+                          <mi>&#x03C0;<!-- &pi; --></mi>
+                        </msubsup>
+                        <mspace width="veryverythickmathspace" />
+                        <mo>&#x2062;<!-- &InvisibleTimes; --></mo>
+                        <mfrac>
+                          <mn>1</mn>
+                          <mn>3</mn>
+                        </mfrac>
+                        <mo>&#x2062;<!-- &InvisibleTimes; --></mo>
+                        <msup>
+                          <mi>&#x03C1;<!-- &rho; --></mi>
+                          <mn>3</mn>
+                        </msup>
+                        <msubsup>
+                          <mo maxsize="2.5" minsize="2.5">&#x007C;<!-- &vert; --></mo>
+                          <mn>0</mn>
+                          <mi>R</mi>
+                        </msubsup>
+                      </mrow>
+                    </mtd>
+                  </mtr>
+                  <mtr>
+                    <mtd>
+                    </mtd>
+                    <mtd style="text-align: left">
+                      <mrow>
+                        <mo>=</mo>
+                        <mspace width="mediummathspace" />
+                        <mn>2</mn>
+                        <mo>&#x2062;<!-- &InvisibleTimes; --></mo>
+                        <mi>&#x03C0;<!-- &pi; --></mi>
+                        <mo lspace="thickmathspace" rspace="thickmathspace">&#x00D7;<!-- &times; --></mo>
+                        <mn>2</mn>
+                        <mo lspace="thickmathspace" rspace="thickmathspace">&#x00D7;<!-- &times; --></mo>
+                        <mfrac>
+                          <mn>1</mn>
+                          <mn>3</mn>
+                        </mfrac>
+                        <mo>&#x2062;<!-- &InvisibleTimes; --></mo>
+                        <msup>
+                          <mi>R</mi>
+                          <mn>3</mn>
+                        </msup>
+                      </mrow>
+                    </mtd>
+                  </mtr>
+                  <mtr>
+                    <mtd>
+                    </mtd>
+                    <mtd style="text-align: left">
+                      <mrow>
+                        <mo>=</mo>
+                        <mspace width="mediummathspace" />
+                        <mfrac>
+                          <mn>4</mn>
+                          <mn>3</mn>
+                        </mfrac>
+                        <mo>&#x2062;<!-- &InvisibleTimes; --></mo>
+                        <mi>&#x03C0;<!-- &pi; --></mi>
+                        <msup>
+                          <mi>R</mi>
+                          <mn>3</mn>
+                        </msup>
+                      </mrow>
+                    </mtd>
+                  </mtr>
+                </mtable>
+              </math>
+            </span>
+          </a>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <a style="font-size: smaller" href="http://en.wikipedia.org/wiki/Schwinger-Dyson_equation">
+            Schwinger-Dyson <br /> equation
+          </a>
+        </td>
+        <td>
+          <a href="Code/TeX/schwinger_dyson.tex">
+            <img src="Images/TeX/schwinger_dyson.png" 
+              alt="TeX rendering of the Schwinger-Dyson equation" 
+              title="TeX rendering of the Schwinger-Dyson equation"
+            />
+          </a>
+        </td>
+        <td>
+          <a href="Code/MathML/schwinger_dyson.txt">
+            <img src="Images/MathML/schwinger_dyson.png" 
+              alt="MathML rendering of the Schwinger-Dyson equation" 
+              title="MathML rendering of the Schwinger-Dyson equation"
+            />
+          </a>
+        </td>
+        <td>
+          <a style="color: black; text-decoration: none;" href="Code/MathML/schwinger_dyson.txt">
+            <math style="font-size: 9pt" mode="display" xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                <!-- <mfenced open="&lang;" close="&rang;"> -->
+                <mfenced open="&#x27E8;" close="&#x27E9;">
+                  <mrow>
+                    <mi>&#x03C8;<!-- &psi; --></mi>
+                    <mfenced open="|" close="|">
+                      <mrow>
+                        <mi>&#x1D4AF;<!-- &Tscr; --></mi>
+                        <mfenced open="{" close="}">
+                          <mrow>
+                            <mfrac>
+                              <mi>&#x03B4;<!-- &delta; --></mi>
+                              <mrow>
+                                <mi>&#x03B4;<!-- &delta; --></mi>
+                                <mi>&#x03D5;<!-- &straightphi; --></mi>
+                              </mrow>
+                            </mfrac>
+                            <mi>F</mi>
+                            <mo>&#x2061;<!-- &ApplyFunction; --></mo>
+                            <mfenced open="[" close="]">
+                              <mi>&#x03D5;<!-- &straightphi; --></mi>
+                            </mfenced>
+                          </mrow>
+                        </mfenced>
+                      </mrow>
+                    </mfenced>
+                    <mi>&#x03C8;<!-- &psi; --></mi>
+                  </mrow>
+                </mfenced>
+                <mo>=</mo>
+                <mo form="prefix">&#x2212;<!-- &minus; --></mo>
+                <mi>&#x2148;<!-- &ImaginaryI; --></mi>
+                <mo>&#x2062;<!-- &InvisibleTimes; --></mo>
+                <!-- <mfenced open="&lang;" close="&rang;"> -->
+                <mfenced open="&#x27E8;" close="&#x27E9;">
+                  <mrow>
+                    <mi>&#x03C8;<!-- &psi; --></mi>
+                    <mfenced open="|" close="|">
+                      <mrow>
+                        <mi>&#x1D4AF;<!-- &Tscr; --></mi>
+                        <mfenced open="{" close="}">
+                          <mrow>
+                            <mi>F</mi>
+                            <mo>&#x2061;<!-- &ApplyFunction; --></mo>
+                            <mfenced open="[" close="]">
+                              <mi>&#x03D5;<!-- &straightphi; --></mi>
+                            </mfenced>
+                            <mo>&#x2062;<!-- &InvisibleTimes; --></mo>
+                            <mfrac>
+                              <mi>&#x03B4;<!-- &delta; --></mi>
+                              <mrow>
+                                <mi>&#x03B4;<!-- &delta; --></mi>
+                                <mi>&#x03D5;<!-- &straightphi; --></mi>
+                              </mrow>
+                            </mfrac>
+                            <mi>S</mi>
+                            <mo>&#x2061;<!-- &ApplyFunction; --></mo>
+                            <mfenced open="[" close="]">
+                              <mi>&#x03D5;<!-- &straightphi; --></mi>
+                            </mfenced>
+                          </mrow>
+                        </mfenced>
+                      </mrow>
+                    </mfenced>
+                    <mi>&#x03C8;<!-- &psi; --></mi>
+                  </mrow>
+                </mfenced>
+              </mrow>
+            </math>
+          </a>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <a style="font-size: smaller" href="http://en.wikipedia.org/wiki/Differentiable_manifold">
+            Differentiable <br /> Manifold <br /> (tangent vector)
+          </a>
+        </td>
+        <td>
+          <a href="Code/TeX/differentiable_manifold.tex">
+            <img src="Images/TeX/differentiable_manifold.png" 
+              alt="TeX rendering of an equation from an article on differentiable manifolds" 
+              title="TeX rendering of an equation from an article on differentiable manifolds"
+            />
+          </a>
+        </td>
+        <td>
+          <a href="Code/MathML/differentiable_manifold.txt">
+            <img src="Images/MathML/differentiable_manifold.png" 
+              alt="MathML rendering of an equation from an article on differentiable manifolds" 
+              title="MathML rendering of an equation from an article on differentiable manifolds"
+            />
+          </a>
+        </td>
+        <td>
+          <a style="color: black; text-decoration: none;" href="Code/MathML/differentiable_manifold.txt">
+            <math style="font-size: 9pt" mode="display" xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                <msub>
+                  <mi>&#x03B3;<!-- &gamma; --></mi>
+                  <mn>1</mn>
+                </msub>
+                <mo>&#x2261;<!-- &equiv; --></mo>
+                <msub>
+                  <mi>&#x03B3;<!-- &gamma; --></mi>
+                  <mn>2</mn>
+                </msub>
+                <mo lspace="1ex" rspace="1ex">&#x27FA;<!-- &Longleftrightarrow; --></mo>
+                <mfenced open="{" close="">
+                  <mtable columnalign="left">
+                    <mtr>
+                      <mtd style="text-align: left">
+                        <msub>
+                          <mi>&#x03B3;<!-- &gamma; --></mi>
+                          <mn>1</mn>
+                        </msub>
+                        <mo>&#x2061;<!-- &ApplyFunction; --></mo>
+                        <mfenced>
+                          <mn>0</mn>
+                        </mfenced>
+                        <mo>=</mo>
+                        <msub>
+                          <mi>&#x03B3;<!-- &gamma; --></mi>
+                          <mn>2</mn>
+                        </msub>
+                        <mo>&#x2061;<!-- &ApplyFunction; --></mo>
+                        <mfenced>
+                          <mn>0</mn>
+                        </mfenced>
+                        <mo>=</mo>
+                        <mi>p</mi>
+                        <mtext>, and</mtext>
+                      </mtd>
+                    </mtr>
+                    <mtr>
+                      <mtd style="text-align: left">
+                        <msub>
+                          <mfenced open="" close="|">
+                            <mrow>
+                              <mfrac>
+                                <mo>&#x2146;<!-- &DifferentialD; --></mo>
+                                <mrow>
+                                  <mo rspace="0">&#x2146;<!-- &DifferentialD; --></mo>
+                                  <mi>t</mi>
+                                </mrow>
+                              </mfrac>
+                              <mo>&#x2061;<!-- &ApplyFunction; --></mo>
+                              <mi>&#x03D5;<!-- &straightphi; --></mi>
+                              <mo style="font-size:larger">&#x2218;<!-- &SmallCircle; --></mo>
+                              <msub>
+                                <mi>&#x03B3;<!-- &gamma; --></mi>
+                                <mn>1</mn>
+                              </msub>
+                              <mo>&#x2061;<!-- &ApplyFunction; --></mo>
+                              <mfenced>
+                                <mi>t</mi>
+                              </mfenced>
+                            </mrow>
+                          </mfenced>
+                          <mrow>
+                            <mi>t</mi>
+                            <mo>=</mo>
+                            <mn>0</mn>
+                          </mrow>
+                        </msub>
+                        <mo>=</mo>
+                        <msub>
+                          <mfenced open="" close="|">
+                            <mrow>
+                              <mfrac>
+                                <mo>&#x2146;<!-- &DifferentialD; --></mo>
+                                <mrow>
+                                  <mo rspace="0">&#x2146;<!-- &DifferentialD; --></mo>
+                                  <mi>t</mi>
+                                </mrow>
+                              </mfrac>
+                              <mo>&#x2061;<!-- &ApplyFunction; --></mo>
+                              <mi>&#x03D5;<!-- &straightphi; --></mi>
+                              <mo style="font-size:larger">&#x2218;<!-- &SmallCircle; --></mo>
+                              <msub>
+                                <mi>&#x03B3;<!-- &gamma; --></mi>
+                                <mn>2</mn>
+                              </msub>
+                              <mo>&#x2061;<!-- &ApplyFunction; --></mo>
+                              <mfenced>
+                                <mi>t</mi>
+                              </mfenced>
+                            </mrow>
+                          </mfenced>
+                          <mrow>
+                            <mi>t</mi>
+                            <mo>=</mo>
+                            <mn>0</mn>
+                          </mrow>
+                        </msub>
+                      </mtd>
+                    </mtr>
+                  </mtable>
+                </mfenced>
+              </mrow>
+            </math>
+          </a>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          <a style="font-size: smaller" href="http://en.wikipedia.org/wiki/Cichon's_diagram">
+            Cicho&#x0144;<!-- &nacute; -->'s <br /> Diagram
+          </a>
+        </td>
+        <td>
+          <a href="Code/TeX/cichons_diagram.tex">
+            <img src="Images/TeX/cichons_diagram.png" 
+              alt="TeX rendering of an equation from an article on Cichon's diagram" 
+              title="TeX rendering of an equation from an article on Cichon's diagram"
+            />
+          </a>
+        </td>
+        <td>
+          <a href="Code/MathML/cichons_diagram.txt">
+            <img src="Images/MathML/cichons_diagram.png" 
+              alt="MathML rendering of an equation from an article on Cichon's diagram" 
+              title="MathML rendering of an equation from an article on Cichon's diagram"
+            />
+          </a>
+        </td>
+        <td>
+          <a style="color: black; text-decoration: none;" href="Code/MathML/cichons_diagram.txt">
+            <math style="font-size: 7pt;" mode="display" xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                <mtable class="tighter">
+                  <mtr>
+                    <mtd columnspan="2">
+                    </mtd>
+                    <mtd>
+                      <mo>cov</mo>
+                      <mfenced>
+                        <mi>&#x2112;<!-- &Lscr; --></mi>
+                      </mfenced>
+                    </mtd>
+                    <mtd>
+                      <mo>&#x27F6;<!-- &longrightarrow; --></mo>
+                    </mtd>
+                    <mtd>
+                      <mo>non</mo>
+                      <mfenced>
+                        <mi>&#x1D4A6;<!-- &Kscr; --></mi>
+                      </mfenced>
+                    </mtd>
+                    <mtd>
+                      <mo>&#x27F6;<!-- &longrightarrow; --></mo>
+                    </mtd>
+                    <mtd>
+                      <mo>cof</mo>
+                      <mfenced>
+                        <mi>&#x1D4A6;<!-- &Kscr; --></mi>
+                      </mfenced>
+                    </mtd>
+                    <mtd>
+                      <mo>&#x27F6;<!-- &longrightarrow; --></mo>
+                    </mtd>
+                    <mtd>
+                      <mo>cof</mo>
+                      <mfenced>
+                        <mi>&#x2112;<!-- &Lscr; --></mi>
+                      </mfenced>
+                    </mtd>
+                    <mtd>
+                      <mo>&#x27F6;<!-- &longrightarrow; --></mo>
+                    </mtd>
+                    <mtd>
+                      <msup>
+                        <mn>2</mn>
+                        <msub>
+                          <mi>&#x2135;<!-- &aleph; --></mi>
+                          <mn>0</mn>
+                        </msub>
+                      </msup>
+                    </mtd>
+                  </mtr>
+                  <mtr>
+                    <mtd columnspan="2">
+                    </mtd>
+                    <mtd rowspan="3">
+                      <mo maxsize="4.4" minsize="4.4">&#x2191;<!-- &uparrow; --></mo>
+                    </mtd>
+                    <mtd>
+                    </mtd>
+                    <mtd>
+                      <mo>&#x2191;<!-- &uparrow; --></mo>
+                    </mtd>
+                    <mtd>
+                    </mtd>
+                    <mtd>
+                      <mo>&#x2191;<!-- &uparrow; --></mo>
+                    </mtd>
+                    <mtd>
+                    </mtd>
+                    <mtd rowspan="3">
+                      <mo maxsize="4.4" minsize="4.4">&#x2191;<!-- &uparrow; --></mo>
+                    </mtd>
+                    <mtd columnspan="2">
+                    </mtd>
+                  </mtr>
+                  <mtr>
+                    <mtd columnspan="4">
+                    </mtd>
+                    <mtd>
+                      <mi>&#x1D51F;<!-- &bfr; --></mi>
+                    </mtd>
+                    <mtd>
+                      <mo>&#x27F6;<!-- &longrightarrow; --></mo>
+                    </mtd>
+                    <mtd>
+                      <mi>&#x1D521;<!-- &dfr; --></mi>
+                    </mtd>
+                    <mtd columnspan="5">
+                    </mtd>
+                  </mtr>
+                  <mtr>
+                    <mtd columnspan="4">
+                    </mtd>
+                    <mtd>
+                      <mo>&#x2191;<!-- &uparrow; --></mo>
+                    </mtd>
+                    <mtd>
+                    </mtd>
+                    <mtd>
+                      <mo>&#x2191;<!-- &uparrow; --></mo>
+                    </mtd>
+                    <mtd columnspan="5">
+                    </mtd>
+                  </mtr>
+                  <mtr>
+                    <mtd>
+                      <msub>
+                        <mi>&#x2135;<!-- &aleph; --></mi>
+                        <mn>1</mn>
+                      </msub>
+                    </mtd>
+                    <mtd>
+                      <mo>&#x27F6;<!-- &longrightarrow; --></mo>
+                    </mtd>
+                    <mtd>
+                      <mo>add</mo>
+                      <mfenced>
+                        <mi>&#x2112;<!-- &Lscr; --></mi>
+                      </mfenced>
+                    </mtd>
+                    <mtd >
+                      <mo>&#x27F6;<!-- &longrightarrow; --></mo>
+                    </mtd>
+                    <mtd>
+                      <mo>add</mo>
+                      <mfenced>
+                        <mi>&#x1D4A6;<!-- &Kscr; --></mi>
+                      </mfenced>
+                    </mtd>
+                    <mtd>
+                      <mo>&#x27F6;<!-- &longrightarrow; --></mo>
+                    </mtd>
+                    <mtd>
+                      <mo>cov</mo>
+                      <mfenced>
+                        <mi>&#x1D4A6;<!-- &Kscr; --></mi>
+                      </mfenced>
+                    </mtd>
+                    <mtd>
+                      <mo>&#x27F6;<!-- &longrightarrow; --></mo>
+                    </mtd>
+                    <mtd>
+                      <mo>non</mo>
+                      <mfenced>
+                        <mi>&#x2112;<!-- &Lscr; --></mi>
+                      </mfenced>
+                    </mtd>
+                    <mtd columnspan="2">
+                    </mtd>
+                  </mtr>
+                </mtable>
+              </mrow>
+            </math>
+          </a>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          Test 1
+        </td>
+        <td>
+          <a href="Code/TeX/test_1.tex">
+            <img src="Images/TeX/test_1.png" alt="TeX rendering of test 1" title="TeX rendering of test 1"/>
+          </a>
+        </td>
+        <td>
+          <a href="Code/MathML/test_1.txt">
+            <img src="Images/MathML/test_1.png" alt="MathML rendering of the test 1" 
+              title="MathML rendering of test 1"
+            />
+          </a>
+        </td>
+        <td>
+          <br />
+          <a style="color: black; text-decoration: none;" href="Code/MathML/test_1.txt">
+            <math style="font-size: 24pt" mode="display" xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                <munderover>
+                  <mmultiscripts>
+                    <mo style="font-size:larger">&#x220F;<!-- &Product; --></mo>
+                    <mmultiscripts>
+                      <mi>&#x1D508;<!-- &Efr; --></mi>
+                      <mi>&#x03C5;<!-- &upsilon; --></mi>
+                      <mi>&#x03C4;<!-- &tau; --></mi>
+                      <mprescripts />
+                      <mi>&#x03C1;<!-- &rho; --></mi>
+                      <mi>&#x03C3;<!-- &sigma; --></mi>
+                    </mmultiscripts>
+                    <mmultiscripts>
+                      <mi>&#x1D507;<!-- &Dfr; --></mi>
+                      <mi>&#x03C0;<!-- &pi; --></mi>
+                      <mi>&#x03BF;<!-- &omicron; --></mi>
+                      <mprescripts />
+                      <mi>&#x03BD;<!-- &nu; --></mi>
+                      <mi>&#x03BE;<!-- &xi; --></mi>
+                    </mmultiscripts>
+                    <mprescripts />
+                    <mmultiscripts>
+                      <mi>&#x1D504;<!-- &Afr; --></mi>
+                      <mi>&#x03B4;<!-- &delta; --></mi>
+                      <mi>&#x03B3;<!-- &gamma; --></mi>
+                      <mprescripts />
+                      <mi>&#x03B1;<!-- &alpha; --></mi>
+                      <mi>&#x03B2;<!-- &beta; --></mi>
+                    </mmultiscripts>
+                    <mmultiscripts>
+                      <mi>&#x1D505;<!-- &Bfr; --></mi>
+                      <mi>&#x03B8;<!-- &theta; --></mi>
+                      <mi>&#x03B7;<!-- &eta; --></mi>
+                      <mprescripts />
+                      <mi>&#x03B5;<!-- &epsilon; --></mi>
+                      <mi>&#x03B6;<!-- &zeta; --></mi>
+                    </mmultiscripts>
+                  </mmultiscripts>
+                  <mmultiscripts>
+                    <mi>&#x1D509;<!-- &Ffr; --></mi>
+                    <mi>&#x03C9;<!-- &omega; --></mi>
+                    <mi>&#x03C8;<!-- &psi; --></mi>
+                    <mprescripts />
+                    <mi>&#x03D5;<!-- &straightphi; --></mi>
+                    <mi>&#x03C7;<!-- &chi; --></mi>
+                  </mmultiscripts>
+                  <mmultiscripts>
+                    <mi>&#x212D;<!-- &Cfr; --></mi>
+                    <mi>&#x03BC;<!-- &mu; --></mi>
+                    <mi>&#x03BB;<!-- &lambda; --></mi>
+                    <mprescripts />
+                    <mi>&#x03B9;<!-- &iota; --></mi>
+                    <mi>&#x03BA;<!-- &kappa; --></mi>
+                  </mmultiscripts>
+                </munderover>
+              </mrow>
+            </math>
+          </a>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          Test 2
+        </td>
+        <td>
+          <a href="Code/TeX/test_2.tex">
+            <img src="Images/TeX/test_2.png" alt="TeX rendering of test 2" title="TeX rendering of test 2"/>
+          </a>
+        </td>
+        <td>
+          <a href="Code/MathML/test_2.txt">
+            <img src="Images/MathML/test_2.png" alt="MathML rendering of the test 2" 
+              title="MathML rendering of test 2"
+            />
+          </a>
+        </td>
+        <td>
+          <a style="color: black; text-decoration: none;" href="Code/MathML/test_2.txt">
+            <math style="font-size: 8pt" mode="display" xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                <mfrac>
+                  <msqrt>
+                    <mn>1</mn>
+                    <mo>+</mo>
+                    <mroot>
+                      <mrow>
+                        <mn>2</mn>
+                        <mo>+</mo>
+                        <mroot>
+                          <mrow>
+                            <mn>3</mn>
+                            <mo>+</mo>
+                            <mroot>
+                              <mrow>
+                                <mn>4</mn>
+                                <mo>+</mo>
+                                <mroot>
+                                  <mrow>
+                                    <mn>5</mn>
+                                    <mo>+</mo>
+                                    <mroot>
+                                      <mrow>
+                                        <mn>6</mn>
+                                        <mo>+</mo>
+                                        <mroot>
+                                          <mrow>
+                                            <mn>7</mn>
+                                            <mo>+</mo>
+                                            <mroot>
+                                              <mi>A</mi>
+                                              <mn>19</mn>
+                                            </mroot>
+                                          </mrow>
+                                          <mn>17</mn>
+                                        </mroot>
+                                      </mrow>
+                                      <mn>13</mn>
+                                    </mroot>
+                                  </mrow>
+                                  <mn>11</mn>
+                                </mroot>
+                              </mrow>
+                              <mn>7</mn>
+                            </mroot>
+                          </mrow>
+                          <mn>5</mn>
+                        </mroot>
+                      </mrow>
+                      <mn>3</mn>
+                    </mroot>
+                  </msqrt>
+                  <msup>
+                    <mi>&#x2147;<!-- &exponentiale; --></mi>
+                    <mi>&#x03C0;<!-- &pi; --></mi>
+                  </msup>
+                </mfrac>
+                <mo>=</mo>
+                <msup>
+                  <mi>x</mi>
+                  <mo style="font-size: larger;">&#x2034;<!-- &tprime; --></mo>
+                </msup>
+              </mrow>
+            </math>
+          </a>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          Test 3
+        </td>
+        <td>
+          <a href="Code/TeX/test_3.tex">
+            <img src="Images/TeX/test_3.png" alt="TeX rendering of test 3" title="TeX rendering of test 3"/>
+          </a>
+        </td>
+        <td>
+          <a href="Code/MathML/test_3.txt">
+            <img src="Images/MathML/test_3.png" alt="MathML rendering of the test 3" 
+              title="MathML rendering of test 3"
+            />
+          </a>
+        </td>
+        <td>
+          <a style="color: black; text-decoration: none;" href="Code/MathML/test_3.txt">
+            <math mode="display" xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                <mfenced>
+                  <mtable>
+                    <mtr>
+                      <mtd>
+                        <mfenced separators="">
+                          <mtable>
+                            <mtr>
+                              <mtd>
+                                <msub>
+                                  <mi>a</mi>
+                                  <mn>1</mn>
+                                </msub>
+                              </mtd>
+                              <mtd>
+                                <msub>
+                                  <mi>a</mi>
+                                  <mn>2</mn>
+                                </msub>
+                              </mtd>
+                              <mtd>
+                                <msub>
+                                  <mi>a</mi>
+                                  <mn>3</mn>
+                                </msub>
+                              </mtd>
+                              <mtd>
+                                <msub>
+                                  <mi>a</mi>
+                                  <mn>4</mn>
+                                </msub>
+                              </mtd>
+                            </mtr>
+                            <mtr>
+                              <mtd>
+                                <msub>
+                                  <mi>a</mi>
+                                  <mn>5</mn>
+                                </msub>
+                              </mtd>
+                              <mtd>
+                                <msub>
+                                  <mi>a</mi>
+                                  <mn>6</mn>
+                                </msub>
+                              </mtd>
+                              <mtd>
+                                <msub>
+                                  <mi>a</mi>
+                                  <mn>7</mn>
+                                </msub>
+                              </mtd>
+                              <mtd>
+                                <msub>
+                                  <mi>a</mi>
+                                  <mn>8</mn>
+                                </msub>
+                              </mtd>
+                            </mtr>
+                          </mtable>
+                        </mfenced>
+                      </mtd>
+                      <mtd rowspan="2">
+                        <mfenced separators="">
+                          <mtable>
+                            <mtr>
+                              <mtd>
+                                <msub>
+                                  <mi>b</mi>
+                                  <mn>1</mn>
+                                </msub>
+                              </mtd>
+                            </mtr>
+                            <mtr>
+                              <mtd>
+                                <msub>
+                                  <mi>b</mi>
+                                  <mn>2</mn>
+                                </msub>
+                              </mtd>
+                            </mtr>
+                            <mtr>
+                              <mtd>
+                                <mspace height="1.3em"/>
+                                <msub>
+                                  <mi>b</mi>
+                                  <mn>3</mn>
+                                </msub>
+                              </mtd>
+                            </mtr>
+                            <mtr>
+                              <mtd>
+                                <msub>
+                                  <mi>b</mi>
+                                  <mn>4</mn>
+                                </msub>
+                              </mtd>
+                            </mtr>
+                          </mtable>
+                        </mfenced>
+                      </mtd>
+                    </mtr>
+                    <mtr>
+                      <mtd>
+                        <mtable>
+                          <mtr>
+                            <mtd>
+                              <mspace height="1.75em"/>
+                              <mi>&#x2002;<!-- &ensp; --></mi>
+                              <mi>&#x2003;<!-- &emsp; --></mi>
+                              <mn style="font-size: 150%">0</mn>
+                              <mi>&#x2002;<!-- &ensp; --></mi>
+                            </mtd>
+                            <mtd>
+                              <mfenced separators="">
+                                <mtable>
+                                  <mtr>
+                                    <mtd>
+                                      <msub>
+                                        <mi>c</mi>
+                                        <mn>1</mn>
+                                      </msub>
+                                    </mtd>
+                                    <mtd>
+                                      <msub>
+                                        <mi>c</mi>
+                                        <mn>2</mn>
+                                      </msub>
+                                    </mtd>
+                                  </mtr>
+                                  <mtr>
+                                    <mtd>
+                                      <msub>
+                                        <mi>c</mi>
+                                        <mn>3</mn>
+                                      </msub>
+                                    </mtd>
+                                    <mtd>
+                                      <msub>
+                                        <mi>c</mi>
+                                        <mn>4</mn>
+                                      </msub>
+                                    </mtd>
+                                  </mtr>
+                                </mtable>
+                              </mfenced>
+                            </mtd>
+                          </mtr>
+                        </mtable>
+                      </mtd>
+                      <mtd>
+                      </mtd>
+                    </mtr>
+                  </mtable>
+                </mfenced>
+              </mrow>
+            </math>
+          </a>
+        </td>
+      </tr>
+
+      <tr>
+        <td>
+          Test 4
+        </td>
+        <td>
+          <a href="Code/TeX/test_4.tex">
+            <img src="Images/TeX/test_4.png" alt="TeX rendering of test 4" title="TeX rendering of test 4"/>
+          </a>
+        </td>
+        <td>
+          <a href="Code/MathML/test_4.txt">
+            <img src="Images/MathML/test_4.png" alt="MathML rendering of the test 4" 
+              title="MathML rendering of test 4"
+            />
+          </a>
+        </td>
+        <td>
+          <a style="color: black; text-decoration: none;" href="Code/MathML/test_4.txt">
+            <math mode="display" xmlns="http://www.w3.org/1998/Math/MathML">
+              <mrow>
+                <mtext>scriptlevel : </mtext>
+                <mfenced open="" close="">
+                  <mstyle scriptlevel="-3">
+                    <mo form="prefix">&#x2212;<!-- &minus; --></mo>
+                    <mn>3</mn>
+                  </mstyle>
+                  <mstyle scriptlevel="-2">
+                    <mo form="prefix">&#x2212;<!-- &minus; --></mo>
+                    <mn>2</mn>
+                  </mstyle>
+                  <mstyle scriptlevel="-1">
+                    <mo form="prefix">&#x2212;<!-- &minus; --></mo>
+                    <mn>1</mn>
+                  </mstyle>
+                  <mstyle scriptlevel="0">
+                    <mn>0</mn>
+                  </mstyle>
+                  <mstyle scriptlevel="1">
+                    <mn>1</mn>
+                  </mstyle>
+                </mfenced>
+              </mrow>
+            </math>
+          </a>
+        </td>
+      </tr>
+
+    </table>
+  </body>
+</html>

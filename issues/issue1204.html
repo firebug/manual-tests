@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title> Issue 1204:  	 console.log called from scripts stopped working on SVN 1143</title>
+<script type="text/javascript">
+console.log("Test");
+</script>
+</head>
+<body>
+<pre> Issue 1204:  	 console.log called from scripts stopped working on SVN 1143
+I expect to see 'Test' in the firebug console, but instead i see 'console
+is not defined'
+
+What version of the product are you using? On what operating system?
+SVN 1142 (1.3 branch) works just fine, but SVN 1143 (1.3 Branch) has this bug.
+
+This is using Firefox nightly 3.1b2pre (20081009) on OS X 10.5.5
+</pre>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<html>
+    <head>
+        <script>
+			var issues = [
+                    {id: 68, title: "Issue 68 - html {padding-left:50px}", content: "Issue 68.htm", desc: "Issue 68 Desc.htm"},
+                    {id: 123, title: "Issue 123 - body {position:absolute}", content: "Issue 123.htm", desc: "Issue 123 Desc.htm"},
+                    {id: 190, title: "Issue 190 - Disabled elements", content: "Issue 190.htm", desc: "Issue 190 Desc.htm"},
+                    {id: 200, title: "Issue 200 - div {styles added}", content: "Issue 200.htm", desc: "Issue 200 Desc.htm"},
+                    {id: 308, title: "Issue 308 - Wrapped link text", content: "Issue 308.htm", desc: "Issue 308 Desc.htm"},
+                    {id: 699, title: "Issue 699 - Image map inspector", content: "Issue 699.htm", desc: "Issue 699 Desc.htm"},
+                    {id: 1168, title: "Issue 1168 - Scroll tests", content: "Issue 1168.htm", desc: "Issue 1168 Desc.htm"},
+                    {id: 1345, title: "Issue 1345 - * {styles added}", content: "Issue 1345.htm", desc: "Issue 1345 Desc.htm"},
+                    {id: 1800, title: "Issue 1800 - html, body {overflow: hidden}", content: "Issue 1800.htm", desc: "Issue 1800 Desc.htm"},
+                    {id: 2188, title: "Issue 2188 - Frameset", content: "Issue 2188.htm", desc: "Issue 2188 Desc.htm"},
+                    {id: 2273, title: "Issue 2273 - Transforms", content: "Issue 2273.htm", desc: "Issue 2273 Desc.htm"},
+                    {id: 2373, title: "Issue 2373 - MathML", content: "Issue 2373.xhtm", desc: "Issue 2373 Desc.htm"},
+                    {id: 2804, title: "Issue 2804 - Layout tab parent ruler test", content: "Issue 2804.htm", desc: "Issue 2804 Desc.htm"},
+                    {id: 3101, title: "Issue 3101 - div {max-width: 300px; max-height: 10px}", content: "Issue 3101.htm", desc: "Issue 3101 Desc.htm"},
+                    {id: 3900, title: "Issue 3900 - border-radius", content: "Issue 3900.htm", desc: "Issue 3900 Desc.htm"},
+                    {id: 4064, title: "Issue 4064 - iframe test", content: "Issue 4064.htm", desc: "Issue 4064 Desc.htm"}
+                ],
+                listLen = issues.length, selectedLink, selectedLinkId = -1;
+
+            function createLinks() {
+                var i, frag,
+                    s = [],
+                    linkFrag = '<a href="[[CONTENT]]" onclick="linkClicked(this);return false;" alt="[[DESC]]" id="[[i]]">[[TITLE]]</a>';
+
+                for(i=0; i<listLen; i++) {
+                    frag = linkFrag.replace("[[TITLE]]", issues[i].title).replace("[[i]]", i);
+                    frag = frag.replace("[[CONTENT]]", issues[i].content);
+                    frag = frag.replace("[[DESC]]", issues[i].desc);
+                    s.push(frag);
+                }
+
+                document.getElementById("linkDiv").innerHTML = s.join("");
+                selectTestFromParam();
+            }
+
+            function selectTestFromParam() {
+                var test = parseInt(getParams("test"), 10);
+                if (test) {
+                    var i, testLinkId,
+                        testLinkId = -1;
+
+                    for(i=0, issuesLen = issues.length; i<issuesLen; i++) {
+                        if(issues[i].id === test) {
+                            testLinkId = i;
+                        }
+                    }
+
+                    if (testLinkId >= 0) {
+                        var elt = document.getElementById(testLinkId.toString());
+
+                        if(elt) {
+                            elt.scrollIntoView();
+                            simulateClick(testLinkId.toString());
+                        }
+                    }
+                }
+            }
+
+			function getNext(){
+				selectedLinkId++;
+				if(selectedLinkId >= listLen)
+					selectedLinkId=0;
+				var link = document.getElementById(selectedLinkId+'');
+				linkClicked(link);
+			}
+
+            function linkClicked(link) {
+				if(selectedLink)
+					selectedLink.style.background = 'lightgreen';
+				var linkText = link.text;
+				selectedLinkId = parseInt(link.id, 10);
+				selectedLink = link;
+
+				selectedLink.style.background = 'lightblue';
+				(selectedLink.previousElementSibling || selectedLink).scrollIntoView();
+
+                top.contentFrame.location.href = link.href;
+                top.detailFrame.location.href = link.getAttribute("alt");
+            }
+
+            function getParams(name)
+            {
+                name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+
+                var regexS = "[\\?&]" + name + "=([^&#]*)";
+                var regex = new RegExp( regexS );
+                var results = regex.exec(top.location.href);
+
+                if (results == null)
+                    return "";
+                else
+                    return results[1];
+            }
+
+            function simulateClick(eltId) {
+                var evt = document.createEvent("MouseEvents");
+                evt.initMouseEvent("click", true, true, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+                var elt = document.getElementById(eltId);
+
+                if(elt)
+                    elt.dispatchEvent(evt);
+            }
+
+        </script>
+        <style>
+            #linkDiv a {
+                display: block;
+                font-size: 12px;
+                margin-bottom: 10px;
+            }
+        </style>
+    </head>
+    <body onload="createLinks();">
+		<button onclick="getNext()" style='position:fixed;right:0'>next</button>
+        <div id="linkDiv"></div>
+    </body>
+</html>

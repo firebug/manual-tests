@@ -1,0 +1,12 @@
+
+<script type="text/javascript" src="Issue3491.js"></script>
+
+<input type="button" onclick="Controller.TriggerBreakpoint()" value="DebugBreak">
+<input type="button" onclick="Controller.ReloadScript()" value="Reload Script">
+
+<pre>
+- Add a breakpoint in the TriggerBreakpoint function of Issue3491.js
+- Press the DebugBreak button (script breaks correctly). Continue.
+- Click the Reload Script button. The function fetches the script using XMLHttpRequest and eval()s it.
+- Press the DebugBreak button again. The script doesn't break anymore, even if you remove and add the breakpoint again.
+</pre>

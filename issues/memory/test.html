@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test Case for Issue #4376</title>
+  <style>
+      h3 {
+          border-bottom: 1px solid lightgray;
+      }
+      a {
+          text-decoration: none;
+      }
+      code {
+          color: green;
+      }
+  </style>
+</head>
+<body>
+
+<h1>Issue #4376</h1>
+
+<p>This test-case is intended for <a href="http://code.google.com/p/fbug/issues/detail?id=4376">Issue #4376</a>
+- <span class="h3">Simple Memory Profiler</span>.
+<br/>
+<em>Jan Odvarko, John J. Barton</em>
+</p>
+
+<p>This page implements several test cases, that demonstrate usage of Firebug's Memory Profiler
+for detecting memory leaks in a web application.
+You need at least <a href="http://getfirebug.com/releases/firebug/1.8/">Firebug 1.8a2</a>
+(or build from latest source) installed in your browser.
+Please post feedback in the <a href="http://groups.google.com/group/firebug">newsgroup</a>, thanks.</p>
+
+<ol>
+    <li><a href="#case1">Memory allocation for images</a></li>
+    <li><a href="#case2">Memory allocation for strings</a></li>
+    <li><a href="#case3">Memory leak detection</a></li>
+    <li><a href="#case4">Page load memory profiling</a></li>
+</ol>
+
+<em>You can find further information about memory state in <span style="font-weight: bold;">about:memory</span> page.</em>
+
+<br/>
+
+<!-- CASE 1 -->
+<h3 id="case1">Case 1: Memory allocation for images</h3>
+<em>This test case shows how to watch memory allocated for images.</em>
+
+<ol>
+<li>Open Firebug and enable the Console panel.</li>
+<li>Click the <code>Memory Profile</code> button in the Console panel toolbar to start profiling.</li>
+<li>Click the <code>Load Image</code> button below.</li>
+<li>Click <code>Memory Profile</code> again to stop profiling.</li>
+</ol>
+<button id="loadImage">Load Image</button>
+<div id="imageBox" style="width: 100px"></div>
+
+<ul>
+<li>You should see <em>Memory Profiler Results</em> within the Console panel.</li>
+<li>The <em>images/content/used/raw</em> column shows the amount of memory allocated for images
+in this profiling session.</li>
+<li>Two functions have been called to load an image. <em>onLoadImage</em> represents the button's
+click handler and <em>onload</em> is a callback associated with the created <code>Image</code> object.</li>
+<li>The <em>images/content/used/raw</em> shows zero for these function calls, since the image load
+is asynchronous.</li>
+<li>The <em>images/content/used/raw</em> shows <span style="font-weight: bold;">29.3 KB</span> for <em>Entire Session</em>. This corresponds
+to one loaded image. You can check this in the <span style="font-weight: bold;">Net</span> panel.</li>
+<li>Below the <em>Memory Profiler Results</em> you should see <em>Objects Added While Profiling</em>. If you open this list, you will see the images added.
+Of course these objects may or may not be leaks, depending on the purpose of the <em>onLoadImage</em> operation.</li>
+</ul>
+
+<br/>
+
+<!-- CASE 2 -->
+<h3 id="case2">Case 2: Memory allocation for strings</h3>
+<em>This test case shows how to watch memory allocated for JavaScript strings.</em>
+
+<ol>
+<li>Open Firebug and enable the Console panel.</li>
+<li>Click the <code>Memory Profile</code> button in the Console panel toolbar to start profiling.</li>
+<li>Click the <code>Allocate Strings</code> button below <em>(0, 1 and N times)</em>.</li>
+<li>Click <code>Memory Profile</code> again to stop profiling.</li>
+</ol>
+<button id="allocateString">Allocate String</button>
+
+<ul>
+<li>Repeat the same test several times: don't click the button, click it once, click it e.g. 5 times.</li>
+<li>One function <em>onAllocateString</em> is called (if the button is clicked). It's the button's click handler.</li>
+<li>Compare the results in the <em>js/string-data</em> column.</li>
+<li>The more you're clicking the button, the more memory for strings is allocated.</li>
+<li>Some strings are allocated even if you don't click the <em>Allocate Strings</em> button at all. This is because
+some strings are allocated by Firebug itself (also JavaScript) during the profiling session (TODO: could we not include this?).</li>
+<li>Below the <em>Memory Profiler Results</em> you should see <em>Objects Added While Profiling</em>. If you open this list you, will see an array that has
+new entries from the <em>onAllocateString</em> operation.
+We currently don't track strings, individual array elements or anything specifically, so this list is really just a hint on what changed.</li>
+</ul>
+
+<br/>
+
+<!-- CASE 3 -->
+<h3 id="case3">Case 3: Memory leak detection</h3>
+<em>This test case shows how to detect objects allocated within the Memory Profile session.
+These objects represent possible memory leaks.</em>
+
+<ol>
+<li>Open Firebug and enable the Console panel.</li>
+<li>Click the <code>Memory Profile</code> button in the Console panel toolbar to start profiling.</li>
+<li>Select the <code>Memory Leak On</code> option below (should be by default).</li>
+<li>Click the <code>Create Some JS Objects</code> button below.</li>
+<li>Click <code>Memory Profile</code> again to stop profiling.</li>
+</ol>
+
+<form>
+<input type="radio" name="leak" value="on" checked onclick="leakOn()"/>Memory Leak On<br />
+<input type="radio" name="leak" value="off" onclick="leakOff()"/>Memory Leak Off
+</form>
+
+<button id="createObjects">Create Some JS Objects</button>
+
+<ul>
+<li>You should see <em>Objects Added While Profiling</em> results in the Console panel.</li>
+<li>Repeat the same test with <em>Memory Leak Off</em> and compare results.</li>
+<li>Use the same test scenario but click the button below. This example represents a real world
+scenario with forgotten listeners (not beeing unregistered).
+<button id="fakeEdit">Register Listeners</button>
+</li>
+</ul>
+
+<br/>
+
+<!-- CASE 4 -->
+<h3 id="case4">Case 4: Page load memory profiling</h3>
+<em>This test case shows how to watch memory allocated during page load phase.</em>
+
+<ol>
+<li>Open Firebug and enable the Console panel.</li>
+<li>Click the <code>Memory Profile</code> button in the Console panel toolbar to start profiling.</li>
+<li>Reload this page.</li>
+<li>Click <code>Memory Profile</code> again to stop profiling.</li>
+</ol>
+
+<ul>
+<li>The profiling session begins automatially when the page load starts - till you click to stop it.</li>
+<li>This page calls click handlers for every test case above during the load phase.</li>
+</ul>
+
+<br/>
+
+<!-- Implementation -->
+
+<script type="text/javascript">
+var leak = true;
+function leakOn() {leak = true;}
+function leakOff() {leak = false;}
+</script>
+
+<div id="editMe"></div>
+
+<br/>
+
+<script type="text/javascript">
+var button1 = document.getElementById("allocateString");
+var button2 = document.getElementById("loadImage");
+button1.addEventListener("click", onAllocateString, false);
+button2.addEventListener("click", onLoadImage, false);
+
+var editButton = document.getElementById("fakeEdit");
+editButton.addEventListener('click', onRegisterListeners, false);
+
+var createObjects = document.getElementById("createObjects");
+createObjects.addEventListener('click', onCreateObjects, false);
+
+var arr = [];
+function onAllocateString()
+{
+    var data = "";
+    for (var i=0; i<1000; i++)
+        data += "01234567890123456789012345678901234567890123456789";
+    arr.push(data);
+    var button = document.getElementById("loadImage");
+    button.innerHMTL = "Allocate String "+arr.length;
+    if (!leak)
+        arr.pop();
+    return data;
+}
+
+var images = [];
+function onLoadImage(resetLabel)
+{
+    var box = document.getElementById("imageBox");
+    var button = document.getElementById("loadImage");
+    button.innerHTML = "Load Image";
+
+    var image = new Image();
+    image.width = 30;
+    image.height = 30;
+    image.onload = function() {
+        if (resetLabel)
+            button.innerHTML = "Load Image";
+        else
+            button.innerHTML = "Load Image DONE";
+    };
+    image.src = "http://getfirebug.com/header.png?random="+Math.random();
+    images.push(image);
+
+    box.appendChild(image);
+    button.innerHTML = "Load Image ...";
+
+    if (!leak)
+        images.pop();
+}
+
+var people = [];
+function Person(name)
+{
+    this.name = name;
+}
+
+function onCreateObjects()
+{
+    people.push(new Person("Mike"));
+    people.push(new Person("Joe"));
+    people.push(new Person("Kyle"));
+
+    if (leak)
+        return;
+
+    while (people.length)
+        delete people.pop();
+}
+
+var EventBroadcaster =
+{
+    hashTableOfCallbacks: {},
+
+    registerListenerForEvent: function(eventName /* string */, callback)
+    {
+        if (!EventBroadcaster.hashTableOfCallbacks[eventName])
+            EventBroadcaster.hashTableOfCallbacks[eventName] = [];
+        EventBroadcaster.hashTableOfCallbacks[eventName].push(callback);
+    },
+    unregisterListenerForEvent: function(eventName /* string */, callback)
+    {
+        var callbacks = EventBroadcaster.hashTableOfCallbacks[eventName];
+        if (callbacks)
+        {
+            var i = EventBroadcaster.hashTableOfCallbacks[eventName].indexOf(callback);
+            if (i >= 0)
+                  EventBroadcaster.hashTableOfCallbacks[eventName].splice(i,1);
+
+            if (!EventBroadcaster.hashTableOfCallbacks[eventName].length)
+                delete EventBroadcaster.hashTableOfCallbacks[eventName];
+        }
+    },
+    runListenersForEvent: function(eventName /* string */)
+    {
+        var callbacks = EventBroadcaster.hashTableOfCallbacks[eventName];
+        if (callbacks)
+        {
+            for (var i = 0; i < callbacks.length; i++)
+            {
+                callbacks[i].apply(null, [eventName]);
+            }
+        }
+    },
+};
+var undoStack = [];
+function aTestCallback(event)
+{
+    var editMe = document.getElementById('editMe');
+    var span = document.createElement('span');
+    span.innerHTML = event+" "+onAllocateString();
+    editMe.appendChild(span);
+    //console.log("aTestCallback set "+editMe.innerHTML);
+    if (leak)
+        undoStack.push(span);
+    editMe.removeChild(span);
+}
+
+function onRegisterListeners()
+{
+    var aBunch = 10;
+    for (var i = 0; i < aBunch; i++)
+        EventBroadcaster.registerListenerForEvent("edit", aTestCallback);
+
+    EventBroadcaster.runListenersForEvent("edit");
+
+    if (leak)
+        aBunch = aBunch/2;
+
+    for (var i = 0; i < aBunch; i++)
+        EventBroadcaster.unregisterListenerForEvent("edit", aTestCallback);
+}
+
+// Test page load profiling.
+onAllocateString();
+onLoadImage(true);
+onRegisterListeners();
+
+</script>
+
+</body>
+</html>

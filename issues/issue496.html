@@ -1,0 +1,62 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<script type="text/javascript">
+function test() {
+    var x = 10;
+    var y = 20;
+    var z = 30;
+
+    if (x >= y) {
+        if (x >= z)
+            alert(x);
+
+    }
+    else {
+      if (y >= x) {
+        if (y >= z) {
+              alert(y);
+        }
+      }
+      else if (z >= x) {
+          if (z >= y) {
+              alert(z);
+        }
+      }
+    }
+}
+
+</script>
+</head>
+
+<body onload="test();">
+<span id="myspan">testing</span>
+<pre>
+Issue 496: 	 Stepping through code doesn't accurately reflect code execution
+
+
+
+Add a comment and make changes below 	Reported by stephanieliese, Yesterday (25 hours ago)
+
+What steps will reproduce the problem?
+1. Set a breakpoint at line 7 ( x = 10 )
+2. Step into each line of code
+3. When it gets to line 18, it should not appear to execute line 19 because
+the condition returns false
+4. Firebug goes to the alert(y) on line 19 as if the condition returned
+true but this statement will never be executed by the browser
+5. Firebug then skips down to line 24 which doesn't make any sense
+
+What is the expected output? What do you see instead?
+
+Expected output would have been to skip line 19 and then bypass the rest of
+the if statement down to line 26
+
+
+What version of the product are you using? On what operating system?
+1.0, Windows Vista
+
+</pre>
+</body>
+</html>

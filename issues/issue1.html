@@ -1,0 +1,21 @@
+<title>firebug 1</title>
+<script type="text/javascript">
+function test() {
+	try {
+		console.log("Console is defined!");
+	}
+	catch (e) {
+		alert(e.message);
+	}
+}
+window.onload = test;
+
+function delayedReload() {
+	window.setTimeout(function () {
+		window.location.reload();
+	}, 2000);
+}
+</script>
+
+<p>There should be a console message saying "Console is defined!". Click the link, (it should open in a new tab) and wait. An alert will show you that on reload console is not defined any more.</p>
+<div><a href="http://www.getfirebug.com/" target="_blank" onclick="delayedReload()">Click me</a></div>

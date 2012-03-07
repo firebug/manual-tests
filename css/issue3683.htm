@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Issue 3683: Incorrect display of CSS selectors with star and pseudo-class</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      body {
+        background: #ffffff;
+        font: small arial, sans-serif;
+        margin: 5px auto;
+        width: 815px;
+      }
+      h1 {
+        font-size: large;
+        font-weight: normal;
+        padding: 1em 0;
+        text-transform: uppercase;
+      }
+      h2 {
+        font-size: medium;
+        font-weight: normal;
+        padding: 0.5em 0;
+        text-transform: uppercase;
+        margin: 0;
+      }
+      ol {
+        margin:0;
+      }
+      ol li {
+        padding-bottom: 1em;
+      }
+      ul li {
+        padding: 0;
+      }
+      #content {
+        background-color: #9acbe4;
+        padding: 10px 20px;
+      }
+      #content div {
+        margin: 5px 0;
+        padding: 5px;
+        background-color: #e8f0ff;
+      }
+      #content div:hover {
+        background: #8cff8c;
+      }
+      #content div *:hover {
+        background: #ffff8c;
+      }
+      #content div p *:hover {
+        background: #ff8c8c;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Issue 3683: Incorrect display of CSS selectors with star and pseudo-class</h1>
+    <div id="content">
+      <div>
+        <p>Paragraph with <em>formatted</em> text</p>
+      </div>
+      <ol>
+        <li>Switch to the CSS Panel</li>
+        <li>Scroll down to the last two rules</li>
+      </ol>
+      <ul>
+        <li><strong>Observed:</strong> The star inside the selector is missing</li>
+        <li><strong>Expected:</strong> CSS selectors should be shown as they are written</li>
+      </ul>
+    </div>
+  </body>
+</html>

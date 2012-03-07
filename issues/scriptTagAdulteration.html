@@ -1,0 +1,63 @@
+<html>
+<head>
+
+<script id="controller">
+
+var shim = {  // Some wrapper thing.
+    document: {URL: "oh, hi"}
+}
+
+myWillExecuteHandler = function(event)
+{
+    if (event.target.id !== 'target')
+        return;
+
+    // Next line part of simulation
+    document.removeEventListener("DOMNodeInserted", myWillExecuteHandler, false);
+
+    // Here is how the event handler looks
+    var elt = event.target;
+    var adulterate = "with(shim){\n"+elt.innerHTML+"}\n";
+    eval(adulterate);
+    return false; // need some way to abort the script tag in progress.
+}
+// Here we simulate beforeScript
+document.addEventListener("DOMNodeInserted", myWillExecuteHandler, false);
+
+</script>
+<script id="target">
+var foo = function()  // here is the code we want to modify
+{
+    console.log(document.URL);
+}
+foo();
+</script>
+<script>
+// Rest is just part of the simulation
+function removeAppendTarget()
+{
+    var target = document.getElementById('target');
+    var parent = target.parentNode;
+    parent.removeChild(target);
+    parent.appendChild(target);
+}
+
+
+window.addEventListener('load', removeAppendTarget, false);
+
+</script>
+<script>
+oldWrite = document.write;
+document.write = function(msg) { console.log(msg); }
+</script>
+<script>
+document.write("I command you!");
+</script>
+<script>
+document.write = oldWrite;
+</script>
+</head>
+<body>
+<h1>Demo script tag adulteration. Best viewed with Firebug ;-)</h1>
+</body>
+</html>

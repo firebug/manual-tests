@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Issue 2817: Hit counts for break points</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      body {
+        background: #ffffff;
+        font: small arial, sans-serif;
+        margin: 5px auto;
+        width: 815px;
+      }
+      h1 {
+        font-size: large;
+        font-weight: normal;
+        padding: 1em 0;
+        text-transform: uppercase;
+      }
+      h2 {
+        font-size: medium;
+        font-weight: normal;
+        padding: 0.5em 0;
+        text-transform: uppercase;
+        margin: 0;
+      }
+      ol {
+        margin:0;
+      }
+      ol li {
+        padding-bottom: 1em;
+      }
+      ul li {
+        padding: 0;
+      }
+      #content {
+        background: #9acbe4;
+        padding: 10px 20px;
+      }
+      #content div {
+        width: 200px;
+        margin: 5px 0;
+        padding: 5px;
+      }
+      #output {
+        width: auto!important;
+        background: #e8f0ff;
+      }
+    </style>
+    <script type="text/javascript">
+      <!--
+      function init() {
+        var input = document.getElementById('input');
+
+        input.addEventListener('keydown',showKeyCode,false);
+        input.focus();
+      }
+
+      function showKeyCode(event) {
+        var output = document.getElementById('output');
+
+        output.innerHTML = output.innerHTML + 'Key code: ' + event.keyCode + '<br/>';
+      }
+
+      window.addEventListener('load',init,false);
+      //-->
+    </script>
+  </head>
+  <body>
+    <h1>Issue 2817: Hit counts for break points</h1>
+    <div id="content">
+      <input type="text" id="input"/>
+      <div id="output">
+        <h3>Key codes:</h3>
+      </div>
+      <ol>
+        <li>Enable and activate the script panel</li>
+        <li>Reload the page</li>
+        <li>Try to set a breakpoint on line 59, which is just triggered when the function showKeyCode() was called three times</li>
+        <li>Click into the input field and type three characters</li>
+      </ol>
+      <ul>
+        <li><strong>Observed:</strong> There's no implemented possibility to do so, the user has to create a conditional breakpoint for this</li>
+        <li><strong>Expected:</strong> The user should be able to define a hit count for each breakpoint</li>
+      </ul>
+    </div>
+  </body>
+</html>

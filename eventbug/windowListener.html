@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <title>Test Case for Eventbug: widnow listener</title>
+</head>
+<body>
+
+<script type="text/javascript">
+function onLoad()
+{
+    console.log("Page loaded!");
+}
+window.addEventListener("load", onLoad, false);
+</script>
+
+<h1>Eventbug: window listener</h1>
+
+<p>This test-case is intended for window listeners
+<br/>
+<i>Jan Odvarko, odvarko@gmail.com</i>
+</p>
+
+<ol>
+<li>Install Firebug</li>
+<li>Install <a href="http://getfirebug.com/releases/eventbug/1.5/">Eventbug</a>
+    (Firebug extension)</li>
+<li>Open Firebug UI (press F12)</li>
+<li>Enable the <i>Script</i> panel and reload the page (in order to see the source code for event listeners).</li>
+<li>Select th <i>Events</i> panel.</li>
+<li>You should see <code style="color:green">load</code> event listener</li>
+<li>Expand the handler. You should see an event handler with the following implementation:
+<code style="color:green">{ console.log("Page loaded!"); }</code>
+</li>
+<li>Click the source code snippet, you should be navigated to the <i>Script</i> panel
+and see the full soure code (starting at line 10).</li>
+</ol>
+
+<br/>
+<i>Some event listeners comes from Firebug itself, they shouldn't be displayed.</i>
+
+</body>
+</html>

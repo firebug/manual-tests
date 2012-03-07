@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN" "http://www.w3.org/TR/html4/frameset.dtd">
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+
+  
+    <title>Frames test</title>
+    <script>
+    window.onload = function(event) {
+		var doc = document;
+				var frames = doc.getElementsByTagName("FRAME");
+				for (var i = 0; i < frames.length; i++) 
+				{
+					var frame = frames[i];
+ 					addTheListeners(frame.contentDocument); 
+				}
+		addTheListeners(doc);
+		var div = doc.createElement("div");
+		var topframe = doc.getElementById("TopFrame");
+		topframe.appendChild(div);
+	}
+	function addTheListeners(doc) {
+    	doc.addEventListener("DOMAttrModified", onMutateAttr, false);
+    	doc.addEventListener("DOMNodeInserted", onMutateNode, false);
+    	doc.addEventListener("DOMNodeRemoved", onMutateNode, false);
+		//alert("onload added listeners to "+doc.title);
+	}
+	function onMutateAttr(event)
+    {
+        var target = event.target;
+
+        var attrChange = event.attrChange;
+        var attrName = event.attrName;
+        var newValue = event.newValue;
+        dump("OnMutateAttr attrChange "+attrChange+" attrName "+attrName+" newValue"+newValue+"\n");
+    }
+    
+    function onMutateNode(event)
+    {
+        var target = event.target;
+        if (target.firebugIgnore)
+            return;
+    
+        var parent = event.relatedNode;
+        var removal = event.type == "DOMNodeRemoved";
+        dump("onMutateNode target:"+target+" parent:"+parent+" removal:"+removal+"\n");
+    }
+    </script>
+  </head><frameset rows="125,*">
+    <frame src="issue239_files/top_frame.html" id="TopFrame" name="TopFrame">
+    <frame src="issue239_files/main_frame_1.html" id="MainFrame" name="MainFrame">
+    <noframes>
+      <body>
+        <p>This page uses frames, but your browser doesn't support them</p>
+      </body>
+    </noframes>
+  </frameset>
+</html>

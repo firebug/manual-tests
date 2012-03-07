@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Issue 1642: Editing CSS styles cause them to disappear</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+      <link href="https://getfirebug.com/tests/content/templates/default/testcase.css" type="text/css" rel="stylesheet"/>
+      <link href="issue1642css.php" type="text/css" rel="stylesheet"/>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=1642">Issue 1642</a>: Editing CSS styles cause them to disappear</h1>
+        </header>
+        <div>
+            <section id="content">
+                <div id="element1"></div>
+            </section>
+            <section id="description">
+                <p>Note: Loading the CSS file will be delayed for one second</p>
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Switch to the <em>CSS</em> panel</li>
+                    <li>Reload the page</li>
+                </ol>
+                <h3>Expected Result</h3>
+                <ul>
+                    <li>CSS is shown inside the panel</li>
+                </ul>
+            </section>
+            <footer>
+                Sebastian Zartner, sebastianzartner@gmx.de
+            </footer>
+        </div>
+    </body>
+</html>

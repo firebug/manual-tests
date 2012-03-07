@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <title>Test Case for Issue #3742</title>
+</head>
+<body>
+
+<h1>Issue #3742</h1>
+
+<p>This test-case is intended for <a href="http://code.google.com/p/fbug/issues/detail?id=3742">Issue #3742</a>
+- <span class="h3">cached image requests missing from Net</span>.
+<br/>
+<i>Jan Odvarko, odvarko@gmail.com</i>
+</p>
+
+<ol>
+<li>Open Firebug and enable the Net panel.</li>
+<li>Do a non-revalidating reload (press ENTER in address bar)</li>
+<li>Notice lack of any IMAGE resources in Firebug Net tab</li>
+</ol>
+
+<img src="image1.png" />
+<img src="image2.png" />
+
+</body>
+</html>

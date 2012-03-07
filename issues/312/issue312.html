@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <title>Test Case for Issue #312</title>
+</head>
+<body>
+
+<h1>Issue #312</h1>
+
+<p>This test-case is intended for <a href="http://code.google.com/p/fbug/issues/detail?id=312">Issue #312</a>
+- <span class="h3">Debugging of "new Function(...)" code does fails.</span>.
+<br/>
+<i>Jan Odvarko, odvarko@gmail.com</i>
+</p>
+
+<ol>
+<li>Open Firebug and enable the Script panel.</li>
+<li>Click at the <b>Execute Test</b> button. A <code>new Function()</code> is executed using
+the following code as a parameter:
+<pre>
+var i = 10;
+console.log('value: ' + i);
+</pre>
+</li>
+<li>Open the script list (location list) and look for the script of the new function ->
+if not available you can't debug it -> BUG.</li>
+</ol>
+
+<button id="testButton" onclick="onExecuteTest()">Execute Test</button>
+
+<script type="text/javascript">
+function onExecuteTest()
+{
+    var source = "var i = 10;\n" +
+        "console.log('value: ' + i);\n";
+
+    //eval(source);
+
+    var f = new Function(source);
+    f();
+}
+</script>
+  
+</body>
+</html>

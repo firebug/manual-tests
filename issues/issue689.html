@@ -1,0 +1,39 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Firebug Issue 689 Firebug doesn't display values of let variables when globals w/ same name are present</title>
+        <script type="application/javascript;version=1.7">
+
+var x = "A value";
+function f() {
+  let x = "A different value";
+  let xx = "No problem here";
+  let put_breakpoint_here;
+}
+
+f();
+</script>
+
+    </head>
+    <body>
+        <h1>Firebug Issue 689 Firebug doesn't display values of let variables when globals w/ same name are present</h1>
+        <pre>
+        What steps will reproduce the problem?
+1. Open script below in Firefox
+2. Set breakpoint at indicated spot
+3. Watch value of x
+3. Run/load
+4. Value of x = "A value", not "Another value"
+
+What is the expected output? What do you see instead?
+* At that point, "x" should refer to the "x" in scope, but it doesn't
+* It might be nice if there were a simple way to see both variables, but
+seeing the one in scope is much more important
+        
+        </pre>
+        
+        <hr />
+        <p>Work in 1.2b4</p>
+    </body>
+</html>

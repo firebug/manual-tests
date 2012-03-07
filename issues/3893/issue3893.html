@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <title>Test Case for Issue #3893</title>
+</head>
+<body>
+
+<h1>Issue #3893</h1>
+
+<p>This test-case is intended for <a href="http://code.google.com/p/fbug/issues/detail?id=3893">Issue #3893</a>
+- <span class="h3">cd() not work for iframe on other domain</span>.
+<br/>
+<i>Jan Odvarko, odvarko@gmail.com</i>
+</p>
+
+<ol>
+<li>Open Firebug and enable the Console panel.</li>
+<li>Execute following expressions in the command line and check the results
+    <i>'expression' -> 'result'</i>
+</li>
+<ol>
+    <li><code>cd(frames[0]) -> "Current window:", Window index.php]</code></li>
+</ol>
+</ol>
+
+<iframe name="testFrame" src="http://www.softwareishard.com" style="display:none" />
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <title>test</title>
+    </head>
+    <body>
+    <h1>Test case for issue 2591</h1>
+    <p>over over <code>test</code> to find it undefined</p>
+        <script>
+        function test()
+        {
+         var a = "a";
+         var b = "b";
+         return a+b;
+        }
+        debugger;
+        test();
+        </script>
+    </body>
+</html>

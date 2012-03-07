@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <title>XHR not showing in the Console panel</title>
+</head>
+<body onload="postRequest()">
+
+<h1>XHR not showing in the Console panel</h1>
+
+<ol>
+<li>Check the Console panel, it should display a XHR</li>
+<li>Make sure the <i>Show XMLHttpRequests</i> option is on.</li>
+</ol>
+
+<br/>
+
+<p>The response should be displayed here:</p>
+<div id="responseData" style="color:green"/>
+
+<script type="text/javascript">
+function postRequest()
+{
+    try 
+    {
+        var request = new XMLHttpRequest();
+        request.open("POST", "onLoadXHR.php", true);
+        request.onreadystatechange = function()
+        {
+            if (request.readyState == 4 && request.status == 200)
+            {
+                var responseElement = document.getElementById("responseData");
+                responseElement.innerHTML = request.responseText;
+            }
+        }
+        request.send(null);
+    }
+    catch (err)
+    {
+        alert("Error initializing XMLHttpRequest.\n" + err);
+    }  
+}
+</script>
+
+</body>
+</html>

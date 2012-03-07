@@ -1,0 +1,24 @@
+<!doctype html>
+<p>
+    This demo declares a number of functions using code, then calls one of them. A breakpoint is set inside the function, so you can stop and use your debugger to view a stack trace. With debuggers that support displayName, you can see the name that has been assigned to the function in the stack; without displayName support, the function just comes up as anonymous.
+</p>
+<script>
+    var fruitimals = {};
+    var fruits = ['banana', 'grape', 'peach', 'watermelon'];
+    var animals = ['crocodile', 'fox', 'monkey', 'rooster'];
+    for (var i = 0; i < fruits.length; i++) (function(fruit) {
+        for (var i = 0; i < animals.length; i++) (function aFruitimal(animal) {
+            fruitimals[fruit + animal] = function() {
+                debugger;
+                return 'I am a ' + animal + ', give me a ' + fruit + '!';
+            };
+            fruitimals[fruit + animal].displayName = fruit + animal;
+        })(animals[i]);
+    })(fruits[i]);
+
+</script>
+<p style="color: #090; border: solid 1px #030">
+    <script>
+        document.write(fruitimals.peachcrocodile());
+    </script>
+</p>

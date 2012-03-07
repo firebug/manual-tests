@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <title>Test Case for Issue #3160</title>
+</head>
+<body>
+
+<h1>Issue #3160</h1>
+
+<p>This test-case is intended for <a href="http://code.google.com/p/fbug/issues/detail?id=3160">Issue #3160</a>
+- <span class="h3"> Post parameter names not visible if long parameter namre</span>.
+<br/>
+<i>Jan Odvarko, odvarko@gmail.com</i>
+</p>
+
+<ol>
+<li>Open Firebug and enable the Net panel.</li>
+<li>Click on the <code style="color:green">Execute Test</code> button below.</li>
+<li>Expand thet new requests and select the <i>Post</i> tab.</li>
+</ol>
+
+<button id="testButton" onclick="onExecuteTest()">Execute Test</button>
+
+<script type="text/javascript">
+function onExecuteTest()
+{
+    var postData = "";
+
+    var postArr = [];
+    postArr.push("shortone=value");
+    for (var i=0; i<10; i++)
+        postArr.push("contact[addresses_attributes]" + i + "=someValue" + i);
+    postData = postArr.join("&");
+
+    var request = new XMLHttpRequest();
+    request.open("POST", "issue3160.php", true);
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.setRequestHeader("Content-Length", postData.length);
+    request.send(postData);
+}
+</script>
+  
+</body>
+</html>

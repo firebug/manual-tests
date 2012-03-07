@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 4352: Backslash appears for escaped characters in style view</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/content/templates/default/testcase.css" type="text/css" rel="stylesheet"/>
+        <style type="text/css">
+            body > div {
+                -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+                -moz-border-radius: 8px;
+            }
+
+            section#content {
+                -moz-border-radius: 8px;
+            }
+
+            #div\3A element1 {
+                width: 100px;
+                height: 100px;
+                background-image: -moz-linear-gradient(135deg, #788CFF, #B4C8FF);
+            }
+        </style>
+        <script type="text/javascript">
+            function init()
+            {
+                var output = document.getElementById("output");
+                output.innerHTML = document.styleSheets[1].cssRules[2].selectorText;
+            }
+
+            window.addEventListener("load", init, false);
+        </script>
+    </head>
+    <body>
+        <h1><a href="http://code.google.com/p/fbug/issues/detail?id=4352">Issue 4352</a>: Backslash appears for escaped characters in style view</h1>
+        <div>
+            <section id="content">
+                <div id="div:element1"></div>
+                <section id="output"></section>
+            </section>
+            <section id="description">
+                <h3>Expected Results</h3>
+                <ul>
+                    <li><code>#div:element1</code></li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmx.de</footer>
+        </div>
+    </body>
+</html>

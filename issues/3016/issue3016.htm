@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Firebug Testcase</title>
+		<script type="text/javascript">
+			window.addEventListener('DOMContentLoaded', function()
+			{
+				document.getElementById('error').addEventListener('click', function(e)
+				{
+					var obj;
+					obj = {};
+					console.log('Trigger Error:');
+					obj.bla.def = 5;	
+				}, false);
+				
+				var eventtarget = document.getElementById('eventtarget');
+				document.getElementById('error2').addEventListener('click', function(e)
+				{
+					var event;
+					event = document.createEvent('MouseEvents');
+					event.initMouseEvent('click', false, false, window, 
+			                     1, 50, 50, 50, 50, 
+			                     false, false, false, false, 
+			                     0, null);
+
+					event.initEvent('click', true, false);
+					eventtarget.dispatchEvent(event);
+				}, false);
+				
+				eventtarget.addEventListener('click', function(e) 
+				{
+					var obj;
+					obj = {};
+					console.log('Trigger Error (dispatchEvent):');
+					obj.bla.def = 5;
+				}, false);
+			}, false);
+		</script>
+	</head>
+	<body>
+		<input type="button" id="error" value="Trigger Error">
+		<input type="button" id="error2" value="Trigger Error (dispatchEvent)">
+		<div id="eventtarget">eventtarget</div>
+		
+		<p>Lorem ipsum dolor sit amet consectetuer nulla dignissim a faucibus tellus. Semper Nulla sapien massa Aenean et tempus porttitor In vitae tristique. Sed consequat ligula volutpat nibh id ac eu laoreet urna Vestibulum. Mauris libero mauris neque orci ac vel urna non urna congue. Id amet accumsan quam elit laoreet augue Aliquam velit elit laoreet. Mi wisi interdum et convallis porta id Ut a justo tincidunt. Interdum ante aliquam.</p>
+		<p>Lobortis et magnis nulla nunc ultrices Suspendisse pretium vitae volutpat Donec. Justo id sem congue faucibus consectetuer parturient facilisi Curabitur tortor et. Libero tincidunt Integer sed orci nunc scelerisque congue tempus fringilla vitae. At mauris nonummy Sed metus augue quis adipiscing auctor elit fringilla. Aenean dui Curabitur orci ligula metus eget eu iaculis Phasellus at. Lobortis enim Quisque neque Morbi Nam cursus Maecenas Vivamus In.</p>
+		<p>Natoque Pellentesque wisi a dui mauris Ut Donec consectetuer id semper. Id suscipit at suscipit wisi Donec tellus felis ipsum neque Aenean. Massa fringilla ut et tempor tempus arcu cursus Quisque vitae orci. Pede facilisis eleifend amet Integer volutpat Ut ridiculus quis Curabitur at. Scelerisque id eget semper diam fermentum Morbi amet eu ligula dolor. Pharetra Morbi et convallis ante congue fringilla Quisque tellus ligula lacus. Integer In.</p>
+	</body>
+</html>

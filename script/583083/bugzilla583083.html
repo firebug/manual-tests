@@ -1,0 +1,51 @@
+<html>
+<head>
+<script>
+var s = [
+  'var t = "hello world";',
+  //'throw new Error(t);\n',
+  'console.error(t);\n',
+  '//@ sourceURL=foo.js'].join('\n') + '\n';
+
+try {
+  eval(s);
+} catch (e) {
+    console.log(e, e.stack);
+  if (e.stack.indexOf('foo.js') < 0) {
+    alert('stack trace was missing source: ' + e.stack);
+  }
+}
+</script>
+</head>
+<body>
+<pre>
+// This is a simple test to demonstrate the error.
+
+var s = [
+  'var t = "hello world";',
+  'throw new Error(t);\n',
+  '//@ sourceURL=foo.js'].join('\n') + '\n';
+
+try {
+  eval(s);
+} catch (e) {
+  if (e.stack.indexOf('foo.js') < 0) {
+    alert('stack trace was missing source: ' + e.stack);
+  }
+}
+
+Actual Results:
+currently, the above code alerts a message with the stack trace that includes:
+
+Error("hello world")@:0
+
+
+Expected Results:
+ideally, it would include:
+
+@foo.js:2:0
+</pre>
+</body>
+
+</html>
+

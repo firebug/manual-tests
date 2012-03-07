@@ -1,0 +1,45 @@
+/* Basic CSS Document */
+* {
+	margin:0;
+	padding:0;}
+body {
+	padding:1em;
+	font:79%/119% "Lucida Grande", "Lucida Sans Unicode", Verdana, Tahoma, Arial, sans-serif;}
+h1, h2, h3, h4, h5 {
+	margin-top:1em;
+	margin-bottom:0.5em;}
+h1, h2, h3 {
+	margin-top:1.3em;
+	padding-bottom:0.25em;
+	border-bottom:1px solid #CCC;}
+h1 {
+	font-size:1.8em;
+	border-bottom-color:#333;}
+h2 {
+	font-size:1.5em;}
+h3 {
+	font-size:1.1em;}
+p {
+	margin:0.5em 0;}
+
+ul, ol {
+	margin:0.5em;}
+
+ul li,
+ol li {
+	margin-left:1em;
+	padding:0;}
+img {
+	border:none;}
+
+pre {
+	font-size:1.2em;}
+
+/* special - yet standard - styles */
+.cleared {
+	clear:both;}
+.centered {
+	text-align:center;}
+.highlight {
+	background-color:#FFC;}
+/* /special */

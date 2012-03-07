@@ -1,0 +1,52 @@
+<html><head>
+<title>Bugzilla 440275</title>
+
+</head>
+<body>
+
+<pre>
+ The subject error message comes out, no one knows why.
+
+From
+http://groups.google.com/group/firebug/browse_thread/thread/fa19b80dfbfb566c
+
+this code breaks on FF3 when firebug is on.
+works on FF3 with firebug off.
+works on FF2 with firebug on or off.
+
+needs two files.
+
+1) test.html: on body load  call test();
+2) test.xml:  some little xml doc to be  loaded.
+
+=== in test.html ===
+var doc;
+function test(){
+        doc = document.implementation.createDocument("", "", null);
+        doc.onload = function(e){
+                alert(doc.firstChild.getAttribute("id")); //<--HERE
+        };
+        doc.load("test.xml");
+
+}
+
+=== and in test.xml ===
+<thing id="theid">
+ <foo/>
+</thing>
+ 
+
+</pre>
+</body>
+<script type="text/javascript">
+var doc;
+function test(){
+        doc = document.implementation.createDocument("", "", null);
+        doc.onload = function(e){
+                alert(doc.firstChild.getAttribute("id")); //<--HERE
+        };
+        doc.load("bug440275.xml");
+}
+test();
+</script>
+</html>

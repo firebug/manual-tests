@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 5103: Use CSS transitions to mark a panel tab as armed</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/content/templates/default/testcase.css" type="text/css" rel="stylesheet"/>
+        <style type="text/css">
+            .armed {
+                -moz-transition: text-shadow 0.8s ease 0s;
+            }
+    
+            .highlight {
+                text-shadow: 0 0 5px orange;
+            }
+    
+            .off {
+                text-shadow: 0 0 0 orange;
+            }
+        </style>
+        <script type="text/javascript">
+            function toggleTextShadow()
+            {
+                var text = document.getElementById("text");
+    
+                if (text.classList.contains("armed"))
+                {
+                    text.classList.toggle("off");
+                    text.classList.toggle("highlight");
+                }
+                else
+                {
+                    text.className = "off";
+                }
+            }
+    
+            function toggleBon()
+            {
+                var text = document.getElementById("text");
+                text.classList.toggle("armed");
+    
+                if (text.classList.contains("armed"))
+                {
+                    text.addEventListener("transitionend", toggleTextShadow, true);
+                    toggleTextShadow();
+                }
+                else
+                {
+                    text.removeEventListener("transitionend", toggleTextShadow);
+                    text.className = "off";
+                }
+            }
+    
+            window.addEventListener("load", function()
+            {
+                var bon = document.getElementById("bon");
+                bon.addEventListener("click", toggleBon, false);
+            }, true);
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=5103">Issue 5103</a>: Use CSS transitions to mark a panel tab as armed</h1>
+        </header>
+        <div>
+            <section id="content">
+                <div id="text" class="off">Armed</div>
+                <button id="bon">Break On Next</button>
+            </section>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Switch to the <em>HTML</em> panel</li>
+                    <li>Click the <em>Break On Mutate</em> button</li>
+                </ol>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>The panel tab's text &quot;HTML&quot; should blink as the text <code>Armed</code> when clicking the <em>Break On Next</em> button on the page</li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner</footer>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Test case for Firebug issue 697</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<script type="text/javascript">
+
+function myFunc()
+{
+    var my_var = "Hello World!";
+    var i = 0;
+}
+
+myFunc();
+
+</script>
+<style type="text/css">
+<!--
+
+-->
+</style>
+</head>
+
+<body>
+<pre>
+Open the page.
+
+Place a breakpoint on line "var i = 0;"
+
+Refresh page. (will stop on breakpoint)
+
+Switch to Console tab.
+
+Type "my_var" (sans quotes). Press Enter.
+
+Result:
+>>> my_var
+Object
+
+Clicking on Object takes you to the DOM tab with.
+
+Result:
+> onNest           function()
+
+Expanding the arrow on the onNest function outputs:
+
+     prototype         Object
+
+Clicking Object here takes you to an empty DOM page.
+
+
+Hope that helps.
+
+</pre>
+</body>
+</html> 

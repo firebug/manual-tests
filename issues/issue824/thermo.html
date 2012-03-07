@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Thermo JS Class</title>
+    
+    <style type="text/css">
+        body {
+	        margin:10;
+	        padding:5;
+        }
+
+        #slider-bg {
+            position: relative;
+            background:url(bg-v.gif) 12px 0 no-repeat;
+            height:228px;
+            width:48px; 
+        }
+
+        #slider-thumb {
+            cursor:default;
+            position: absolute;
+        }
+    </style>
+	
+	<script type="text/javascript" src="http://yui.yahooapis.com/2.5.1/build/yahoo-dom-event/yahoo-dom-event.js"></script>
+    <script type="text/javascript" src="http://yui.yahooapis.com/2.5.1/build/animation/animation-min.js"></script>
+    <script type="text/javascript" src="http://yui.yahooapis.com/2.5.1/build/dragdrop/dragdrop-min.js"></script>
+    <script type="text/javascript" src="http://yui.yahooapis.com/2.5.1/build/slider/slider-min.js"></script>
+    <script type="text/javascript" src="slider.js"></script>
+    <script type="text/javascript" src="thermo.js"></script>
+<script type="text/javascript" src="thermo.js"></script>
+<script type="text/javascript" src="thermo2.js"></script>
+<script type="text/javascript" src="thermo3.js"></script>
+<script type="text/javascript" src="thermo4.js"></script>
+<script type="text/javascript" src="thermo5.js"></script>
+<script type="text/javascript" src="thermo6.js"></script>
+<script type="text/javascript" src="thermo7.js"></script>
+<script type="text/javascript" src="thermo8.js"></script>
+<script type="text/javascript" src="thermo9.js"></script>
+<script type="text/javascript" src="thermo10.js"></script>
+    
+    <script type="text/javascript">
+        var _thermometer;
+       
+        function onLoad() {
+            thermometer = new Thermometer();
+        }
+        
+        function updateTemperature() {
+            var celcius = document.getElementById('slider-converted-value');
+            var fahrenheit = document.getElementById('fahrenheit-converted-value');
+            
+            var freezing = document.getElementById('freezing');
+            var boiling = document.getElementById('boiling');
+            var increment = document.getElementById('increment');
+            
+            var up = document.getElementById('up');
+            var down = document.getElementById('down');
+            var both = document.getElementById('both');
+            
+            var direction;
+            
+            if (up.checked) {
+              direction = Direction.Up;
+            } else if (down.checked) {
+              direction = Direction.Down;
+            } else {
+              direction = Direction.Both;
+            }  
+            
+            var status = document.getElementById('status');          
+
+            //thermometer.read(celcius.value, Unit.Celcius, freezing.value, boiling.value); // Read basic
+            //thermometer.read(celcius.value, Unit.Celcius, freezing.value, boiling.value, increment.value); // Read with increment
+            thermometer.read(celcius.value, Unit.Celcius, freezing.value, boiling.value, increment.value, direction); // Read with increment and direction
+            
+            fahrenheit.value = thermometer._fahrenheit;
+            
+            if (thermometer._statusChanged) {
+                status.innerHTML = "" + thermometer._status == Status.Freezing ? '<h1>Freezing</h1>' : (thermometer._status == Status.Boiling ? '<h1>Boiling</h1>' : '');
+            } else {
+                status.innerHTML = "";
+            }   
+        }
+
+    </script>
+    
+    
+    
+    </head> 
+    <body onload="onLoad()">
+        <div>
+            <p>
+                <b>Instructions:</b><br />
+                Use the slider to change the temperature. <br />
+                Specifying an increment greater than 0 will apply the threshold boundry rule.<br />
+                Use the direction radio buttons to specify temperature change notifications from above, below or both. 
+            </p>
+        </div>
+        <div>
+            Freezing Temperature: <input id="freezing" value="0"/>(&deg;c)
+        </div>
+        <div>
+            Boiling Temperature: <input id="boiling" value="100"/>(&deg;c)
+        </div>
+        <div>
+            Minimum Increment: <input id="increment" value="0"/>(&deg;c)&nbsp;(Must be greater than 0)
+        </div>
+        <div>
+            Direction: <input id="up" name="direction" type="radio" value='Up'/>Up<input id="down" name="direction" type="radio" value='Down'/>Down<input id="both" name="direction" type="radio" checked value='Both'/>Both
+        </div>
+       
+        <div id="slider-bg" tabindex="-1" title="Slider"> 
+	        <div id="slider-thumb"><img src="thumb-bar.gif"></div> 
+	    </div> 
+        
+	 
+	    <p>Temperature Celcius: 
+	        <input autocomplete="off" id="slider-converted-value" type="text" value="0" size="4" readonly="readonly"  maxlength="4" /> 
+	    </p> 
+	    <p>Temperature Fahrenheit: 
+	        <input autocomplete="off" id="fahrenheit-converted-value" type="text" value="0" size="4" readonly="readonly" maxlength="4" /> 
+	    </p> 
+	    <p>
+	       <div id="status"></div> 
+	    </p>
+	    <span style="display: none;" id="slider-value">0</span>
+	   
+    </body>
+</html> 

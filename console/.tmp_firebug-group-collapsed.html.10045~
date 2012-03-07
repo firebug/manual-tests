@@ -1,0 +1,44 @@
+<html>
+<head>
+<script type="text/javascript">
+
+console.log('Not in a group');
+console.group('Default Group: ', 1);
+console.log('Inside default group');
+console.log('This is initially visible in the console');
+console.groupEnd();
+console.groupCollapsed('New Group method: ', 2);
+console.log('This is still added to the group, ', 'but is not visible initially');
+console.log('To view these messages, one would have to expand the group');
+console.groupEnd();
+console.log('After groups');
+
+</script>
+</head>
+<body>
+
+Expected initial console output:
+
+<pre>
+Not in a group
+[-] Default Group: 1
+ |  Inside default group
+ |_ This is initially visible in the console
+[+] New Group method: 2
+After groups
+</pre>
+
+After clicking on the [+] of "New Group method", expected result:
+
+<pre>
+Not in a group
+[-] Default Group: 1
+ |  Inside default group
+ |_ This is initially visible in the console
+[-] New Group method: 2
+ |  This is still added to the group, but is not visible initially
+ |_ To view these messages, one would have to expand the group
+After groups
+</pre>
+</body>
+</html>

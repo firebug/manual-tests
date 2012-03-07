@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 551: Add ability to somehow block mousemove event</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/content/templates/default/testcase.css" type="text/css" rel="stylesheet"/>
+        <script type="text/javascript">
+            function showInfotip(event)
+            {
+                var infoTip = document.createElement("section");
+                infoTip.textContent = "This is a test for stopping JavaScript events.";
+                infoTip.id = "output";
+                infoTip.style.display = "block";
+                document.getElementById("content").appendChild(infoTip);
+            }
+    
+            function hideInfotip(event)
+            {
+                var infoTip = document.getElementById("output");
+                if (infoTip)
+                    infoTip.parentNode.removeChild(infoTip);
+            }
+
+            window.addEventListener("load", function() {
+                var paragraph = document.getElementById("paragraphWithInfo");
+                paragraph.addEventListener("mouseover", showInfotip, false);
+                paragraph.addEventListener("mouseout", hideInfotip, false);
+            }, false);
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=551">Issue 551</a>: Add ability to somehow block mousemove event</h1>
+        </header>
+        <div>
+            <section id="content">
+                <p id="paragraphWithInfo">Hover me</p>
+            </section>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Start inspecting via <code class="key">Command+Shift+I</code></li>
+                    <li>Hover the text <em>Hover me</em></li>
+                    <li>Hit the shortcut for blocking events (currently not existing)</li>
+                    <li>Inspect the <code>#content</code> element</li>
+                </ol>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>The <code>#content</code> element does not disappear when the mouse is moved away from the <em>Hover me</em> text, so that it can be inspected</li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner</footer>
+        </div>
+    </body>
+</html>

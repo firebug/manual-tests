@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<!-- bugs: no box highlighting, offset=undefined, dimensions=NaN x NaN -->
+<window
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <hbox id="parentBox" class="firebugLayoutBoxBorder">
+    <text id="someText" value="child box"/>
+  </hbox>
+</window>

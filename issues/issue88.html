@@ -1,0 +1,48 @@
+<html>
+<head>
+<script type="text/JavaScript">
+function foo(){
+    alert('Why can I not see this function in Firebug 1.01?');
+}
+window.onload = start;
+function start(){
+    document.getElementById('FIREBUG').onchange = foo;
+}
+</script>
+</head>
+<body>
+<input type="text" id="FIREBUG" name="FIREBUG"/>
+<pre>
+ Issue 88:  	DOM inspektor broken in 1.01 compared to 0.4.1
+
+
+Add a comment and make changes below 	Reported by olov.felton, Apr 04, 2007
+
+What steps will reproduce the problem?
+1. create and run this page:
+
+2. Inspect the input field
+
+
+What is the expected output?
+onchange
+  1 function foo() {
+  2   alert("Why can I not see this function in Firebug 1.01?");
+  3 }
+(this is what I get in 0.4.1)
+
+
+What do you see instead?
+onchange
+  Object()
+
+(this is what I get in 1.0.1)
+The object is clickable but only opens an empty page
+
+What version of the product are you using?
+1.0.1
+On what operating system?
+Linux and XP
+</pre>
+</body>
+</html>

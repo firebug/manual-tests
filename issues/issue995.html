@@ -1,0 +1,54 @@
+<html>
+<head></head>
+<body>
+<script type="text/javascript">
+	document.write('<script src=\"http://foo.js\"><\/script>');
+
+function DCFlash(id){
+swf = "http://m.fr.2mdn.net/787775/Tophuis_300x250_v2.swf";
+gif = "http://m.fr.2mdn.net/787775/Tophuis_300x250_v2_gifbackup.gif";
+minV = 7;
+FWH = ' width="300" height="250" ';
+url = escape("http://ad.nl.doubleclick.net/click%3Bh=v8/3737/3/0/%2a/n%3B199513604%3B4-0%3B0%3B7679778%3B4307-300/250%3B27786680/27804559/1%3B%3B%7Esscs%3D%3fhttp://www.funda.nl/Verkoop/Default.aspx?pagina=/nl/algemene-teksten-funda-sites/fundanl/verkoop/tophuis");
+wmode = "opaque";
+bg = "";
+dcallowscriptaccess = "always";
+
+openWindow = "false";
+
+fv='"clickTag='+url+'&clickTAG='+url+'&clicktag='+url+'"';
+bgo=(bg=="")?"":'<param name="bgcolor" value="#'+bg+'">';bge=(bg=="")?"":' bgcolor="#'+bg+'"';
+this.FSWin=function(){self.location.href = unescape(url)}
+this.mF=function(){
+	var adcode='<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" id="'+id+'"'+FWH+'>' +
+					'<param name="movie" value="'+swf+'?clickTag='+url+'">' +
+					'<param name="flashvars" value='+fv+'>' +
+					'<param name="quality" value="high">' +
+					'<param name="wmode" value="'+wmode+'">' +
+					'<param name="base" value="'+swf.substring(0,swf.lastIndexOf("/"))+'">' +
+					'<PARAM NAME="AllowScriptAccess" VALUE="'+dcallowscriptaccess+'">' +
+					bgo +
+					'<embed src="'+swf+'?clickTag='+url+'" flashvars='+fv+bge+FWH+' type="application/x-shockwave-flash" quality="high" swliveconnect="true" wmode="'+wmode+'" name="'+id+'" base="'+swf.substring(0,swf.lastIndexOf("/"))+'" AllowScriptAccess="'+dcallowscriptaccess+'"></embed></object>';
+	  if(('j'!="j")&&(typeof dclkFlashWrite!="undefined")){
+		dclkFlashWrite(adcode);
+		}else{
+		document.write(adcode);
+	}
+}
+eval('this.mI=function(){document.write(\'<a href="'+unescape(url)+'"><img src="'+gif+'"'+FWH+'border="0" alt="" galleryimg="no"></a>\');}');
+this.getCode=function(pV){ua=navigator.userAgent;a=(minV<=pV&&(openWindow=="false"||(ua.indexOf("Mac")<0&&ua.indexOf("Opera")<0)))?this.mF():this.mI();return a;}}
+pVF="No Flash";pVM=0;DCid=(isNaN("199513604"))?"DCF0":"DCF199513604";
+if(navigator.plugins && navigator.mimeTypes.length){
+  var x=navigator.plugins["Shockwave Flash"];if(x && x.description){pVFull=x.description;a=pVFull.indexOf("Flash ")+6;pVM=pVFull.substring(a,pVFull.indexOf(".",a));}}
+else if (window.ActiveXObject && window.execScript){
+  window.execScript('on error resume next\na=2\ndo\na=a+1\nset swControl = CreateObject("ShockwaveFlash.ShockwaveFlash."&a)\nloop while Err = 0\nOn Error Resume Next\nSub '+DCid+'_FSCommand(ByVal command, ByVal args)\nCall '+DCid+'_DoFSCommand(command, args)\nEnd Sub\n',"VBScript");if(a>3){pVM=a-1;}}
+eval("function "+DCid+"_DoFSCommand(c,a){if(c=='openWindow')o"+DCid+".FSWin();}o"+DCid+"=new DCFlash('"+DCid+"');o"+DCid+".getCode(pVM);");
+//-->
+
+document.write('\n<noscript><a href=\"http://ad.nl.doubleclick.net/click%3Bh=v8/3737/3/0/%2a/n%3B199513604%3B4-0%3B0%3B7679778%3B4307-300/250%3B27786680/27804559/1%3B%3B%7Esscs%3D%3fhttp://www.funda.nl/Verkoop/Default.aspx?pagina=/nl/algemene-teksten-funda-sites/fundanl/verkoop/tophuis\"><img src=\"http://m.fr.2mdn.net/787775/Tophuis_300x250_v2_gifbackup.gif\" width=\"300\" height=\"250\" border=\"0\" alt=\"\" galleryimg=\"no\"></a></noscript>');
+</script>
+bla bla bla<br />
+<br />
+<script type="text/javascript" src="http://ad.nl.doubleclick.net/adj/wegener.funda/;cat4=0;cat5=onbekend;cat2=noordholland;cat3=amsterdam;cat8=woonhuis;cat1=koop;lok=2;dcopt=;sz=753x26;ptile=2;ord=$59e5d7f0-5240-4d1f-891b-afd3326466bb$?"></script>
+</body>
+</html>

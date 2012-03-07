@@ -1,0 +1,57 @@
+<html>
+<head>
+<title>Issue 2234:  Break on error bubble weird behavior</title>
+<script>
+
+function callerror(raiseerr)
+{
+   if (raiseerr)
+   {
+      window.unexistingfunction();
+   }
+   else
+   {
+      callerror(true);
+   }
+}
+
+window.onload=function()
+{
+   var a = 0;
+   a++;
+
+   callerror(false);
+}
+</script>
+</head>
+<body>
+<pre>
+ Reported by nicolas.hatier, Aug 14, 2009
+
+What steps will reproduce the problem?
+1. open the testcase
+2. when firebug breaks, do not dismiss the bubble.
+3. Click on functions in the stack breadcrumbs bar (not sure how you call
+this) to see the different functions in the call stack.
+
+Several similar bubbles appear at different points in the code, sometimes
+at the same position as the existing ones. All then have to be dismissed
+manually.
+
+- I don't expect a bubble to appear when I click on the function that
+called the erroneous one.
+- I don't expect such a bubble to have a "OK" button, I would expect it to
+disappear as soon as I click on anything in the Firebug window, including
+the bubble itself. I would also expect to be able to bring back the bubble
+by clicking the stop point icon, which should be different than the
+standard green triangle
+- I don't expect an error bubble to be blue... Red or orange, maybe?
+
+Which version of Firebug? 1.5xa21
+Which version of Firefox? 3.5.2
+On what operating system? WinXP
+
+
+</pre>
+</body>
+</html>

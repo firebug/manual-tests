@@ -1,0 +1,34 @@
+<html>
+<head>
+<script>
+function doNext()
+{
+    var url = window.location.toString();
+    var parts = url.split('?');
+    loadNumber = "not given, use a URL with ?v=1 on the end";
+    if (parts.length > 1)
+    {
+        var subparts = parts[1].split('=');
+        loadNumber = subparts[1];
+    }
+    var elt = document.getElementById('loadedNumber');
+    elt.innerHTML = "load number "+loadNumber;
+
+    loadNumber++;
+
+    subparts[1] = loadNumber;
+    parts[1] = subparts.join('=');
+    url = parts.join('?');
+    window.location = url;
+
+}
+function doNextDelayed()
+{
+    setTimeout(doNext, 500);
+}
+window.addEventListener('load', doNextDelayed, true);
+</script>
+</head>
+<h1>Delay Reload Test</h1>
+<button id="loadedNumber" onclick="doNext()">Ready</button>
+</html>

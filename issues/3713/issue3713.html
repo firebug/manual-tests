@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <title>Test Case for Issue #3713</title>
+</head>
+<body>
+
+<h1>Issue #3713</h1>
+
+<p>This test-case is intended for <a href="http://code.google.com/p/fbug/issues/detail?id=3713">Issue #3713</a>
+- <span class="h3">Not display css-class with space in breadcrumbs</span>.
+<br/>
+<i>Jan Odvarko, odvarko@gmail.com</i>
+</p>
+
+<ol>
+<li>Open Firebug and select the HTML panel.</li>
+<li>Inspect the green element below.</li>
+<li>The <i>breadcrumbs</i> path displayed in the HTML panel toolbar should be:<br/>
+<code>div.myClass < body < html < document</code>
+</li>
+</ol>
+
+<div style="color:green" class=" myClass">Inspect Me!</div>
+<br/>
+<i>The div part of the path doesn't show the class name since there is
+a space in the class attribute value.</i>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Bug</title>
+	<script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript">   
+		$.ajax({
+		  url: 'test.html',
+		  async: false,
+		  success: function(data) {
+			$('#content').html(data);
+		  }
+		});
+	</script>
+</head>
+<body>
+	<div id="content"></div>
+</body>
+</html>

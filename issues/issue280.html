@@ -1,0 +1,46 @@
+<html> <!-- line 1 -->
+<head> <!-- line 2 -->
+<title>Issue 25 Firebug (line 3) </title>
+<!-- line 4 -->
+<!-- line 5 --><style type="text/css">
+	select{
+		width: 250px;
+	}
+	body{
+		background-color: #ccc;
+		}
+</style><!-- line 12 -->
+</head>
+<body>
+<select>
+<option>one</option>
+<option>two</option>
+<option>three</option>
+<option>four</option>
+</select>
+
+<br />
+
+<select multiple>
+<option>one</option>
+<option>two</option>
+<option>three</option>
+<option>four</option>
+</select>
+
+<br />
+
+<select>
+<option>this is a very long option, even longer then the 250px defined by css</option>
+<option>two</option>
+<option>three</option>
+<option>four</option>
+</select>
+
+<br />
+<p>
+Use HTML panel, Style subpanel, navigate HTML to 'select' element, click
+link in style panel.  It will not highlight the correct line.
+</p>
+</body>
+</html>

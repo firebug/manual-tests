@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 1854: debug() sets breakpoints at comments</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/content/templates/default/testcase.css" type="text/css" rel="stylesheet"/>
+        <script type="text/javascript">
+            function showOutput()
+            {
+                // The breakpoint should not be set here
+                var output = document.getElementById("output");
+                output.style.display = "block";
+                output.textContent = "If this line is shown without script execution being stopped first, the breakpoint is incorrectly set!";
+            }
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=1854">Issue 1854</a>: debug() sets breakpoints at comments</h1>
+        </header>
+        <div>
+            <section id="content">
+                <button id="showOutput" onclick="showOutput();">Show output</button>
+                <section id="output"></section>
+            </section>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Enable the <em>Script</em> and <em>Console</em> panel and switch to the <em>Console</em> panel</li>
+                    <li>Reload the page</li>
+                    <li>Type <code>debug(showOutput)</code> into the <em>Command Line</em> and hit <code class="key">Enter</code></li>
+                    <li>Click the button <em>Show output</em></li>
+                </ol>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>A breakpoint is set at line 11 (<code>var output = document.getElementById("output");</code>)</li>
+                    <li>The breakpoint is triggered</li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner</footer>
+        </div>
+    </body>
+</html>

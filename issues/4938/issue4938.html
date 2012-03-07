@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 4938: Firbug hangs the browser on invalid js (too much recursion).</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/content/templates/default/testcase.css" type="text/css" rel="stylesheet"/>
+        <script type="text/javascript">
+        function recursiveFunction()
+        {
+            recursiveFunction();
+        }
+
+        window.addEventListener("load", function()
+        {
+            var button = document.getElementById("callRecursiveFunction");
+            button.addEventListener("click", recursiveFunction, false);
+        }, false);
+    </script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=4938">Issue 4938</a>: Firbug hangs the browser on invalid js (too much recursion).</h1>
+        </header>
+        <div>
+            <section id="content">
+                <button id="callRecursiveFunction">Call recursive function</button>
+            </section>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Enable and switch to the <em>Script</em> panel</li>
+                    <li>Reload the page</li>
+                    <li>Click the <em>Call recursive function</em> button above</li>
+                </ol>
+                <h3>Observed result</h3>
+                <ul>
+                    <li class="error">&rArr; Firefox hangs</li>
+                    <li class="error">&rArr; Script timeout in <code>resource://firebug/firebug-service.js</code>, line 4184</li>
+                </ul>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>Firefox does not hang</li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmx.de</footer>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,36 @@
+<html>
+<head>
+    <title>FireBug Console Scrollbar Bug</title>
+
+    <link rel="stylesheet" type="text/css"
+        href="http://o.aolcdn.com/dojo/1.3/dijit/themes/soria/soria.css" />
+
+    <script type="text/javascript">
+        djConfig = {
+            isDebug: true,
+            parseOnLoad: false,
+            require: [
+                'dojo.parser'  
+            ],
+            addOnLoad: function() {
+                console.log('Doing addOnLoad...');
+                dojo.parser.parse();
+            }
+        };
+    </script>
+
+    <script type="text/javascript"
+        src="http://o.aolcdn.com/dojo/1.3/dojo/dojo.xd.js"></script>
+</head>
+
+<body class="soria">
+    <h1>FireBug Console Scrollbar Bug</h1>
+    <p>Dojo's soria.css will cause a ton of CSS warnings (assuming you
+    have "Show CSS Errors" enabled) followed by the "Doing addOnLoad..."
+    message. Upon a page (re)load, FireBug's console history scrollbar
+    <b>should</b> stick to the bottom showing "Doing addOnLoad..." to start,
+    but it stays at the top instead.</p>
+    <p>Note: This bug did not exist in FireBug 1.3, but it does exist in
+    many 1.4 versions including the latest 1.4.0b7.</p>
+</body>
+</html>

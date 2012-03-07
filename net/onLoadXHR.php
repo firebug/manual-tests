@@ -1,0 +1,1 @@
+Response for onLoadXHR test.

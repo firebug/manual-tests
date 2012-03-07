@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+
+
+    <title>Test Case for Issue #1642</title>
+    <link rel="stylesheet" href="issue1642WithCSSError.css" type="text/css">
+    <script>
+       window.addEventListener('load', function colorPurple()
+       {
+           var msg = document.getElementById("msg");
+           msg.classList.add("loaded");
+       }, false);
+    </script>
+    <style>
+    .loaded {
+       color: purple;
+    }
+    .preLoad {
+       color: orange;
+    }
+    </style>
+</head><body>
+
+<h1>Issue #1642</h1>
+
+<p>This test-case is intended for <a href="http://code.google.com/p/fbug/issues/detail?id=1642">Issue #1642</a>
+- <span class="h3">editing CSS styles cause them to disappear</span>.
+<br>
+<i>Jan Odvarko, odvarko@gmail.com</i>
+</p>
+
+<ol>
+<li>Open Firebug and select the CSS panel.</li>
+<li>There must be 2000 CSS rules (0-1999).</li>
+<li>Reload the page. There still must be 2000 rules. (BUG)</li>
+<li>Try to edit the <b>rule0</b> and change <code>green</code> to <code>red</code>.</li>
+<li>The text bellow should change its color. (BUG)</li>
+</ol>
+
+<h1 class="preLoad" id="msg">msg: <span class="rule1999">This is green. Do it red.</span></h1>
+
+</body></html>

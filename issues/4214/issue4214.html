@@ -1,0 +1,30 @@
+<html>
+  <head>
+    <base href="http://getfirebug.com/img/" />
+    <style type="text/css">
+      #logo {
+        background: transparent url("firebug-logo.png") no-repeat scroll 0 0;
+        height: 89px;
+        width: 293px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1><tt>&lt;base /&gt;</tt> bug</h1>
+    
+    <div id="logo"></div>
+
+    <h2>Steps to reproduce</h2>
+    <ul>
+      <li>Assert that Firebug logo appears above.</li>
+      <li>Open Firebug CSS tab.</li>
+      <li>Hover over the URL in the background property.</li>
+    </ul>
+
+    <h2>Expected results</h2>
+    <p>Firebug logo is shown in preview tooltip.</p>
+
+    <h2>Actual results</h2>
+    <p>Logo cannot be loaded; loading spinner is shown indefinitely. Alternatively, right-click &rarr; Copy Image Location and see that the location does not respect the <tt>&lt;base /&gt;</tt> element.</p>
+  </body>
+</html>

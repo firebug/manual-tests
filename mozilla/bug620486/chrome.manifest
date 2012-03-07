@@ -1,0 +1,6 @@
+content  simpledebugger  content/
+
+# Maps resource://firebug/* to files in modules/*
+resource firebug modules/
+
+overlay  chrome://browser/content/browser.xul  chrome://simpledebugger/content/simpleDebugger.xul

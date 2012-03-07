@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <title>Test Case for Issue #2710</title>
+</head>
+<body>
+
+<h1>Issue #2710</h1>
+
+<p>This test-case is intended for <a href="http://code.google.com/p/fbug/issues/detail?id=2710">Issue #2710</a>
+- <span class="h3">all requests in Net tab show the loading icon, even when they finish loading</span>.
+<br/>
+<i>Jan Odvarko, odvarko@gmail.com</i>
+</p>
+
+<ol>
+<li>Open Firebug and enable the Net panel.</li>
+<li>Click on the <code style="color:green">Execute Test</code> button below.</li>
+<li>See the Net panel, bunch of requests is executed and all of them should be properly finished
+(no loading icon should be displayed)</li>
+</ol>
+
+<button id="testButton" onclick="onExecuteTest(10)">Execute Test</button>
+
+<br/><br/>
+
+<i>The HTTP-ON-EXAMINE-RESPONSE is sometimes not fired by Firefox</i>
+
+<br/><br/>
+
+<div id="content">
+<img id="image1" width="75px"/>
+<img id="image2" width="75px"/>
+<img id="image3" width="75px"/>
+</div>
+<script type="text/javascript">
+function onExecuteTest(counter, callback)
+{
+    if (counter == 0)
+    {
+        if (callback)
+            callback();
+        return;
+    }
+
+    var image = document.getElementById("image" + ((counter %3) + 1));
+    image.src = "issue2710.php?noCache=" + new Date().getTime();
+
+    onExecuteTest(--counter, callback);
+}
+</script>
+  
+</body>
+</html>

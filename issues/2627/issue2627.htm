@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Issue 2627: Several menu entries for the same function at the 'Script' panel</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      body {
+        background: #ffffff;
+        font: small arial, sans-serif;
+        margin: 5px auto;
+        width: 815px;
+      }
+      h1 {
+        font-size: large;
+        font-weight: normal;
+        padding: 1em 0;
+        text-transform: uppercase;
+      }
+      h2 {
+        font-size: medium;
+        font-weight: normal;
+        padding: 0.5em 0;
+        text-transform: uppercase;
+        margin: 0;
+      }
+      ol {
+        margin:0;
+        clear: both;
+      }
+      ol li {
+        padding-bottom: 1em;
+      }
+      ul li {
+        padding: 0;
+      }
+      #content {
+        background: #9acbe4;
+        padding: 10px 20px;
+      }
+      #element1,#element2 {
+        width: 100px;
+        height: 100px;
+        float: left;
+        margin: 5px;
+        padding: 5px;
+        background-color: #ffff8c;
+      }
+
+      .hovered {
+        background-color: #8cff8c;
+      }
+    </style>
+    <script type="text/javascript">
+      <!--
+      function toggleBackground(element) {
+        if(element.className !== 'hovered') {
+          element.style.backgroundColor = '#8cff8c';
+          element.className = 'hovered';
+        } else {
+          element.style.backgroundColor = '#ffff8c';
+          element.className = '';
+        }
+      }
+      //-->
+    </script>
+  </head>
+  <body>
+    <h1>Issue 2627: Several menu entries for the same function at the 'Script' panel</h1>
+    <div id="content">
+      <div id="element1" onmouseover="toggleBackground(this);" onmouseout="toggleBackground(this);"></div>
+      <div id="element2" onmouseover="toggleBackground(this);" onmouseout="toggleBackground(this);"></div>
+      <ol>
+        <li>Enable and activate the script panel</li>
+        <li>Reload the page</li>
+        <li>Hover both DIVs with the mouse cursor</li>
+        <li>Open the scripts menu</li>
+      </ol>
+      <ul>
+        <li><strong>Observed:</strong> There are two entries for each mouseover and mouseout event</li>
+        <li><strong>Expected:</strong> Since the same function with the same parameter is called there should be just one entry for the mouseover resp. mouseout event in the menu</li>
+      </ul>
+    </div>
+  </body>
+</html>

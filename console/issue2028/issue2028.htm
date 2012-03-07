@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Issue 2028: "Console is not defined" for dynamic IFRAMEs</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      body {
+        background: #ffffff;
+        font: small arial, sans-serif;
+        margin: 5px auto;
+        width: 815px;
+      }
+      h1 {
+        font-size: large;
+        font-weight: normal;
+        padding: 1em 0;
+        text-transform: uppercase;
+      }
+      h2 {
+        font-size: medium;
+        font-weight: normal;
+        padding: 0.5em 0;
+        text-transform: uppercase;
+        margin: 0;
+      }
+      ol {
+        margin:0;
+      }
+      ol li {
+        padding-bottom: 1em;
+      }
+      ul li {
+        padding: 0;
+      }
+      #content {
+        background: #9acbe4;
+        padding: 10px 20px;
+      }
+      #content div {
+        width: 200px;
+        margin: 5px 0;
+        padding: 5px;
+      }
+      #output {
+        width: auto!important;
+        background: #e8f0ff;
+      }
+      button {
+        display: block;
+      }
+      iframe {
+        margin: 10px;
+        width: 200px;
+        height: 50px;
+        clear: both;
+      }
+    </style>
+    <script type="text/javascript">
+      <!--
+      function createIFrame(event) {
+        var iframe = document.createElement('iframe');
+        iframe.setAttribute('src','firebug_2028_iframe_content.htm');
+
+        document.getElementById('output').appendChild(iframe);
+
+        event.target.removeEventListener('click',createIFrame,false);
+      }
+
+      function init() {
+        document.getElementById('createIFrame').addEventListener('click',createIFrame,false);
+      }
+
+      window.addEventListener('load',init,false);
+      //-->
+    </script>
+  </head>
+  <body>
+    <h1>Issue 2028: "Console is not defined" for dynamic IFRAMEs</h1>
+    <div id="content">
+      <div id="output">
+        <button id="createIFrame">Create iframe</button>
+      </div>
+      <ol>
+        <li>Enable and switch to the console panel</li>
+        <li>Reload the page</li>
+        <li>Click the <em>Create iframe</em> button</li>
+        <li>Inside the appearing iframe click the link <em>Log to the console</em></li>
+      </ol>
+      <ul>
+        <li><strong>Observed:</strong> The Console is not defined inside the dynamically created iframe</li>
+        <li><strong>Expected:</strong> When creating dynamic iframes the Console has to be injected into them</li>
+      </ul>
+    </div>
+  </body>
+</html>

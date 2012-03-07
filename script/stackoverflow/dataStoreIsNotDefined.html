@@ -1,0 +1,42 @@
+<head>
+
+<script type="text/javascript">
+
+function nameNeeded()
+{
+    var self = {};
+    var dataStore = [];  // break here first to see closure scope later.
+
+      self.put = function(key, value){
+        /*breakpoint*/ dataStore.push({key:key, value:value});
+      }
+      return self;
+}
+var theSelf = nameNeeded();
+theSelf.put('theKey', 'isFirebug');
+</script>
+</head>
+<body>
+From <a href="http://stackoverflow.com/questions/3302399/firebug-is-erroniously-telling-me-my-variable-is-not-defined">Stackoverflow</a>
+<pre>
+
+
+I'm setting a breakpoint in the code below where it says "breakpoint". Also adding a watch expression for dataStore.
+
+function(){
+  var self = {};
+  var dataStore = [];
+  var areEq = UNAB.objectsAreEqual;
+
+  self.put = function(key, value){
+    /*breakpoint*/ dataStore.push({key:key, value:value});
+  }
+  return self;
+}
+
+At this breakpoint, Firebug tells me "ReferenceError: dataStore is not defined". Same results with trying to examine "areEq". However, dataStore.push executes without error. An additional strangness: adding a watch expression for "self" shows not the self object I expect, with one property, "put", but the "window" object.
+
+Any idea what the heck is going on?
+javascript firebug
+</pre>
+</body>

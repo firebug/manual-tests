@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN">
+<html>
+	<head>
+		<META Http-Equiv="Pragma" Content="no-cache">
+		<META Http-Equiv="Expires" Content="-1">
+		<script type="text/javascript">
+		    if (!window.dialogArguments && window.opener)
+		        window.dialogArguments = window.opener.dialogArgumentsForChild;
+            document.title = window.dialogArguments.sTitle;
+            var frm = null;
+            var dx = 0; 
+            var dy = 0; 
+            var dt = 0; 
+            var dl = 0;
+            function loadFrame() {
+                frm = document.getElementById('topFrame');
+                frm.src = window.dialogArguments.sPage;
+            }
+            function unloadFrame() {
+            }
+		</script>
+	</head>
+	<frameset rows="*" onload="loadFrame();" onunload="unloadFrame();">
+		<frame name="topFrame" id="topFrame" src="">
+	</frameset>
+</html>

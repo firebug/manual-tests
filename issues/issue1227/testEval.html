@@ -1,0 +1,61 @@
+<script language="javascript">
+
+function createFunc() {
+	var name = document.getElementById("funcName").value;
+	var functpl = new Array();
+	for (var i = 0; i < 3; i++) {
+		functpl[i] = name + i + " = new function() {\n this.say = function() {\n alert('this is func " + name + i + "');\nvar x=1;\nvar y=1;\n};\n};";
+	}
+	for (var i = 0; i < 3; i++) {
+		eval(functpl[i]);
+	}
+}
+
+function callFunc() {
+	var name = document.getElementById("funcName").value;
+	eval(name + ".say()");
+}
+
+
+
+function show() {
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = callBack;
+	xmlhttp.open("GET", "loaded.html", true);
+	xmlhttp.setRequestHeader("Cache-Control", "no-cache,must-revalidate");
+	xmlhttp.setRequestHeader("Pragma", "no-cache");
+	xmlhttp.send("");
+
+}
+
+function callBack() {
+
+	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+		var div = document.getElementById("outPan");
+		var text = xmlhttp.responseText;
+		//div.innerHTML = text;
+		var jsPattern = /<script(?:[^>]*?)>([\w\W\r\n]*?)<\/script>/gim;
+		var scripts = new Array();
+		while(result = jsPattern.exec(text)) {
+			scripts[scripts.length] = result[1];
+		}
+		for (var i = 0; i < scripts.length; i++) {
+			try {
+				eval(scripts[i]);
+			} catch(exception){
+				alert(exception);
+			}
+		}
+		createFunc();
+	}
+}
+
+</script>
+<html>
+<input id="funcName" type="text"/>
+<input type="button" value="createFunc" onclick="createFunc()"/>
+<input type="button" value="callFunc" onclick="callFunc()"/>
+<input type="button" value="show" onclick="show()"/>
+<div id="outPan">
+</div>
+</html/>

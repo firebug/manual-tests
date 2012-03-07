@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Issue 2183: Editing a text node with "Show Full Text" off displays cropped text instead of full text</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="https://getfirebug.com/tests/content/templates/default/testcase.css"
+        type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<header>
+    <h1><a href="http://code.google.com/p/fbug/issues/detail?id=2183">Issue 2183</a>:
+        Editing a text node with "Show Full Text" off displays cropped text instead of full text</h1>
+</header>
+<div>
+    <section id="description">
+        <h3>Steps to reproduce</h3>
+        <ol>
+            <li>Open Firebug, select the HTML panel</li>
+            <li>Inspect the text in the green box</li>
+            <li>Make sure "Show Full Text" options is off</li>
+            <li>Click the text in the HTML panel to show up an inline editor</li>
+            <li>The inline editor should display full text (not using ellipses)</li>
+        </ol>
+    </section>
+
+    <div style="border: 1px solid green">
+        <p>\n
+        Editing a text node with Show Full Text off displays cropped text instead of full text        </p>
+    </div>
+
+    <footer>
+        Jan Odvarko, odvarko@gmail.com;
+    </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Issue 5166: Auto-completion for CSS function parameters doesn't work correctly</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+      <link href="https://getfirebug.com/tests/content/templates/default/testcase.css" type="text/css" rel="stylesheet"/>
+      <style type="text/css">
+          #element1 {
+              width: 100px;
+              height: 100px;
+              background: #8C8CFF -moz-linear-gradient(135deg, #788CFF, #B4C8FF);
+          }
+      </style>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=5166">Issue 5166</a>: Auto-completion for CSS function parameters doesn't work correctly</h1>
+        </header>
+        <div>
+            <section id="content">
+                <div id="element1"></div>
+            </section>
+            <section id="description">
+                <h2>No auto-completion, if nothing was entered</h2>
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Switch to the <em>HTML</em> panel and there to the <em>Style</em> side panel</li>
+                    <li>Inspect the blue <code>&lt;div&gt;</code> above</li>
+                    <li>
+                        Inside the <em>Style</em> side panel select <code>135deg</code> of the <code>background</code> property of the <code>#element1</code> rule<br/>
+                        <span class="ok">&rArr; The inline editor appears having <code>135deg</code> selected</span>
+                    </li>
+                    <li>Press <code class="key">Del</code> to remove <code>135deg</code></li>
+                    <li>Press <code class="key">Down</code></li>
+                </ol>
+                <h3>Observed Result</h3>
+                <ul>
+                    <li class="error">The auto-completion doesn't work.</li>
+                </ul>
+                <h3>Expected Result</h3>
+                <ul>
+                    <li>The Auto-completion should show <code>top</code> (or another completion value)</li> 
+                </ul>
+
+                <h2>Wrong auto-completion for different parameters</h2>
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Switch to the <em>HTML</em> panel and there to the <em>Style</em> side panel</li>
+                    <li>Inspect the blue <code>&lt;div&gt;</code> above</li>
+                    <li>
+                        Inside the <em>Style</em> side panel select <code>#788CFF</code> of the <code>background</code> property of the <code>#element1</code> rule<br/>
+                        <span class="ok">&rArr; The inline editor appears having <code>#788CFF</code> selected</span>
+                    </li>
+                    <li>Press <code class="key">Del</code> to remove <code>#788CFF</code></li>
+                    <li>Type <code>t</code></li>
+                </ol>
+                <h3>Observed Result</h3>
+                <ul>
+                    <li class="error">The auto-completion completes to <code>top</code>.</li>
+                </ul>
+                <h3>Expected Result</h3>
+                <ul>
+                    <li>The auto-completion should just use completions, that are valid for the current parameter (in this case it should complete to <code>tan</code>)</li> 
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmx.de</footer>
+        </div>
+    </body>
+</html>

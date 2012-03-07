@@ -1,0 +1,31 @@
+<html>
+<head>
+	
+	<script type="text/javascript">
+	
+		function obj()
+		{
+			var _this = this;
+			var www = 'asdasd';
+			this.ttt = 'asd';
+			this.closure = function()
+			{
+				alert(www);
+				alert(_this.ttt);
+				rrr = 5;
+			}
+			setInterval(this.closure, 5000);
+			
+		}
+		
+		function init()
+		{
+			var a = new obj();	
+		}
+	
+	</script>
+	
+</head>
+<body onload="init()">
+</body>
+</html>

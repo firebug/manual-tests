@@ -1,0 +1,45 @@
+<html>
+<head>
+<script>
+function callDocumentOpen()
+{
+    window.dump("callDocumentOpen begin\n");
+    document.open();
+    document.write("callDocumentOpen");
+    document.close();
+    window.dump("callDocumentOpen end\n");
+}
+function callDifferentDocumentOpen()
+{
+    window.dump("callDifferentDocumentOpen begin\n");
+    document.open();
+    document.write("callDifferentDocumentOpen");
+    document.close();
+    window.dump("callDifferentDocumentOpen end\n");
+}
+function onPageHide()
+{
+    window.dump("onPageHide called\n");
+}
+window.addEventListener('pagehide', onPageHide, true);
+</script>
+</head>
+<body>
+<h1>Test case for issue 2649</h1>
+<p>See Firebug <a href="http://code.google.com/p/fbug/issues/detail?id=2649">issue 2649</a></p>
+<p><button onclick="callDocumentOpen();">Call Document open/write/close</button></p>
+<p><button onclick="callDifferentDocumentOpen();">Call A Different Document open/write/close</button></p>
+<p>Expected:</p>
+<ul>
+<li>callDocumentOpen begin</li>
+<li>onPageHide called</li>
+<li>callDocumentOpen end</li>
+</ul>
+<p>Actual:</p>
+<ul>
+<li>callDocumentOpen begin</li>
+<li>callDocumentOpen end</li>
+</ul>
+
+</body>
+</html>

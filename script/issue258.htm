@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Issue 258: Stepping through a loop places highlight on unexpected line</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      body {
+        background: #ffffff;
+        font: small arial, sans-serif;
+        margin: 5px auto;
+        width: 815px;
+      }
+      h1 {
+        font-size: large;
+        font-weight: normal;
+        padding: 1em 0;
+        text-transform: uppercase;
+      }
+      h2 {
+        font-size: medium;
+        font-weight: normal;
+        padding: 0.5em 0;
+        text-transform: uppercase;
+        margin: 0;
+      }
+      ol {
+        margin:0;
+      }
+      ol li {
+        padding-bottom: 1em;
+      }
+      ul li {
+        padding: 0;
+      }
+      #content {
+        background: #9acbe4;
+        padding: 10px 20px;
+      }
+      #content div {
+        width: 200px;
+        margin: 5px 0;
+        padding: 5px;
+      }
+      #output {
+        width: auto!important;
+        background: #e8f0ff;
+      }
+    </style>
+    <script type="text/javascript">
+      function foo()
+      {
+        debugger;
+        var t = "";
+        for (var i = 0; i < 5; i++)
+        {
+          if (i > 0)
+            t += ",";
+          t += i;
+        }
+      }
+
+      window.addEventListener('load',foo,false);
+    </script>
+  </head>
+  <body>
+    <h1>Issue 258: Stepping through a loop places highlight on unexpected line</h1>
+    <div id="content">
+      <ol>
+        <li>Enable and switch to the Script Panel</li>
+        <li>Reload the page</li>
+        <li>Step through the script using Step Over until execution ends</li>
+        <li>Reload the page again</li>
+      </ol>
+      <ul>
+        <li>Observed: The Execution Pointer points to the <code>&lt;script&gt;</code> tag in line 50</li>
+        <li>Expected: The script should halt at the debugger statement again like the first time</li>
+      </ul>
+    </div>
+  </body>
+</html>

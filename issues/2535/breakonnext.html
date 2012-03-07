@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title></title>
+        <script type="text/javascript">
+            function test() {
+                alert("hey");
+            }
+        </script>
+    </head>
+    <body>
+    <h1>Test case for issue 2535</h1>
+    <pre>
+    What steps will reproduce the problem?
+1.  Open up attached 'breakonnext.html' file in Firebug.
+2.  Enable 'Break on next'
+3. click 'Test' button
+
+What is the expected result? What do you see instead?
+
+I expect the debugger to stop at the 'alert()' function.
+Instead, it does not break
+
+    </pre>
+        <input type="button" onclick="test()" value="test"/>
+    </body>
+</html>

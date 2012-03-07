@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+    <head>
+       <script language="javascript"
+                type="text/javascript"
+                src="foo.js"></script>
+		<script language="javascript"
+                type="text/javascript"
+                src="bar.js"></script>
+
+    </head>
+  <body>
+  <pre>
+  Reported by adam.n.gordon, Aug 02, 2007
+
+What steps will reproduce the problem?
+1. Create an HTML web page with head/body sections.
+2. In the head section include a J/S file but make sure the attributes of
+the script element appear on multiple lines.  E.g make this element span 3
+lines.
+3. Add some content to the body including a script element that defines
+some J/S functions.
+4.  Place a breakpoint in the J/S code and you'll see that in order to this
+the breakpoint on the line you want, you actually have to set the
+breakpoint two lines below (using the example above) because the FireBug
+parser thinks the input spans only one line.
+
+What is the expected output? What do you see instead?
+The expected result is that FireBug detects multiple lines for one element
+in the head element and accounts for this.  FireBug appears to treat
+multiple lines for the contents of an element in the head element as one
+and thus the debugger is off by the number of extra lines beyond 1.
+
+What version of the product are you using? On what operating system?
+1.05, Kubuntu Feisty.
+
+Please provide any additional information below.
+Please see the attached sample files.
+
+
+  </pre>
+    <p>
+      <input type="button"
+             value="Click Me!"
+             onclick="popAlert();"/>
+    </p>
+    <script type="text/javascript">
+      <!--
+
+        function popAlert() {
+
+          var someText = "Hello World";
+          alert(someText);
+        }
+
+      //-->
+    </script>
+  </body>
+</html>

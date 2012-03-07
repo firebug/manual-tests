@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">         
+    <title>Overwriting of RegExp values</title>
+    
+    <script type="text/javascript">
+        function runTest()
+        {
+            re=/_hi(\d+)/;
+            var tiempoInicio="_hi0820";
+            re=/_hi(\d+)/
+            re.exec(tiempoInicio);
+01234567890123456789012345678901234567890
+            var anotherVar=RegExp.$1; // set a breakpoint here
+            console.log("RegExp.$1=", RegExp.$1);
+            console.log("anotherVar=", anotherVar);
+        }
+        window.a = 1;
+    </script>
+</head>
+<body>
+    
+    <a href="javascript:void(runTest());">Run test</a>
+    
+    <ol>
+
+        <li>Run the test and see the console output.</li>
+        <li>Refresh.</li>
+        <li>Set a breakpoint on the indicated line and run the test.</li>
+        <li>Hover the RegExp.$1 (so that Firebug will read the value.)</li>
+        <li>Continue, and note the console output. It will be different.</li>
+    </ol>
+
+    
+</body>
+</html>

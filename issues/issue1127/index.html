@@ -1,0 +1,19 @@
+<html>
+	<head><title> Issue 1127:  	 console fails to load into reload iframe (Frame > Reload Frame)</title>
+	
+	</head>
+	<body>
+		<div> Issue 1127:  	 console fails to load into reload iframe (Frame > Reload Frame)</div>
+		<iframe src="iframe.html" width="400" height="400" frameborder=1></iframe>
+		<pre>
+1. load this page in firefox
+2. firebug console says: "my iframe log statement"
+3. right click in iframe, choose This Frame > Reload Frame
+4. firebug console only has the first one, statement not logged again until you refresh the parent frame 
+(index.html)
+
+zipped example attached. has been a bug since development for FF3 started. very frustrating in large 
+applications. thanks...
+		</pre>
+	</body>
+</html>

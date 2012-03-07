@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>Firebug issue</title>
+</head>
+<body>
+<p>Problem: data-myjsondata attribute on div#problem does not display properly in firebug inspector. Source code however reports it is proper. </p>
+<p>Source Code properly reports the JSON value. Firebug malforms it. Look for value: "79....000" inside div#problem</p>
+<div>
+    <div id='problem' class='someClass' data-myjsondata='{"chart":{"renderTo":"","defaultSeriesType":"line", "zoomType":""},"credits":{"enabled":false},"xAxis":{"gridLineColor":"#C0C0C0","gridLineWidth":0,"title":{"text":"X-axis"},"endOnTick":false,"type":"datetime"},"yAxis":{"gridLineColor":"#C0C0C0","gridLineWidth":1,"title":{"text":"Y-axis"},"endOnTick":true,"type":"linear"},"tooltip":{},"title":{"text":"Type A vs Type B Accuracy"},"series":[{"name":"Type A","data":[{"x":1294617600000,"y":"84.00%"},{"x":1297296000000,"y":"82.00%"},{"x":1299715200000,"y":"79.00%"},{"x":1302393600000,"y":"80.00%"},{"x":1304985600000,"y":"82.00%"},{"x":1307664000000,"y":"81.00%"},{"x":1310256000000,"y":"81.00%"},{"x":1312934400000,"y":"78.00%"},{"x":1315612800000,"y":"85.00%"},{"x":1318204800000,"y":"84.00%"},{"x":1320883200000,"y":"85.00%"},{"x":1323475200000,"y":"86.00%"}]},{"name":"Type B","data":[{"x":1294617600000,"y":"59.00%"},{"x":1297296000000,"y":"57.00%"},{"x":1299715200000,"y":"54.00%"},{"x":1302393600000,"y":"55.00%"},{"x":1304985600000,"y":"57.00%"},{"x":1307664000000,"y":"56.00%"},{"x":1310256000000,"y":"56.00%"},{"x":1312934400000,"y":"53.00%"},{"x":1315612800000,"y":"60.00%"},{"x":1318204800000,"y":"59.00%"},{"x":1320883200000,"y":"60.00%"},{"x":1323475200000,"y":"61.00%"}]}]}'><span>inspect my parent element (#problem)</span></div>
+</div>
+
+
+</body>
+</html>

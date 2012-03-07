@@ -1,0 +1,37 @@
+<html>
+<head>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+<title>Firebug XMLHttpRequest bug test</title>
+</head>
+<body>
+ <form action="ajax.php?execution=e2s1" method="post" name="wizardForm" id="wizardForm" >
+  <div id="wizardPage" style="border:1px solid #37424a;">content</div>
+  <div id="wizardError" />
+  <div><input type="button" value="next" name="next" onclick="onClick();"></div>
+</form>
+<script>
+function onClick()
+{
+    var postData = "_eventId_next=1&amp;";
+
+    var request = new XMLHttpRequest();
+    request.open("POST", "ajax.php?execution=e1s3", true);
+    request.setRequestHeader("Method", "POST");
+    request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    request.setRequestHeader("Content-Length", postData.length);
+
+    request.onreadystatechange = function()
+    {
+        if (request.readyState == 4 && request.status == 200)
+        {
+            var responseElement = document.getElementById("wizardPage");
+            responseElement.innerHTML = request.responseText;
+        }
+    }
+
+    request.send(postData);
+}
+
+</script>
+</body>
+</html>

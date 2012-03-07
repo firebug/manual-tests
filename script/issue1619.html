@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 1619: Option to log function call missing from context menu</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/content/templates/default/testcase.css" type="text/css" rel="stylesheet"/>
+        <script type="text/javascript">
+            function sayHello()
+            {
+                var output = document.getElementById("output");
+                output.style.display = "block";
+                output.textContent = "Hello people!";
+                debugger;
+            }
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=1619">Issue 1619</a>: Option to log function call missing from context menu</h1>
+        </header>
+        <div>
+            <section id="content">
+                <button id="sayHello" onclick="sayHello();">Say hello</button>
+                <section id="output"></section>
+            </section>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Enable the <em>Script</em> and <em>Console</em> panel and switch to the <em>Script</em> panel</li>
+                    <li>Reload the page</li>
+                    <li>
+                        Click the button <em>Say hello</em> above<br/>
+                        &rArr; The debugger should halt at line 13
+                    </li>
+                    <li>
+                        Right-click on <code>sayHello()</code> in line 8<br/>
+                        &rArr; There should be an option <em>Log Calls to "sayHello"</em> in the context menu
+                    </li>
+                    <li>Right-click into the function body (e. g. line 11)</li> 
+                </ol>
+                <h3>Observed result</h3>
+                <ul>
+                    <li>No point <em>Log Calls to "sayHello"</em></li>
+                </ul>
+                <h3>Expected result</h3>
+                <ul>
+                    <li><em>Log Calls to "sayHello"</em> should be shown inside the context menu, because we are inside the function</li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner</footer>
+        </div>
+    </body>
+</html>

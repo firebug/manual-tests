@@ -1,0 +1,28 @@
+<html>
+<head>
+ <script type="text/javascript">
+ var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+ document.write(unescape("%3Cscript src='" + gaJsHost +  "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+ </script>
+
+ <script type="text/javascript">
+ var pageTracker = _gat._getTracker("UA-1234567-0"); /* fake account number */
+ pageTracker._initData();
+ pageTracker._trackPageview();
+ </script>
+
+
+</head>
+<body>
+<h1>Firebug test case from issue 444  Debugger breakpoints don't work in dynamic-loaded scripts. </h1>
+<p>
+<a href="http://code.google.com/p/fbug/issues/detail?id=444">Issue 444</a> claims:
+<blockquote>
+In firebug 1.05, with firebug enabled, this gives an error "_gat is not defined".
+while there is actually no error with firebug disabled, and then the function _gat
+seems to work fine.
+Setting a breakpoint for the nondefined function fails ofcourse.
+</blockquote>
+In Firebug 1.2a25X, I was able to load the test case with out error and the Script panel looks fine to me.
+</body>
+</html>

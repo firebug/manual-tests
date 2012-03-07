@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title>Profiler Export Test</title>
+    <script>
+      console.profile('Starting the profiler');
+      spin(10000);
+      console.profileEnd(); // we would like to export this data
+
+      function spin(count) {
+        for (var i = 0; i < count; i++) {
+          // spin
+        }
+      }
+    </script>
+  </head>
+  <body>
+   <p>Profiler export test case</p>
+  </body>
+</html>

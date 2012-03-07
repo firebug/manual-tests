@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <title>Test Case for Issue #2428</title>
+  <link type="text/css" href="issue2428.css" rel="stylesheet"/>
+  <style>
+      .myStyle2 {
+        background-image: url('http://getfirebug.com/tests/issues/2428/issue2428.png');
+        background-repeat: no-repeat;
+      }
+  </style> 
+</head>
+<body>
+
+<h1>Issue #2428</h1>
+
+<p>This test-case is intended for <a href="http://code.google.com/p/fbug/issues/detail?id=2428">Issue #2428</a>
+- <span class="h3">Image preview not working</span>.
+<br/>
+<i>Jan Odvarko, odvarko@gmail.com</i>
+</p>
+
+<ol>
+<li>Open Firebug and select the HTML panel.</li>
+<li>Select the <i>Style</i> side panel.</li>
+<li>Within the HTML panel click on
+<code style="color:green">&lt;div class="myStyle1"&gt;DIV 1&lt;/div&gt;</code> element.</li>
+<li>The <i>Style</i> panel should show one associated rule <i>myStyle1</i>.</is></li>
+<li>Move mouse cursor over the <i>issue2428.png</i> URL and verify that a preview (tooltip)
+with that image is displayed.</li>
+<li>Now select <code style="color:green">&lt;div class="myStyle2"&gt;DIV 2&lt;/div&gt;</code>
+and again, verify the tooltip in the <i>Style</i> panel.</li>
+</ol>
+
+<div class="myStyle1">DIV 1</div>
+<br/>
+<div class="myStyle2">DIV 2</div>
+ 
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 4738: "Open in new tab" opens wrong url when reusing XMLHttpRequest objects</title>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/content/templates/default/testcase.css"
+            type="text/css" rel="stylesheet"/>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=4738">Issue 4738</a>:
+                "Open in new tab" opens wrong url when reusing XMLHttpRequest objects</h1>
+        </header>
+        <div>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Selecte and enable the Console panel</li>
+                    <li>Reload this page</li>
+                    <li>Right click on the first request <code>http://legoas/path1</code> and pick "Open in New Tab".</li>
+                </ol>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>A new tab with the following URL should be opened:
+                        <code>http://legoas/path1</code>
+                    </li>
+                </ul>
+                <h3>Observed result</h3>
+                <ul>
+                    <li>Tab with <code>http://legoas/path2</code> is opened.</li>
+                </ul>
+            </section>
+            <footer>
+                Jan Odvarko, odvarko@gmail.com
+            </footer>
+        </div>
+    </body>
+
+<script>
+request = new XMLHttpRequest();
+request.open('GET','/path1',true); // Must be a valid path on server!
+request.send(false);
+request.abort();
+request.open('GET','/path2',true); // Must be a valid path on server!
+request.send(false);
+</script>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <title>Test Case for Issue #2667</title>
+</head>
+<body>
+
+<h1>Issue #2667</h1>
+
+<p>This test-case is intended for <a href="http://code.google.com/p/fbug/issues/detail?id=2667">Issue #2667</a>
+- <span class="h3">charset of POST request is always displayed as UTF-8</span>.
+<br/>
+</p>
+
+<ol>
+<li>Open Firebug and enable the Net panel.</li>
+<li>Click on the <code style="color:green">Execute Test</code> button below.</li>
+<li>Observe value of "Content-type" header as displayed by Firebug (request headers):<br/>
+Expected: <code>application/x-www-form-urlencoded; charset=UTF-7</code><br/>
+Actual: <code>application/x-www-form-urlencoded; charset=UTF-8</code><br/>
+</li>
+</ol>
+
+<button id="testButton" onclick="onExecuteTest()">Execute Test</button>
+
+<script type="text/javascript">
+function onExecuteTest()
+{
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "x", true);
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded; charset=UTF-7");
+    xhr.send("");
+}
+</script>
+  
+</body>
+</html>

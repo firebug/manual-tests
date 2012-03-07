@@ -1,0 +1,56 @@
+<html>
+    <script>
+        function exec(fn) {
+            fn();
+        }
+
+        function test()
+
+        {
+
+            console.log("in test()");
+
+            exec(
+
+            function inner()
+
+            {
+
+                console.log("in inner");
+
+            }
+
+            );
+
+        }
+    </script>
+    <body>
+    <pre>
+Issue 979: Firebug adds a hidden breakpoint when adding a breakpoint in a dynamically created function
+
+     Reported by splintor, Today (4 hours ago)
+
+What steps will reproduce the problem?
+1. Open the attached test.htm file
+2. Press F12 to show Firebug
+3. Switch to Script tab and enable it if it is disabled
+4. Add a breakpoint in line 10 (console.log("in inner");)
+5. Click the “test” button in the page
+
+What is the expected output? What do you see instead?
+Firebug debugger should break at line 10. Instead, it first breaks on line
+9, and when pressing F8 to continue, it breaks again in line 10.
+Removing the breakpoint (either by clicking the line number or from the
+breakpoints tab) removes the hidden breakpoint from line 9, but now there
+is one on line 10, so if you now click on the "test" button, the debugger
+breaks at line 10, although there seems to be no breakpoint in the page.
+
+What version of the product are you using? On what operating system?
+FF3.0.1, FB1.2.0b6 on Windows XP
+
+
+
+    </pre>
+        <input type="button" value="test" onclick="test()">
+    </body>
+</html>

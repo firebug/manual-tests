@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>memory usage test case</title>
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/dojo/1.5/dijit/themes/claro/claro.css" />
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/dojo/1.5/dojox/grid/resources/Grid.css" />
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/dojo/1.5/dojox/grid/resources/claroGrid.css" />
+  <script src="http://ajax.googleapis.com/ajax/libs/dojo/1.5/dojo/dojo.xd.js" type="text/javascript" djConfig="parseOnLoad:true, isDebug: true"></script>
+  <script type="text/javascript">
+   dojo.require("dojox.data.CsvStore");
+   dojo.require("dojox.grid.DataGrid");
+  </script>
+ </head>
+ <body class="claro">
+  <!-- example taken from http://docs.dojocampus.org/dojox/grid/DataGrid, simple datagrid -->
+  <span dojoType="dojox.data.CsvStore" jsId="store1" url="movies.csv">
+	</span>
+	<table dojoType="dojox.grid.DataGrid" store="store1" query="{ Title: '*' }"
+	clientSort="true" style="width: 100%; height: 100%;" rowSelector="20px">
+		<thead>
+			<tr>
+				<th width="300px" field="Title">
+					Title of Movie
+				</th>
+				<th width="50px">
+					Year
+				</th>
+			</tr>
+			<tr>
+				<th colspan="2">
+					Producer
+				</th>
+			</tr>
+		</thead>
+	</table>
+ </body>
+</html>

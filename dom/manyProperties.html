@@ -1,0 +1,18 @@
+<html>
+<head>
+<script>
+function createALotOfProperties()
+{
+    window.aLot = {};
+    for (var i = 1; i < 100; i++)
+    {
+        window.aLot['weWantThisPropertyNameToBeLong_'+i] = {aname: "aValue"+i};
+    }
+}
+</script>
+</head>
+<body onload="createALotOfProperties();">
+<h1>Firebug test case for an object with a lot of properties</h1>
+Check the DOM panel, look for 'aLot'.
+</body>
+</html>

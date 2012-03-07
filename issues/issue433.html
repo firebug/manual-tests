@@ -1,0 +1,52 @@
+<html>
+<head>
+<title></title>
+
+<script type="text/javascript">
+
+function ondivmouseout(e) {
+    var relatedTarget = e.relatedTarget;
+    debugger;
+}
+
+function onpageload() {
+    document.getElementById('innerdiv').onmouseout = ondivmouseout;
+}
+
+window.onload = onpageload;
+
+</script>
+
+</head>
+
+<body>
+
+
+<pre>
+Reported by cory.burkhardt, Jan 18, 2008
+
+What steps will reproduce the problem?
+1. Open the attached HTML file and enable Firebug.
+2. Move the mouse over the green div and then onto the red.  This should
+open the debugger inside of a mouseout event handler.
+3. Add a watch for e.relatedTarget and relatedTarget.
+
+What is the expected output? What do you see instead?
+Firebug should report e.relatedTarget as referencing the outer div, but it
+is reported as being null.  On the previous line executed, relatedTarget
+was set equal to e.relatedTarget, and the watch for this variable displays
+the proper reference.  Obviously, the reported value for e.relatedTarget is
+incorrect.
+
+What version of the product are you using? On what operating system?
+I tried this on the current Firebug release (1.1.0b10) and also downloaded
+and installed the latest trunk (1.1.0b11).  I have Firefox 2.0.0.11 and
+Vista Business.  I also verified this on another machine with XP Pro.
+
+<div id="outerdiv" style="position: absolute; width: 500px; height: 500px; background-color: red; left: 0; right: 0;">
+    <div id="innerdiv" style="position: absolute; width: 300px; height: 300px; background-color: green; left: 100px; top: 100px;"></div>
+</div>
+
+</pre>
+</body>
+</html>

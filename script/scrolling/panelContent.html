@@ -1,0 +1,121 @@
+<html>
+<head>
+<style>
+body {
+    margin: 0px;
+    font-size: 11px;
+}
+#panelNode {
+   width: 100%;
+   height: 100%;
+   overflow: hidden;
+}
+/* Mockup for source in script panel */
+#sourceBox {
+   height: 100%;
+   overflow: scroll;
+   position: absolute;
+   width: 100%;
+}
+.line {
+    height: 14;
+}
+#topPadding {
+   height: 1330;  /* unrendered lines * line height = 94 * 14 */
+}
+#bottomPadding {
+   height: 0;
+}
+/* Mock up for balloon notification */
+.balloon {
+    z-index: 100; /* On top of source lines */
+    position: absolute; /* movable */
+    margin-top: 0; /* flush to top setting */
+    font-family: Lucida Grande, sans-serif; /* distinctive font? */
+    font-size: 11px;
+    color: black;
+    background-color: #FFB366;
+    top: 1343px;  /* invisible lines * line height - 1px = 94 * 14 - 1*/
+    white-space: nowrap; /* keep all of the text on one line */
+    border: 1px solid #226679;
+    height: 16px; /* Size of close box */
+}
+#breakText {
+   display: inline;
+   margin-left: 18px;  /* space for the close img. */
+}
+.breakType {
+   font-weight: bold;
+}
+#closeBox {
+   display: inline;
+   position: absolute; /* If I mix the closeBox and breaktext, 5 pixels come from somewhere on to offsetTop */
+}
+#closeBox img {
+   display: inline;
+}
+/* from panel.css */
+.closeButton {
+    width: 16px;
+    height: 16px;
+    background: url(chrome://firebug/skin/win/close.png) no-repeat 0 0;
+}
+
+.closeButton:hover {
+    background-image: url(chrome://firebug/skin/win/closeHover.png);
+}
+
+.closeButton:hover:active {
+    background-image: url(chrome://firebug/skin/win/closeActive.png);
+}
+</style>
+<script>
+window.addEventListener('load', function scrollit()
+{
+    // Simulate scrolling
+    var sourceBox = document.getElementById('sourcebox');
+    sourceBox.scrollTop = 96 * 14;
+
+    // Position the breakNotification box over the first line of source.
+    var firstLine = document.getElementById('firstLine');
+    var breakNotification = document.getElementById('breakNotification');
+    breakNotification.style.top = firstLine.offsetTop - 1; // XXXjjb I don't undertstand the one pixel offset
+}, true);
+</script>
+</head>
+<body>
+<div id="panelNode">
+ <div id="sourcebox">
+  <div id="topPadding">
+  </div>
+  <div id="viewport">
+  <div id="breakNotification" class='balloon' > <!-- This needs to be in viewport so the scroll bar reveals long messages -->
+    <div id="closeBox">
+      <img class="closeButton" src="chrome://firebug/content/blank.gif">
+    </div>
+  <div id="breakText">
+    <span class="breakType">Property change:</span> _testProperty: "Some kind of previous value" -> 1298962978497
+  </div>
+  </div>
+  <div class="line">95 offscreen</div>
+  <div class="line" id="firstLine">96 1</div>
+  <div class="line">97 2</div>
+  <div class="line">98 3</div>
+  <div class="line">99 4</div>
+  <div class="line">100 5</div>
+  <div class="line">101 6</div>
+  <div class="line">102 7 </div>
+  <div class="line">103  8</div>
+  <div class="line">104  9 </div>
+  <div class="line">105  10</div>
+  <div class="line">106  11</div>
+  <div class="line">107  12</div>
+  <div class="line">108  13</div>
+  <div class="line">109  14</div>
+  </div>
+  <div id="bottomPadding">
+  </div>
+ </div>
+</div>
+</body>
+</html>

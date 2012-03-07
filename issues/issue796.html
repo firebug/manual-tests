@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>
+ Issue 796: console.trace() always report "failed to stack trace with any frames"</title>
+        <script type="application/javascript;version=1.7">
+var foo = function() { console.trace(); };
+var bar = function() { foo(); };
+bar();
+</script>
+
+    </head>
+    <body>
+        <h1>Issue 796: console.trace() always report "failed to stack trace with any frames"</h1>
+        <pre>
+Reported by your.sheepy, Today (17 hours ago)
+
+What steps will reproduce the problem?
+1. Create a web page that reads:
+
+&lang;html>&lang;body>&lang;script type="application/javascript;version=1.7">
+var foo = function() { console.trace(); };
+var bar = function() { foo(); };
+bar();
+&lang;/script>&lang;/body>&lang;/html>
+
+2. load the page and check console.
+
+
+What is the expected output? What do you see instead?
+
+Expected output: stack trace showing foo() and bar(), with file, line, and
+links
+Instead I see: "Firebug failed to get stack trace with any frames" in red
+
+
+What version of the product are you using? On what operating system?
+
+Firebug 1.2b3, Firefox 3 rc 3, Win Server 2003 SP 2
+
+
+Please provide any additional information below.
+
+Worked fine in FB 1.05 on Fx 2.0.0.14.
+
+Comment 1 by your.sheepy, Today (17 hours ago)
+
+Firebug 1.1.0b11 on FB ends up in "console is not defined" error, with functional
+error stack trace.
+
+
+        </pre>
+
+        <hr />
+        <p></p>
+    </body>
+</html>

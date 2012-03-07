@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 4.01 Transitional//EN" "http://www.w3.org/TR/xhtml4/DTD/xhtml1-transitional.dtd">
+<html id="topHTML" lang="en-US" xml:lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script language="javascript" type="text/javascript">
+            //        try{
+            var awidowx;
+            var _vpx; 
+            function wmsg(_zmsg){
+                _vpx = document.getElementById("px").innerHTML = _zmsg;
+            }
+            function _opwd(){
+                wmsg('Press F8 or F10s until reach br2. This mesage should be present while at br2');
+                var br1 = 'Break point before open'; 
+                awidowx =  window.open("http://freecellgui.com/sitemap.html");
+                var br2 = 'Break point after open (br2)'; 
+                dx ='Set after br2';
+                wmsg('After the ' + br2);
+            }
+            function _close(){
+                awidowx.close();
+                wmsg('Value of dx ='+ dx + ',  Click Open to repeat');
+            }
+            var dx = 'Click Open after setting breakpoint on var br1 and br2';
+        </script>
+    </head>
+    <body onload="wmsg(dx);">
+
+        <p id="px">Wait For Instructions</p>
+        <form>
+            <input type="button" value="Click to Open!" onclick="_opwd()" />
+            <input id="eb" type="button" value="Click to Close!" onclick="_close()" />
+        </form>
+    </body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://
+www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html" />
+<script type="text/javascript">
+function typo() { alert('Typo'; }
+function foo() { alert('Hello'); }
+// According to http://groups.google.com/group/firebug/browse_thread/thread/86515f9c931d9694:
+// Firebug error: 12 foo is not defined
+// IE8 error (without Developer Tools): 6 Expected ')'
+</script>
+</head>
+<body>
+<p><script type="text/javascript">foo();</script></p>
+<p><img src="FirebugErrorShockResults.png"></img></p>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<html><head>
+<title>E4X Inspection fails in FB 1.4.0</title>
+
+
+<script type="text/javascript">
+function doOnLoad(event)
+{
+	var aE4X = <one><two>hi</two></one>;
+	var two = aE4X; // set breakpoint here and mouseover aE4X
+
+
+	var content = "";
+	content += ('<textarea>' + aE4X.toString() + '</textarea>');
+/*
+	var props = "";
+	for (var p in aE4X)
+	    props += p + "="+ aE4X[p]+"  ";
+
+	content += ('<textarea>' + props + '</textarea>');
+	content += ('<textarea>' + "typeof: "+typeof(aE4X) + '</textarea>');
+	content += ('<textarea>' + "prototype: "+typeof(aE4X.prototype) + '</textarea>');
+
+	aE4X.prototype = new Object();
+	content += ('<textarea>' + aE4X.toString() + '</textarea>');
+
+	aE4X.foo = 5;
+	content += ('<textarea>' + aE4X["foo"] + '</textarea>');
+
+	aE4X.constructor = new Object();
+	content += ('<textarea>' + aE4X.toString() + '</textarea>');
+*/
+	var elt = document.getElementById('result');
+	elt.innerHTML = content;
+
+}
+window.addEventListener("load", doOnLoad, true);
+</script>
+</head>
+<body>
+<h1> Test case for issue 2114</h1>
+<pre>
+var aE4X = <one><two>hi</two></one>; // set a break point on line 8, Firebug is ok.
+// then single step. Error is " is not a function"
+var two = aE4X; // set breakpoint here and mouseover aE4X
+</pre>
+
+<div id='result'>Replaced during test</div>
+</body></html>

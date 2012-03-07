@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <title>Test Case for Issue #2788</title>
+  <script src="issue2788-long-js-1.php"></script>
+  <script src="issue2788-js.php"></script>
+  <script src="issue2788-long-js-2.php"></script>
+  <script src="issue2788.js"></script>
+  <script>
+      function test()
+      {
+          return "test"
+      }
+  </script>
+</head>
+<body>
+
+<h1>Issue #2788</h1>
+
+<p>This test-case is intended for <a href="http://code.google.com/p/fbug/issues/detail?id=2788">Issue #2788</a>
+- <span class="h3">Script panel files get truncated</span>.
+<br/>
+<i>Jan Odvarko, odvarko@gmail.com</i>
+</p>
+
+<ol>
+<li>Open Firebug and enable the Script panel.</li>
+<li>Open the issue2788-long-js-2.php file from the location list.</li>
+<li>Verify that the file issue2788-long-js-2.php has 70517 lines.</li>
+<li>Reload the page.</li>
+<li>Verify that the file issue2788-long-js-2.php has 70517 lines.</li>
+<li>Reload the page.</li>
+<li>Verify that the file issue2788-long-js-2.php has 70517 lines.</li>
+</ol>
+
+<i>issue2788.html: 43</i><br/>
+<i>issue2788.js: 6068</i><br/>
+<i>issue2788-js.php: 3326</i><br/>
+<i>issue2788-long-js-2.php: 70517</i><br/>
+<i>issue2788-long-js-1.php: 3618</i><br/>
+
+</body>
+</html>

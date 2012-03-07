@@ -1,0 +1,43 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Test case for Firebug issue 496</title>
+<script type="text/javascript">
+function test() {
+    var v10 = 10;
+    var v20 = 20;
+    var v30 = 30;
+
+    if (v10 >= v20) {
+        if (v10 >= v30)
+            console.log(v10+">="+v20+" and "+v10+">="+v30);
+    }
+    else {
+      if (v20 >= v10) {
+        if (v20 >= v30) {  // pc = 94, line 17, then pc jumps to 134, but reports line 18 BUG
+            console.log(v20+">="+v10+" and "+v20+">="+v30);  // line 18
+        }
+      }
+      else if (v30 >= v10) {
+          if (v30 >= v20) {
+              console.log(v30+">="+v10+" and "+v30+">="+v20);
+        }
+      }
+    }
+}
+
+</script>
+</head>
+
+<body onload="test();">
+<span id="myspan">testing</span>
+<pre>
+1. Set a breakpoint at line 7 ( v10 = 10 )
+2. Step into each line of code
+3. When it gets to line 17 it should not appear to execute line 18 because
+the condition returns false
+
+The line table must be wrong, pc 134 comes back as line 18, but it should be 26 or so.
+</pre>
+</body>
+</html>

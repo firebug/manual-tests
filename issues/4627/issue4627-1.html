@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 4627: String.prototype methods not showing up</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/content/templates/default/testcase.css"
+            type="text/css" rel="stylesheet"/>
+
+        <script type="text/javascript">
+        function circle(){}
+        var smallcircle = new circle()
+        smallcircle.pi = 3.14159;
+        </script>
+
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=4627">Issue 4627</a>:
+                String.prototype methods not showing up</h1>
+        </header>
+        <div>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Switch to the <em>DOM</em> panel</li>
+                    <li>
+                        Inside the <em>DOM</em> panel's options menu:
+                        <ul>
+                            <li>ON Show Own Properties Only</li>
+                            <li>ON Show Enumerable Properties Only</li>
+                            <li>ON Show User-defined Properties</li>
+                            <li>ON Show User-defined Functions</li>
+                       </ul>
+                    </li>
+                    <li>Check panel content: <code>circle</code> and <code>smallcircle</code>
+                        must be visible</li>
+                    <li>OFF Show Own Properties Only</li>
+                    <li>Check panel content: <code>circle</code> and <code>smallcircle</code>
+                        must be visible</li>
+                    <li>OFF Show Enumerable Properties Only</li>
+                    <li>Check panel content: <code>circle</code> and <code>smallcircle</code>
+                        must be visible</li>
+                </ol>
+            </section>
+            <footer>Jan Odvarko, odvarko@gmail.com</footer>
+        </div>
+    </body>
+</html>

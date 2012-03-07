@@ -1,0 +1,13 @@
+#content {
+  min-width: none;
+  max-width: none;
+  min-height: none;
+  max-height: none;
+  background: #9acbe4;
+  padding: 10px 20px;
+}
+
+#content div div {
+  margin: 5px 0;
+  background-color: #ff8c8c!important;
+}

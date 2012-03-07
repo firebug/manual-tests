@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <!--
+        STEPS TO CREATE A TEST CASE:
+        1. Replace "4732" by number of your issue
+        2. Replace "Issue summary" by title of your issue
+        3. Put inspectable elements, form fields etc. into the "content" section
+        4. Add the exact steps to reproduce your issue under "Steps to reproduce"
+        5. Describe the currently seen result under "Observed result"
+        6. Describe what you would expect to see under "Expected result"
+        7. Add your contact information
+        8. Remove all template comments
+
+        Note: Make sure, the URL to testcase.css is https://getfirebug.com/tests/content/templates/default/testcase.css
+     -->
+    <head>
+        <!--
+            Add the issue number and title here. 
+         -->
+        <title>Issue 4732: Issue summary</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/content/templates/default/testcase.css" type="text/css" rel="stylesheet"/>
+        <script>
+        var aNestyArray = ["toplevel", [["var", [["main", ["function", null, [], [["var", [["foo", ["new", ["name", "Foo"], [["function", null, [], [["stat", ["assign", true, ["dot", ["name", "this"], "welcome"], ["string", "Hi!"]]]]]]]]]], ["var", [["bar", ["new", ["name", "Bar"], [["string", "GoodBye."]]]]]], ["stat", ["call", ["dot", ["name", "console"], "log"], [["dot", ["name", "foo"], "welcome"]]]], ["stat", ["call", ["dot", ["name", "console"], "log"], [["dot", ["name", "bar"], "message"]]]]]]]]], ["var", [["Foo", ["call", ["function", null, [], [["var", [["instances"]]], ["return", ["function", null, ["initializer"], [["stat", ["unary-postfix", "++", ["name", "instances"]]], ["stat", ["call", ["dot", ["name", "initializer"], "apply"], [["name", "this"]]]]]]]]], []]]]], ["var", [["Baz", ["assign", true, ["name", "Bar"], ["function", null, ["msg"], [["stat", ["assign", true, ["dot", ["name", "this"], "message"], ["name", "msg"]]]]]]]]]]];
+        console.log("and this isn't the half of it: ", aNestyArray);
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=4732">Issue 4732</a>: Issue summary</h1>
+        </header>
+        <div>
+            <section id="content">
+                <!--
+                    All inspectable elements, form fields etc. needed to execute the test should be placed here.
+                    If you generate output via JavaScript, put it into <section id="output"></section>.
+                    If you don't need any content, you can remove the "content" section.
+                 -->
+            </section>
+            <section id="description">
+                <!--
+                    The steps to reproduce the test case should be described here in detail.
+                 -->
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open this web page</li>
+                    <li>Open Firebug on Console panel</li>
+                    <li>Reload </li>
+                </ol>
+                <h3>Observed result</h3>
+                <pre>
+                    and this isn't the half of it: ["toplevel", [["var", [["main", ["function", null, [], [["var", [["foo", ["new", ["name", "Foo"], [["function", null, [], [["stat", ["assign", true, ["dot", ["name", "this"], "welcome"], ["string", "Hi!"]]]]]]]]]], ["var", [["bar", ["new", ["name", "Bar"], [["string", "GoodBye."]]]]]], ["stat", ["call", ["dot", ["name", "console"], "log"], [["dot", ["name", "foo"], "welcome"]]]], ["stat", ["call", ["dot", ["name", "console"], "log"], [["dot", ["name", "bar"], "message"]]]]]]]]], ["var", [["Foo", ["call", ["function", null, [], [["var", [["instances"]]], ["return", ["function", null, ["initializer"], [["stat", ["unary-postfix", "++", ["name", "instances"]]], ["stat", ["call", ["dot", ["name", "initializer"], "apply"], [["name", "this"]]]]]]]]], []]]]], ["var", [["Baz", ["assign", true, ["name", "Bar"], ["function", null, ["msg"], [["stat", ["assign", true, ["dot", ["name", "this"], "message"], ["name", "msg"]]]]]]]]]]]
+                </pre>
+                <h3>Expected result</h3>
+                See the screen shot from Web Inspector as one alternative.
+            </section>
+            <footer>
+                <!--
+                    Your name and your email address (or other contact information) should be placed here.
+                    This is important in the case we need to contact you for further reference. 
+                 -->
+                &lt;johnjbarton&gt;, &lt;email address&gt;
+            </footer>
+        </div>
+    </body>
+</html>

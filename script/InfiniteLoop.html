@@ -1,0 +1,53 @@
+<html>
+<head>
+</head>
+<body>
+<pre>
+Reported by txprog, Feb 20 (5 days ago)
+
+Hi everyone,
+
+Firefox 3.0b3 crash with a infinite recursive loop in javascript, with
+firebug enabled.
+Firefox don't crash if firebug is disabled.
+
+You can test with file attached to this bug !
+
+Cheers,
+
+++tito;
+
+    loop.html
+81 bytes Download
+Delete comment
+Comment 1 by johnjbar...@johnjbarton.com, Feb 20 (5 days ago)
+
+Thanks tito, but I need to know what version of firebug, Firefox->Tools->Addons->Firebug
+
+Delete comment
+Comment 2 by johnjbar...@johnjbarton.com, Feb 21 (4 days ago)
+
+I'm going to mark this as 1.05 meaning I'll eventually mark it WONTFIX unless I hear
+that its Firebug 1.1.
+
+Please report FF3 crashes to Mozilla bugzilla, see
+http://groups.google.com/group/firebug/web/faq-about-firebug
+
+Cc: johnjbar...@johnjbarton.com
+Labels: testcase 1.05 FF3
+Comment 3 by dolske, Today (19 minutes ago)
+
+I see this on FF3 with FB 1.2.
+
+Looks like it's https://bugzilla.mozilla.org/show_bug.cgi?id=303821
+</pre>
+</body>
+<script type="text/javascript">
+    <!--
+function a()
+{
+    a();
+}
+a();
+    -->
+</script>

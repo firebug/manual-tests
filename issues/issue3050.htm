@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Issue 3050: Add "Persist" button to HTML, CSS and DOM panel for keeping changes after a page reload</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      body {
+        background: #ffffff;
+        font: small arial, sans-serif;
+        margin: 5px auto;
+        width: 815px;
+      }
+      h1 {
+        font-size: large;
+        font-weight: normal;
+        padding: 1em 0;
+        text-transform: uppercase;
+      }
+      h2 {
+        font-size: medium;
+        font-weight: normal;
+        padding: 0.5em 0;
+        text-transform: uppercase;
+        margin: 0;
+      }
+      ol {
+        margin:0;
+      }
+      ol li {
+        padding-bottom: 1em;
+      }
+      ul li {
+        padding: 0;
+      }
+      #content {
+        background: #9acbe4;
+        padding: 10px 20px;
+      }
+      #content div {
+        width: 100%;
+        margin: 5px 0;
+        padding: 5px;
+        background: #e8f0ff;
+      }
+    </style>
+    <script type="text/javascript">
+      <!--
+      var text = 'Hello everybody!';
+
+      function saySomething() {
+        alert(text);
+      }
+
+      function init() {
+        document.getElementById('button').addEventListener('click',saySomething,false);
+      }
+
+      window.addEventListener('load',init,false);
+      //-->
+    </script>
+  </head>
+  <body>
+    <h1>Issue 3050: Add "Persist" button to HTML, CSS and DOM panel for keeping changes after a page reload</h1>
+    <div id="content">
+      <div><button id="button">Say something</button></div>
+      <h2>Persistent HTML changes</h2>
+      <ol>
+        <li>Inspect the button</li>
+        <li>Inside the HTML Panel change the text content of the button to <code>xyz</code></li>
+        <li>Reload the page</li>
+        <li>Have a look at the button</li>
+      </ol>
+      <ul>
+        <li><strong>Observed:</strong> The changes are gone and there is no option for letting the changes persist</li>
+        <li><strong>Expected:</strong> There should be a persist option like in the Net Panel, which keeps the changes after reload</li>
+      </ul>
+      <h2>Persistent CSS changes</h2>
+      <ol>
+        <li>Inspect the DIV element containing the button</li>
+        <li>Switch to the CSS Panel/Style Side Panel</li>
+        <li>Change the background color of the style <code>#content div</code> to <code>#ff0000</code></li>
+        <li>Reload the page</li>
+        <li>Have a look at the background color of the style <code>#content div</code></li>
+      </ol>
+      <ul>
+        <li><strong>Observed:</strong> The changes are gone and there is no option for letting the changes persist</li>
+        <li><strong>Expected:</strong> There should be a persist option like in the Net Panel, which keeps the changes after reload</li>
+      </ul>
+      <h2>Persistent DOM changes</h2>
+      <ol>
+        <li>Click the button <code>Say something</code> (<code>Hello everybody!</code> will be displayed)</li>
+        <li>Switch to the DOM Panel</li>
+        <li>Change the variable <code>text</code> to <code>Hello Firebug team!</code></li>
+        <li>Click the button <code>Say something</code> again (<code>Hello Firebug team!</code> will be displayed)</li>
+        <li>Reload the page</li>
+        <li>Have a look at the <code>text</code> variable resp. click the <code>Say something</code> button again</li>
+      </ol>
+      <ul>
+        <li><strong>Observed:</strong> The changes are gone and there is no option for letting the changes persist</li>
+        <li><strong>Expected:</strong> There should be a persist option like in the Net Panel, which keeps the changes after reload</li>
+      </ul>
+    </div>
+  </body>
+</html>

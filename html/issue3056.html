@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 3056: Option for switching between different CSS media types in HTML panel</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/content/templates/default/testcase.css" type="text/css" rel="stylesheet"/>
+        <style type="text/css">
+        @media screen {
+            #onScreen + p {
+                display: none;
+            }
+        }
+        </style>
+        <style type="text/css" media="print">
+        #onScreen, #description {
+            display: none;
+        }
+
+        #onScreen + p {
+            display: block;
+        }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=3056">Issue 3056</a>: Option for switching between different CSS media types in HTML panel</h1>
+        </header>
+        <div>
+            <section id="content">
+                <p id="onScreen">This text is just shown on screen.</p>
+                <p>This text is just shown when printing the page. No other description should be displayed.</p>
+            </section>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Switch to the <em>HTML</em> panel and there to the <em>Style</em> side panel</li>
+                    <li>Inspect the first <code>&lt;p&gt;</code> (<code>#onScreen</code>)</li>
+                    <li>Select <em>print</em> from the Media Menu (not existing yet)</li>
+                </ol>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>
+                        The page display needs to be updated:<br/>
+                        <code>#onScreen</code> and <code>#description</code> should be hidden, the second <code>&lt;p&gt;</code>
+                        (<code>This text is just shown when printing the page. No other description should be displayed.</code>) should be shown
+                    </li>
+                    <li>
+                        The display of the elements inside the <em>HTML</em> panel needs to be updated:<br/>
+                        <code>#onScreen</code> and <code>#description</code> should be brightened up, the second <code>&lt;p&gt;</code>
+                        (<code>This text is just shown when printing the page. No other description should be displayed.</code>) should be shown normally
+                    </li>
+                    <li>
+                        The display of the styles inside the <em>Style</em> and <em>Computed</em> side panel needs to be updated:<br/>
+                        The following rule should be shown inside the <em>Style</em> side panel:
+<code>
+#onScreen, #description {
+    display: none;
+}
+</code>
+                        The <code>display</code> property inside the <em>Computed</em> side panel should be set to <code>none</code>.
+                    </li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmx.de</footer>
+        </div>
+    </body>
+</html>

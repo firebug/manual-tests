@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Issue 3530: fixed headers for profile</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      body {
+        background: #ffffff;
+        font: small arial, sans-serif;
+        margin: 5px auto;
+        width: 815px;
+      }
+      h1 {
+        font-size: large;
+        font-weight: normal;
+        padding: 1em 0;
+        text-transform: uppercase;
+      }
+      h2 {
+        font-size: medium;
+        font-weight: normal;
+        padding: 0.5em 0;
+        text-transform: uppercase;
+        margin: 0;
+      }
+      ol {
+        margin:0;
+      }
+      ol li {
+        padding-bottom: 1em;
+      }
+      ul li {
+        padding: 0;
+      }
+      #content {
+        background: #9acbe4;
+        padding: 10px 20px;
+      }
+      #content div {
+        width: 200px;
+        margin: 5px 0;
+        padding: 5px;
+      }
+      #output {
+        width: auto!important;
+        background: #e8f0ff;
+      }
+    </style>
+    <script type="text/javascript">
+      <!--
+      function function1() { }
+      function function2() { }
+      function function3() { }
+      function function4() { }
+      function function5() { }
+      function function6() { }
+      function function7() { }
+      function function8() { }
+      function function9() { }
+      function function10() { }
+
+      function createFunctionCalls() {
+        var calls = 100;
+
+        for(var i=0, functionNo=0; i<calls; i++) {
+          functionNo = 1 + Math.round(Math.random() * 9);
+
+          window['function' + functionNo]();
+        }
+      }
+
+      function init() {
+        document.getElementById('createFunctionCalls').addEventListener('click', createFunctionCalls, false);
+      }
+
+      window.addEventListener('load', init, false);
+      //-->
+    </script>
+  </head>
+  <body>
+    <h1>Issue 3530: fixed headers for profile</h1>
+    <div id="content">
+      <div id="output">
+        <button id="createFunctionCalls">Create function calls</button>
+      </div>
+      <ol>
+        <li>Enable and switch to the Console Panel</li>
+        <li>Reload the page</li>
+        <li>Click <em>"Profile"</em> in the Panel Toolbar</li>
+        <li>Click <em>"Create function calls"</em></li>
+        <li>Click <em>"Profile"</em> again</li>
+        <li>Make sure the Firebug window is small enough, so that you have to scroll to see all profile entries</li>
+      </ol>
+      <ul>
+        <li><strong>Observed:</strong> No possibility to scroll the profile data (though there's a deactivated scrollbar shown), but just the while Console Panel &rArr; headers are not visible anymore when scrolling down</li>
+        <li><strong>Expected:</strong> Profile table should be scrollable and it's headers should stay fix at the top</li>
+      </ul>
+    </div>
+  </body>
+</html>

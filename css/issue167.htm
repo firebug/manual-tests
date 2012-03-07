@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Issue 167: CSS display error with specific DOCTYPE</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      body {
+        background: #ffffff;
+        font: small arial, sans-serif;
+        margin: 5px auto;
+        width: 815px;
+      }
+      h1 {
+        font-size: large;
+        font-weight: normal;
+        padding: 1em 0;
+        text-transform: uppercase;
+      }
+      h2 {
+        font-size: medium;
+        font-weight: normal;
+        padding: 0.5em 0;
+        text-transform: uppercase;
+        margin: 0;
+      }
+      ol {
+        margin:0;
+      }
+      ol li {
+        padding-bottom: 1em;
+      }
+      ul li {
+        padding: 0;
+      }
+      #content {
+        background: #9acbe4;
+        padding: 10px 20px;
+      }
+      #output {
+        width: auto!important;
+        margin: 5px 0;
+        padding: 5px;
+        background: #e8f0ff;
+        font-size: 6px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Issue 167: CSS display error with specific DOCTYPE</h1>
+    <div id="content">
+      <div id="output">
+        <p>Text having the minimum font size assigned</p>
+      </div>
+      <ol>
+        <li>Change the minimum font size to 20 via Tools->Options->Content->Font &amp; Color->Advanced->Minimum Font Size</li>
+        <li>Inspect the text above</li>
+        <li>Set the options "Show User Agent CSS" and "Expand Shorthand Properties" for the Style Side Panel</li>
+        <li>Inside the Style Side Panel have a look at the font size</li>
+      </ol>
+      <ul>
+        <li><strong>Observed:</strong> The font size is shown as <code>6px</code> inherited from the <code>#output</code> style</li>
+        <li><strong>Expected:</strong> The minimum font size set via the options should be shown as used</li>
+      </ul>
+    </div>
+  </body>
+</html>

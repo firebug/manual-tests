@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Issue 905: Stepping over a function: return is confusing</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      body {
+        background: #ffffff;
+        font: small arial, sans-serif;
+        margin: 5px auto;
+        width: 815px;
+      }
+      h1 {
+        font-size: large;
+        font-weight: normal;
+        padding: 1em 0;
+        text-transform: uppercase;
+      }
+      h2 {
+        font-size: medium;
+        font-weight: normal;
+        padding: 0.5em 0;
+        text-transform: uppercase;
+        margin: 0;
+      }
+      ol {
+        margin:0;
+      }
+      ol li {
+        padding-bottom: 1em;
+      }
+      ul li {
+        padding: 0;
+      }
+      #content {
+        background: #9acbe4;
+        padding: 10px 20px;
+      }
+      #content div {
+        width: 200px;
+        margin: 5px 0;
+        padding: 5px;
+      }
+      #output {
+        width: auto!important;
+        background: #e8f0ff;
+      }
+    </style>
+    <script type="text/javascript">
+      <!--
+      function getFirstValue() {
+        return 3;
+      }
+
+      function getSecondValue() {
+        return 5;
+      }
+
+      function summarize(addend1,addend2) {
+        return addend1 + addend2;
+      }
+
+      function init() {
+        debugger;
+        var sum = summarize(getFirstValue(),getSecondValue());
+
+        document.getElementById('output').innerHTML = sum;
+      }
+
+      window.addEventListener('load',init,false);
+      //-->
+    </script>
+  </head>
+  <body>
+    <h1>Issue 905: Stepping over a function: return is confusing</h1>
+    <div id="content">
+      <div id="output">
+      </div>
+      <ol>
+        <li>Enable and switch to the Script Panel</li>
+        <li>Reload the page</li>
+        <li>Use "Step Over"</li>
+        <li>Use "Step Into"</li>
+        <li>Use "Step Out"</li>
+        <li>Repeat steps 4 and 5 two times</li>
+      </ol>
+      <ul>
+        <li><strong>Observed:</strong> You'll always land on line 66 again, but there's no indication what happened</li>
+        <li><strong>Expected:</strong> Execution would be easier to follow, if the currently executed function would be highlighted in the debugger</li>
+      </ul>
+    </div>
+  </body>
+</html>

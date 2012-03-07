@@ -1,0 +1,35 @@
+<html>
+<head>
+<script>
+function addBorderTopStyleThenGetBorderTop()
+{
+    var p = document.getElementById("borderTopValue");
+    var s = p.style;
+
+    s.setProperty("border-top-style","dashed", "");  // simulate user input border-top-style
+    var borderTopStyleValue = s.getPropertyValue("border-top-style");
+    var borderTopValue = s.getPropertyValue("border-top");
+    p.innerHTML= "border-top-style: "+borderTopStyleValue+"; border-top: "+borderTopValue;
+    // One kind YES/NO test
+    if (borderTopValue != borderTopStyleValue) dump("CSS Shorthand Style getPropertyValue is Broken");
+}
+window.onload = addBorderTopStyleThenGetBorderTop;
+</script>
+</head>
+<body>
+<h2>CSS Shorthand Style getPropertyValue() Bug</h2>
+<p >
+CSS property <code>border-top</code> is a short hand for three properties,
+<code>border-top-style</code>
+<code>border-top-width</code>, and
+<code>border-top-color</code>. </p>
+<p>When CSS property <code>border-top-style</code> is set, then the CSS short hand property <code>border-top</code>
+should have its style value equal to the value of <code>border-top-style</code>. This page has an onload
+method to test the properties and put the results on this page and output via window.dump to the console.</p>
+<p> This issue came up in Firebug as <a href="http://code.google.com/p/fbug/issues/detail?id=39">Issue 39</a>.</p>
+<br />
+
+<!-- <button onclick="addBorderTopStyleThenGetBorderTop()">Add border-top-style: solid then write border-top shorthand</button> -->
+<br />
+<p id="borderTopValue"></p>
+</body>

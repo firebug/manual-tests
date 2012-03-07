@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<overlay id="simpleDebuggerOverlay"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+    <script src="chrome://testcase/content/testCase.js" type="application/x-javascript"/>
+
+    <vbox id="appcontent">
+        <vbox id="testMainFrame" height="100">
+            <iframe id="testInnerFrame" disablehistory="true" type="content-primary" />
+        </vbox>
+    </vbox>
+
+</overlay>

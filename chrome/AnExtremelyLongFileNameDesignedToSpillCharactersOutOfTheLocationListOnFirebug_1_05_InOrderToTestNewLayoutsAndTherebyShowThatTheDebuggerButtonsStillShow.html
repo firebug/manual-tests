@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Firebug Layout Test</title>
+</head>
+<body>
+A file with a long name that AJAX loads a file with an error.
+<ol>
+<li>Check that the html file name on the Script panel does not spill the toolbar UI (Debugger controls visible)</li>
+<li>Check the tooltip on the script panel, should be long</li>
+<li>Check the Script Panel popup, the complete filename should show</li>
+<li>Check the Console Panel</li>
+<li>Set Script->Options->BreakOnError, reload, and check the Stack side panel. Name will be clipped, not wrapped</li>
+</ol>
+
+
+<script>
+
+//  Load the code dynamically
+var req = new XMLHttpRequest();
+req.open('GET','payloadCatsAndDucks.js', false);
+req.send(null);
+eval( req.responseText);  // line 23
+
+//  Now use the code
+prod( new duck());
+prod( new cat());
+prod();  // call point of error
+
+</script>
+
+
+</body>
+</html>

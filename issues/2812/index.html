@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
+    <head>
+        <title>Test Case for Issue #2812</title>
+
+        <meta http-equiv="Pragma" content="no-cache"></meta>
+        <meta http-equiv="Expires" content="-1"></meta>
+
+        <!-- jquery -->
+        <script language="javascript" type="text/javascript" src="jquery-1.js"></script>
+        <!-- jquery dialog script -->
+        <script language="javascript" type="text/javascript" src="jquery_002.js"></script>
+
+        <!-- style for dialog button -->
+        <style type="text/css">
+        .button_grey  {
+            background:url("button_grey.png") no-repeat scroll left center transparent;
+        }
+        </style>
+    </head>
+    <body>
+    <h1>Issue #2812</h1>
+
+    <p>This test-case is intended for <a href="http://code.google.com/p/fbug/issues/detail?id=2812">Issue #2812</a>
+    - <span class="h3">net panel requests shown out of order</span>.
+    <br/>
+
+        <ol>
+        <li>Open Firebug and enable the Net panel.</li>
+        <li>Open Selenium IDE (Firefox->Tools->Selenium IDE, download
+            <a href="http://seleniumhq.org/download/">here</a>) </li>
+        <li>Load <a href="selenium-test-case.html">this</a> test-case into Selenium (File->Open).</li>
+        <li>Press <i>Play current test case</i> in the Selenium IDE.</li>
+        <li>See the Net panel, the <b>button_gray.png</b> request shouldn't be displayed
+            (it belongs to the previous page load requests).</li>
+        </ol>
+
+<a class="related_delete" href="index.html"><img src="bin.png"></a>
+
+<div style="display: none;" id="overlay"></div>
+<div class="" id="fd_dialog" style="display: none;"></div>
+<div id="jsflash" style="display: none;"></div>
+
+<br/><br/>
+<i>The selenium test clicks on the little image-link above, which opens a simple HTML dialog
+(with yes, no buttons).
+These buttons use <b>button_gray.png</b> background, so you should see a request in
+the Net panel (the file actually doesn't exist, but it's not that important).
+After the tests clicks the <b>Yes</b> button - the page is refreshed and so, the Net panel
+displayes again one request for this page (plus some other requests if they don't come
+from the cache). The problem is that the <b>button_gray.png</b> requests is displayed for
+the new page load (before the index.html page is loaded). It should be part of the previous
+page set of requests. It works if you do the test manually or slow down the Selenium test
+execution.
+</i>
+
+        <script language="javascript" type="text/javascript">
+        $(document).ready(function() {
+            $('a.related_delete').click(function() {
+                var url = $(this).attr('href');
+                $.dialog.yesno('Are you sure you want to delete this related link?', function(){
+                    document.location.href = url;
+                });
+                return false;
+            });
+        });
+        </script>
+
+    </body>
+</html>

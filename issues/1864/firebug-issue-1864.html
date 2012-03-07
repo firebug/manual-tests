@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function swallowExceptions(fn) {
+                try {
+                    fn();
+                } catch (e) {
+                    console.group("console.exception");
+                    console.exception(e);
+                    console.groupEnd();
+
+                    console.group("console.error");
+                    console.error(e);
+                    console.error(
+                            "This works, but it looks like an exception."
+                        );
+                    console.groupEnd();
+
+                    console.group("console.error with info");
+                    console.error(
+                            "This works, but it looks like an exception."
+                        );
+                    console.error("This should be a", "complete sentence.");
+                    console.error("There should appear %d%s in this message.", 3, " arguments");
+                    console.groupEnd();
+
+                }
+            }
+
+            function fail() {
+                throw new Error('FAIL');
+            }
+
+            swallowExceptions(fail);
+        </script>
+    </head>
+    <body></body>
+</html>

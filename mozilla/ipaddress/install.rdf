@@ -1,0 +1,23 @@
+﻿<?xml version="1.0"?>
+
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+  <Description about="urn:mozilla:install-manifest">
+    <em:id>bugzilla@getfirebug.com</em:id>
+    <em:name>Test</em:name>
+    <em:version>1.0</em:version>
+    <em:bootstrap>true</em:bootstrap>
+
+    <em:creator>Jan Odvarko</em:creator>
+    <em:description>For testing purposes</em:description>
+
+    <em:targetApplication>
+      <Description>
+        <em:id>toolkit@mozilla.org</em:id>
+        <em:minVersion>3.6</em:minVersion>
+        <em:maxVersion>7.1.*</em:maxVersion>
+      </Description>
+    </em:targetApplication>
+  </Description>
+</RDF>

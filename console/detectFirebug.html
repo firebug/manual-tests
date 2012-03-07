@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<script type="text/javascript">
+var log = function(item){
+	var result = document.getElementById("result");
+	if(window.console)
+	{
+		if(window.console.firebug != '')
+		{
+			console.info(item);
+			result.innerHTML = "found console";			
+		}
+	}
+	else
+	{
+		result.innerHTML ="no console!";
+	}	
+}
+ 
+</script>
+<body>
+<button onclick="log('I can see the console')">Try to write to Firebug console. (reload each test)</button>
+<div id="result"></div>
+
+<p>If the Firebug Console panel is disabled when the page is loaded, then the result should be "no console!".</p>
+<p>If the Firebug Console panel is enabled when the page is loaded, then the result should be "found console".</p>
+</body>
+</html>

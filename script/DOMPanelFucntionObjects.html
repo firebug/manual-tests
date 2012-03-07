@@ -1,0 +1,49 @@
+<!DOCTYPE html
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <title>Firebug/Fireclipse Breakpoint in onclick handler test</title>
+<script type="text/javascript">  // line 2, script.baseLinenumber for top level
+function runtest(from) {
+     var a = from; //2.nested script from top-level, inlined script tag, in head of html file
+
+     dump("::::::::::::::::::::>>"+a+"\n");
+}
+runtest("head"); //1.top-level script, inlined script tag, in head of html file
+function setOnClick() {
+    var addHere = document.getElementById("addOnClickHere");
+    addHere.onclick = function namedOnClick() {
+        runtest("addEventListener test");
+    }
+}
+window.onload = setOnClick;
+</script>
+</head>
+<body>
+<button onclick="runtest('onclick-1');runtest('onclick-2');runtest('onclick-3');">click here for JS in attribute test</button>
+<button id="addOnClickHere">click here add onclick attribute test</button>
+<!-- 10.browser-generated event handler -->
+<p>
+    Debugging bugs
+Delete By: Kris Zyp (kriszyp) - 2007-03-22 15:38
+Here is extremely simple test case that exhibits bizarre behavior. If you go to this address:
+http://www.authenteo.com/test/test.html
+I can go into test.js and the valid line numbers are green and I can set a breakpoint in
+the function runtest. When I click "click here" it stops at the breakpoint, properly.
+However, if I refresh the page, the body of test.js does not have the green line numbers
+indicating valid breakpoint areas in the function body. If I set a breakpoint,
+the first time I click "click here" it will not stop. The second time it will stop
+in an eval version of the test.js contents (although I never did an eval) at the wrong
+line. Let me know if you have any questions about that.
+</p>
+<!--<script type="text/javascript">
+function runbody() {
+    runtest("body-1"); //4.nested script from top-level, inlined script tag in body of html file
+}
+runbody(); //3.top-level script, inlined script tag in body of html file
+runtest("body-2");
+</script> -->
+ </body>
+ </html>

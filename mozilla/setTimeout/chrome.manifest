@@ -1,0 +1,6 @@
+content  testcase  content/
+overlay  chrome://browser/content/browser.xul  chrome://testcase/content/testcase.xul
+
+# Maps resource://testcase/* to files in modules/*
+resource testcase modules/
+

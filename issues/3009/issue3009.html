@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 3009: Erroneous display of CSS inheritance</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="../../content/templates/default/testcase.css" type="text/css" rel="stylesheet"/>
+        <style type="text/css">
+        ol#mainitems {
+            list-style-type: upper-latin;
+        }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=3009">Issue 3009</a>: Erroneous display of CSS inheritance</h1>
+        </header>
+        <div>
+            <section id="content">
+                <ol id="mainitems">
+                    <li> Main item
+                        <ul id="subitems">
+                            <li>Subitem</li>
+                        </ul>
+                    </li>
+                </ol>
+            </section>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Switch to the <em>HTML</em> panel</li>
+                    <li>Inspect the <code>&lt;ul&gt;</code> list (<code>#subitems</code>) above</li>
+                    <li>Switch to the <em>Style</em> side panel</li>
+                    <li>
+                        Make sure the option <em>Show User Agent CSS</em> is unchecked<br/>
+                        <span class="error">&rArr; The style for <code>list-style-type</code> of the inherited <code>ol#mainitems</code> is shown as active</span><br/>
+                        <span class="error">
+                            &rArr; The user agent rule <code>:-moz-any(ol, ul, menu, dir) ul, ..</code> of <em>html.css</em>,
+                            which overwrites the <code>list-style-type</code> style is not shown
+                        </span>
+                    </li>
+                    <li>
+                        Check <em>Show User Agent CSS</em><br/>
+                        <span class="error">
+                            &rArr; Additionally to the problems mentioned above the user agent style definition for
+                            <code>list-style-type</code> in rule <code>&lt;ol&gt;</code> of <em>html.css</em> is not marked as overwritten
+                        </span>
+                    </li>
+                </ol>
+                <h3>Observed result</h3>
+                <ul>
+                    <li class="error">User agent styles are not shown, if they are overwriting page styles</li>
+                    <li class="error">Overwritten inherited user agent styles are not striked out</li>
+                    <li class="error">Page styles overwritten by user agent styles are not striked out</li>
+                </ul>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>User agent styles should be displayed, if they overwrite page styles</li>
+                    <li>Overwritten user agent styles need to be striked out</li>
+                    <li>Page styles need to be striked out, if user agent styles overwrite them</li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmx.de</footer>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Issue 1309: Add `console.benchmark`</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      body {
+        background: #ffffff;
+        font: small arial, sans-serif;
+        margin: 5px auto;
+        width: 815px;
+      }
+      h1 {
+        font-size: large;
+        font-weight: normal;
+        padding: 1em 0;
+        text-transform: uppercase;
+      }
+      h2 {
+        font-size: medium;
+        font-weight: normal;
+        padding: 0.5em 0;
+        text-transform: uppercase;
+        margin: 0;
+      }
+      ol {
+        margin:0;
+      }
+      ol li {
+        padding-bottom: 1em;
+      }
+      ul li {
+        padding: 0;
+      }
+      #content {
+        background: #9acbe4;
+        padding: 10px 20px;
+      }
+      #content div {
+        width: auto!important;
+        margin: 5px 0;
+        padding: 5px;
+        background: #e8f0ff;
+      }
+    </style>
+    <script type="text/javascript">
+      <!--
+      function benchmark(fn,iterations) {
+        if(!fn)
+          return;
+
+        var count = (!iterations ? 1 : iterations),
+            t = new Date();
+        for (var i = 0; i<count; i++) {
+          fn(i);
+        }
+        console.info(count + ' call(s) to function "testFunction": ', (new Date() - t) + 'ms');
+      }
+
+      function startBenchmark(e) {
+        function testFunction() {
+          var time = (new Date()).getTime();
+          var stopTime = time + 10;
+          while((new Date()).getTime() < stopTime) { };
+        }
+
+        e.preventDefault();
+        e.stopPropagation();
+
+        benchmark(testFunction,document.getElementById('iterations').value);
+      }
+
+      function init() {
+        document.getElementsByTagName('form')[0].addEventListener('submit',startBenchmark,false);
+      }
+
+      window.addEventListener('load',init,false);
+      //-->
+    </script>
+  </head>
+  <body>
+    <h1>Issue 1309: Add `console.benchmark`</h1>
+    <div id="content">
+      <div>
+        <form action="#" method="get">
+          <label for="iterations">Iterations</label> <input type="text" id="iterations" value="100"/> <button id="startBenchmark">Benchmark</button>
+        </form>
+      </div>
+      <ol>
+        <li>Enable and switch to the Console Panel</li>
+        <li>Enter a number of iterations</li>
+        <li>Press Enter or click the <code>Benchmark</code> button</li>
+      </ol>
+      <ul>
+        <li><strong>Observed:</strong> Currently there is no such function in the Console API</li>
+        <li><strong>Expected:</strong> There should be a benchmark function like shown here accessible via <code>console.benchmark(function, iterations)</code></li>
+      </ul>
+    </div>
+  </body>
+</html>

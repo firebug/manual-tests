@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<script>
+			function test() {
+				console.info("Success in frame b");
+				document.getElementById('result').innerHTML='This is test B.';
+			}
+		</script>
+	</head>
+	<body bgcolor="#EBC79E">
+		<h3>Frame B</h3>
+		<div id="result">No output in Frame B</div>
+			<pre>
+	 Reported by adam.kit...@apathydrive.com, Jun 18, 2008
+
+From http://getfirebug.com/commandline.html
+       By default, command line expressions are relative to the top-level
+window of the page. cd() allows you to use the window of a frame in the
+page instead.
+
+I believe the behavior when a function is called from the console is to
+first check if it is a firebug api command, if not then it checks the top
+level. 
+
+cd is supposed to alter this by having it check the desired frame instead
+of top, in 1.2.03b this is not working.
+
+What steps will reproduce the problem?
+1. Open the attached example.htm  
+2. In the firebug console, type 'test()'
+3. Expected output is an alert reading 'This is test Top.', which succeeds.
+4. In the firebug console, type 'cd(a)'
+5. In the firebug console, type 'test()'
+
+This time the expected output should be 'This is test A.', instead the
+output reads 'This is test Top.'
+
+You can get the desired output by typing 'a.test()', but cd should change
+the scope so that functions are looked for in the frame named 'a' if they
+aren't found in the console api.
+
+What version of the product are you using? On what operating system?
+      1.2.03b, Windows XP
+	</pre>
+	</body>
+</html>

@@ -1,0 +1,21 @@
+<html>
+<head>
+  <base href="http://www.prototypejs.org/assets/2008/1/25/" />
+  <script src="prototype-1.6.0.2.js"></script>
+  <script type="application/javascript">
+function putVersion ()
+{
+    var elt = document.getElementById("putVersionHere");
+    elt.innerHTML = Prototype.Version;
+}
+</script>
+</head>
+<body onload="putVersion()">
+
+<h1>Firebug test for base tag href applied to script tag</h1>
+<p>See <a href="http://code.google.com/p/fbug/issues/detail?id=474&q=base">Issue 474</a></p>
+<p>Firebug Script Panel: verify that prototype-1.6.0.2.js appears in the panel</p>
+  <p>Prototype version number <span id="putVersionHere"></span></p>
+
+</body>
+</html>

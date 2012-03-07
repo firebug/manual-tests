@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Firebug Chrome Layout Test</title>
+</head>
+<body>
+A file with a long path.  All for Script panel.
+<ol>
+<li>Check that the file name fits on the toolbar.</li>
+<li>Check the tooltip for the filename, should not be cropped.</li>
+<li>Check the popup (dropdown) file list, should not be cropped.</li>
+</ol>
+
+</body>
+
+<script>
+
+//  Load the code dynamically
+var req = new XMLHttpRequest();
+req.open('GET','payloadCatsAndDucks.js', false);
+req.send(null);
+eval( req.responseText);  // line 23
+
+//  Now use the code
+prod( new duck());
+prod( new cat());
+prod();  // call point of error
+
+</script>
+</html>

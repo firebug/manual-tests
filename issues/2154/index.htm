@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<title>No console object in workers - test case</title>
+<script type="text/javascript" src="script.js"></script>
+
+</head>
+
+<body>
+
+<h1>No console object in workers - test case</h1>
+
+<p>See also <a href="script.js">main script source</a> and <a href="worker.js">worker source</a>.</p>
+
+<p>A worker starts on window.onload, adding 1 to a variable <code>i = 1</code> in a loop until i is 5000. When i is a multiple of 100, the worker posts a message to the main script, which adds the current value of i to the list below. When i is a multiple of 500, the worker (in addition) tries to call <code>console.log()</code>, but fails miserably. A <code>try... catch...</code> block notices this, and posts a failure message, which is also added to the list below.</p>
+
+<p>Output from Worker:</p>
+<ul id="output">
+</ul>
+
+</body>
+</html>

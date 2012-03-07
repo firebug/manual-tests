@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 5118: Debugger gets deactivated on page reload</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/content/templates/default/testcase.css" type="text/css" rel="stylesheet"/>
+        <script type="text/javascript">
+        function sayHello()
+        {
+            document.getElementById("output").style.display = "block";
+        }
+
+        window.addEventListener("load", function()
+        {
+            setTimeout(sayHello, 5000);
+        });
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=5118">Issue 5118</a>: Debugger gets deactivated on page reload</h1>
+        </header>
+        <div>
+            <section id="content">
+                <section id="output">Hello Firebug User</section>
+            </section>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Enable and switch to the <em>Script</em> Panel</li>
+                    <li>Reload the page</li>
+                    <li>Click the <em>Break On Next</em> button</li>
+                    <li>
+                        Reload the page (this step and the previous one have to be done within 5 seconds)<br/>
+                        <span class="ok">&rArr; The <em>Break On Next</em> is not armed anymore</span>
+                    </li>
+                    <li>Click the <em>Break On Next</em> button</li>
+                    <li>
+                        Wait for 5 seconds<br/>
+                        <span class="error">&rArr; <code>sayHello()</code> is executed, but the script execution doesn't
+                        halt at line 10 (<code>document.getElementById("output").style.display = "block";</code>)</span>
+                    </li>
+                    <li>
+                        Reload the page<br/>
+                        <span class="error">&rArr; The <em>Script panel</em> says "Debugger not activated"</span>
+                    </li>
+                </ol>
+                <h3>Observed result</h3>
+                <ul>
+                    <li>The debugger is disabled when reloading the page after activating <em>Break On Next</em> while waiting for the timeout to finish</li>
+                </ul>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>The debugger should be activated</li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmx.de</footer>
+        </div>
+    </body>
+</html>

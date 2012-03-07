@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Issue 4411: No infotip for rgba, hsl and hsla CSS color values</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      body {
+        background: #ffffff;
+        font: small arial, sans-serif;
+        margin: 5px auto;
+        width: 815px;
+      }
+
+      h1 {
+        font-size: large;
+        font-weight: normal;
+        padding: 1em 0;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        font-size: medium;
+        font-weight: normal;
+        padding: 0.5em 0;
+        text-transform: uppercase;
+        margin: 0;
+      }
+
+      ol {
+        clear: both;
+        margin: 0;
+      }
+
+      ol li {
+        padding-bottom: 1em;
+      }
+
+      ul li {
+        padding: 0;
+      }
+
+      #content {
+        background: #9acbe4;
+        padding: 10px 20px;
+      }
+
+      #content div {
+        margin: 5px 0;
+        padding: 5px;
+      }
+
+      #output {
+        width: auto!important;
+        height: 120px;
+        background: #e8f0ff;
+      }
+
+      #output div {
+        margin: 5px;
+        width: 100px;
+        height: 100px;
+        line-height: 100px;
+        text-align: center;
+      }
+
+      #output div {
+        float: left;
+      }
+
+      #hex {
+        background-color: #8cff8c;
+      }
+
+      #name {
+        background-color: lightgreen;
+      }
+
+      #rgb {
+        background-color: rgb(140, 255, 140);
+      }
+
+      #rgba {
+        background-color: rgba(140, 255, 140, 0.5);
+      }
+
+      #hsl {
+        background-color: hsl(120, 100%, 77%);
+      }
+
+      #hsla {
+        background-color: hsla(120, 100%, 77%, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+    <h1><a href="http://code.google.com/p/fbug/issues/detail?id=4411">Issue 4411</a>: No infotip for rgba, hsl and hsla CSS color values</h1>
+    <div id="content">
+      <div id="output">
+        <div id="hex">hex</div>
+        <div id="name">named color</div>
+        <div id="rgb">rgb</div>
+        <div id="rgba">rgba</div>
+        <div id="hsl">hsl</div>
+        <div id="hsla">hsla</div>
+      </div>
+      <ol>
+        <li>Switch to the CSS Panel</li>
+        <li>
+          Hover the values of the <code>background-color</code> styles of <code>#hex</code>, <code>#name</code>, 
+          <code>#rgb</code>, <code>#rgba</code>, <code>#hsl</code> and <code>#hsla</code>
+        </li>
+      </ol>
+      <ul>
+        <li>
+          <strong>Observed:</strong> As long as the values are displayed in hexadecimal or rgb format or color 
+          names are used infotips are shown, but not for rgba, hsl and hsla color values.
+        </li>
+        <li>
+          <strong>Expected:</strong> Infotips should always be shown regardless of how the color was specified.
+          Colors with alpha channel should have a background pattern to make the transparency more visible.
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

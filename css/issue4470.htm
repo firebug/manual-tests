@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Issue 4470: Preview for CSS gradients</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      @font-face {
+        font-family: 'TitilliumMaps';
+        src: url('/fonts/TitilliumMaps26L001.eot');
+        src: local('☺'), url('/fonts/TitilliumMaps26L001.woff') format('woff'), url('/fonts/TitilliumMaps26L001.ttf') format('truetype');
+        font-weight: bold;
+      }
+
+      * {
+        position: relative;
+      }
+
+      html, body {
+        width: 100%;
+        margin: 0;
+        padding-bottom: 30px;
+      }
+
+      body {
+        background: #FFFFFF -moz-linear-gradient(center top , #EAF1FB, #FFFFFF 450px) no-repeat;
+        font-family: "Trebuchet MS", Helvetica, sans-serif;
+        font-size: 0.9em;
+      }
+
+      body > div, h1 {
+        margin: auto;
+        width: 800px;
+      }
+
+      body > div {
+        top: 40px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        background-color: rgba(255, 255, 255, 0.6);
+        padding: 15px;
+      }
+
+      section#content {
+        min-height: 120px;
+        border-radius: 8px;
+        margin-bottom: 10px;
+        background-image: -moz-linear-gradient(bottom, #E6E6E6, #F0F0F0);
+        padding: 10px;
+      }
+
+      section#output {
+        background-image: -moz-linear-gradient(bottom, #F5F5F5, #FFFFFF);
+        height: 50px;
+        margin: 10px 0;
+        padding: 10px;
+      }
+
+      h1, h2 {
+        font-family: TitilliumMaps, "Trebuchet MS", Helvetica, sans-serif;
+        font-size: 130%;
+        font-weight: bold;
+      }
+
+      h1 {
+        top: 20px;
+      }
+
+      h2 {
+        margin: 0.5em 0;
+        border-bottom: 2px solid #9ACBE4;
+      }
+
+      h3 {
+        margin: 0.3em 0 0.2em 0;
+        font-size: 105%;
+      }
+
+      p, ol, ul {
+        margin: 0.2em 0;
+      }
+
+      p {
+        padding-left: 20px;
+      }
+
+      ul {
+        list-style-type: square;
+        list-style-image: url(bullet.gif);
+      }
+
+      code {
+        color: #008C00;
+      }
+
+      input {
+        border: 1px solid #AAAAAA;
+        border-radius: 5px;
+        padding: 3px 5px;
+      }
+
+      #element1, #element2 {
+        width: 100px;
+        height: 100px;
+        float: left;
+        margin: 10px;
+      }
+
+      #element1 {
+        background-image: -moz-linear-gradient(135deg, #788CFF, #B4C8FF);
+      }
+
+      #element2 {
+        background-image: -moz-radial-gradient(135deg, #B4FFC8, #78FF8C);
+      }
+    </style>
+  </head>
+  <body>
+    <h1><a href="http://code.google.com/p/fbug/issues/detail?id=4470">Issue 4470</a>: Preview for CSS gradients</h1>
+    <div>
+      <section id="content">
+        <div id="element1"></div>
+        <div id="element2"></div>
+      </section>
+      <section id="description">
+        <h2>Case 1</h2>
+        <h3>Steps to reproduce</h3>
+        <ol>
+          <li>Inspect the blue <code>&lt;div&gt;</code> above</li>
+          <li>Inside the Style side panel hover <code>-moz-linear-gradient</code></li>
+        </ol>
+        <h3>Expected Result</h3>
+        <p>A popup should be shown displaying the gradient</p>
+
+        <h2>Case 2</h2>
+        <h3>Steps to reproduce</h3>
+        <ol>
+          <li>Inspect the green <code>&lt;div&gt;</code> above</li>
+          <li>Inside the Style side panel hover <code>-moz-radial-gradient</code></li>
+        </ol>
+        <h3>Expected Result</h3>
+        <p>A popup should be shown displaying the gradient</p>
+      </section>
+    </div>
+  </body>
+</html>

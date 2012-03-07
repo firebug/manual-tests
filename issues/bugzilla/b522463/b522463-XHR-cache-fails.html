@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <title>Reproduce XHR caching bug</title>
+        <style>
+            .passed{ color: green; }
+            .failed{ color: red;   }
+        </style>
+        <script type="text/javascript">
+            var newRequest = function() {
+                var xhr;
+                if(window.XMLHttpRequest){
+                    xhr = new XMLHttpRequest();
+                }else {
+                    xhr = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                            
+                xhr.open("GET", "b522463-XHR-cache-fails.php", false);
+                return xhr;
+            };
+            
+            var start = function(){
+                var xhr = newRequest();
+                xhr.send(null);
+                var time1 = parseFloat( xhr.responseText );
+
+                xhr = newRequest();
+                xhr.setRequestHeader( "If-Modified-Since",new Date(0) );
+                xhr.send(null);
+                var time2 = parseFloat( xhr.responseText );
+
+                xhr = newRequest();
+                xhr.send(null);
+                var time3 = parseFloat( xhr.responseText );
+
+                var resultsDiv = document.getElementById("results");
+                if( time1 == time3 && time2 != time3 ){
+                    resultsDiv.innerHTML = "Test failed! The last request was served from \
+                        cache and the second request with an If-Modified-Since \
+                        header was not cached nor did it invalidate the \
+                        first request.";
+                    resultsDiv.className = "failed";
+                }else{
+                    resultsDiv.innerHTML = "Test Passed!";
+                    resultsDiv.className = "passed";
+                }
+
+            };
+        </script>
+    </head>
+
+    <body>
+        <button onClick="javascript:start();">Start Tests</button>
+        <br/>
+        <div id="results"></div>
+    </body>
+
+</html>

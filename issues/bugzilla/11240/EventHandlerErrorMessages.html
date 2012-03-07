@@ -1,0 +1,23 @@
+<html><head>
+<script>
+function dubiousFunction(event)
+{
+    throw "i'm dubious"; // Wow, if I had a call stack I'd nail this baby.
+}
+window.addEventListener('load', function hookDiv()
+{
+    var d = document.getElementById("result");
+    d.onclick = dubiousFunction;
+    d.innerHTML = "ClickMe";
+}, false);
+</script>
+</head>
+<body>
+
+<button id="result"></button>
+<a href=https://bugzilla.mozilla.org/show_bug.cgi?id=11240>11240</a>
+<pre>
+jsd.onError is called, but onDebug is not triggered.
+</pre>
+</body>
+</html>

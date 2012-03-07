@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Style-Type" content="text/css"/>
+		<meta http-equiv="Content-Script-Type" content="text/javascript"/>
+		<title>Firebug test</title>
+	</head>
+	<body>
+	<script type="text/javascript">
+		//debugger;
+		if(window.console && window.console.error){
+			var variable = "string 1";
+			window.console.log("log: Hello world");
+			window.console.debug("debug: Hello world");
+			window.console.warn("warn: Hello world");
+			window.console.error("error: Hello world");
+			variable = "string 2";
+		}
+        function onExecuteTest()
+        {
+            var variable = "string 1";
+            window.console.log("log: Hello world");
+            variable = "string 2";
+        }
+	</script>
+    <button onclick="onExecuteTest()">Execute Test</button>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 1318: Enhance debugger to step inside code from new Function()</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/content/templates/default/testcase.css" type="text/css" rel="stylesheet"/>
+        <script type="text/javascript">
+            function func() {
+              var f = new Function("", "var i=123; alert(i);");
+              f();
+            }
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=1318">Issue 1318</a>: Enhance debugger to step inside code from new Function()</h1>
+        </header>
+        <div>
+            <section id="content">
+                <button onclick="func();">Create function</button>
+            </section>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Enable and switch to the <em>Script</em> panel</li>
+                    <li>Reload the page</li>
+                    <li>Set a breakpoint at line 10 (<code>f();</code>)</li>
+                    <li>Click the button <em>Create function</em> above</li>
+                    <li>Step into <code>f()</code> by pressing <code class="key">F11</code>
+                </ol>
+                <h3>Observed result</h3>
+                <ul>
+                    <li class="error">Execution is not jumping into the function</li>
+                </ul>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>Execution should be halted at <code>var i=123; alert(i);</code></li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmx.de</footer>
+        </div>
+    </body>
+</html>

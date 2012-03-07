@@ -1,0 +1,26 @@
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<script type="text/javascript">
+	  var count = 0;
+    logIt(20); // comment me out and the scrolling works
+	  function logIt(num) {
+      for(var i = 0; i < num; i++)
+        console.log("Log message " + count++);
+    }
+	</script>
+<title>Console scroll test</title>
+<meta name="Author" content="David Citron" />
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+</head>
+<body>
+  <p>Enable Firebug and try clicking <a href="#" onclick="logIt(1); return false;">here to log one line</a>
+  or <a href="#" onclick="logIt(10); return false;">here to log ten</a>.</p>
+  <p>The console should scroll but doesn't.</p>
+  <p>Interestingly, if you comment out the JS line marked "comment me out" then the scrolling works 
+  <b>until you switch to another tab and back</b>.</p>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<html>
+<head>
+   <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+   <title>Issue 525</title>
+<script type="text/javascript">
+  if (window.loadFirebugConsole) 
+    loadFirebugConsole();
+    
+  console.log('foo');
+</script>
+
+</head>
+<body>
+<h1>Issue 525 "console is not defined"</h1>
+<h2> Original report </h2>
+<pre>
+Reported by kenman.tx, Mar 16 (2 days ago)
+
+What steps will reproduce the problem?
+
+Any of these 3 examples will reproduce the problem:
+
+&lt;script type="text/javascript"&gt;
+  console.log('foo');
+&lt;/script&gt;
+
+&lt;script type="text/javascript"&gt;
+  (function(){ console.log('hi'); })();
+&lt;/script&gt;
+
+&lt;script type="text/javascript"&gt;
+  function x(){ console.log('hi'); }
+  x();
+&lt;/script&gt;
+
+What is the expected output?
+
+"foo"
+
+What do you see instead?
+
+"console is not defined"
+
+What version of the product are you using? On what operating system?
+
+FB 1.1.0b12
+FF 2.0.0.12
+WINXPsp2
+
+Please provide any additional information below.
+
+I have reinstalled FB, and also have tried disabling FB plugins (such as
+YSlow and FireCookie), but the issue remained.
+
+Also note, this works:
+
+&lt;script type="text/javascript"&gt;
+window.onload = function(){ console.log('hi'); }
+&lt;/script&gt;
+<h2>Resolution: Works for me</h2>
+
+</pre>
+<p>The Firebug Console Panel should have "foo".</p>
+</body>

@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <title>Test Case for Issue #3962</title>
+</head>
+<body>
+
+<h1>Issue #3962</h1>
+
+<p>This test-case is intended for <a href="http://code.google.com/p/fbug/issues/detail?id=3962">Issue #3962</a>
+- <span class="h3">{issue-summary}</span>.
+<br/>
+<i>Jan Odvarko, odvarko@gmail.com</i>
+</p>
+
+<ol>
+<li>Open Firebug and enable the Net panel.</li>
+<li>Reload this page</li>
+<li>You can see 3 requests in the Net pane. One of them is 404 Not Found</li>
+<li>Try to export content of the Net panel (you need
+<a href="http://getfirebug.com/wiki/index.php/Firebug_Extensions#NetExport">NetExport</a>
+Extension installed).</li>
+<li>The content should be properly exported.</li>
+</ol>
+
+<script type="text/javascript">
+var request = new XMLHttpRequest();
+request.open("GET", "issue3962.php", true);
+request.send(null);
+
+var request = new XMLHttpRequest();
+request.open("GET", "issue3962-doesnotexist.php", true);
+request.send(null);
+</script>
+  
+</body>
+</html>

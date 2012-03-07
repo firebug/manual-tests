@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>Jeff Walden — Now in SpiderMonkey and Firefox: ES5‘s Function.prototype.bind</title>
+</head>
+<body>
+<h1>Jeff Walden — Now in SpiderMonkey and Firefox: ES5‘s Function.prototype.bind</h1>
+Copied from  <a href=" http://whereswalden.com/2010/09/07/now-in-spidermonkey-and-
+firefox-es5s-function-prototype-bind/">http://whereswalden.com/2010/09/07/now-in-spidermonkey-and-
+firefox-es5s-function-prototype-bind/</a>
+<p>This is just a brief note to point out that, as of the August 29th Firefox nightly (and I think as of the latest beta, but don’t quote me), SpiderMonkey (and Firefox) now implements ES5‘s new Function.prototype.bind method — native support for creating functions bound to a pre-specified this value:
+</p>
+<script>
+var property = 42;
+var obj =
+  {
+    property: 17,
+    method: function() { return this.property; }
+  };
+
+var bound = obj.method.bind(obj);
+console.assert(bound() === 17);
+</script>
+
+<p>…or with pre-specified leading arguments:
+</p><script>
+function multiply()
+{
+  var product = 1;
+  for (var i = 0, sz = arguments.length; i < sz; i++)
+    product *= arguments[i];
+  return product;
+}
+
+var productTimesFive = multiply.bind(null /* this */, 5);
+console.assert(productTimesFive(4, 3, 2, 1) === 120);
+</script>
+
+<p>…and, in a feature present only in the ES5 bind implementation (and not in any of the numerous precursors), they even work with new:
+</p>
+<script>
+function Vector()
+{
+  var args = arguments;
+  this.length = arguments.length;
+  this.get = function(i) { return args[i]; };
+  this.set = function(i, v) { args[i] = v; };
+}
+
+var PartialVector = Vector.bind(null /* this, ignored with new */, 3, 7);
+
+var threeSevenTen = new PartialVector(10); // new Vector(3, 7, 10)
+</script>
+</body>
+</html>

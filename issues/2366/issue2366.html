@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 2366: Ability to copy applied CSS in HTML panel</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/content/templates/default/testcase.css" type="text/css" rel="stylesheet"/>
+        <style type="text/css">
+            #element1 {
+                width: 100px;
+                height: 100px;
+                background: #8C8CFF -moz-linear-gradient(135deg, #788CFF, #B4C8FF);
+                font-size: 1em;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=2366">Issue 2366</a>: Ability to copy applied CSS in HTML panel</h1>
+        </header>
+        <div>
+            <section id="content">
+                <div id="element1"></div>
+            </section>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Switch to the <em>HTML</em> panel</li>
+                    <li>Inspect the gray <code>&lt;div&gt;</code> above (<code>#content</code>) containing the blue <code>&lt;div&gt;</code> (<code>element1</code>)</li>
+                    <li>Right-click the node inside the <em>HTML</em> panel and choose <em>Copy CSS</em> (not existing yet) from the context menu</li>
+                    <li>Paste the copied CSS to a text editor</li>
+                </ol>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>
+                        The copied CSS should contain:<br/>
+                        <code>
+* {
+    position: relative;
+}
+
+body {
+    font-family: "Trebuchet MS",Helvetica,sans-serif;
+    font-size: 0.9em;
+}
+
+section#content {
+    background-image: -moz-linear-gradient(center bottom , #E6E6E6, #F0F0F0);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+}
+
+#element1 {
+    background-attachment: scroll;
+    background-clip: border-box;
+    background-color: #8C8CFF;
+    background-image: -moz-linear-gradient(135deg, #788CFF, #B4C8FF);
+    background-origin: padding-box;
+    background-position: 0 0;
+    background-repeat: repeat;
+    background-size: auto auto;
+    font-size: 1em;
+    height: 100px;
+    width: 100px;
+}
+                        </code>
+                    </li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmx.de</footer>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head><title>No such line in the CSS Tab</title>
+
+  
+    
+    <meta name="author" content="Christian Holtje">
+    <style type="text/css">
+    /* Valid CSS .... */
+    #legit1 {
+      margin: 0;
+      padding: 0;
+      color: green;
+    }
+    </style>
+    <script type="text/javascript">
+      window.onload = function () {
+      var head = document.getElementsByTagName('head')[0];
+      var style = document.createElement('style');
+      style.setAttribute('type', 'text/css');
+      var ns = [];
+      for(var i=0; i<17; i++) {
+        ns.push('\n');
+      }
+      style.innerHTML = ns.join('') + "#bogus2\n{\nguinea-pig: rodents;\n}";
+      head.appendChild(style);
+      };
+    </script>
+	</head><body>
+    <h1>No such line in the CSS Tab</h1>
+
+    <p>This is a firebug test case for this <a href="http://groups.google.com/group/firebug/browse_thread/thread/c1f3de67d8ce4ae8/47ecc8e483a48f3a">thread</a>.</p>
+
+    <h5>What Happened</h5>
+
+    <p>Notice that in firebug, you will get a message like this:</p>
+
+    <pre style="background: rgb(0, 238, 255) none repeat scroll 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;"><span style="float: right;"><a name="example" style="font-weight: bold; color: blue;">ConsoleCSSErrorNotInCSSanel.htm (line 20)</a></span> <span style="background: yellow none repeat scroll 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">!</span> Unknown property 'guinea-pig'. Declaration dropped.</pre>
+
+    <p>If you click on the link at the left, then it opens up the CSS tab in firebug, however there is no reference to <b>guinea-pig</b>.</p>
+
+    <h5>What was expected</h5>
+
+    <p>The
+link should go to someplace that shows the broken CSS. Either the CSS
+tab should show broken CSS (perhaps highlighted somehow) or it should
+show the source of the post-rendered css (with JavaScript DOM changes).</p>
+    <p>The Firefox error-message line-number is relative to the style element
+but there is no information in the error as to *which* style element.
+The test case has its error in the second style, but I can't find that
+out.  Its a bug in FF.  A workaround would compare the error message
+text to each line of source, but I don't know how well that would work
+vs how hard it would be.  A user workaround would always add style
+elements above any existing style elements.</p>
+    <hr>
+    <address>
+      <a href="http://docwhat.gerf.org/">Docwhat</a>,
+      27 Jun 2007
+    </address>
+  
+</body></html>

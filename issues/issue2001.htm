@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Issue 2001: Add storage panel</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      body {
+        background: #ffffff;
+        font: small arial, sans-serif;
+        margin: 5px auto;
+        width: 815px;
+      }
+      h1 {
+        font-size: large;
+        font-weight: normal;
+        padding: 1em 0;
+        text-transform: uppercase;
+      }
+      h2 {
+        font-size: medium;
+        font-weight: normal;
+        padding: 0.5em 0;
+        text-transform: uppercase;
+        margin: 0;
+      }
+      ol {
+        margin:0;
+      }
+      ol li {
+        padding-bottom: 1em;
+      }
+      ul li {
+        padding: 0;
+      }
+      #content {
+        background: #9acbe4;
+        padding: 10px 20px;
+      }
+      #content div {
+        width: 200px;
+        margin: 5px 0;
+        padding: 5px;
+      }
+      #output {
+        width: auto!important;
+        background: #e8f0ff;
+      }
+    </style>
+    <script type="text/javascript">
+      <!--
+      var db;
+
+
+      function addErrorMsg(msg) {
+        var errorMsg = document.createElement('p');
+        errorMsg.textContent = msg;
+
+        document.getElementById('output').appendChild(errorMsg);
+      }
+
+
+      function createDB() {
+        db = openDatabase('testDB', '1.0', 'DB for Firebug issue 2001', 255);
+      }
+
+
+      function createTableStructure() {
+        db.transaction(function(tx) {
+          tx.executeSql('CREATE TABLE IF NOT EXISTS test (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, ' +
+                        '                                 firstName VARCHAR(25) NOT NULL, ' +
+                        '                                 lastName VARCHAR(25) NOT NULL DEFAULT "Barton", ' +
+                        '                                 dateOfBirth DATE)');
+
+          tx.executeSql('INSERT INTO test (firstName, lastName, dateOfBirth) ' +
+                        'VALUES(?, ?, ?)', ['Michael', 'Jackson', '1958-08-29']);
+          tx.executeSql('INSERT INTO test (firstName, lastName) ' +
+                        'VALUES(?, ?)', ['Jack', 'Johnson']);
+        });
+      }
+
+
+      function fillStorages() {
+        /* Local storage */
+        if(!window.localStorage)
+          addErrorMsg('Browser doesn\'t support local storage');
+        else {
+          localStorage.setItem('name', 'Local Storage');
+          localStorage.setItem('issue', 2001);
+        }
+
+        /* Session storage */
+        if(!window.sessionStorage)
+          addErrorMsg('Browser doesn\'t support session storage');
+        else {
+          sessionStorage.name = 'Session Storage';
+          sessionStorage.issue = 2001;
+        }
+
+        /* Database storage */
+        if(!window.openDatabase)
+          addErrorMsg('Browser doesn\'t support database storage');
+        else {
+          createDB();
+          createTableStructure();
+        }
+      }
+
+
+      function outputStorages() {
+        function showDBData(tx, results) {
+          console.dir(tx, results);
+        }
+
+
+        /* Local storage */
+        if(window.localStorage)
+          console.dir(localStorage);
+
+        /* Session storage */
+        if(window.sessionStorage)
+          console.dir(sessionStorage);
+
+        /* Database storage */
+        if(db) {
+          db.transaction(function(tx) {
+            tx.executeSql('SELECT * FROM test', [], showDBData);
+          });
+        }
+      }
+
+
+      function resetStorages() {
+        /* Local storage */
+        if(!window.localStorage)
+          addErrorMsg('Browser doesn\'t support local storage');
+        else {
+          localStorage.removeItem('name');
+          localStorage.removeItem('issue');
+        }
+
+        /* Session storage */
+        if(!window.sessionStorage)
+          addErrorMsg('Browser doesn\'t support session storage');
+        else {
+          sessionStorage.removeItem('name');
+          sessionStorage.removeItem('issue');
+        }
+      }
+
+
+      function init() {
+        document.getElementById('fillStorages').addEventListener('click', fillStorages, false);
+        document.getElementById('outputStorages').addEventListener('click', outputStorages, false);
+        document.getElementById('resetStorages').addEventListener('click', resetStorages, false);
+      }
+
+      window.addEventListener('load',init,false);
+      //-->
+    </script>
+  </head>
+  <body>
+    <h1>Issue 2001: Add storage panel</h1>
+    <div id="content">
+      <div id="output">
+        <button id="fillStorages">Fill storages</button>
+        <button id="outputStorages">Output storages</button>
+        <button id="resetStorages">Reset storages</button>
+      </div>
+      <ol>
+        <li>Enable and switch to the console panel</li>
+        <li>Reload the page</li>
+        <li>Click on <em>Fill storages</em></li>
+        <li>Click on <em>Output storages</em></li>
+        <li>Click on <em>Reset storages</em></li>
+      </ol>
+      <ul>
+        <li><strong>Observed:</strong> The data of the different storage types can just be displayed inside the Console/DOM panel</li>
+        <li><strong>Expected:</strong> There should be a seperate "Storage" panel to show and manage the data saved in the different storages</li>
+      </ul>
+    </div>
+  </body>
+</html>

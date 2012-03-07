@@ -1,0 +1,33 @@
+<title>firebug 167</title>
+<style type="text/css">body { font-size: 6px; {</style>
+
+<p>Lorem ipsum dolor sit amet.</p>
+
+<pre>
+I was not able to reproduce this the way he described but did discover something
+possibly related.
+
+STEP 1:
+Open the attached file.
+
+STEP 2:
+Inspect the style of the text. (It says font-size: 6px;)
+
+STEP 3:
+Open the Firefox preference pane (Tools > Options... on windows). Go to the tab
+"Content" and click "Advanced" in the "Fonts & Colors" section.
+
+STEP 4:
+Set the minimum font size to 12 and OK your way out of the settings windows.
+
+STEP 5:
+Refresh the page and reperform STEP 2.
+
+Expected result:
+The font-size of the text reflects the actual size of the text (12px).
+
+What happens:
+It shows the author style which is not what Firefox is using.
+
+This might be a bug in Firefox. The computed style also doesn't show the real font-size
+</pre>

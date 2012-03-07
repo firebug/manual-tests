@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Issue 2273: box model shadowing on (css) rotated elements wont work correctly</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      * {
+        position: relative;
+      }
+
+      h1 {
+        font-size: large;
+        font-weight: normal;
+        padding: 1em 0;
+        text-transform: uppercase;
+      }
+
+      #CSSRotated, #JavaScriptRotated, #rotatedCascaded, #rotatedCascaded, #rotatedCascaded div {
+        position: absolute;
+        top: 100px;
+        width: 140px;
+        height: 140px;
+        margin: 10px;
+        padding: 10px;
+        text-align: center;
+        background-color: #ffffff;
+        border: 1px solid #000000;
+        vertical-align: middle;
+      }
+
+      #CSSRotated, #rotatedCascaded, #rotatedCascaded div {
+        -moz-transform: rotate(20deg);
+      }
+
+      #CSSRotated {
+        left: 40px;
+      }
+
+      #JavaScriptRotated {
+        left: 280px;
+      }
+
+      #rotatedCascaded {
+        left: 520px;
+      }
+
+      #rotatedCascaded div {
+        left: 35px;
+        padding: 0;
+        -moz-transform-origin: 10% 25%;
+      }
+
+      #rotatedCascaded > div {
+        top: 25px;
+        width: 80px;
+        height: 80px;
+      }
+
+      #rotatedCascaded > div > div {
+        top: 0;
+        width: 60px;
+        height: 60px;
+      }
+
+      #warning {
+          position: absolute;
+          left: 10px;
+          top: 350px;
+          font-weight: bold;
+          font-size: 150%;
+      }
+    </style>
+    <script type="text/javascript">
+      <!--
+      function rotate() {
+        document.getElementById('JavaScriptRotated').style.MozTransform = 'rotate(20deg)';
+      }
+
+      window.addEventListener('load',rotate,false);
+      //-->
+    </script>
+  </head>
+  <body>
+    <h1>Try to inspect the following elements:</h1>
+    <div id="CSSRotated">Rotated via CSS</div>
+    <div id="JavaScriptRotated">Rotated via JavaScript</div>
+    <div id="rotatedCascaded">
+      Rotated sub-nodes
+      <div>
+        <div>
+        </div>
+      </div>
+    </div>
+    <div id="warning">
+        Note that the box model of a transformed element is the same as the box model as if it was not transformed.
+        <br /><br />
+        IMPORTANT: The inspection of the children of the Rotated sub-nodes div is expected to fail as Firefox currently provides no way to get the coordinate information (we will use element.getQuads() when it is implemented).
+    </div>
+  </body>
+</html>

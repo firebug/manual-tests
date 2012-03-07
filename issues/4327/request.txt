@@ -1,0 +1,22 @@
+var request : URLRequest = new URLRequest("action.php");
+
+var variables : URLVariables = new URLVariables();
+variables["data"] = "{foo:'foo'}";
+request.data = variables;
+
+request.method = URLRequestMethod.POST;
+
+var loader : URLLoader = new URLLoader(request);
+loader.addEventListener(Event.COMPLETE, onComplete);
+loader.addEventListener(IOErrorEvent.IO_ERROR, onError);
+loader.load(request);
+
+function onError(event : IOErrorEvent) : void
+{
+
+}
+
+function onComplete(event : Event) : void
+{
+
+}

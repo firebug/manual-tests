@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <style>
+            #warning {
+              font-weight: bold;
+              font-size: 150%;
+          }
+        </style>
+
+        <script>
+            function doit() {
+                var log = document.getElementById('log');
+
+                setInterval(function(){
+                    log.innerHTML = [
+                        'fbProxyElement',
+                        'firebugRuler',
+                        'firebugLayoutLine',
+                        'firebugHighlight',
+                        'firebugLayoutBox'
+                    ].map(function(x){
+                        return x + ': ' + document.getElementsByClassName(x).length;
+                    }).join('<br />') + '<br />style:' + document.getElementsByTagName('style').length;
+                },300);
+            }
+        </script>
+    </head>
+    <body onload="doit();">
+        <input type="text" disabled>&nbsp;<input type="text"><br /><br />
+        <input type="text" disabled>&nbsp;<input type="text"><br /><br />
+        <input type="text" disabled>&nbsp;<input type="text"><br /><br />
+        <input type="text" disabled>&nbsp;<input type="text"><br /><br />
+        <input type="text" disabled>&nbsp;<input type="text"><br /><br />
+        <input type="text" disabled>&nbsp;<input type="text"><br /><br />
+        <div id='log'></div>
+        <div id="warning">On inspect end fbProxyElement should return to 0</div>
+    </body>
+</html>

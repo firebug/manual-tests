@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 4504: Errors from one window/tab leak into others</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/content/templates/default/testcase.css" type="text/css" rel="stylesheet"/>
+        <script type="text/javascript">
+            function createErrors()
+            {
+                for (var i = 0; i < 5; i++)
+                    setTimeout(new Function("firstPageFunction" + i + "();"), 0); 
+            }
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=4504">Issue 4504</a>: Errors from one window/tab leak into others</h1>
+        </header>
+        <div>
+            <section id="content">
+                <button onclick="createErrors()">Create errors</button>
+                <a href="issue4504SecondPage.html">Second page</a>
+            </section>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Enable and switch to the <em>Console</em> panel</li>
+                    <li><code class="key">Shift</code> + click on the link above to open the second page in a new window</li>
+                    <li>Click the <em>Create errors</em> button above</li>
+                </ol>
+                <h3>Observed result</h3>
+                <ul>
+                    <li class="error">Errors are shown inside the console of the second page</li>
+                </ul>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>Errors should not leak into the console of other pages</li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner</footer>
+        </div>
+    </body>
+</html>

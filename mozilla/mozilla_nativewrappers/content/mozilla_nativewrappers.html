@@ -1,0 +1,28 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <title>Mozilla native wrappers</title>
+
+ </head>
+ <body>
+ <h1>Mozilla native wrappers</h1>
+ 
+ 
+ <script type="text/javascript">
+
+	var fn = document.originalFn = function() {
+		alert("fn");
+	}; 
+	
+	var anObject = { desc: 'I\'m an object!' };
+	var anArray = document.originalArray = [ fn, "a string", 55, anObject ];
+	
+
+	//tell the Tracker to track 'fn' by using injected functions. Also keep a reference to track function result.
+	document.trackedFn = document.track("fn", fn);
+	
+	//also track anArray!
+	document.trackedArray = document.track("array", anArray);
+	
+</script>
+ </body>

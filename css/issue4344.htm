@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Issue 4344: CSS autocompletion has incomplete support for color names of CSS3/SVG spec</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      body {
+        background: #ffffff;
+        font: small arial, sans-serif;
+        margin: 5px auto;
+        width: 815px;
+      }
+      h1 {
+        font-size: large;
+        font-weight: normal;
+        padding: 1em 0;
+        text-transform: uppercase;
+      }
+      h2 {
+        font-size: medium;
+        font-weight: normal;
+        padding: 0.5em 0;
+        text-transform: uppercase;
+        margin: 0;
+      }
+      ol {
+        margin:0;
+      }
+      ol li {
+        padding-bottom: 1em;
+      }
+      ul li {
+        padding: 0;
+      }
+      #content {
+        background: #9acbe4;
+        padding: 10px 20px;
+      }
+      #content div {
+        margin: 5px 0;
+        padding: 5px;
+      }
+      #output {
+        width: auto!important;
+        background: #e8f0ff;
+      }
+      #color {
+        width: 100px;
+        height: 100px;
+        background-color: #FFFF8C;
+      }
+    </style>
+  </head>
+  <body>
+    <h1><a href="http://code.google.com/p/fbug/issues/detail?id=4344">Issue 4344</a>: CSS autocompletion has incomplete support for color names of CSS3/SVG spec</h1>
+    <div id="content">
+      <div id="output">
+        <div id="color"></div>
+      </div>
+      <ol>
+        <li>Inspect the yellow <em>div</em> (#color)</li>
+        <li>Inside the Style Side Panel edit the <em>background-color</em> value and type <em>deepsky</em></li>
+      </ol>
+      <ul>
+        <li><strong>Observed:</strong> There is no autocompletion for this color and several other ones of the CSS spec, though there is support for colors, that are not in the spec and not supported by the browser like <em>feldspar</em>.</li>
+        <li><strong>Expected:</strong> Autocompletion should complete the entered word to <em>deepskyblue</em>.</li>
+      </ul>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<html>
+    <head>
+    </head>
+    <body>
+        <div style="position:absolute;top:10px;right:10px;"><a href="#" onclick="window.print();return false;">Print</a></div>
+        <h1>Inspector Test Suite</h1>
+        <p>This test suite is designed to uncover problems with Firebug's frame, box model and image map highlighters. The interface itself is designed in a frameset ... this is to add a level of complexity to the tests and is an extra challenge for the inspector.</p>
+        <p>Run through each test as follows:</p>
+        <ol>
+            <li>Click the inspect button and check that inspect is working correctly</li>
+            <li>In the HTML tab hover HTML nodes and check that the box model highlighter is operating correctly. On image map tests all locations that an image map area has been used will be highlighted instead.</li>
+            <li>In the HTML tab click on an HTML node and then use the cursor keys to navigate up and down through the nodes parents and children, the box model highlighter should highlight each node as you move to it. On image map tests all locations that an image map area has been used will be highlighted instead.</li>
+            <li>Select an HTML node and then mouse over the layout information on the layout tab. The box model should be displayed, the elements parent should also be outlined and rulers should be displayed at the parents top and left. On image map tests the hovering the layout information will be the same s hovering an HTML node.</li>
+        </ol>
+        <p>On at least one test you should try the following:</p>
+        <ol>
+            <li>Start the test with Firebug disabled</li>
+            <li>Right-click an element and select "Inspect Element", Firebug should open and the element should be selected in the HTML tree</li>
+        </ol>
+        <p>Select issue 2188 and check that you can inspect both the frames in the test itself and the frames in the test suite frameset</p>
+    </body>
+</html>

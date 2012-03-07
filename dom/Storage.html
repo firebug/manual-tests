@@ -1,0 +1,29 @@
+<html>
+<head>
+<script>
+
+window.addEventListener('load', function(event){
+    sessionStorage["a"] = "letter";
+    sessionStorage["1"] = "number";
+    sessionStorage["first"] = "ordinal";
+    var str = "";
+    try
+    {
+        for (var i = 0; i < sessionStorage.length; i++)
+            str += "keys["+i+"]="+sessionStorage[i]+"\n";
+
+        document.getElementById("result").innerHTML=str;
+    }
+    catch(exc)
+    {
+        document.getElementById("result").innerHTML=exc;
+    }
+}, true);
+
+</script>
+
+</head>
+<body>
+<div id="result"></div>
+</body>
+</html>

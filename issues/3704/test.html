@@ -1,0 +1,42 @@
+<html>
+<head>
+<title>ccccc Test</title>
+</head>
+<body>
+<center>
+<h2>cccccc Test</h2><br>
+<br>
+
+<br>
+
+</center>
+
+<div id="data" style="color:black;background:white;width:640px;height:700px;overflow:auto;margin-left:auto;margin-right:auto;border:outset 1px black;"></div>
+
+
+<script>
+    var x = 88;
+
+    var create = function createFn()
+    {
+        var xyz;
+
+        var abc = 8;
+
+        var dataDiv = document.getElementById("data");
+
+        var destroy = function destroyFn()
+        {
+
+             dataDiv.innerHTML += "<h4>Chunks = " + 7 + "<h4>";
+        };
+
+        window.onbeforeunload = destroy;
+    };
+
+    window.onload = create;
+
+</script>
+
+</body>
+</html>

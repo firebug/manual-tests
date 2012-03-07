@@ -1,0 +1,24 @@
+
+<style>
+
+.second .third,
+.first .second .third
+{
+	color: blue;
+}
+
+.first .third {
+	color: red;
+}
+
+</style>
+
+
+<div class="first">
+	<div class="second">
+		<div class="third">
+			The color of the text inside the div.third is rendered with a blue color as it
+should be, yet firebug displays red as the current color for the element
+		</div>
+	</div>
+</div>

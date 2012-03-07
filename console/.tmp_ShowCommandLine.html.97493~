@@ -1,0 +1,34 @@
+<html>
+<head>
+<script>
+
+function attachReporter()
+{
+window.dump("load event\n");
+	var fbConsole = document.getElementById("_firebugConsole");
+	if (fbConsole)
+	{
+		fbConsole.addEventListener("firebugCommandLine", function onFirebugCommandLine(event)
+		{
+			  var expr = fbConsole.getAttribute("expr");
+              window.dump("firebugCommandLine expr:"+expr+"\n");
+		}, true);
+        window.aContainer = {name: "foo"};
+	    window.eval("with(_FirebugCommandLine){var aa = 1;}");
+	    window.dump("the current value of window.aa is "+window.aa+"\n");
+	    top.eval("with(aContainer){var aa = 1;}");
+	    window.dump("the current value of window.aa is "+window.aa+"\n");
+        delete window.aa;
+	}
+	else
+		window.dump("no _firebugConsole\n");
+}
+
+window.addEventListener("load", attachReporter, true);
+window.dump("script ran\n");
+</script>
+</head>
+<body>
+<h1>window.dump on commandline events</h1>
+</body>
+</html>

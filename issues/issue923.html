@@ -1,0 +1,40 @@
+<html>
+<head>
+    <script>
+        function enterDebug() {
+            dump("enterDebug\n");
+            debugger;
+        }
+    </script>
+</head>
+<body>
+<h1>Issue 923</h1>
+    <pre>
+    What steps will reproduce the problem?
+1. Make sure Firebug window is closed
+2. Open the attach file
+3. Click the debugger; button
+4. Firebug window opens with the Script panel active in the enterDebug function
+5. Click Continue (F8)
+6. Close Firebug window
+7. Click the debugger; button again
+
+What is the expected output? What do you see instead?
+Firebug window should open in the Script panel and show the enterDebug
+function is in step 4 above. Instead, the Firebug window appears with the
+Script panel selected, but it content is empty (gray).
+
+What version of the product are you using? On what operating system?
+FF3.0, FB1.2.0b4 on Windows XP
+
+Please provide any additional information below.
+When the problem occurs, switching to another FB panel and back to the
+script panel, or to another FF tab and back to the viewed tab solves the
+problem, and the Script panel is displayed correctly
+    </pre>
+    <form>
+        <input type="button" value="debugger;" onclick="enterDebug()">
+    </form>
+
+</body>
+</html>

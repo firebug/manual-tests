@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Issue 322: Enhancement: Hierarchal profiler output</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      body {
+        background: #ffffff;
+        font: small arial, sans-serif;
+        margin: 5px auto;
+        width: 815px;
+      }
+      h1 {
+        font-size: large;
+        font-weight: normal;
+        padding: 1em 0;
+        text-transform: uppercase;
+      }
+      h2 {
+        font-size: medium;
+        font-weight: normal;
+        padding: 0.5em 0;
+        text-transform: uppercase;
+        margin: 0;
+      }
+      ol {
+        margin:0;
+        clear: both;
+      }
+      ol li {
+        padding-bottom: 1em;
+      }
+      ul li {
+        padding: 0;
+      }
+      #content {
+        background: #9acbe4;
+        padding: 10px 20px;
+      }
+      #element1,#element2 {
+        width: 100px;
+        height: 100px;
+        float: left;
+        margin: 5px;
+        padding: 5px;
+        background-color: #ffff8c;
+      }
+
+      .hovered {
+        background-color: #8cff8c;
+      }
+    </style>
+    <script type="text/javascript">
+      <!--
+      function functionLevel2(name) {
+        var output = 'Hello ' + name + '!';
+        console.log(output);
+      }
+
+      function functionLevel1(arg1, arg2) {
+        functionLevel2('John');
+        functionLevel2('world');
+        console.log(arg1, arg2);
+      }
+
+      function eventHandler(event) {
+        event.stopPropagation();
+
+        functionLevel1(4,'testing');
+      }
+
+      function init() {
+        document.getElementById('start').addEventListener('click',eventHandler,false);
+      }
+
+      window.addEventListener('load',init,false);
+      //-->
+    </script>
+  </head>
+  <body>
+    <h1>Issue 322: Enhancement: Hierarchal profiler output</h1>
+    <div id="content">
+      <button id="start">Generate some JS calls</button>
+      <ol>
+        <li>Enable and activate the Script panel</li>
+        <li>Reload the page</li>
+        <li>Switch to the Console panel</li>
+        <li>Start profiling by clicking on <em>Profile</em></li>
+        <li>Click on <em>Generate some JS calls</em></li>
+        <li>Stop profiling by clicking on <em>Profile</em> again</li>
+      </ol>
+      <ul>
+        <li><strong>Observed:</strong> The generated profiling data is listed</li>
+        <li>
+          <strong>Expected:</strong> There should be the possibility to switch between the (currently implemented) list view and 
+          a tree view respecting the call hierarchy.
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

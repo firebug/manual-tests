@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 951: Code breaks on phantom breakpoint in 1.2.0b6</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/content/templates/default/testcase.css" type="text/css" rel="stylesheet"/>
+        <script type="text/javascript">
+            function sayHello()
+            {
+                var output = document.getElementById("output");
+                var paragraph = document.createElement("p");
+                paragraph.textContent = "Hello Firebug user!";
+                output.appendChild(paragraph);
+                if (output.style.display != "block")
+                    output.style.display = "block";
+            }
+
+            function sayDelayedHello()
+            {
+                setTimeout("sayHello()", 1000);
+            }
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=951">Issue 951</a>: Code breaks on phantom breakpoint in 1.2.0b6</h1>
+        </header>
+        <div>
+            <section id="content">
+                <button onclick="sayDelayedHello();">Say delayed hello</button>
+                <section id="output"></section>
+            </section>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Enable and switch to the <em>Script</em> panel</li>
+                    <li>Reload the page</li>
+                    <li>Set a breakpoint at line 10 (<code>var output = document.getElementById("output");</code>)</li>
+                    <li>
+                        Click the <em>Say delayed hello</em> button and wait for one second<br/>
+                        <span class="ok">&rArr; Script execution is stopped at the breakpoint</span>
+                    </li>
+                    <li>Click the <em>Continue</em> button inside the <em>Script</em> panel</li>
+                    <li>Remove the breakpoint again</li>
+                    <li>Click the <em>Say delayed hello</em> button again and wait for one second</li>
+                </ol>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>Script execution is not stopped anymore</li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner</footer>
+        </div>
+    </body>
+</html>

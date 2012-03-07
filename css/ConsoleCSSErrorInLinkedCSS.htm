@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head><title>No such line in the view-source window</title>
+
+  
+    
+    <meta name="author" content="Christian Holtje">
+    
+    <LINK REL=STYLESHEET TYPE="text/css" 
+      HREF="Buggy.css" TITLE="Cool">
+	</head><body>
+    <h1>No such line in the view-source window</h1>
+
+    <p>This is a firebug test case for this <a href="http://groups.google.com/group/firebug/browse_thread/thread/c1f3de67d8ce4ae8/47ecc8e483a48f3a">thread</a>.</p>
+
+    <h5>What Happened</h5>
+
+    <p>Notice that in firebug, you will get a message like this:</p>
+
+    <pre style="background: rgb(0, 238, 255) none repeat scroll 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;"><span style="float: right;"><a name="example" style="font-weight: bold; color: blue;">bug1.html (line 3)</a></span> <span style="background: yellow none repeat scroll 0%; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial;">!</span> Unknown property 'guinea-pig'. Declaration dropped.</pre>
+
+    <p>If
+you click on the link at the left, then it opens up the view source
+window and shows line three. But since the style is added dynamically
+via JavaScript, the line is not there.</p>
+
+    <h5>What was expected</h5>
+
+    <p>The link should go to someplace that shows the broken CSS, preferably in a way the author could track back to the JavaScript.</p>
+
+    <hr>
+    <address>
+      <a href="http://docwhat.gerf.org/">Docwhat</a>,
+      27 Jun 2007
+    </address>
+  
+</body></html>

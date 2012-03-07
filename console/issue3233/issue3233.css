@@ -1,0 +1,42 @@
+body {
+  background: #ffffff;
+  font: small arial, sans-serif;
+  margin: 5px auto;
+  width: 815px;
+}
+h1 {
+  font-size: large;
+  font-weight: normal;
+  padding: 1em 0;
+  text-transform: uppercase;
+}
+h2 {
+  font-size: medium;
+  font-weight: normal;
+  padding: 0.5em 0;
+  text-transform: uppercase;
+  margin: 0;
+}
+ol {
+  margin:0;
+}
+ol li {
+  padding-bottom: 1em;
+}
+ul li {
+  padding: 0;
+}
+#content {
+  background: #9acbe4;
+  padding: 10px 20px;
+}
+#content div {
+  width: 200px;
+  margin: 5px 0;
+  padding: 5px;
+}
+#output {
+  width: auto!important;
+  background: #e8f0ff;
+  foo: bar;
+}

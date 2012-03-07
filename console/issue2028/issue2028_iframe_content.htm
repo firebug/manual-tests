@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Issue 2028: "Console is not defined" for dynamic IFRAMEs - iframe content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      body {
+        background: #ffffff;
+        font: small arial, sans-serif;
+        margin: 5px auto;
+      }
+    </style>
+    <script type="text/javascript">
+      <!--
+      function logToConsole(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        console.log('Logging into the console from the iframe was successful');
+      }
+
+      function init() {
+        document.getElementById('logToConsole').addEventListener('click',logToConsole,false);
+      }
+
+      window.addEventListener('load',init,false);
+      //-->
+    </script>
+  </head>
+  <body>
+    <a href="#" id="logToConsole">Log to the console</a>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>if bug?</title>
+<script type="text/javascript">
+ //<![CDATA[
+    function testBug() {
+        myLog('<b>testBug was Clicked</b>');
+        testBugA({
+            aString: 'Hello World',
+            anotherString: 'Hi there'
+        });
+    }
+
+    function testBugA(aObject) {
+        //var truth = (aObject.aString === "Hello World");
+        //var x = ('Equality Test: ' + truth);
+        //
+        var y = ('Equality Test: ' + (aObject.aString === "Hello World"));
+        if (aObject.aString === "Hello World") {
+            myLog('if says true');
+            myLog('Equality Test: ' + (aObject.aString === "Hello World"));
+        } else {
+            myLog('if says false');
+            myLog('Equality Test: ' + (aObject.aString === "Hello World"));
+        }
+        myLog('Testing if aObject.aString("' + aObject.aString + '") !== "Hello World"');
+        if (aObject.aString !== "Hello World") {
+            myLog('if says true');
+            myLog('Equality Test: ' + (aObject.aString === "Hello World"));
+        } else {
+            myLog('if says false');
+            myLog('Equality Test: ' + (aObject.aString === "Hello World"));
+        }
+
+
+    }
+
+    function noBugHere() {
+        myLog('<b>noBugHere was Clicked</b>');
+        var aObject = {
+            aString: 'Hello World',
+            anotherString: 'Hi there'
+        };
+
+        myLog('aObject.aString = "' + aObject.aString + '"');
+        myLog('typeof(aObject.aString) = "' + typeof(aObject.aString) + '"');
+        myLog('Equality Test: ' + (aObject.aString === "Hello World"));
+        myLog('Testing if aObject.aString("' + aObject.aString + '") === "Hello World"');
+        if (aObject.aString === "Hello World") {
+            myLog('if says true');
+            myLog('Equality Test: ' + (aObject.aString === "Hello World"));
+        } else {
+            myLog('if says false');
+            myLog('Equality Test: ' + (aObject.aString === "Hello World"));
+        }
+        myLog('Testing if aObject.aString("' + aObject.aString + '") !== "Hello World"');
+        if (aObject.aString !== "Hello World") {
+            myLog('if says true');
+            myLog('Equality Test: ' + (aObject.aString === "Hello World"));
+        } else {
+            myLog('if says false');
+            myLog('Equality Test: ' + (aObject.aString === "Hello World"));
+        }
+    }
+
+    function myLog(str) {
+        document.getElementById('divLog').innerHTML += str + '<br/>';
+    }   
+//]]>
+</script>
+</head>
+<body>
+<h1> If bug? </h1>
+<h4> Instructions to reproduce </h4>
+<ol>
+    <li> Click on testBug() and noBugHere() - The outputs should match </li>
+    <li> Place break points on lines 20, 28, 50, and 58 </li>
+    <li> Click on testBug() and noBugHere() - The results of the if statements in testBug() should be inverted </li>
+</ol>
+<h4> Notes </h4>
+<p> It appears that you can place break's just about anywhere else without effecting the outcome. </p>
+<h4> The buttons </h4>
+<input type="button" onclick="testBug()" value="testBug()" />
+<input type="button" onclick="noBugHere()" value="noBugHere()" />
+
+<h4> The log output </h4>
+<div style="width:100%" id="divLog">
+</div>
+</body>
+</html>

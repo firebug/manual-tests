@@ -1,0 +1,128 @@
+TABLE.displaytag {
+	border-collapse: collapse;
+	width: 100%;
+	margin-top: 10px;
+
+}
+
+TABLE.displaytag TH {
+	padding: 7px;
+	font-weight: bold;
+	color: #808080;
+	border-bottom: 1px dashed #808080;
+}
+
+TABLE.displaytag TD {
+	padding: 7px;
+}
+
+TABLE.displaytag TD img {
+	border: 0;
+}
+
+table.displaytag li {
+	padding: 5px;
+}
+
+TABLE.displaytag TD.rightalign {
+	text-align: right;
+}
+
+
+TABLE.displaytag TR.odd TD {
+	background: #F9F9F9;
+}
+
+TABLE.displaytag TR.even TD {
+	background: #FFFFFF;
+}
+
+TABLE.displaytag TH.sorted {
+	text-decoration: underline;
+}
+
+TABLE.displaytag TH.sorted a,TABLE.displaytag TH.sortable a {
+	display: block;
+	background: url(../img/displaytag/arrow_off.png) no-repeat right;
+	text-decoration: none;
+}
+
+TABLE.displaytag TH.sorted a:hover,TABLE.displaytag TH.sortable a:hover
+	{
+	color: #f00;
+}
+
+TABLE.displaytag TH.order1 a {
+	background-image: url(../img/displaytag/arrow_down.png);
+}
+
+TABLE.displaytag TH.order2 a {
+	background-image: url(../img/displaytag/arrow_up.png);
+}
+
+span.pagebanner {
+	color: #808080;
+	background-color:  #F9F9F9;
+	width: 99%;
+	display: block;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	padding-right: 0px;
+	text-align: top;
+}
+
+span.pagelinks {
+	color: #808080;
+	background-color:   #F9F9F9;
+	width: 99%;
+	display: block;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 0px;
+	padding-right: 10px;
+	text-align: top;
+
+}
+
+span..pagingwrapper {
+	border-top: 1px solid #f0f0f0;
+	width: 100%;
+	background: #F9F9F9;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+
+span.pagelinks a {
+	color: #00f;
+}
+
+span.pagelinks a:hover {
+	color: #f00;
+}
+
+div.exportlinks {
+	font-size: 0.8em;
+	padding: 2px 4px 2px 4px;
+	margin: 0 0 10px 0;
+	width: 99%;
+}
+
+span.export {
+	padding: 0 4px 1px 20px;
+	display: inline;
+	cursor: pointer;
+}
+
+span.excel {
+	background: url(../img/displaytag/ico_file_excel.png) no-repeat;
+}
+
+span.csv {
+	background: url(../img/displaytag/ico_file_csv.png) no-repeat;
+}
+
+span.xml {
+	background: url(../img/displaytag/ico_file_xml.png) no-repeat;
+}

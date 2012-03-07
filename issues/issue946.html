@@ -1,0 +1,22 @@
+<html>
+<head>
+<title>Issue 946     Option on how to deal with tab characters in JavaScript source views </title>
+<script type="text/javascript">
+
+function tabulation()
+{
+   var testTabs = "\t\t\tvar tab\t='tab'";
+   var test4Spaces = "    var sp4    ='sp4'";
+   var src = testTabs +"\n"+test4Spaces+"\n";
+   window.dump(src);  
+   eval(src);
+}
+window.addEventListener('load', tabulation, true);
+</script>
+</head>
+<body>
+<h1>Option on how to deal with tab characters in JavaScript source views</h1>
+<div class="sourceRow"><a class="sourceLine">1</a><span class="sourceRowText">          var tab ='tab'</span></div>
+<div class="sourceRow"><a class="sourceLine">2</a><span class="sourceRowText">    var sp4    ='sp4'</span></div>
+</body>
+</html>

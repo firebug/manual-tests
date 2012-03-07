@@ -1,0 +1,5 @@
+
+
+# Maps resource://firebug/* to files in modules/*
+resource firebug modules/
+

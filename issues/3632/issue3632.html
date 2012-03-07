@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <title>Test Case for Issue #3632</title>
+</head>
+<body>
+
+<h1>Issue #3632</h1>
+
+<p>This test-case is intended for <a href="http://code.google.com/p/fbug/issues/detail?id=3632">Issue #3632</a>
+- <span class="h3"> Script error when extending String.prototype and enabling the Console panel</span>.
+<br/>
+<i>Jan Odvarko, odvarko@gmail.com</i>
+</p>
+
+<ol>
+<li>Install <a href="https://bugzilla.mozilla.org/attachment.cgi?id=489466&action=edit">extension</a>
+attached to <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=610973">bug 610973</a></li>
+<li>Open Firefox -> Tools -> Error Console</li>
+<li>Click on the <code style="color:green">Execute Test</code> button below.</li>
+<li>You should see following error: <code>
+"hello".foo is not a function</code>
+</li>
+</ol>
+
+<button id="testButton" onclick="onExecuteTest()">Execute Test</button>
+<br/>
+<br/>
+
+<i>The Javascript that caused the error looks like as follows:</i>
+<pre>
+function onExecuteTest()
+{
+    String.prototype.foo = function() {}
+    "hello".foo();
+}
+</pre>
+
+<script type="text/javascript">
+function onExecuteTest()
+{
+    String.prototype.foo = function() {}
+    "hello".foo();
+}
+</script>
+  
+</body>
+</html>

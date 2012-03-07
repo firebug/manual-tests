@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head> 
+	<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    <title>Wrapper issues Tests</title>
+    
+</head>
+
+<body>
+<div id="mainDiv" style="width: 100%; height: 100%;">
+	No visual content, just js!           
+</div>
+
+</body>
+
+<script type="text/javascript">
+
+	function doStuff() {
+
+		var fn = window.fn = function() {
+			alert("fn");
+		}; 
+	
+		var obj = window.obj = { name: "it's me" };
+		var complexObj = window.complexObj = { name: "complex", inner: obj, theFn: fn};
+		
+		var num = window.num = 5;
+		
+		var str = window.str = "a string";
+		
+		var fn2 = window.fn2 = document.track("fn2", fn);
+		var obj2 = window.obj2 = document.track("obj2", obj);
+		var num2 = window.num2 = document.track("num2", num);
+		var str2 = window.str2 = document.track("str2", str);
+		var complexObj2 = window.complexObj2 = document.track("complex2", complexObj);
+		
+		var resFn = document.getTracked("fn2");
+		var resObj = document.getTracked("obj2");
+		var resNum = document.getTracked("num2");
+		var resStr = document.getTracked("str2");
+		var resComplex = document.getTracked("complex2");
+	
+		console.log("page created vs page retrieved, function == :" + (fn === resFn));
+		console.log("page created vs page retrieved, obj == :" + (obj === resObj));
+		console.log("page created vs page retrieved, complexObj == :" + (complexObj === resComplex));
+		console.log("page created vs page retrieved, num == :" + (num === resNum));
+		console.log("page created vs page retrieved, str == :" + (str === resStr));
+	
+		console.log("page track result vs page retrieved, function == :" + (fn2 === resFn));
+		console.log("page track result vs page retrieved, obj == :" + (obj2 === resObj));
+		console.log("page track result vs page retrieved, complexObj == :" + (complexObj2 === resComplex));
+		console.log("page track result vs page retrieved, num == :" + (num2 === resNum));
+		console.log("page track result vs page retrieved, str == :" + (str2 === resStr));
+
+		alert("alert to avoid loosing console logs when test ends");
+	}
+</script>
+
+
+</html>

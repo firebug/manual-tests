@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<overlay id="functionPropertyOverlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+    <script src="chrome://functionProperty/content/debugger.js" type="application/x-javascript"/>
+
+    <!-- Firefox page context menu -->
+    <menupopup id="contentAreaContextMenu">
+        <menuseparator/>
+        <menuitem id="test_firebugInspect" label="Execute Test" class="menuitem-iconic"
+            oncommand="FunctionProperty.onTest();"/>
+    </menupopup>
+</overlay>

@@ -1,0 +1,54 @@
+<html>
+    <head>
+    <script type="text/javascript">
+
+    Function.prototype.getName = function ()
+    {
+        return this.$owner.$name + ' :: ' + this.$name;
+    };
+
+    var Animal = new Function();
+
+    var Dog = new Function();
+    Dog.$name = 'Dog';
+    Dog.prototype = new Animal();
+
+    var Cat = new Function();
+    Cat.$name = 'Cat';
+    Cat.prototype = new Animal();
+
+    function addGetMethod(klass, name, body)
+    {
+        klass.prototype['get' + name] = body;
+        body.$owner = klass;
+        body.$name = 'get' + name;
+    }
+    function setup()
+    {
+        addGetMethod(Dog, 'Size', function Dog_getSize() {return '42 inches'});
+        addGetMethod(Cat, 'Size', function Cat_getSize() {debugger; return '36 inches';});
+    }
+    function doTest()
+    {
+        console.log("Alert calling the 'getSize' method on the Dog class: %o", (new Dog()).getSize());
+        console.log("Alert the name of the getSize method of the Dog class: %o ",Dog.prototype.getSize.getName());
+        console.log("Alert calling the 'getSize' method on the Cat class: %o", (new Cat()).getSize());
+        console.log("Alert the name of the getSize method of the Cat class: %o", Cat.prototype.getSize.getName());
+    }
+    </script>
+    </head>
+
+    <body onload="setup()">
+
+        <button onclick="alert((new Dog()).getSize())">Alert calling the 'getSize' method on the Dog class</button>
+        <button onclick="alert(Dog.prototype.getSize.getName())">Alert the name of the getSize method of the Dog class</button>
+
+        <br/>
+
+        <button onclick="alert((new Cat()).getSize())">Alert calling the 'getSize' method on the Cat class</button>
+        <button onclick="alert(Cat.prototype.getSize.getName())">Alert the name of the getSize method of the Cat class</button>
+        <br/>
+        <button onclick="doTest()">Print to console</button>
+    </body>
+
+</html>

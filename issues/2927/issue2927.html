@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>JS Bin</title>
+<script type="text/javascript">
+   var req = new XMLHttpRequest();
+   req.open('GET', 'data.html', true);
+   req.onreadystatechange = function (aEvt) {
+     if (req.readyState == 4) {
+        if(req.status == 200)
+         alert(req.responseText);
+        else
+         alert("Error loading page\n");
+     }
+   };
+   req.send(null);
+</script>
+</head>
+<body>
+</body>
+</html>

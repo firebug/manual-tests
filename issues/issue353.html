@@ -1,0 +1,53 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>Issue 353</title>
+
+
+
+<script type="text/javascript" >
+i= 7;
+function test() {
+ var i; i= 5;
+ i=i; //Here in "watch" window you will see i=7 instead of i=5
+ }
+
+test();
+</script>
+</head>
+<body>
+<h1>Issue 353:   	 "Watch" variable problem: local variable values not shown</h1>
+<pre>
+Reported by konkove, Oct 31, 2007
+
+What steps will reproduce the problem?
+1. Declare global variable
+2. Declare function with local variable that have same name as global variable
+3. Assign value to this variable
+4. Try to watch its value in "Watch" window
+
+What is the expected output? What do you see instead?
+FireBug will display value of global variable with same name
+But I expected to see value of local variable
+
+What version of the product are you using? On what operating system?
+FireBug v1.05, WindowsXP Pro
+
+
+Please provide any additional information below.
+
+&lang; script type="text/javascript" &rang;
+i= 7;
+function test() {
+ var i; i= 5;
+ i=i; //Here in "watch" window you will see i=7 instead of i=5
+ }
+
+test();
+&lang;/scirpt &rang;
+
+</pre>
+</body>
+</html>

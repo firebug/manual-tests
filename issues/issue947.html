@@ -1,0 +1,10 @@
+<html>
+<head>
+<title>Test Case for FB issue 947</title>
+<script src="http://www.chroniquesdaevry.org/js/alias.js"
+type="text/javascript"></script>
+<body>
+<input type="button" value="Test (will POST some params on '/' as a simple request)"
+onclick="var param='array[]=0&array[]=0&array[]=1';Alias.Req(null,'/',{parameters:param}); Alias.Dbg('The request is supposed to have the following parameter string : '+param); alert('Please prompt the Firebug console'); return false;" />
+</body>
+</html>

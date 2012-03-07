@@ -1,0 +1,29 @@
+<html>
+<head>
+    <title> test </title>
+    <script src="test.js"></script>
+</head>
+<body onload="test();">
+    <div id="output"></div>
+
+    <p><pre><b>What steps will reproduce the problem?</b>
+1. Using attached test case, load test.html.
+2. Set breakpoints at lines 3 & 6 in test.js.
+3. Reload page in order to hit breakpoints.
+
+<b>What is the expected output? What do you see instead?</b>
+Both breakpoints should be hit.  But only the line 3 breakpoint causes the
+debugger to break.  The breakpoint (line 6) that should get hit when
+running in the IFRAME does not break.
+I tested with Venkman, and both breakpoints were hit, as expected.
+
+<b>What version of the product are you using? On what operating system?</b>
+FF 3rc2, Firebug 1.2.0b3, Mac OS X 10.5.3
+
+
+<b>Please provide any additional information below.</b>
+
+
+</pre></p>
+</body>
+</html>

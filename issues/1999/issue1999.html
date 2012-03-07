@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Page 1</title>
+    <script type="text/javascript" src="_files/calendar.js"></script>
+    <script type="text/javascript" src="_files/calendar-en.js"></script>
+    <script type="text/javascript" src="_files/calendar-setup.js"></script>
+
+    <link rel="stylesheet" href="_files/ext-all.css" type="text/css">
+    <link rel="stylesheet" href="_files/styles.css" type="text/css">
+    <link rel="stylesheet" type="text/css" media="all" href="_files/calendar-green.css">
+    <link rel="stylesheet" href="_files/displaytag.css" type="text/css">
+
+
+
+</head><body>
+
+<div id="ld-mask" style="background: rgb(255, 255, 255) none repeat scroll 0% 0%; width: 100%; height: 100%; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous; position: absolute; z-index: 20000; left: 0pt; top: 0pt; display: none;">&nbsp;</div>
+
+
+<div id="shadowTC">
+    <div class="shadowLeftCorner"></div>
+
+    <div style="width: 1238px;" id="shadowTop" class="shadowTop"></div>
+    <div class="shadowRightCorner"></div>
+</div>
+<div id="container">
+    <div style="height: 798px;" class="shadowLeft" id="shadowLeft"></div>
+    <div style="height: 798px;" class="shadowRight" id="shadowRight"></div>
+
+
+<div id="header">
+      <span class="logo"></span>
+
+        <span class="detail"><a href="">Example 1</a> | <a href="">Example 2</a></span>
+        <span class="headerText"></span>
+
+    <span class="userData">
+
+
+            <form>
+          <select name="list">
+            <option>Option 1</option>
+            <option>Option 2</option>
+            <option>Option 3</option>
+          </select>
+        </form>
+</div>
+
+
+
+
+
+<script type="text/javascript">
+function insertCSSInHead()
+{
+    var style =  createStyleSheet(document, "highlighter.css");
+    addStyleSheet(document, style);
+}
+function getInlineStyle()
+{
+    var style = document.createElement("style");
+    style.setAttribute("type", "text/css");
+    var rules =
+    style.innerHTML = rules;
+    return style;
+}
+function getLinkToStyleSheet()  // does NOT trigger bug
+{
+    //<link rel="stylesheet" href="_files/displaytag.css" type="text/css">
+    var link = document.createElement("link");
+    link.setAttribute("rel", "stylesheet");
+    link.setAttribute("type", "text/css");
+    link.setAttribute("href", "highlighter.css");
+    return link;
+}
+function createStyleSheet(doc, url)
+{
+    var style = doc.createElementNS("http://www.w3.org/1999/xhtml", "style");
+    style.setAttribute("charset","utf-8");
+    style.firebugIgnore = true;
+    style.setAttribute("type", "text/css");
+    style.innerHTML = getStyleSheetByXHR(url);
+    return style;
+}
+function getStyleSheetByXHR(url)
+{
+    var req = new XMLHttpRequest();
+    req.open('GET',url, false);
+    req.send(null);
+    return req.responseText;
+}
+function addStyleSheet(doc, style)  // Firebug.lib
+{
+    var heads = doc.getElementsByTagName("head");
+    if (heads.length)
+        heads[0].appendChild(style);
+    else
+        doc.documentElement.appendChild(style);
+}
+</script>
+<button onclick="insertCSSInHead();">Insert CSS in Head</button>
+
+
+<div id="navBar">
+<ul>
+
+
+
+
+
+
+
+
+
+
+ <li class="selected">
+     <b class="rnd tl">
+        <b class="rnd21">
+            <img width="1" height="1">
+        </b>
+        <b class="rnd11">
+            <img width="1" height="1">
+        </b>
+     </b>
+     <b class="rnd tr">
+        <b class="rnd21">
+            <img width="1" height="1">
+        </b>
+        <b class="rnd11">
+            <img width="1" height="1">
+        </b>
+     </b>
+    <a href="">tab</a>
+ </li>
+
+</ul></div>
+
+
+
+
+    <div style="height: 700px;" id="mainContent">
+    <div class="bottomNavbarShadow"></div>
+    <div id="colLeft">
+
+
+<div class="item">
+              <p>TEXT TEXT TEXT          </p>
+
+</div>
+
+
+    <div class="clear"></div>
+    </div>
+    <div id="colRight"></div>
+    <div class="shadowRight" id="shadowRight"></div>
+
+    </div>
+
+
+</div>
+
+<div id="shadowBC">
+    <div class="shadowLeftCorner"></div>
+    <div style="width: 1238px;" id="shadowBottom" class="shadowBottom"></div>
+    <div class="shadowRightCorner"></div>
+</div>
+<div style="width: 1238px;" id="footer">
+
+    <div class="bottomLeftCurve"></div>
+    <div class="infoText">bottom text</div>
+    <div class="bottomRightCurve"></div>
+</div>
+
+</body></html>

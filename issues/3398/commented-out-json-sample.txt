@@ -1,0 +1,26 @@
+
+
+
+/*-secure-
+
+
+{
+   "success": "true",
+   "contacts": [{
+      "id": 837498, 
+      "name": "John Doe",
+      "age": 34,
+      "occupation": "underpaid programmer"
+   }, {
+      "id": 749283, 
+      "name": "Alan Important", 
+      "age": 40, 
+      "occupation": "overpaid manager"
+   }]
+}
+
+
+*/
+
+
+

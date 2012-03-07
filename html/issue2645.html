@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+  <title>Firebug Issue 2645: Edit HTML without having to switch to "Edit" mode</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <style type="text/css">
+    body {
+      background: #ffffff;
+      font: small arial, sans-serif;
+      margin: 5px auto;
+      width: 815px;
+    }
+    h1 {
+      font-size: large;
+      font-weight: normal;
+      padding: 1em 0;
+      text-transform: uppercase;
+    }
+    h2 {
+      font-size: medium;
+      font-weight: normal;
+      padding: 0.5em 0;
+      text-transform: uppercase;
+      margin: 0;
+    }
+    ol {
+      margin:0;
+    }
+    ol li {
+      padding-bottom: 1em;
+    }
+    ul li {
+      padding: 0;
+    }
+    #content {
+      background: #ccddff;
+      padding: 10px 20px;
+    }
+    #emptyElement {
+      width: 200px;
+      margin: 5px 0;
+      padding: 5px;
+    }
+    #emptyElement {
+      background: #ffff8c;
+    }
+  </style>
+  </head>
+  <body>
+    <h1>Firebug Issue 2645: Edit HTML without having to switch to "Edit" mode</h1>
+    <div id="content">
+      <div id="emptyElement"></div>
+      <h2>Adding elements to HTML element</h2>
+      <ol>
+        <li>Inspect the yellow DIV above (#emptyElement)</li>
+        <li>Inside the HTML panel try to add elements to the DIV without switching to "Edit" mode
+          <ul>
+            <li>Observed: There's no possibility to add elements</li>
+            <li>Expected: The context menu of the DIV should show options for adding child and sibling nodes</li>
+          </ul>
+        </li>
+      </ol>
+      <h2>Renaming HTML element</h2>
+      <ol>
+        <li>Inspect the yellow DIV above (#emptyElement)</li>
+        <li>Inside the HTML panel try to change the name of the tag without switching to "Edit" mode
+          <ul>
+            <li>Observed: There's no possibility to rename the tag</li>
+            <li>Expected: When clicking on the tag's name or pressing F2 while the element is selected a text field should occur containing the current name (like for attributes), that lets you enter a new name</li>
+          </ul>
+        </li>
+      </ol>
+      <h2>Adding content to empty element</h2>
+      <ol>
+        <li>Inspect the yellow DIV above (#emptyElement)</li>
+        <li>Inside the HTML panel try to add some text to the tag without switching to "Edit" mode
+          <ul>
+            <li>Observed: There's no possibility to add text</li>
+            <li>Expected: When clicking between the two arrow brackets ("&gt;&lt;") of the empty DIV a text field should occur there, that lets you enter a text (or new tags)</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </body>
+</html>

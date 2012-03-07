@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Issue 1717: CSS Panel does not have @media UI</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="issue1717_tag.css" type="text/css" rel="stylesheet" media="print"/>
+    <style type="text/css" media="all">
+      @import url("issue1717_import_rule.css") print;
+
+      body {
+        background: #ffffff;
+        font: small arial, sans-serif;
+        margin: 5px auto;
+      }
+
+      @media screen {
+        body {
+          width: 815px;
+        }
+        h1 {
+          font-size: large;
+          font-weight: normal;
+          padding: 1em 0;
+          text-transform: uppercase;
+        }
+        h2 {
+          font-size: medium;
+          font-weight: normal;
+          padding: 0.5em 0;
+          text-transform: uppercase;
+          margin: 0;
+        }
+        ol {
+          margin:0;
+        }
+        ol li {
+          padding-bottom: 1em;
+        }
+        ul li {
+          padding: 0;
+        }
+        #content {
+          background: #9acbe4;
+          padding: 10px 20px;
+        }
+        #content div {
+          width: 200px;
+          margin: 5px 0;
+          padding: 5px;
+        }
+        #output {
+          width: auto!important;
+          background: #e8f0ff;
+        }
+        #justForPrinting {
+          display: none;
+        }
+      }
+
+      @media print {
+        ol {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Issue 1717: CSS Panel does not have @media UI</h1>
+    <div id="content">
+      <div id="output">
+        <p id="justForScreen">This text is just shown on screen.</p>
+        <p id="justForPrinting">This text is just shown when printing the page. Therefore the instructions are not displayed.</p>
+      </div>
+      <ol>
+        <li>Switch to the HTML tab</li>
+        <li>See the styles in in the styles tab</li>
+        <li>Open the print preview (via File->Print Preview)</li>
+      </ol>
+      <ul>
+        <li><strong>Observed:</strong> There is no option for switching between CSS media types</li>
+        <li><strong>Expected:</strong> There should be an option in the HTML panel for switching between CSS media types</li>
+      </ul>
+    </div>
+  </body>
+</html>

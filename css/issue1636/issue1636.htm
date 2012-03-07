@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Issue 1636: Hide specific stylesheets in CSS view of an element</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="issue1636_long.css" type="text/css" rel="stylesheet" media="all"/>
+    <link href="issue1636_short.css" type="text/css" rel="stylesheet" media="all"/>
+  </head>
+  <style type="text/css">
+    #content div {
+      width: 100%;
+      margin: 5px 0;
+      padding: 5px;
+      background-color: #e8f0ff;
+    }
+  </style>
+  <body>
+    <h1>Issue 1636: Hide specific stylesheets in CSS view of an element</h1>
+    <div id="content">
+      <div>
+        <div style="width:200px; height:150px; background-color: #8cff8c;"></div>
+      </div>
+      <h2>Hiding all styles of a CSS file</h2>
+      <ol>
+        <li>Inspect the red DIV</li>
+        <li>Inside the Style Side Panel or the CSS Panel try to disable all the styles of issue1636short.css at once</li>
+      </ol>
+      <ul>
+        <li><strong>Observed:</strong> There is no such possibility</li>
+        <li><strong>Expected:</strong> A context menu option for the file inside the Style Side Panel resp. a button inside the CSS Panel to toggle all styles of a specific CSS containing file</li>
+      </ul>
+      <h2>Hiding one rule</h2>
+      <ol>
+        <li>Inspect the red DIV</li>
+        <li>Inside the Style Side Panel or the CSS Panel try to disable all styles of the <code>#content div div</code> rule at once</li>
+      </ol>
+      <ul>
+        <li><strong>Observed:</strong> There is no such possibility</li>
+        <li><strong>Expected:</strong> A context menu option plus possibly a one-click way like for single styles to toggle all styles of one specific CSS rule</li>
+      </ul>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <title>Firebug Test for Script Panel: Event</title>
+    </head>
+    <script type="text/javascript">
+    var count = 0;
+    function fire()
+    {
+        count++;
+        var report = document.getElementById("report");
+        report.innerHTML = "Fired "+count;
+    }
+    function theAddedHandler(event)
+    {
+        var reportAdded = document.getElementById("reportAdded");
+        var count = ++(reportAdded.count);
+        reportAdded.innerHTML = "Fired "+  (count);
+    }
+    function addHandlers(event)
+    {
+        var reportAdded = document.getElementById("reportAdded");
+        reportAdded.count = 0;
+        var addToMe = document.getElementById("addToMe");
+        addToMe.addEventListener("click", theAddedHandler, true);
+
+        var reportAnonAdded = document.getElementById("reportAnonAdded");
+        reportAnonAdded.count = 0;
+        var addToAnon = document.getElementById("addToAnon");
+        addToAnon.addEventListener("click", function(event) 
+        {
+            var reportAnonAdded = document.getElementById("reportAnonAdded");
+            var count = ++(reportAnonAdded.count);
+            reportAnonAdded.innerHTML = "Fired "+  (count);
+        }, true);
+    }
+    window.addEventListener("load", function inlineLoadHandler(event) { addHandlers(); }, false);
+    
+    </script>
+    <body>
+        <p>Browser generated events</p>
+        <button onclick="fire()">Click to Fire</button><br />
+        <p id="report"></p>
+        <p>addEventListener events</p>
+        <button id="addToMe">Click to Fire</button><br />
+        <p id="reportAdded"></p>
+        <p>addEventListener anonymous function events</p>
+        <button id="addToAnon">Click to Fire</button><br />
+        <p id="reportAnonAdded"></p>
+    </body>
+</html>

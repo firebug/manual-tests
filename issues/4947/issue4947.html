@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Issue 4947: Node View just shows edited node after changing display options</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+      <link href="https://getfirebug.com/tests/content/templates/default/testcase.css" type="text/css" rel="stylesheet"/>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=4947">Issue 4947</a>: Node View just shows edited node after changing display options</h1>
+        </header>
+        <div>
+            <section id="content">
+                <p>Hello Firebug user!</p>
+            </section>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Switch to the <em>HTML</em> panel</li>
+                    <li>Inspect the <em>Hello Firebug user!</em> paragraph</li>
+                    <li>Switch to the <em>Edit Mode</em> by clicking the <em>Edit</em> button inside the <em>HTML</em> panel</li>
+                    <li>Replace <code>user</code> by <code>community</code></li>
+                    <li>Switch the <em>Edit Mode</em> off again by clicking the <em>Edit</em> button again</li>
+                    <li>Enable <em>Show Comments</em> via the <em>HTML</em> panel's options menu</li>
+                </ol>
+                <h3>Observed Result</h3>
+                <ul>
+                    <li class="error">The <em>Node View</em> now just contains the edited paragraph</li>
+                </ul>
+                <h3>Expected Result</h3>
+                <ul>
+                    <li>The <em>Node View</em> should display all nodes as before editing</li>
+                </ul>
+            </section>
+            <footer>
+                Sebastian Zartner, sebastianzartner@gmx.de
+            </footer>
+        </div>
+    </body>
+</html>

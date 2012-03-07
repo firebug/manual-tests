@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <title>Test Case for Script panel scrolling speed</title>
+  <script type="text/javascript" src="script1.js"></script>
+  <script type="text/javascript" src="script2.js"></script>
+</head>
+<body>
+
+<h1>Scroll Speed</h1>
+
+<p><span>Test Case for Script panel scrolling speed.</span>
+<br/>
+<i>Jan Odvarko, odvarko@gmail.com</i>
+</p>
+
+<ol>
+<li>Open Firebug and enable the Sript panel.</li>
+<li>Reload this page</li>
+<li>Select <span style="color:green">script1.js</span> from the file menu (100000 lines).</li>
+<li>Try to scroll vertically, the scrolling should be fast/smooth enough.</li>
+<li>Select <span style="color:green">script2.js</span> and check the speed,
+should be again fast (1440 lines only, but some lines are long).</li>
+<li>Now open <span style="color:green">frame3018.html</span> (30008 lines) scroll
+somewhere to the bottom (try more times) and compare the speed. Scrolling in this
+file is reasonably slower (freezing sometimes) since there is a lot of inner scripts.</li>
+</ol>
+
+<iframe height="30" width="100" src="frame3018.html" />
+
+</body>
+</html>

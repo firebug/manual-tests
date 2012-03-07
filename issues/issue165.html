@@ -1,0 +1,39 @@
+<html><head>
+<title>firebug 165</title>
+<script type="text/javascript">
+function test() {
+    window.resizeTo(Math.min(1024, screen.availWidth), Math.min(768, screen.availHeight));
+
+    var reallyLong = new (function Lopadotemachoselachogaleokranioleipsanodrimhypotrimmatosilphioparaomelitokatakechymenokichlepikossyphophattoperisteralektryonoptekephalliokigklopeleiolagoiosiraiobaphetraganopterygon() {
+        this.is = "a fictional dish mentioned in Aristophanes' comedy Assemblywomen.";
+        this.href = "http://en.wikipedia.org/wiki/Lopado...pterygon";
+    })();
+}
+</script>
+</head>
+<body>
+<button onclick="test()">Click me</button>
+
+<pre>
+Comment 4 by jaap.roes, Mar 21, 2008
+
+STEP 1:
+Open the attached html file.
+
+STEP 2:
+Click profile in the firebug toolbar.
+
+STEP 3:
+Click the button labeled "Click me" (This will resize the browser window, if allowed).
+
+STEP 4:
+Click profile again.
+
+Expected result:
+See full profiling details.
+
+What happens:
+The really long function name obscures any useful profiling output.
+
+</pre>
+</body></html>

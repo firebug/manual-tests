@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 4578: Proxy elements are incorrectly positioned, if page is scrolled</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <style type="text/css">
+            body {
+                left: 50%;
+                margin-left: -500px;
+                width: 1000px;
+                height: 500px;
+                position: relative;
+            }
+
+            #disabledTextField,
+            #disabledDropDownList {
+                position: relative;
+                top: 100px;
+                left: 200px;
+            }
+        </style>
+        <script type="text/javascript">
+            function scroll()
+            {
+                window.scrollTo(80, 100);
+            }
+  
+            window.addEventListener("load", scroll, false);
+        </script>
+    </head>
+    <body>
+        <input type="text" id="disabledTextField" disabled="disabled"/>
+        <select id="disabledDropDownList" disabled="disabled">
+            <option value="">First option</option>
+        </select>
+    </body>
+</html>

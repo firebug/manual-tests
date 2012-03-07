@@ -1,0 +1,56 @@
+<html>
+  <head><title>this is a test</title></head>
+
+<script language="javascript">
+ function myTest() {
+    alert("test");
+    var i = 0;
+    var table = document.getElementById("myTable");
+    var trs = table.childNodes;
+    var td = trs[i];
+    while(true) {
+      alert("tag: " + td.tagName);
+      i++;
+      td = trs[i];
+      if (!td) break;
+    }
+
+  }
+  </script>
+  <body>
+
+  <table><tbody id="myTable">
+      <tr>
+      <td>a</td>
+      <td>a</td>
+      <td>a</td>
+      <td>a</td>
+      <td>a</td>
+    </tr>
+      <tr>
+      <td>a</td>
+      <td>a</td>
+      <td>a</td>
+      <td>a</td>
+      <td>a</td>
+    </tr>
+      <tr>
+      <td>a</td>
+      <td>a</td>
+      <td>a</td>
+      <td>a</td>
+      <td>a</td>
+    </tr>
+      <tr>
+      <td>a</td>
+      <td>a</td>
+      <td>a</td>
+      <td>a</td>
+      <td>a</td>
+    </tr>
+  </table>
+
+    <button onClick="myTest();">click me and try to debug the while loop</button>
+
+  </body>
+</html>

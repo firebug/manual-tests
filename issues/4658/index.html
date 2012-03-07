@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+
+
+<html>
+<head>
+	<title> Firebug console issue</title>
+
+	<script type="text/javascript" src="js/wsdojo/dojo/dojo.js.uncompressed.js" 
+        djConfig = 'parseOnLoad: true'></script>
+    
+	<script type="text/javascript" >
+		dojo.require("ws.monitor.FirebugBug");
+		
+		var fb;
+		dojo.addOnLoad(function(){
+			fb = new ws.monitor.FirebugBug();
+			console.debug("created FBB", fb);
+		});
+		
+		function onClickButton(){
+			fb.print("clicked");
+		}
+	</script>
+
+</head>
+<body >
+	<p> 
+		Press the button with FB console open. 
+		<br>
+		Expected behavior: should see a debug message with source file &quot;FirebugBug.js&quot;
+		<br>
+		Actual behavior: you see a debug message with source file &quot;dojo.js&quot;
+	</p>
+	
+	<button id="b1" onclick="onClickButton()">Press me</button>
+</body>
+<html>

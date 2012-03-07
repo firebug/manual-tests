@@ -1,0 +1,27 @@
+<html>
+<head>
+    <title>Issue 3474</test>
+</head>
+
+<body>
+<script>
+function Person(firstName, lastName, age) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.age = age;
+}
+Person.prototype.name=function(){return this.firstName + " " + this.lastName;}
+
+var family = {};
+family.mother = new Person("Susan", "Doyle", 32);
+family.father = new Person("John", "Doyle", 33);
+family.daughter = new Person("Lily", "Doyle", 5);
+family.son = new Person("Mike", "Doyle", 8);
+
+console.table(family);
+console.dir(family.mother);
+
+</script>
+<body>
+
+</html>

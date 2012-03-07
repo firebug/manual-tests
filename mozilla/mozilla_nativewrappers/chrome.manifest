@@ -1,0 +1,2 @@
+content  mozilla_nativewrappers  content/
+overlay  chrome://browser/content/browser.xul  chrome://mozilla_nativewrappers/content/mozilla_nativewrappers.xul

@@ -1,0 +1,26 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML//EN">
+<html> <head>
+<title>Example of Frame Error in Firebug</title>
+<script type="text/javascript">
+window.addEventListener('load', function delayTilLoad()
+{
+    var frames = window.frames; // or // var frames = window.parent.frames;
+    for (var i = 0; i < frames.length; i++) {
+      // do something with each subframe as frames[i]
+      frames[i].document.body.style.background = "red";
+    }
+}, true);
+
+</script>
+</head>
+
+<frameset rows="20%,*">
+  <frame name="frame1" src="http://www.mozilla.org">
+  <frameset cols="20%,*">
+     <frame name="frame2" src="http://www.mozilla.org">
+     <frame name="frame3" src="http://www.mozilla.org">
+  </frameset>
+</frameset>
+
+
+</html>

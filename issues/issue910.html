@@ -1,0 +1,69 @@
+<html>
+<head>
+<title>Issue 910</title>
+<script language="Javascript">
+
+
+function doSumfink()
+    {
+    var testError = new Error("a message");
+
+    if (testError instanceof Error)
+        dump("testError is an instance of Error\n");
+
+    if (testError instanceof window.Error)
+        dump("testError is an instance of window.Error\n");
+
+    debugger;
+    }
+</script>
+</head>
+<body>
+<h1> Issue 910:  	 Watch window stops responding after invalid JS Entry</h1>
+
+
+    <input type="button" id="dosumfink" value="Do Sumfink" onclick="doSumfink();" />
+
+    <pre>
+    What steps will reproduce the problem?
+1. Stop on a page at a breakpoint or via debugger;
+(Actually you can just type in the Watch panel to see the bug, no need to breakpoint).
+2. Click 'New Watch Expression'
+3. Enter invalid JS e.g. djhgfjh
+
+What is the expected output? What do you see instead?
+The watch window should simply state 'undefined'
+
+
+What version of the product are you using? On what operating system?
+Firebug 1.2.0b4 on Firefox 3
+
+Please provide any additional information below.
+o The only way to get the watch window to accept any other objects is to
+restart Firefox.
+
+o I can only see the error message if I have
+nglayout.debug.disable_xul_cache set to default
+
+o I used the attached file to launch Firebug
+
+o When the invalid JS is entered into the watch the following error is
+logged in the Console:
+invalid 'instanceof' operand context.window.Error
+http://static.ak.fbcdn.net/rsrc.php/pkg/60/107410/js/common.js.pkg.php
+Line 271
+stack()()common.js.pkg.php (line 271)
+fallbackErrorHandler()("Uncaught exception in hook (`onloadhooks') #0:
+LinkController is not defined [at line 400 in
+http://static.ak.fbcdn.net/rsrc.php/pkg/60/107410/js/common.js.pkg.php]", "
+error")common.js.pkg.php (line 271)
+fallbackErrorHandler()()common.js.pkg.php (line 269)
+_runHooks(undefined)common.js.pkg.php (line 152)
+_onloadHook()common.js.pkg.php (line 148)
+_bootstrapEventHandlers()()common.js.pkg.php (line 155)
+[Break on this error] if(!written&&Util.fallbackErrorHandler){...+' @ '+
+(stack[i+1]?stack[i+1][1]:'?'));}
+
+    </pre>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<html>
+<head><script>
+function A()
+{
+    de = document.getElementById("div");
+    de.form_idx = 123;
+    report(de);
+
+    fe = document.getElementById("form");
+    fe.form_idx = 123;
+    report(fe);
+}
+
+function report(elt)
+{
+    console.log("The "+elt.tagName+".form_idx is ", elt.form_idx);
+    for (var p in elt)
+        if (p == "form_idx") console.log(elt.tagName, p, elt[p]);
+
+}
+</script></head>
+<body onload="A();">
+<form id="form"><input type="submit" value="Submit"></form>
+<div id="div">The console should have 4 lines of output, but one is missing:</div>
+<pre>
+The DIV.form_idx is  123
+DIV form_idx 123
+The FORM.form_idx is 123
+</pre>
+</body>
+
+</html>

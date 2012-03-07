@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Issue 5019: Editing a variable in the Watch window doesn't work</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="https://getfirebug.com/tests/content/templates/default/testcase.css"
+        type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<script>
+var b = 20;
+function onExecuteTest()
+{
+    var a = 10;
+    debugger;
+    console.log(a);
+}
+</script>
+
+<header>
+    <h1><a href="http://code.google.com/p/fbug/issues/detail?id=5019">Issue 5019</a>:
+        Editing a variable in the Watch window doesn't work</h1>
+</header>
+<div>
+    <section id="description">
+        <h3>Steps to reproduce</h3>
+        <ol>
+            <li>Open Firebug</li>
+            <li>Enable and switch to the <em>Script</em> panel and there to the <em>Watch</em> side panel</li>
+            <li>Reload the page</li>
+            <li>
+                Create a new watch expression <code>b</code><br/>
+                <span class="ok">&rArr; The variable value is <code>20</code></span>
+            </li>
+            <li>
+                Double-click its value to edit it<br/>
+                <span class="error">&rArr; Variable name is displayed in the inline edit instead of the value</span>
+            </li>
+            <li>
+                Refresh the page<br/>
+                <span class="error">&rArr; The variable value is <code>ReferenceError: b is not defined</code> instead of <code>20</code></span>
+            </li>
+            <li>
+                Click the <em>Test</em> button <button onclick="onExecuteTest()">Test</button><br/>
+                <span class="ok">&rArr; The debugger should break at line 15</span>
+            </li>
+            <li>
+                Double-click on the value of the variable <code>a</code><br/>
+                <span class="error">&rArr; The inline edit displays <code>a10</code> instead of <code>10</code></span>
+            </li>
+            <li>
+                Change it to <code>15</code><br/>
+                <span class="error">&rArr; The new value should be displayed, but the old one is still there</span>
+            </li>
+        </ol>
+    </section>
+    <footer>
+        Jan Odvarko, odvarko@gmail.com
+    </footer>
+</div>
+</body>
+</html>

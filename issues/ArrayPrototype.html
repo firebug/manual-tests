@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html><head>
+<title> Function Prototype</title>
+</head><body>
+ <p><code>function Foo(){};</code></p><div id="result"></div>
+
+<script>
+
+
+
+function Foo(){};
+var fp = Foo.prototype;
+var str = "Foo.prototype="+fp;
+for (var p in fp)
+    str += "," + fp[p];
+
+document.getElementById("result").innerHTML = str;
+
+
+</script>
+</body>
+</html>

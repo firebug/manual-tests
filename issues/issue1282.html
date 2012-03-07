@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+    <title>Issue 1282</test>
+</head>
+
+<body>
+<pre>Here's a test case.  I have found that this problem doesn't happen with simple vars,
+but rather with properties of an object.
+
+Also, there's another issue with editing of string properties.  Each time you edit
+and hit enter, it adds another layer of quotes wrapping the string. 
+
+When the breakpoint is hit, expand bar, doubleclick x - it changes to a string
+'false'.  Doubleclick again and hit enter - it adds another set of quotes to the
+property.
+
+The quoting issue can also be seen by editing z, a property that started as a string.
+
+</pre>
+</body>
+<script type="text/javascript">
+foo = function() {
+    var bar = {x:true, y:1, z:'123'};
+debugger;
+    bar.y++;
+    if (typeof bar.x == 'string') {
+        alert('x is string');
+    }
+};
+
+window.onload = function() {
+    foo();
+}
+
+</script>
+
+</html>

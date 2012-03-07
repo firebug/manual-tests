@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- Taken from SelfHTML -->
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<title>:before, :after</title>
+<style type="text/css">
+h1:before { content:url(../../../src/dokx.gif)" "; }
+h2:before { content:"\2022"; }
+h2 {
+color: red;
+}
+h2:hover:after { content:" #"attr(id); color:#888; font-size:70%; font-style:italic; }
+*[title]:after { content:" ("attr(title)")"; color:#080; }
+</style>
+</head><body>
+
+<h1>Subject</h1>
+
+<h2 id="einleitung">Introduction</h2>
+
+<p title="Some tooltip...">Text with <code>title</code> attribute</p>
+<pre>
+Issue 365: Show :after and :before properties in CSS tab
+http://code.google.com/p/fbug/issues/detail?id=365
+
+Comment #2 by jowereit:
+This is the test case file, taken from SelfHTML. If you inspect the "h1", the "h2" or
+the "p", Firebug should show the :before and :after properties of these elements.
+</pre>
+</body></html>

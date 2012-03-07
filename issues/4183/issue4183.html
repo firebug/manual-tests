@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Test</title>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" /> <!-- IE8 -->
+</head>
+<body>
+	<input type="file" id="fileElem" multiple accept="image/*" style="display:none" onchange="handleFiles(this.files)">
+	<a href="#" id="fileSelect">Select some files</a> 
+	<div id="fileList">
+	  <p>No files selected!</p>
+	</div>
+	
+	<script type="text/javascript">
+	var fileSelect = document.getElementById("fileSelect"),
+	fileElem = document.getElementById("fileElem"),
+	fileList = document.getElementById("fileList");
+	
+	fileSelect.addEventListener("click", function (e) {
+	  if (fileElem) {
+	    fileElem.click();
+	  }
+	  e.preventDefault(); // prevent navigation to "#"
+	}, false);
+	
+	function handleFiles(files) {
+	  if (!files.length) {
+	    fileList.innerHTML = "<p>No files selected!</p>";
+	  }
+	  else {
+	    var list = document.createElement("ul");
+	    for (var i = 0; i < files.length; i++) {
+	      var li = document.createElement("li");
+	      list.appendChild(li);
+	      
+	      var img = document.createElement("img");
+	      img.src = window.URL.createObjectURL(files[i]);;
+	      img.height = 60;
+	      img.onload = function () {
+	        window.URL.revokeObjectURL(this.src);
+	      }
+	      li.appendChild(img);
+	      
+	      var info = document.createElement("span");
+	      info.innerHTML = files[i].name + ": " + files[i].size + " bytes";
+	      li.appendChild(info);
+	    }
+	    fileList.appendChild(list);
+	  }
+	}
+	</script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<script src="index.js"></script>
+	</head>
+	<body>
+<h1>Issue 1483: Scripts fail to load when page reloaded during paused execution</h1>
+		<pre>
+		5). Set a break point on a line in index.js.  I set my break point to the
+console.log line.
+
+6). Reload the page, this should trigger the break point.
+
+7). Immediately reload the page again while the script execution is paused
+on the break point.  (i.e. don't do anything after the break point is
+triggered but reload the page.)
+
+8). Notice that...
+
+  A). The break point did not trigger again.
+
+  B). The console did not output "init" (if using the example code).
+
+  C). If you go into the script tab and select the index.js script to view,
+the contents of index.js will be blank (if connectd via http:) plain text
+(if connected via file:)
+
+		</pre>
+	</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <title>Test Case for long scripts</title>
+  <script type="text/javascript" src="test.js"></script>
+</head>
+<body>
+
+<h1>This test-case is intended for breakpoints in a long scripts</h1>
+<br/>
+<i>Jan Odvarko, odvarko@gmail.com</i>
+
+<ol>
+<li>Open Firebug enable the Script panel and reload this page.</li>
+<li>Select the Script panel and pick <i>test.js</i> from the location list.</li>
+<li>Crate a breakpoint on line <code style=""color:green">37498</code>.</li>
+<li>Click on the <code style="color:green">Execute Test</code> button below.</li>
+<li>Debugger must stop at the breakpoint.</li>
+</ol>
+
+<button id="testButton" onclick="onExecuteTest()">Execute Test</button>
+
+<script type="text/javascript">
+function onExecuteTest()
+{
+    console.log(myFunction7499(0));
+}
+</script>
+  
+</body>
+</html>

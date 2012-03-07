@@ -1,0 +1,28 @@
+<html>
+<head><title> Issue 1900:     Firefox/Firebug can't deal with files longer than 65535 lines long </title>
+<script src="long-n.js"></script>
+</head>
+<body>
+<pre>
+Oh, in this example, I think the break is at something like 70,003 and Fb says line
+4469. The numbers I used above were from my own code, not this test case.
+
+The test case was created via this php file (you can change the line endings):
+
+<?php
+header("Content-type: text/javascript; charset=utf-8");
+
+for ($i=0;$i<70000;$i++){
+    echo "// comment \r\n";
+}
+?>
+
+function test(){
+    asdf.adsf = 7
+}
+
+test();
+
+</pre>
+</body>
+</html>

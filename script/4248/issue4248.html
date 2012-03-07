@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <!--
+        STEPS TO CREATE A TEST CASE:
+        1. Replace "4248" by number of your issue
+        2. Replace "Breakpoints don't work anymore, if iframe is removed, that shares the JS file with the main page" by title of your issue
+        3. Put inspectable elements, form fields etc. into the "content" section
+        4. Add the exact steps to reproduce your issue under "Steps to reproduce"
+        5. Describe the currently seen result under "Observed result"
+        6. Describe what you would expect to see under "Expected result"
+        7. Add your contact information
+        8. Remove all template comments
+
+        Note: Make sure, the URL to testcase.css is https://getfirebug.com/tests/content/templates/default/testcase.css
+     -->
+    <head>
+        <title>Issue 4248: Breakpoints don't work anymore, if iframe is removed, that shares the JS file with the main page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/content/templates/default/testcase.css" type="text/css" rel="stylesheet"/>
+        <script type="text/javascript" src="issue4248.js"></script>
+        <style type="text/css">
+            iframe {
+                display: block;
+                margin-top: 5px;
+                width: 200px;
+                height: 55px;
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=4248">Issue 4248</a>: Breakpoints don't work anymore, if iframe is removed, that shares the JS file with the main page</h1>
+        </header>
+        <div>
+            <section id="content">
+                <button onclick="addIFrame()">Add iframe</button>
+                <button onclick="removeIFrame()">Remove iframe</button>
+            </section>
+            <section id="description">
+                <!--
+                    The steps to reproduce the test case should be described here in detail.
+                 -->
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Enable and switch to the <em>Script</em> panel</li>
+                    <li>Reload the page</li>
+                    <li>In <em>issue4248.js</em> set a breakpoint at line 3 (<code>if (!document.getElementById("iframe"))</code>)</li>
+                    <li>
+                        Click the <em>Add iframe</em> button<br/>
+                        <span class="ok">&rArr; Script execution is stopped at line 3</span>
+                    </li>
+                    <li>Continue script execution by pressing <code class="key">F8</code></li>
+                    <li>Click the <em>Remove iframe</em> button</li>
+                    <li>Click the <em>Add iframe</em> button again</li>
+                </ol>
+                <h3>Observed result</h3>
+                <ul>
+                    <li class="ok">Breakpoint is still shown at line 3</li>
+                    <li class="error">Script execution is not stopped</li>
+                    <li class="error"><em>Script</em> panel is not updating the display anymore when setting or removing breakpoints</li>
+                </ul>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>Script execution should stop at the breakpoint even when the iframe is removed</li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmx.de</footer>
+        </div>
+    </body>
+</html>

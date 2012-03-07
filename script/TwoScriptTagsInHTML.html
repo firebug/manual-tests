@@ -1,0 +1,37 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+ <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <title>Firebug Test for Script Panel: Two script tags in HTML file</title>
+    </head>
+    <script type="text/javascript">
+
+    var fireCount = 0;
+
+    function fire()
+    {
+        fireCount++;
+        var report = document.getElementById("fire-report");
+        report.innerHTML = "Fired "+fireCount;
+    }
+    </script>
+    <script type="text/javascript">
+
+    var waterCount = 0;  // Setting a breakpoint here a problem.
+
+    function water()
+    {
+        waterCount++;
+        var report = document.getElementById("water-report");
+        report.innerHTML = "Water "+waterCount;
+    }
+    </script>
+    <body>
+        <p>Call methods</p>
+        <button onclick="fire()">Click to Fire</button><br />
+        <button onclick="water()">Click to Water</button><br />
+
+        <p><span id="fire-report"></span> Fires</p>
+        <p><span id="water-report"></span> Waters</p>
+    </body>
+</html>

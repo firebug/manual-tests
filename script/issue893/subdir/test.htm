@@ -1,0 +1,20 @@
+<html>
+<head>
+<title>Test Case Firebug Issue 893 doubled Script listing if loaded by relative URL</title>
+<script language="JavaScript" type="text/javascript" src="../js/test.js"></script>
+</head>
+<body>
+<input type="button" onclick="show();" value="CLICKME IF YOU WANT"/>
+<p>
+List shows up each relative included file *twice*. Only the resolved
+pathname is "breakpointable". The relative ones aren't.
+</p>
+<p>
+The list of files on the Script panel should include two files, test.js and test.htm.
+The file names should not include dots or double dots.
+
+See Also issue 440.
+</p>
+
+</body>
+</html>

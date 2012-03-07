@@ -1,0 +1,31 @@
+<html>
+<head>
+<title>Firebug Issue 1239</title>
+<script>
+
+  function outer() {
+
+    var x = "ok"; // prompt();
+    
+    function inner() {
+      console.log("prompt returned: ",x);
+      while (x) {  // bug not occurring if s/while/if/;
+        var msg = 'this code is reached'; // I want a breakpoint here
+        alert(msg);
+        break;
+      }
+      // If this line is not commented, the lineExtent is correct
+      // console.log("prompt returned: ",x);
+    }
+
+    return inner();
+  }
+
+  outer();
+
+</script>
+</head>
+<body>
+<h1>Test case for Firebug Issue 1239</h1>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>
+  Issue 795: 	 Prototype details not shown in DOM view</title>
+        <script type="application/javascript;version=1.7">
+var foo = function(){};
+foo.prototype.foo = 'bar';
+console.log("Here is your foo:", foo);
+</script>
+
+    </head>
+    <body>
+        <h1>  Issue 795: 	 Prototype details not shown in DOM view</h1>
+        <pre>
+Reported by your.sheepy, Today (18 hours ago)
+
+What steps will reproduce the problem?
+
+1. Goto Console
+2. run:  var foo = function(){}; foo.prototype.foo = 'bar';
+3. Goto DOM view, find 'foo', expand it, looks at its prototype
+
+
+
+What is the expected output? What do you see instead?
+
+Expected output: "Object foo=bar" or something saying "foo=bar"
+Instead I see: "undefined"
+
+
+
+What version of the product are you using? On what operating system?
+
+Firebug 1.2.0b3
+Gecko/2008052906 Firefox/3.0
+Windows Server 2003 SP 2
+
+
+
+Please provide any additional information below.
+
+In older versions the base object 'foo' will also be displayed in red
+indicating its prototype is populated instead of green like functions with
+empty prototype, which is also very helpful.
+
+Not certain whether this is intentional or not, but the inability to check
+prototype in DOM view certainly makes me very frustrated, so much that it
+is forcing me to downgrade, despite worse performance, since my recent
+project have lots of prototypes that is not feasible to check one by one
+from console.
+
+
+        </pre>
+
+        <hr />
+        <p></p>
+    </body>
+</html>

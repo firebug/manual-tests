@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 3639: Have a way to see the return value of a function when debugging</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/content/templates/default/testcase.css" type="text/css" rel="stylesheet"/>
+        <script type="text/javascript">
+            function test()
+            {
+                var a=5;
+                debugger;
+                return a*5;
+            }
+
+            window.addEventListener("load", function() {
+                test();
+            }, false);
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=3639">Issue 3639</a>: Have a way to see the return value of a function when debugging</h1>
+        </header>
+        <div>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Enable and switch to the <em>Script</em> panel</li>
+                    <li>
+                        Reload the page<br/>
+                        <span class="ok">&rArr; Script should halt at the <code>debugger;</code> statement</span>
+                    </li>
+                    <li>Press <code class="key">F10</code> to step over two times</li>
+                </ol>
+                <h3>Observed result</h3>
+                <ul>
+                    <li>Script execution is halted at line 29 (outside of <code>test()</code>)</li>
+                </ul>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>Script execution should be halted at line 26 (the closing brace of <code>test()</code>)</li>
+                    <li><em>Watch</em> side panel should show the return value of <code>test()</code></li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmx.de</footer>
+        </div>
+    </body>
+</html>

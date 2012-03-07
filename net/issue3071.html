@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 3071: Display sample of WOFF file inside Net Panel</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/content/templates/default/testcase.css" type="text/css" rel="stylesheet"/>
+        <style type="text/css">
+            content#div {
+                font-family: "TitilliumMaps", sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=3071">Issue 3071</a>: Display sample of WOFF file inside Net Panel</h1>
+        </header>
+        <div>
+            <section id="content">
+                <div>Sample text</div>
+            </section>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Enable and switch to the <em>Net</em> panel</li>
+                    <li>
+                        Reload the page<br/>
+                        <span class="ok">&rArr; The request to <code>TitilliumMaps26L002.woff</code> will be shown inside the <em>Net</em> panel</span>
+                    </li>
+                    <li>Expand the request to <code>TitilliumMaps26L002.woff</code></li>
+                </ol>
+                <h3>Observed result</h3>
+                <ul>
+                    <li>There is currently no possibility to display more info about the WOFF file</li>
+                </ul>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>A <em>WOFF</em> tab should be displayed containing information and a sample of the WOFF</li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmx.de</footer>
+        </div>
+    </body>
+</html>

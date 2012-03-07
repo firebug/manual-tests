@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Issue 3935: Strange behaviour when disabling CSS rules</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+      <link href="https://getfirebug.com/tests/content/templates/default/testcase.css" type="text/css" rel="stylesheet"/>
+      <style type="text/css">
+          #element1 {
+              width: 100px;
+              height: 100px;
+              background: #8C8CFF -moz-linear-gradient(135deg, #788CFF, #B4C8FF);
+          }
+      </style>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=3935">Issue 3935</a>: Strange behaviour when disabling CSS rules</h1>
+        </header>
+        <div>
+            <section id="content">
+                <div id="element1"></div>
+            </section>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Inspect the blue <code>&lt;div&gt;</code> above (<code>#element1</code>)</li>
+                    <li>Switch to the HTML panel and there to the Style side panel (if you're not already there)</li>
+                    <li>Disable the <code>background</code> property</li>
+                    <li>Create a new <code>background</code> property by double-clicking into the rule's body and give it the value <code>#8CFF8C</code></li>
+                    <li>
+                      Leave editing by clicking somewhere else<br/>
+                      <span class="error">&rArr; The background property will be added, but the disabled one is kept</span>
+                    </li>
+                    <li>Enable the old <code>background</code> property again</li>
+                </ol>
+                <h3>Observed Result</h3>
+                <ul>
+                    <li>The new <code>background</code> property is overwritten by the old one</li>
+                </ul>
+                <h3>Expected Result</h3>
+                <ul>
+                    <li>The new property is added and enabled (already working)</li>
+                    <li>After step 5 the old property should disappear</li>
+                </ul>
+            </section>
+            <footer>
+                Sebastian Zartner, sebastianzartner@gmx.de
+            </footer>
+        </div>
+    </body>
+</html>

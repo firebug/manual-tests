@@ -1,0 +1,22 @@
+<!doctype html>
+<title>issue 553</title>
+<style>
+p { text-decoration:underline; !important; }
+body p { text-decoration:none; }
+</style>
+<p>Lorem ipsum dolor sit amet</p>
+<pre>
+Comment 6  by jaap.roes, Today (7 hours ago)
+
+Ok, maybe a little description for this testcase.
+
+1. Open the file
+2. Go to the console tab and make sure the Show CSS Errors option is enabled
+3. Reload and notice that a style declaration is dropped.
+
+The original submitter expects the dropped !important; to show next to the preceding
+declaration. The dropping of a declaration is only visible if an optional checkbox is
+checked in the console, so it is easy to overlook.
+
+This is probably an enhancement, not a defect.
+</pre>

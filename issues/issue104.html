@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>Issue 104: FB do not stop on break point if JS loded dynamically</title>
+		<script type="text/javascript">
+			//----------------------------------------------------
+function include( name, async ) {
+  async= async || false;
+	 var scripts= document.getElementById( 'scripts' );
+  var script= document.createElement('script');
+  script.type= "text/javascript";
+  scripts.appendChild( script );
+  remoteRequest({
+      url: name+ '?rnd='+ Date.parse( new Date() ), //Disable caches
+      success: changeContext( script, function( response ){
+          /*execute loaded script*/
+          try { 
+            eval( response.responseText ); //Do eval only for FB display errors in files correctly
+            this.text= response.responseText; //execute script for FF know about it
+            }
+          catch( e ){} //if there are no 'catch' but error(s) in script no error(s) displayed
+          this.src= name; //only for FB 'Script' tab works fine
+          }),
+      async: async
+      });
+  }
+			
+		</script>
+	</head>
+	<body>
+		How to reproduce:
+If I load script with this procedure, 
+go to 'script' tab 
+select script needed
+put break point
+restart a page
+FB do not stops when breakpoint is reached like there no breakpoint at all
+	</body>
+</html>

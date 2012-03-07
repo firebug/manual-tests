@@ -1,0 +1,22 @@
+<html>
+<head>
+<script>
+function b463239(aObject)
+{ 
+	var y = ('Equality Test: ' + (aObject.aString === "Hello World"));
+    if (aObject.aString === 'Hello World') // set breakpoint here
+        result = true;
+    else
+        result = false;
+    return result;
+}
+function test463239()
+{
+	   var obj = {aString:'Hello World',  anotherString: 'Hi there'};
+	   return b463239({aString:'Hello World',  anotherString: 'Hi there'});
+}
+window.dump( "The true value is: " + test463239() +"\n");
+</script>
+<body>
+</body>
+</html>

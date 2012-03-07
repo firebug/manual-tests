@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+
+<!-- bugs: "layout" tab for bound element "atextbox" incorrectly shows zero for
+     margin/border/padding; inner hbox & text node not debuggable from firebug
+     -->
+
+<document>
+
+<hbox style="display:none"
+      xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <bindings xmlns="http://www.mozilla.org/xbl"
+        xmlns:xul="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <binding id="aTextBox">
+      <content>
+        <xul:hbox style="padding: 2px; border: 4px solid; margin: 6px">
+              <xul:text value="a text box in an hbox in a binding"/>
+        </xul:hbox>
+      </content>
+    </binding>
+  </bindings>
+</hbox>
+
+<window
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <atextbox style="-moz-binding: url(#aTextBox);"/>
+  <atextbox style="-moz-binding: url(#aTextBox);"/>
+
+  <vbox>
+    <hbox>
+       <text value="a text box in an hbox in a vbox"/>
+     </hbox>
+    <hbox>
+       <text value="a text box in an hbox in a vbox"/>
+     </hbox>
+  </vbox>
+</window>
+
+</document>

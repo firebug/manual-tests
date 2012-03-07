@@ -1,0 +1,19 @@
+<html>
+<body>
+<div id="content">
+</div>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.js">
+</script>
+<script type="text/JavaScript">
+    jQuery.ajax({
+        type : "GET",
+        url : 'page2.html',
+        dataType : "html",
+        success : function(response) {
+            jQuery('#content').append(response);
+
+        }
+    });
+</script>
+</body>
+</html>

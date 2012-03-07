@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <title>Test Case for Issue #2692</title>
+</head>
+<body>
+
+<h1>Issue #2692</h1>
+
+<p>This test-case is intended for <a href="http://code.google.com/p/fbug/issues/detail?id=2692">Issue #2692</a>
+- <span class="h3">[Enh] Getters and Setters in Watch Panel (get/set)</span>.
+<br/>
+<i>Jan Odvarko, odvarko@gmail.com</i>
+</p>
+
+<ol>
+<li>Open Firebug and select the DOM panel.</li>
+<li>You should see several user properties.</li>
+</ol>
+
+<ul>
+    <li>prop1: read only property with a <i>get</i> prefix</li>
+    <li>prop2: property with <i>getter</i> and <i>setter</i> displayed as a function (green)</li>
+    <li>prop3: property with <i>setter</i> only, that's why there is a <i>set</i> prefix</li>
+    <li>prop4: just a simple property (nor <i>getter</i> neither <i>setter</i>)</li>
+</ul>
+
+<i>Read only property can't be edited in Firebug (using double click).</i>
+
+<script type="text/javascript">
+var _private2 = "a property with getter & setter";
+var _private3 = "value for prop3";
+
+this.__defineGetter__("prop1", function test1() {
+    return "read only getter (can't be edited), dimmed";
+});
+this.__defineGetter__("prop2", function test2() {
+    return _private2;
+});
+this.__defineSetter__("prop2", function test2(v) {
+    _private2 = v;
+});
+this.__defineSetter__("prop3", function test3(v) {
+    _private3 = v;
+});
+var prop4 = "a simple property";
+var myFunction = function justAFunction()
+{
+    
+}
+</script>
+
+</body>
+</html>

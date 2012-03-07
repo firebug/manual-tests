@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+
+ <title>New Ticket - lhc - Trac</title><link rel="start" href="http://trac.haskell.org/lhc/wiki"><link rel="search" href="http://trac.haskell.org/lhc/search"><link rel="help" href="http://trac.haskell.org/lhc/wiki/TracGuide"><link rel="stylesheet" href="newticket_files/trac.css" type="text/css"><link rel="stylesheet" href="newticket_files/ticket.css" type="text/css"><link rel="icon" href="http://trac.haskell.org/lhc/chrome/common/trac.ico" type="image/x-icon"><link rel="shortcut icon" href="http://trac.haskell.org/lhc/chrome/common/trac.ico" type="image/x-icon"><style type="text/css">
+@import url(/lhc/chrome/site/style/mytrac.css);</style>
+ <script type="text/javascript" src="newticket_files/trac.js"></script>
+ <meta name="verify-v1" content="m6dMTXDOic4TQV9EHTRh9+JgNWydgwC8dBzude4c6aY=">
+</head><body>
+
+<div id="banner">
+
+<div id="header"><a id="logo" href="http://example.org/"><img src="newticket_files/trac_banner.png" alt=""></a><hr></div>
+
+<form id="search" action="/lhc/search" method="get">
+ <div>
+  <label for="proj-search">Search:</label>
+  <input id="proj-search" name="q" size="10" accesskey="f" value="" type="text">
+  <input value="Search" type="submit">
+  <input name="wiki" value="on" type="hidden">
+  <input name="changeset" value="on" type="hidden">
+  <input name="ticket" value="on" type="hidden">
+ </div>
+</form>
+
+
+
+<div id="metanav" class="nav"><ul><li class="first">logged in as SamB</li><li><a href="http://trac.haskell.org/lhc/logout">Logout</a></li><li><a href="http://trac.haskell.org/lhc/settings">Settings</a></li><li><a accesskey="6" href="http://trac.haskell.org/lhc/wiki/TracGuide">Help/Guide</a></li><li><a href="http://trac.haskell.org/lhc/about">About Trac</a></li><li class="last"><a href="http://trac.haskell.org/lhc/account">My Account</a></li></ul></div>
+</div>
+
+<div id="mainnav" class="nav"><ul><li class="first"><a accesskey="1" href="http://trac.haskell.org/lhc/wiki">Wiki</a></li><li><a accesskey="2" href="http://trac.haskell.org/lhc/timeline">Timeline</a></li><li><a accesskey="3" href="http://trac.haskell.org/lhc/roadmap">Roadmap</a></li><li><a href="http://trac.haskell.org/lhc/report">View Tickets</a></li><li class="active"><a accesskey="7" href="http://trac.haskell.org/lhc/newticket">New Ticket</a></li><li><a accesskey="4" href="http://trac.haskell.org/lhc/search">Search</a></li><li class="last"><a href="http://trac.haskell.org/lhc/admin">Admin</a></li></ul></div>
+<div id="main">
+
+
+
+<script type="text/javascript">
+addEvent(window, 'load', function() { document.getElementById('summary').focus()}); 
+</script>
+
+<div id="ctxtnav" class="nav"></div>
+
+<div id="content" class="ticket">
+<h1>Create New Ticket</h1>
+
+
+<form id="newticket" method="post" action="/lhc/newticket#preview"><div><input name="__FORM_TOKEN" value="6fa7cfe8a000db42a71ec3f1" type="hidden"></div>
+ 
+ <div class="field">
+  <label for="summary">Short summary:</label><br>
+  <input id="summary" name="summary" size="80" value="" type="text">
+ </div>
+  <div class="field"><label for="type">Type:</label> 
+ <select size="1" id="type" name="type">
+   <option selected="selected">defect</option>
+   <option>enhancement</option>
+   <option>task</option>
+ </select>
+  </div>
+ <div class="field">
+  <label for="description">Full description (you may use <a tabindex="42" href="http://trac.haskell.org/lhc/wiki/WikiFormatting">WikiFormatting</a> here):</label><br>
+  <div class="wikitoolbar"><a tabindex="400" title="Bold text: '''Example'''" id="strong" href="#"></a><a tabindex="400" title="Italic text: ''Example''" id="em" href="#"></a><a tabindex="400" title="Heading: == Example ==" id="heading" href="#"></a><a tabindex="400" title="Link: [http://www.example.com/ Example]" id="link" href="#"></a><a tabindex="400" title="Code block: {{{ example }}}" id="code" href="#"></a><a tabindex="400" title="Horizontal rule: ----" id="hr" href="#"></a><a tabindex="400" title="New paragraph" id="np" href="#"></a><a tabindex="400" title="Line break: [[BR]]" id="br" href="#"></a></div><textarea id="description" name="description" class="wikitext" rows="10" cols="78"></textarea>
+ </div>
+
+ <fieldset id="properties">
+  <legend>Ticket Properties</legend>
+  <input name="action" value="create" type="hidden">
+  <input name="status" value="new" type="hidden">
+  <table><tbody><tr>
+     <th class="col1"><label for="priority">Priority:</label></th>
+     <td><select id="priority" name="priority"><option>blocker</option><option>critical</option><option>major</option><option selected="selected">normal</option><option>minor</option><option>trivial</option></select></td>
+     <th class="col2"><label for="milestone">Milestone:</label></th>
+     <td><select id="milestone" name="milestone"><option></option><option>0.7</option><option>_|_</option></select></td></tr><tr>
+     <th class="col1"><label for="component">Component:</label></th>
+     <td><select id="component" name="component"><option>E</option><option>Grin</option><option>RTS</option><option>backend</option><option>frontend</option><option>library</option><option>test suite</option><option selected="selected">unspecified</option></select></td>
+     <th class="col2"><label for="version">Version:</label></th>
+     <td><select id="version" name="version"><option></option><option>HEAD</option><option>0.6.20090126</option></select></td></tr><tr>
+     <th class="col1"><label for="keywords">Keywords:</label></th>
+     <td><input id="keywords" name="keywords" value="" type="text"></td>
+     <th class="col2"><label for="owner">Assign to:</label></th>
+     <td><input id="owner" name="owner" value="" type="text"></td></tr><tr>
+     <th class="col1"><label for="cc">Cc:</label></th>
+     <td><input id="cc" name="cc" value="" type="text"></td>
+     <th class="col2"><label for="testcase">Test Case:</label></th>
+     <td><input id="testcase" name="testcase" value="" type="text"></td></tr>
+  </tbody></table>
+ </fieldset>
+
+ <script type="text/javascript" src="newticket_files/wikitoolbar.js"></script>
+
+ <p>
+  <label><input name="attachment" type="checkbox">
+    I have files to attach to this ticket
+  </label>
+ </p>
+
+ <div class="buttons">
+  <input name="preview" value="Preview" accesskey="r" type="submit">&nbsp;
+  <input value="Submit ticket" type="submit">
+ </div>
+</form>
+
+<div id="help">
+ <strong>Note:</strong> See <a href="http://trac.haskell.org/lhc/wiki/TracTickets">TracTickets</a> for help on using tickets.
+</div>
+</div>
+
+<script type="text/javascript">searchHighlight()</script>
+
+</div>
+
+<div id="footer">
+ <hr>
+ <a id="tracpowered" href="http://trac.edgewall.org/"><img src="newticket_files/trac_logo_mini.png" alt="Trac Powered" height="30" width="107"></a>
+ <p class="left">
+  Powered by <a href="http://trac.haskell.org/lhc/about"><strong>Trac 0.10.3</strong></a><br>
+  By <a href="http://www.edgewall.org/">Edgewall Software</a>.
+ </p>
+ <p class="right">
+  Visit the Trac open source project at<br><a href="http://trac.edgewall.org/">http://trac.edgewall.org/</a>
+ </p>
+</div>
+
+
+<!-- analytics scripts -->
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script><script src="newticket_files/ga.js" type="text/javascript"></script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-7419388-1");
+pageTracker._trackPageview();
+} catch(err) {}</script>
+<!-- custom analytics code -->
+<script type="text/javascript">
+function foo() {
+    var x = this;
+    x.bar();
+    return true;
+};
+addEvent(document.getElementById('newticket'), 'submit', foo);
+</script>
+ </body></html>

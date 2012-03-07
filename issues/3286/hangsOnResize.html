@@ -1,0 +1,16 @@
+<body>
+<script>
+        window.addEventListener('resize', function() {
+                var div = document.createElement('div');
+                // Hit continue, move the edge of the browser to resize window, and it will hang Firefox, and it hangs Windows Explorer.
+                debugger;
+                div.textContent = 'hello';
+                document.body.appendChild(div);
+        }, false);
+// This is will trigger the debugger, but NOT hang the browser.
+        var ev = document.createEvent("Events");
+        ev.initEvent('resize', true, false);
+        window.dispatchEvent(ev);
+</script>
+</body>
+

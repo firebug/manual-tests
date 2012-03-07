@@ -1,0 +1,41 @@
+<!doctype html>
+<title>Issue 1328: Script tag does not always reflect the actual content</title>
+<script>
+function addScript(mode) {
+var head = document.getElementsByTagName("head")[0],
+script = document.createElement("script");
+script.src = "data:application/javascript,alert('firebug')";
+head.appendChild(script);
+}
+</script>
+<body>
+<pre>
+This report is based on issue 241
+
+1. Download the attached files into the same folder
+2. Open the html file and firebug on the HTML panel, expand the HEAD section
+3. Click the button and notice the new script tag appear along with an alert
+4. Click the [+] button next to the new script tag and look at the content,
+it should say: alert("you have not changed me");
+5. Right click the newly created script node and click "Delete Element".
+6. Open issue-241.js in a text editor and change the alert text to "you
+have changed me", save/overwrite the file.
+7. Click the button again, the new alert text should show.
+9. Perform step 4
+
+Expected result:
+The edited script is shown
+
+Actual result:
+The script text still says alert("you have not changed me");
+
+This issue seems to only appear when loading the testcase from a local
+file:/// uri, it did not happen to me when running it through a http
+server. This seems to be related to issue 520.
+
+Tested using firebug 1.4.0a10 on firefox 3.0.5
+
+</pre>
+<div><button onclick="addScript()">Add script with data uri</button></div>
+<div><button onclick="">Just a button with an empty onclick handler</button></div>
+</body>

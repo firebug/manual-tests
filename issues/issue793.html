@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Firebug / Firefox 3 </title>
+
+</head>
+<body>
+<script type="text/javascript">var a; if (a = 1) alert ("one");</script>
+<h1>Firebug issue 793</h1>
+<strong>This issue requires setting <code>javascript.options.strict</code> true</strong>
+
+The error object observed by Firebug is:
+<pre><code>
+[nsIScriptError.warningFlag]=1;
+[nsIScriptError.errorFlag]=0;
+[nsIScriptError.exceptionFlag]=2;
+[nsIScriptError.strictFlag]=4;
+[message]=[JavaScript Warning: "test for equality (==) mistyped as assignment (=)?" {file: "XPCSafeJSObjectWrapper.cpp" line: 445 column: 16 source: "var a; if (a = 1) alert ("one");"}];
+[errorMessage]=test for equality (==) mistyped as assignment (=)?;
+[sourceName]=XPCSafeJSObjectWrapper.cpp;
+[sourceLine]=var a; if (a = 1) alert ("one");;
+[lineNumber]=445;
+[columnNumber]=16;
+[flags]=5;
+[category]=content javascript;
+[init]=function init() {
+    [native code]
+};
+[errorFlag]=0;
+[warningFlag]=1;
+[exceptionFlag]=2;
+[strictFlag]=4;
+</code></pre>
+</body>
+</html>

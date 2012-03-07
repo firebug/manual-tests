@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>JSD test: Call Function Loaded by AJAX and created by eval, use bad arg list</title>
+</head>
+<body>
+Illustrate error handling for function defined in eval() but called in normal code.
+<ol>
+<li>Load javascript file via XMLHttpRequest</li>
+<li>eval() it.
+<li>Call the function <code>prod(animal)</code> three times, two correct, one error.
+<li>error when the function <code>prod(animal)</code> is called with no argument.
+</ol>
+
+
+<script>
+
+//  Load the code dynamically
+var req = new XMLHttpRequest();
+req.open('GET','payloadCatsAndDucks.js', false);
+req.send(null);
+eval( req.responseText);  // line 23
+
+//  Now use the code
+prod( new duck());
+prod( new cat());
+prod();  // call point of error
+
+</script>
+11/2007 Works in Firebug 1.1.0b10:
+<ol>
+<li>Halts on error, positions Script tab to line of error call (animal.say())</li>
+<li>Console tab reports error ("animal has no properties") and source line of error ("animal.say()") correctly.</li>
+<li>Console tab error message links to stack with two entries, "prod(undefined)"
+and "__top_level__()".</li>
+<li> Both entries in stack are linked to correct source lines in Script tab window</li>
+<li> Javascript console reports error against data: url buffer on correct line</li>
+</ol>
+
+</body>
+</html>

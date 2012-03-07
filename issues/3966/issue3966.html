@@ -1,0 +1,14 @@
+<html>
+<head>
+<title>Bugzilla Bug 628071</title>
+<script language="JavaScript">
+//<![CDATA[
+var req = window.mozIndexedDB.open("Bug628071");
+var buggyAssign = req.result; // Crash happens when stepping past this line.
+//]]>
+</script>
+</head>
+<body>
+Set a Firebug breakpoint on line 6 and attempt to step line by line through lines 6 and 7.  Firefox will then crash.
+</body>
+</html>

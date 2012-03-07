@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+
+
+	<title>Firebug bug example</title>
+	<style type="text/css">
+		@import url(basic.css);
+		@import url(style.css);
+	</style><style base="/firebug/" type="text/css">body {
+	background-color:white;
+	color:red;}
+pre.code {
+	border:1px solid #CCC;
+	border-left-width:5px;
+	background-color:#EEE;
+	color:black;
+	line-height:1em;
+	width:60em;
+	overflow:auto;
+	padding:1em 0.5em;
+	margin:1em;}
+</style>
+	<style type="text/css">
+		body{
+			color:green;}
+	</style>
+</head><body>
+	<h1>Firebug 'Bug' Example</h1>
+	<p>
+		This is an example of a firebug css editing bug.
+	</p>
+
+	<ol>
+		<li>Open this page.  You're already done that step</li>
+		<li>Open up firebug.</li>
+		<li>Choose 'Edit' and 'CSS'</li>
+		<li>Choose the 'style.css' item from the drop-down list of CSS sources
+			<ul>
+				<li>Select all CSS source</li>
+				<li>CUT the selection</li>
+				<li>PASTE the selection</li>
+			</ul>
+		</li>
+		<li>Notice the text changes from green to red.  That is unexpected, and IMO wrong.</li>
+	</ol>
+
+	<h2>The source for this page looks like so</h2>
+<pre class="code">[...]
+&lt;head&gt;
+	&lt;title&gt;Firebug bug example&lt;/title&gt;
+	&lt;style type="text/css"&gt;
+		@import url(http://library.chadlindstrom.ca/css/basic.css);
+		@import url(style.css);
+	&lt;/style&gt;
+	&lt;style type="text/css"&gt;
+		body{
+			color:green;}
+	&lt;/style&gt;
+&lt;/head&gt;
+[...]
+</pre>
+
+	<h2>What is happening?</h2>
+	<p>
+		It would seem firebug is taking and appending additional CSS to the head of the document.
+		Which is unexpected, destructive and IMO a bug.
+	</p>
+
+	<h2>Side Effect</h2>
+	<p>
+		After going through the process to reproduce this, I have noticed that firebug does not
+		always honour your actions to 'edit' the css.  Instead it appears it chooses to throw away
+		the click event when attempting to 'edit' the css.  Anyone else notice that?
+	</p>
+</body></html>

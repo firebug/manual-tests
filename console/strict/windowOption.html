@@ -1,0 +1,22 @@
+<html>
+<head><title>Test window._options.strict</title>
+<script type="application/javascript">
+foo = new Object();
+var k = foo.bar;
+console.log("This is what I have for foo.bar:"+k+" and window._options.strict: "+window._options.strict);
+window._options.strict = true;
+var kk = foo.bar; // warning
+console.log("You should see a warning just above and window._options.strict: "+window._options.strict);
+function baz()
+{
+    var foo = new Object();
+    var k = foo.bar;
+    console.log("This is what I have for foo.bar:"+k+" and window._options.strict: "+window._options.strict);
+}
+window.addEventListener('load', baz, false);
+</script>
+</head>
+<body>
+Test for window._options.strict
+</body>
+</html>

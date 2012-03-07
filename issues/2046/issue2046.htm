@@ -1,0 +1,36 @@
+  <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><html>
+        <head>
+           <title>
+           Test Case for Firebug Issue 2046
+           </title>
+           <style type="text/css">
+<!--
+      body { background-color:#fff; font-family:Arial,Verdana,Helvetica,Sans-serif; font-size:11pt; padding-left:2px;}
+      p {margin-top:4px; margin-bottom:8px;}
+      table {border:0; margin:0;}
+
+      table.standardTable { border-collapse:collapse; border:0px solid grey;}
+
+      caption.standardTable { background-color:#D86363;
+                              border:2px;
+                              text-align:left;
+                              font-weight:bold;
+                              padding-left:6px;}
+
+      caption.standardTable > h3 { margin-top: 6px; margin-bottom: 6px;}    --></style>
+        </head>
+        <body text="#000000" link="#003366" alink="#003366" vlink="#660066">
+           <script type="text/javascript">
+              <!--      function DoIt( )      {          debugger; // Line 41
+      }
+window.addEventListener('load', DoIt, true);  //-->
+           </script>
+<pre>
+ Issue 2046:     Code view and debugger line numbers are out of synch
+
+ Stops on line 27
+ jsdIScript baseLinenumber is 25, lineExtent 3.
+ Correct line number is 41.
+</pre>
+        </body>
+     </html>

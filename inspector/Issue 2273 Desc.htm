@@ -1,0 +1,20 @@
+<html>
+<head>
+</head>
+<body>
+    <h1>Issue 2273</h1>
+    <ol>
+        <li>Inspect the divs using the frame and box inspectors</li>
+        <li>The highlighter should accurately overlay the elements</li>
+    </ol>
+    <h2>Note</h2>
+    
+    Caused by div {-moz-transform: rotate(20deg);}
+
+    <ul>
+        <li>This style should not be inherited by the highlighter</li>
+        <li>The highlighter should accurately cover the rotated element</li>
+        <li>The content of the box model highlighter should be transformed, but the padding and margin not</li>
+    </ul>
+</body>
+</html>

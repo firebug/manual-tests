@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<overlay id="mozilla_nativewrappers@patricioreyna.gmail.com" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+    <script src="chrome://mozilla_nativewrappers/content/mozilla_nativewrappers.js" type="application/x-javascript"/>
+</overlay>

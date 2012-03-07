@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>Issue 902 Test</title>
+    <link rel="stylesheet" type="text/css" href="css.css" />
+</head>
+<body>
+    <h1>Issue 902: CSS Rule Modification</h1>
+    <h2>Test Data</h2>
+    <p class="exists">
+        This should have a red background initially.
+    </p>
+    
+    <p class="notExists">
+        This should have a red background with bold text after testing.
+    </p>
+    
+    <h2>Instructions</h2>
+    <ol>
+        <li>Click on the <code>.exists</code> CSS rule</li>
+        <li>Modify the selector to be <code>.exists, p</code></li>
+        <li>Right click at the bottom of the stylesheet view and create a new rule</li>
+        <li>Set the selector for this rule to be <code>.notExists</code></li>
+        <li>Add the following property <code>font-weight: bold</code></li>
+    </ol>
+</body>

@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+		<title>Untitled Document</title>
+	</head>
+	<style>
+		body { position:relative; width:77em; height:50em; margin: 0 auto; text-align: left; border: 1px solid blue; }
+		div.heading { position:relative; width:100%; }
+		div.buttons { position:absolute;; width:100%; bottom:0; border:1px solid yellow; }
+		div.two, div.three { position:relative; width:100%; }
+		.two ul, .three ul { list-style:none; border: 1px solid #0f0; padding: 5px; }
+		.two ul.labels { display:block; position:absolute; left:0; width:33%; }
+		.two ul.column1 { display:block; position:absolute; left:33%; width:33%; }
+		.two ul.column2 { display:block; position:absolute; left:66%; width:33%; }
+		.two ul.column3 { display:none; position:absolute; }
+		.three ul.labels { display:block; position:absolute; left:0; width:25%; }
+		.three ul.column1 { display:block; position:absolute; left:25%; width:25%; }
+		.three ul.column2 { display:block; position:absolute; left:50%; width:25%; }
+		.three ul.column3 { display:block; position:absolute; left:75%; width:25%; }
+		.two ul li, .three ul li { display:block; position:relative; border:1px solid #f00; padding: 0 5px; height:1.5em; }
+	</style>
+	<body>
+		<div class="heading"><h1>Header</h1></div>
+		<div class="three track_child_heights">
+			<ul class="labels">
+				<li>L 1</li><li>L 2</li><li>L 3</li><li>L 4</li><li>L 5</li>
+			</ul>
+			<ul class="column1">
+				<li>1</li><li>2</li><li>3</li><li>4</li><li>5</li>
+			</ul>
+			<ul class="column2">
+				<li>a</li><li>b</li><li>c</li><li>d</li><li>e</li>
+			</ul>
+			<ul class="column3">
+				<li>A</li><li>B</li><li>C</li><li>D</li><li>E</li>
+			</ul>
+		</div>
+		<div class="buttons"><input type="button" name="ok" value="OK">
+		<span id="value-of"></span>
+		<script>
+			function f(value) {
+				var g = function() {
+					var z=3;
+					return y;
+				}
+				var y = value;
+				return g;
+			}
+			var y=1;
+			var f_ret = f(5);
+			var f2_ret = f(6)
+			function update_screen() {
+				var e = document.getElementById("value-of");
+				e.innerHTML = "y1="+f_ret()+" y2="+f2_ret();
+			}
+			window.setTimeout(update_screen,100);
+		</script>
+		</div>
+	</body>
+</html>

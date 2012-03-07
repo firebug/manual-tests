@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html><head>
+<title>eval perf test</title>
+</head><body>
+<div id="result"></div>
+<script>
+var t0 = new Date();
+
+for (i = 0; i < 10000; ++i) {
+  		eval("7");  
+}
+
+var i = new Date() - t0;
+document.getElementById("result").innerHTML = i + " ms";
+</script>
+</body>
+</html>

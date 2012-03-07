@@ -1,0 +1,28 @@
+<html>
+<head><script>
+function A()
+{
+    var test;
+    test = {fie: function (){}};
+    console.log(test.fie);
+}
+</script></head>
+<body onload="A();">
+<pre>
+Could this be related:
+
+function A()
+{
+    var test;
+    test = {fie: function (){}};
+    console.log(test.fie);
+}
+
+It logs 'function()' in the console.
+When I inspect test.fie, the inspector says 'undefined'.
+When I stop at the line 'console.log' and go to the console and type test.fie, the
+console displays 'undefined'.
+</pre>
+</body>
+
+</html>

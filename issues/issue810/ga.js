@@ -1,0 +1,1 @@
+alert('js file syntax error>';

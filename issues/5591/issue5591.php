@@ -1,9 +1,9 @@
 <?php
-    setcookie('cookie1', 'Hello Firebug user!', 0, '/tests/manual/5591');
-    setcookie('cookie2', 'Hello Firebug user!', 0, '/tests/manual/5591/');
-    setcookie('cookie3', 'Hello Firebug user!', 0, '/tests/manual/5591/issue5591');
-    setcookie('cookie4', 'Hello Firebug user!', 0, '/tests/manual/5591/issue5591.php');
-    setcookie('cookie5', 'Hello Firebug user!', 0, '/tests/manual/5591/issue5591.php/');
+    setcookie('cookie1', 'Hello Firebug user!', 0, '/tests/manual/issues/5591');
+    setcookie('cookie2', 'Hello Firebug user!', 0, '/tests/manual/issues/5591/');
+    setcookie('cookie3', 'Hello Firebug user!', 0, '/tests/manual/issues/5591/issue5591');
+    setcookie('cookie4', 'Hello Firebug user!', 0, '/tests/manual/issues/5591/issue5591.php');
+    setcookie('cookie5', 'Hello Firebug user!', 0, '/tests/manual/issues/5591/issue5591.php/');
 ?>
 <!DOCTYPE html>
 <html>

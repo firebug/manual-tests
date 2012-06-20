@@ -1,14 +1,14 @@
 <?php
-    setcookie('cookie1', 'Hello Firebug user!', 0, '/tests/manual/5589');
-    setcookie('cookie2', 'Hello Firebug user!', 0, '/tests/manual/5589/');
-    setcookie('cookie3', 'Hello Firebug user!', 0, '/tests/manual/5589/issue5589');
-    setcookie('cookie4', 'Hello Firebug user!', 0, '/tests/manual/5589/issue5589.php');
-    setcookie('cookie5', 'Hello Firebug user!', 0, '/tests/manual/5589/issue5589.php/');
+    setcookie('cookie1', 'Hello Firebug user!', 0, '/tests/manual/5591');
+    setcookie('cookie2', 'Hello Firebug user!', 0, '/tests/manual/5591/');
+    setcookie('cookie3', 'Hello Firebug user!', 0, '/tests/manual/5591/issue5591');
+    setcookie('cookie4', 'Hello Firebug user!', 0, '/tests/manual/5591/issue5591.php');
+    setcookie('cookie5', 'Hello Firebug user!', 0, '/tests/manual/5591/issue5591.php/');
 ?>
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Issue 5589: Cookie on same path as script name won't be shown</title>
+        <title>Issue 5591: Cookie on same path as script name won't be shown</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
         <style type="text/css">
@@ -19,7 +19,7 @@
     </head>
     <body>
         <header>
-            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=5589">Issue 5589</a>: Cookie on same path as script name won't be shown</h1>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=5591">Issue 5591</a>: Cookie on same path as script name won't be shown</h1>
         </header>
         <div>
             <section id="content">

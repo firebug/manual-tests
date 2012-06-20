@@ -1,8 +1,8 @@
 <?php
-    setcookie('cookie1', 'Hello Firebug user!', 0, '/Scribble/sebastian.zartner');
-    setcookie('cookie2', 'Hello Firebug user!', 0, '/Scribble/sebastian.zartner/');
-    setcookie('cookie3', 'Hello Firebug user!', 0, '/Scribble/sebastian.zartner/issue5589.php');
-    setcookie('cookie4', 'Hello Firebug user!', 0, '/Scribble/sebastian.zartner/issue5589.php/');
+    setcookie('cookie1', 'Hello Firebug user!', 0, '/tests/manual/5589');
+    setcookie('cookie2', 'Hello Firebug user!', 0, '/tests/manual/5589/');
+    setcookie('cookie3', 'Hello Firebug user!', 0, '/tests/manual/5589/issue5589.php');
+    setcookie('cookie4', 'Hello Firebug user!', 0, '/tests/manual/5589/issue5589.php/');
 ?>
 <!DOCTYPE html>
 <html>

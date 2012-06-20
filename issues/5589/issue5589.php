@@ -1,8 +1,9 @@
 <?php
     setcookie('cookie1', 'Hello Firebug user!', 0, '/tests/manual/5589');
     setcookie('cookie2', 'Hello Firebug user!', 0, '/tests/manual/5589/');
-    setcookie('cookie3', 'Hello Firebug user!', 0, '/tests/manual/5589/issue5589.php');
-    setcookie('cookie4', 'Hello Firebug user!', 0, '/tests/manual/5589/issue5589.php/');
+    setcookie('cookie3', 'Hello Firebug user!', 0, '/tests/manual/5589/issue5589');
+    setcookie('cookie4', 'Hello Firebug user!', 0, '/tests/manual/5589/issue5589.php');
+    setcookie('cookie5', 'Hello Firebug user!', 0, '/tests/manual/5589/issue5589.php/');
 ?>
 <!DOCTYPE html>
 <html>
@@ -29,20 +30,16 @@
                 <ol>
                     <li>Open Firebug</li>
                     <li>Enable and switch to the <em>Cookies</em> panel</li>
-                    <li></li>
+                    <li>Check the filter <em>Cookies</em> / <em>Filter Cookies By Current Path</em></li>
                     <li>Reload the page</li>
                 </ol>
                 <h3>Observed result</h3>
                 <ul>
-                    <li>An info message is shown inside the <em>CSS</em> panel that there are no CSS rules.</li>
+                    <li>Only <code>cookie1</code> and <code>cookie2</code> are listed</li>
                 </ul>
                 <h3>Expected result</h3>
                 <ul>
-                    <li>
-                        The following should be displayed inside the <em>CSS</em> panel:<br/>
-                        <code>
-                        </code>
-                    </li>
+                    <li><code>cookie1</code>, <code>cookie2</code> and <code>cookie4</code> should be listed</li>
                 </ul>
             </section>
             <footer>Sebastian Zartner, sebastianzartner@gmx.de</footer>

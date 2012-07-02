@@ -11,7 +11,7 @@
         7. Add your contact information
         8. Remove all template comments
 
-        Note: Make sure, the URL to testcase.css is https://getfirebug.com/tests/content/templates/default/testcase.css
+        Note: Make sure, the URL to testcase.css is https://getfirebug.com/tests/head/_common/testcase.css
      -->
     <head>
         <!--
@@ -19,7 +19,7 @@
          -->
         <title>Issue 4732: Issue summary</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <link href="https://getfirebug.com/tests/content/templates/default/testcase.css" type="text/css" rel="stylesheet"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
         <script>
         var aNestyArray = ["toplevel", [["var", [["main", ["function", null, [], [["var", [["foo", ["new", ["name", "Foo"], [["function", null, [], [["stat", ["assign", true, ["dot", ["name", "this"], "welcome"], ["string", "Hi!"]]]]]]]]]], ["var", [["bar", ["new", ["name", "Bar"], [["string", "GoodBye."]]]]]], ["stat", ["call", ["dot", ["name", "console"], "log"], [["dot", ["name", "foo"], "welcome"]]]], ["stat", ["call", ["dot", ["name", "console"], "log"], [["dot", ["name", "bar"], "message"]]]]]]]]], ["var", [["Foo", ["call", ["function", null, [], [["var", [["instances"]]], ["return", ["function", null, ["initializer"], [["stat", ["unary-postfix", "++", ["name", "instances"]]], ["stat", ["call", ["dot", ["name", "initializer"], "apply"], [["name", "this"]]]]]]]]], []]]]], ["var", [["Baz", ["assign", true, ["name", "Bar"], ["function", null, ["msg"], [["stat", ["assign", true, ["dot", ["name", "this"], "message"], ["name", "msg"]]]]]]]]]]];
         console.log("and this isn't the half of it: ", aNestyArray);

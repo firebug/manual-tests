@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 5429: Show @document rules inside CSS panel</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
+        <style type="text/css">
+        @-moz-document regexp("^.*issue5429.html$")
+        {
+            #element1 {
+                width: 100px;
+                height: 100px;
+                background: #8C8CFF -moz-linear-gradient(135deg, #788CFF, #B4C8FF);
+            }
+        }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=5429">Issue 5429</a>: Show @document rules inside CSS panel</h1>
+        </header>
+        <div>
+            <section id="content">
+                <div id="element1"></div>
+            </section>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Switch to the <em>CSS</em> panel</li>
+                    <li>Select <em>issue5429.html</em> from the Style Location Menu</li>
+                </ol>
+                <h3>Observed result</h3>
+                <ul>
+                    <li>An info message is shown inside the <em>CSS</em> panel that there are no CSS rules.</li>
+                </ul>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>
+                        The following should be displayed inside the <em>CSS</em> panel:<br/>
+                        <code>
+@-moz-document regexp("^.*issue5429.html$")
+{
+    #element1 {
+        width: 100px;
+        height: 100px;
+        background: #8C8CFF -moz-linear-gradient(135deg, #788CFF, #B4C8FF);
+    }
+}
+                        </code>
+                    </li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmx.de</footer>
+        </div>
+    </body>
+</html>

@@ -3,7 +3,7 @@
     <head>
         <title>Issue 2768: CSS panel has a long pause on pages with complex css</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <link href="https://getfirebug.com/tests/content/templates/default/testcase.css" type="text/css" rel="stylesheet"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
         <style type="text/css">
         <?php
             for ($i=1; $i<=1000; $i++)

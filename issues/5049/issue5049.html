@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 5049: onreadystatechange fails for back-to-back XMLHTTP requests</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
+        <script type="text/javascript">
+        var http_req = new XMLHttpRequest();
+        var url = "issue5049.txt" // Must be a valid URL
+        http_req.open("GET", url);
+        http_req.send(null);
+
+        http_req.onreadystatechange = function()
+        {
+            if (http_req.readyState == 4 && http_req.status == 200)
+            {
+                url = "issue5049.txt"; // (No matter if the URL exists or not)
+                http_req.onreadystatechange = function() { }
+                http_req.open("GET", url);
+                http_req.send(null);
+            }
+        }
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=5049">Issue 5049</a>: onreadystatechange fails for back-to-back XMLHTTP requests</h1>
+        </header>
+        <div>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Enable and switch to the <em>Console</em> panel</li>
+                    <li>Open the Firefox Error Console via <code class="key">Ctrl+Shift+J</code></li>
+                    <li>
+                        Reload the page<br/>
+                        <span class="ok">&rArr; Two XMLHttpRequest logs to <code>issue5049.txt</code> are shown</span>.<br/>
+                        <span class="error">&rArr; An error occurs saying "spy.logRow is undefined".</span><br/>
+                        <span class="error">&rArr; There's no time and HTTP status shown for the second request.</span>
+                    </li>
+                    <li>
+                        Expand both log entries<br/>
+                        <span class="error">&rArr; The <em>Response</em> tab is empty for both.</span>
+                    </li>
+                </ol>
+                <h3>Observed result</h3>
+                <ul>
+                    <li class="error">The request logs are incorrectly displayed.</li>
+                </ul>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>The requests should be shown like inside the <em>Net</em> panel, i.e.</li>
+                    <li>they both should show <code>200 OK</code> as HTTP status</li>
+                    <li>the response should be <code>Hello Firebug user!</code></li>
+                    <li>the request time should be the same as inside the <em>Net</em> panel</li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmail.com</footer>
+        </div>
+    </body>
+</html>

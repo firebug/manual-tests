@@ -25,7 +25,7 @@
                     <li>
                         Reload the page<br/>
                         <span class="ok">&rArr; Two XMLHttpRequest logs to <code>issue4009.php</code> are shown</span>.<br/>
-                        <span class="error">&rArr; The time shown for the second request is negative (sometimes even for the first one).</span>
+                        <span class="error">&rArr; The time shown for the second request does not correspond to the times shown inside the <em>Net</em> panel.</span>
                     </li>
                     <li>
                         Expand both log entries<br/>
@@ -39,7 +39,7 @@
                 <h3>Expected result</h3>
                 <ul>
                     <li>The requests should be shown like inside the <em>Net</em> panel, i.e.</li>
-                    <li>the response should be <code>Hello Firebug user!</code></li>
+                    <li>the response for the second request should be <code>Hello Firebug user!</code></li>
                     <li>the request time should be the same as inside the <em>Net</em> panel</li>
                 </ul>
             </section>

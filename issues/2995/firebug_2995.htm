@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Issue 2995: Inconsistent "Break On..." behavior</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css">
+      body {
+        background: #ffffff;
+        font: small arial, sans-serif;
+        margin: 5px auto;
+        width: 815px;
+      }
+      h1 {
+        font-size: large;
+        font-weight: normal;
+        padding: 1em 0;
+        text-transform: uppercase;
+      }
+      h2 {
+        font-size: medium;
+        font-weight: normal;
+        padding: 0.5em 0;
+        text-transform: uppercase;
+        margin: 0;
+      }
+      ol {
+        margin:0;
+      }
+      ol li {
+        padding-bottom: 1em;
+      }
+      ul li {
+        padding: 0;
+      }
+      #content {
+        background: #9acbe4;
+        padding: 10px 20px;
+      }
+      #content div {
+        width: 200px;
+        margin: 5px 0;
+        padding: 5px;
+      }
+      #output {
+        width: auto!important;
+        background: #e8f0ff;
+      }
+    </style>
+    <script type="text/javascript">
+      <!--
+      var indexBefore = -1;
+
+      function throwError() {
+        this.notExistingFunction();
+      }
+
+      function changeBGColor() {
+        var colors = ['#ff8c8c','#8cff8c','#8c8cff','#8cffff','#ff8cff','#ffff8c'];
+        var index = 0;
+
+        do {
+          index = Math.round(Math.random()*(colors.length-1));
+        }while(index === indexBefore);
+        indexBefore = index;
+
+        document.getElementById('output').style.backgroundColor = colors[index];
+      }
+
+      function makeXHR() {
+        var xmlHttp = new XMLHttpRequest();
+
+        xmlHttp.open('GET', 'http:\/\/google.com', true);
+        xmlHttp.onreadystatechange = function () {
+          if(xmlHttp.readyState === 4) {
+            alert(xmlHttp.status === 200 ? xmlHttp.responseText : 'Error! Response HTTP status: ' + xmlHttp.status);
+          }
+        };
+        xmlHttp.send(null);
+      }
+
+      function init() {
+        document.getElementById('changeBGColor').addEventListener('click',changeBGColor,false);
+        document.getElementById('throwError').addEventListener('click',throwError,false);
+        document.getElementById('makeXHR').addEventListener('click',makeXHR,false);
+      }
+
+      window.addEventListener('load',init,false);
+      //-->
+    </script>
+  </head>
+  <body>
+    <h1>Issue 2995: Inconsistent "Break On..." behavior</h1>
+    <div id="content">
+      <div id="output">
+        <input type="button" id="throwError" value="Throw error"/>
+        <input type="button" id="changeBGColor" value="Change background color"/>
+        <input type="button" id="makeXHR" value="Make XHR"/>
+      </div>
+      <p>Before checking a test case all panels have to be enabled!</p>
+      <h2>"Break On All Errors" behavior of console panel</h2>
+      <ol>
+        <li>Activate the console panel</li>
+        <li>Reload the page</li>
+        <li>Click the "Break On All Errors" button of the console panel</li>
+        <li>Click the "Throw error" button</li>
+        <li>Inside the script panel click the "Continue" button or press F8</li>
+        <li>Click the "Throw error" button again</li>
+      </ol>
+      <ul>
+        <li><strong>Observed:</strong> The "Break On All Errors" button stays armed</li>
+        <li>
+          <strong>Expected:</strong>
+          <ul>
+            <li>Clicking the "Break On All Errors" button should just break one time when "Throw error" is clicked and then be disarmed again</li>
+            <li>The current functionality, that "Break On All Errors" stays active when "Throw error" is clicked should be enabled when double-clicking on it</li>
+          </ul> 
+        </li>
+      </ul>
+      <h2>"Break On Mutate" behavior of HTML panel</h2>
+      <ol>
+        <li>Activate the HTML panel</li>
+        <li>Reload the page</li>
+        <li>Click the "Break On Mutate" button of the HTML panel</li>
+        <li>Click the "Change background color" button</li>
+        <li>Inside the script panel click the "Continue" button or press F8</li>
+        <li>Click the "Change background color" button again</li>
+      </ol>
+      <ul>
+        <li><strong>Observed:</strong> The execution doesn't stop anymore and the "Break On Mutate" button is deactivated again</li>
+        <li><strong>Expected:</strong> Double-clicking the "Break On Mutate" button should let it activated until the user deactivates it again by clicking on it again</li>
+      </ul>
+      <h2>"Break On Next" behavior of script panel</h2>
+      <ol>
+        <li>Activate the script panel</li>
+        <li>Reload the page</li>
+        <li>Click the "Break On Next" button of the script panel</li>
+        <li>Click the "Change background color" button</li>
+        <li>Inside the script panel click the "Continue" button or press F8</li>
+        <li>Click the "Change background color" button again</li>
+      </ol>
+      <ul>
+        <li><strong>Observed:</strong> The execution doesn't stop anymore and the "Break On Next" button is deactivated again</li>
+        <li><strong>Expected:</strong> Double-clicking the "Break On Next" button should let it activated until the user deactivates it again by clicking on it again</li>
+      </ul>
+      <h2>"Break On XHR" behavior of net panel</h2>
+      <ol>
+        <li>Activate the net panel</li>
+        <li>Reload the page</li>
+        <li>Click the "Break On XHR" button of the script panel</li>
+        <li>Click the "Make XHR" button</li>
+        <li>Inside the script panel click the "Continue" button or press F8</li>
+        <li>Click the "Make XHR" button again</li>
+      </ol>
+      <ul>
+        <li><strong>Observed:</strong> The execution doesn't stop anymore and the "Break On XHR" button is deactivated again</li>
+        <li><strong>Expected:</strong> Double-clicking the "Break On XHR" button should let it activated until the user deactivates it again by clicking on it again</li>
+      </ul>
+    </div>
+  </body>
+</html>

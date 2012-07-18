@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Issue 5525: Setting error breakpoints causes error in Breakpoints side panel</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+      <link href="../../../_common/testcase.css" type="text/css" rel="stylesheet"/>
+      <script type="text/javascript">
+      var test = undefinedVariable;
+      </script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=5525">Issue 5525</a>: Setting error breakpoints causes error in Breakpoints side panel</h1>
+        </header>
+        <div>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Enable the <em>Script</em> and the <em>Console</em> panel and switch to the <em>Console</em> panel</li>
+                    <li>
+                        Reload the page<br/>
+                        <span class="ok">&rArr; The console must list a syntax error: <code>undefinedVariable is not defined</code></span>
+                    </li>
+                    <li>Click the breakpoint besides the code sample (<code>var test = undefinedVariable;</code>)</li>
+                    <li>
+                        Switch to the <em>Script</em> panel and there to the <em>Breakpoints</em> side panel
+                    </li>
+                </ol>
+                <h3>Observed Result</h3>
+                <ul>
+                    <li>The <em>Breakpoints</em> side panel is empty</li>
+                    <li>
+                        The Firefox Error Console lists:<br/>
+                        <code>
+Error: TypeError: analyzer.getBaseLineNumberByScript is not a function
+Source File: chrome://firebug/content/js/sourceFile.js
+Line: 928
+                        </code>
+                    </li>
+                </ul>
+                <h3>Expected Result</h3>
+                <ul>
+                    <li>The <em>Breakpoints</em> side panel should list the error breakpoint and not cause any error by itself.</li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmx.de</footer>
+        </div>
+    </body>
+</html>

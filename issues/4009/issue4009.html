@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 4009: XHR messages are different in the Net and Console panel</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
+        <script type="text/javascript">
+        var http_req = new XMLHttpRequest();
+        var url = "issue4009.php" // Must be a valid URL
+
+        http_req.open("GET", url);
+        http_req.send(null);
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=4009">Issue 4009</a>: XHR messages are different in the Net and Console panel</h1>
+        </header>
+        <div>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Enable and switch to the <em>Console</em> panel</li>
+                    <li>
+                        Reload the page<br/>
+                        <span class="ok">&rArr; Two XMLHttpRequest logs to <code>issue4009.php</code> are shown</span>.<br/>
+                        <span class="error">&rArr; The time shown for the second request does not correspond to the times shown inside the <em>Net</em> panel.</span>
+                    </li>
+                    <li>
+                        Expand both log entries<br/>
+                        <span class="error">&rArr; The responses get mixed up between the both requests.</span>
+                    </li>
+                </ol>
+                <h3>Observed result</h3>
+                <ul>
+                    <li class="error">The request logs are incorrectly displayed.</li>
+                </ul>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>The requests should be shown like inside the <em>Net</em> panel, i.e.</li>
+                    <li>the response for the second request should be <code>Hello Firebug user!</code></li>
+                    <li>the request time should be the same as inside the <em>Net</em> panel</li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmail.com</footer>
+        </div>
+    </body>
+</html>

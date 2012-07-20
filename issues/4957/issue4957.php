@@ -34,7 +34,7 @@
                     <li>One request to <code>issue4957.php</code> shows HTTP status 200</li>
                 </ul>
             </section>
-            <footer>Sebastian Zartner, sebastianzartner@gmx.de</footer>
+            <footer>Sebastian Zartner, sebastianzartner@gmail.com</footer>
         </div>
     </body>
 </html>

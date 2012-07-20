@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 5335: 	Issue while exporting data. File is not saved or empty </title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/content/templates/default/testcase.css" type="text/css" rel="stylesheet"/>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=5335">Issue 5335</a>: 	Issue while exporting data. File is not saved or empty </h1>
+        </header>
+        <div>
+            <section id="content">
+                
+            </section>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open firefox</li>
+                    <li>Open the Imacros panel</li>
+                    <li>Select the macro "wikipedia"</li>
+			    <li>Select 150 repetitions</li>
+			    <li>Open firebug panel</li>
+			    <li>Enable and switch to the Net panel</li>
+			    <li>Activate persistent mode and erase previous contents of the panel<li>
+			    <li>Activate firebug option "activated for all webpages" for the panel not to close when starting the Imacros<li>
+			    <li>Launch Imacros replay (it might take some time...)<li>
+			    <li>When done, export the data with "Save As JSONP ...", select a folder and save<li>
+                </ol>
+                <h3>Observed result</h3>
+                <ul>
+                    <li>Sometimes after selecting the folder where I want the .harp file to be saved and clicking on "save" (firefox gets slow, freezes a bit), the file is not saved at all</li>
+                    <li>Some other times, the file is saved but is empty</li>
+                </ul>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>Usually, with less repetitions, the file gets saved normally and contains the expected informations</li>
+                </ul>
+            </section>
+            <footer>
+                <!--
+                    Your name and your email address (or other contact information) should be placed here.
+                    This is important in the case we need to contact you for further reference. 
+                 -->
+                &lt;Arthur Vallois&gt;, &lt;arthurvallois@gmail.com&gt;
+            </footer>
+        </div>
+    </body>
+</html>

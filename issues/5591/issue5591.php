@@ -42,7 +42,7 @@
                     <li><code>cookie1</code>, <code>cookie2</code> and <code>cookie4</code> should be listed</li>
                 </ul>
             </section>
-            <footer>Sebastian Zartner, sebastianzartner@gmx.de</footer>
+            <footer>Sebastian Zartner, sebastianzartner@gmail.com</footer>
         </div>
     </body>
 </html>

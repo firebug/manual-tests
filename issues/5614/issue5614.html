@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 5614: sourceURL directive not working in Console panel with eval()'ed code</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
+        <script src="index.js"></script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=5614">Issue 5614</a>: sourceURL directive not working in Console panel with eval()'ed code</h1>
+        </header>
+        <div>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ul>
+                    <li>Open Firebug</li>
+                    <li>Enable the <em>Console</em> and the <em>Script</em> panel and switch to the <em>Console</em> panel</li>
+                    <li>Uncheck <em>Show XMLHttpRequests</em> within the <em>Console</em> panel options</li>
+                    <li>
+                        Reload the page<br/>
+                        <span class="error">&rArr; An error message will be listed with <code>index.html (line 5)</code> as source</span>
+                    </li>
+                    <li>Check <em>Show XMLHttpRequests</em> within the <em>Console</em> panel options</li>
+                    <li>
+                        Reload the page again<br/>
+                        <span class="error">&rArr; An error message will be listed with <code>index.html (line 5)</code> as source</span>
+                    </li>
+                </ul>
+                <h3>Observed</h3>
+                <ul>
+                    <li>The script containing the <code>eval()</code> will be shown as source</li>
+                </ul>
+                <h3>Expected</h3>
+                <ul>
+                    <li>The script containing the error (<code>remote.js (line 1)</code>) should be shown as source</li>
+        </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmail.com</footer>
+        </div>
+    </body>
+</html>

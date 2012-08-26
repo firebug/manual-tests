@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 5815: Request parameters are double encoded</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
+        <script type="text/javascript">
+        function makeRequest()
+        {
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "issue5815.txt?notEncodedParam=/some/path/&encodedParam=%2Fsome%2Fpath%2F", true);
+            xhr.onreadystatechange = function()
+            {
+                if (xhr.readyState == XMLHttpRequest.DONE && xhr.status == 200)
+                {
+                    var output = document.getElementById("output");
+                    output.style.display = "block";
+                    output.textContent = xhr.responseText;
+                }
+            }
+            xhr.send(null);
+        }
+        window.addEventListener("DOMContentLoaded", makeRequest, false);
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=5815">Issue 5815</a>: Request parameters are double encoded</h1>
+        </header>
+        <div>
+            <section id="content">
+                <section id="output"></section>
+            </section>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Enable and switch to the <em>Net</em> panel</li>
+                    <li>
+                        Reload the page<br/>
+                        <span class="ok">&rArr; There should be one XMLHttpRequest to <em>issue5815.txt</em>.</span>
+                    </li>
+                    <li>Expand that request</li>
+                    <li>Switch to the <em>Params</em> tab</li>
+                </ol>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>
+                        Inside the <em>Params</em> tab the values of both parameters (<code>notEncodedParam</code> and <code>encodedParam</code>)
+                        should be shown as <code>/some/path</code>
+                    </li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmail.com</footer>
+        </div>
+    </body>
+</html>

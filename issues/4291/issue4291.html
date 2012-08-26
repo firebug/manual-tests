@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <script type="text/javascript">
+(function (window) {
+    var frames = [
+        "http://upload.wikimedia.org/wikipedia/commons/6/65/Duerer_%28Marter_der_zehntausend_Christen%29.jpg",
+        "http://upload.wikimedia.org/wikipedia/commons/0/0c/St._Cristopher-D%C3%BCrer.jpg",
+        "http://upload.wikimedia.org/wikipedia/commons/b/b9/D%C3%BCrer_-_Rhinoceros.jpg"
+    ];
+
+    window.onload = function () {
+        var frame_num = 0;
+        var image = document.getElementById("image");
+
+        image.onclick = function () {
+            frame_num = (frame_num + 1) % frames.length;
+            image.src = frames[frame_num];
+            return false;
+        };
+    };
+})(window);
+    </script>
+  </head>
+  <body>
+    <img id="image" src="http://upload.wikimedia.org/wikipedia/commons/6/65/Duerer_%28Marter_der_zehntausend_Christen%29.jpg" style="position:relative">
+  </body>
+</html>

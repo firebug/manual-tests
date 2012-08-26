@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Issue 4646: Incorrect marking of lines as executable</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script src="rasterNode.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+var node = new Node("tACT");
+node.changetitle("test");
+</script>
+
+<header>
+    <h1><a href="http://code.google.com/p/fbug/issues/detail?id=4646">Issue 4646</a>:
+        Incorrect marking of lines as executable</h1>
+</header>
+<div>
+    <section id="description">
+        <h3>Steps to reproduce</h3>
+        <ol>
+            <li>Open Firebug, enable the Console and Script panel, reload</li>
+            <li>Switch to the Script panel, select <i>issue4646.html</i></li>
+            <li>Line 11 is not green -> BUG</li>
+            <li>Select <i>rasterNode.js</i>, line 129 is not green -> BUG</li>
+        </ol>
+    </section>
+    <footer>
+        Jan Odvarko &lt;odvarko@gmail.com&gt;
+    </footer>
+</div>
+</body>
+</html>

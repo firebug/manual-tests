@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 5705: HTML panel is not properly updated if an iframe is refreshed</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
+        <style type="text/css">
+        iframe {
+            border: none;
+        }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=5705">Issue 5705</a>: HTML panel is not properly updated if an iframe is refreshed</h1>
+        </header>
+        <div>
+            <section id="content">
+                <iframe src="issue5705-frame.html" width="100" height="100"></iframe>
+            </section>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Switch to the <em>HTML</em> panel</li>
+                    <li>Right-click into the blue <code>&lt;iframe&gt;</code> and choose <em>Inspect Element with Firebug</em></li>
+                    <li>
+                        Right-click the <code>&lt;iframe&gt;</code> again and choose <em>This Frame</em> &gt; <em>Reload Frame</em><br/>
+                        <span class="error">&rArr; A new <code>&lt;html&gt;</code> element is created inside the <em>HTML</em> panel instead of replacing the old one.</span>
+                    </li>
+                    <li>Open the Firefox Error Console</li>
+                    <li>
+                        Hover the old <code>&lt;html&gt;</code> element inside the <em>HTML</em> panel<br/>
+                        <span class="error">
+                            &rArr; There will be an error displayed:
+<code>
+Error: TypeError: can't access dead object
+Source File: chrome://firebug/content/html/inspector.js
+Line: 82
+</code>
+                        </span>
+                    </li>
+                    <li>
+                        Switch to the <em>Script</em> panel and back to the <em>HTML</em> panel<br/>
+                        <span class="error">&rArr; The side panels are not displayed anymore.</span>
+                    </li>
+                </ol>
+                <h3>Observed result</h3>
+                <ul>
+                    <li>When reloading the <code>&lt;iframe&gt;</code> the <code>&lt;html&gt;</code> element is not replaced but a new one created, which causes several other bugs.</li>
+                </ul>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>
+                        The old <code>&lt;html&gt;</code> element inside the <em>HTML</em> panel needs to be replaced and the <code>&lt;body&gt;</code> in it selected again or
+                        at least the whole <code>&lt;iframe&gt;</code> collapsed and its contents recreated.
+                    </li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmail.com</footer>
+        </div>
+    </body>
+</html>

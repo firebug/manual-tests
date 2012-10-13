@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+    <title>Test Case for Issue #5978</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <script type="text/javascript" src="issue5978.js"></script>
+</head>
+<body>
+
+<h1>Issue #5978</h1>
+
+<p>This test-case is intended for <a href="http://code.google.com/p/fbug/issues/detail?id=5978">Issue #5978</a>
+- <span class="h3">Firebug does not show javascript from iframes.</span
+<br/><br/>
+<i>odvarko@gmail.com</i>
+</p>
+
+<ol>
+<li>Open Firebug, select and enable the Script panel.</li>
+<li>Reload this page</li>
+<li>There should be following scripts in the location list:
+<ul>
+<li><i>issue5978-innerFrame1.js</i></li>
+<li><i>issue5978.js</i></li>
+<li><i>issue5978-innerFrame2.js</i></li>
+</ul>
+<li><i>issue5978-innerFrame2.js</i> comes from different domain.</li>
+</li>
+</ol>
+
+<iframe src="issue5978-innerFrame1.html" height="100"></iframe>
+<iframe src="http://www.janodvarko.cz/firebug/tests/5978/issue5978-innerFrame2.html" height="100"></iframe>
+
+</body>
+</html>

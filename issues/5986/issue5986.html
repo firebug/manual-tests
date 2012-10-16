@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 5986: Allow the Script panel to deal with web workers</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
+        <script type="text/javascript">
+        var worker = new Worker("worker.js");
+        worker.addEventListener("message", function(event) {
+            console.log("Worker said: " + event.data);
+        }, false);
+        worker.postMessage("");
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=5986">Issue 5986</a>: Allow the Script panel to deal with web workers</h1>
+        </header>
+        <div>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Enable and switch to the Script panel</li>
+                    <li>Switch to the <em>Workers</em> side panel (not existing yet)</li>
+                    <li>Check the <em>Workers</em> side panel option <em>Break On Start</em> (not existing yet)</li>
+                    <li>Reload the page</li>
+                </ol>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>The <em>Script</em> panel should display the contents of the web worker <em>worker.js</em></li>
+                    <li>The <em>Workers</em> side panel should list <em>worker.js</em></li>
+                    <li>The script execution should stop at the first line of <em>worker.js</em></li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmail.com</footer>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 3168: Guess the line number of persistent breakpoints</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
+        <script type="text/javascript">
+        window.addEventListener("DOMContentLoaded", function()
+        {
+            var output = document.getElementById("output");
+            output.textContent = "Hello Firebug user!";
+            output.style.display = "block";
+        });
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=3168">Issue 3168</a>: Guess the line number of persistent breakpoints</h1>
+        </header>
+        <div>
+            <section id="content">
+                <section id="output"></section>
+            </section>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Enable and switch to the <em>Script</em> panel</li>
+                    <li>Reload the page</li>
+                    <li>Set a breakpoint at line 11 (<code>output.textContent = "Hello Firebug user!";</code>)</li>
+                    <li>
+                        Open the file in an editor, add the following code before line 11 and save the file:<br/>
+                        <code>var placeholder1 = 1;
+var placeholder2 = 2;</code>
+                    </li>
+                    <li>Reload the page again</li>
+                </ol>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>The breakpoint should now be moved to line 13 and not line 11 anymore.</li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmail.com</footer>
+        </div>
+    </body>
+</html>

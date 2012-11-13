@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 4173: Window/Document menu</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
+        <style type="text/css">
+        iframe {
+            border: none;
+        }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=4173">Issue 4173</a>: Window/Document menu</h1>
+        </header>
+        <div>
+            <section id="content">
+              <iframe src="issue4173-frame1.html" name="frame 1" width="100" height="100"></iframe>
+              <iframe src="issue4173-frame2.html" name="frame 2" width="100" height="100"></iframe>
+            </section>
+            <section id="description">
+                <h2><em>Console</em> panel</h2>
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Enable and switch to the <em>Console</em> panel</li>
+                    <li>
+                        Open the Frame Menu (not existing yet)<br/>
+                        <span class="ok">There should be three entries listed. One representing the top window, one for frame 1 and one for frame 2.</span>
+                    </li>
+                    <li>Choose <em>Frame 1 (issue4173-frame1.html)</em> from the menu</li>
+                    <li>Type <code>document.body.textContent.trim()</code> into the Command Line and hit <code class="key">Enter</code></li>
+                </ol>
+                <h3>Expected Result</h3>
+                <ul>
+                    <li>The console should output <code>"frame 1"</code></li>
+                </ul>
+
+                <h2><em>HTML</em> panel</h2>
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Switch to the <em>HTML</em> panel</li>
+                    <li>
+                        Open the Frame Menu (not existing yet)<br/>
+                        <span class="ok">There should be three entries listed. One representing the top window, one for frame 1 and one for frame 2.</span>
+                    </li>
+                    <li>Choose <em>Frame 1 (issue4173-frame1.html)</em> from the menu</li>
+                </ol>
+                <h3>Expected Result</h3>
+                <ul>
+                    <li>The <em>HTML</em> panel should only display the contents of the iframe 1.</li>
+                </ul>
+
+                <h2><em>DOM</em> panel</h2>
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Switch to the <em>DOM</em> panel</li>
+                    <li>
+                        Open the Frame Menu (not existing yet)<br/>
+                        <span class="ok">There should be three entries listed. One representing the top window, one for frame 1 and one for frame 2.</span>
+                    </li>
+                    <li>Choose <em>Frame 1 (issue4173-frame1.html)</em> from the menu</li>
+                </ol>
+                <h3>Expected Result</h3>
+                <ul>
+                    <li>The <em>DOM</em> panel should display the properties of the <code>window</code> of frame 1.</li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmail.com</footer>
+        </div>
+    </body>
+</html>

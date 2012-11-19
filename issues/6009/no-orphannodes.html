@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>test NO orphan nodes</title>
+<script type="text/javascript" language="javascript">
+// <![CDATA[
+
+function fill_node_no_waste() {
+    var elem=document.getElementById('elem');
+    var i,ii,new_node;
+    
+    for (i=0;i<100;i++) {
+        elem.innerHTML='';
+        
+        for(ii=0;ii<1000;ii++) {
+            new_node=document.createElement('div');
+            new_node.innerHTML='<div><div><div><div><div>'+i+'</div></div></div></div></div>'
+            elem.appendChild(new_node);
+        }
+    }
+}
+
+// ]]>
+</script>
+</head>
+<body onload="fill_node_no_waste()">
+    <div id="elem">
+        
+    </div>
+</body>

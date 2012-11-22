@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<overlay id="simpleDebuggerOverlay"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+    <script src="chrome://simpledebugger/content/debugger.js" type="application/x-javascript"/>
+
+    <commandset id="mainCommandSet">
+        <command id="cmd_jsdTestPause" oncommand="SimpleDebugger.pause()"/>
+        <command id="cmd_jsdTestUnPause" oncommand="SimpleDebugger.unPause()"/>
+    </commandset>
+
+    <!-- Firefox page context menu -->
+    <menupopup id="contentAreaContextMenu">
+        <menuseparator/>
+        <menuitem id="menu_jsdTestPause" label="Pause" command="cmd_jsdTestPause" class="menuitem-iconic" />
+        <menuitem id="menu_jsdTestUnPause" label="UnPause" command="cmd_jsdTestUnPause" class="menuitem-iconic" />
+    </menupopup>
+
+</overlay>

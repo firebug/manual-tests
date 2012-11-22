@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 5912: Show @supports rules inside CSS panel</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
+        <style type="text/css">
+        #test {
+            width: 100px;
+            height: 100px;
+            background: #FF8C8C -moz-linear-gradient(135deg, #FF8C78, #FFC8B4);
+        }
+
+        @supports ( (display: block) and (display: inline) ) {
+            @media screen {
+                #test {
+                    border: 1px solid green;
+                }
+            }
+        }
+
+        @supports ( (perspective: 10px) or (-moz-perspective: 10px) ) {
+            #test {
+                background: #8CFF8C -moz-linear-gradient(135deg, #78FF8C, #B4FFC8);
+            }
+        }
+
+        @supports ( not (not-existing-property: value) ) {
+            #test::after {
+                display: block;
+                width: 100px;
+                height: 100px;
+                content: "@supports";
+                line-height: 100px;
+                text-align: center;
+                vertical-align: middle;
+                color: green;
+            }
+        }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=5912">Issue 5912</a>: Show @supports rules inside CSS panel</h1>
+        </header>
+        <div>
+            <section id="content">
+                <div id="test"></div>
+            </section>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Switch to the CSS panel</li>
+                </ol>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>The <code>&lt;div&gt;</code> above (<code>#test</code>) should be displayed in green, should have a border and say "@supports".</li>
+                    <li>
+                        The following @support rules should be displayed inside the panel:
+<code>
+@supports ( (display: block) and (display: inline) ) {
+    @media screen {
+        #test {
+            border: 1px solid green;
+        }
+    }
+}
+
+@supports ( (perspective: 10px) or (-moz-perspective: 10px) ) {
+    #test {
+        background: #8CFF8C -moz-linear-gradient(135deg, #78FF8C, #B4FFC8);
+    }
+}
+
+@supports ( not (not-existing-property: value) ) {
+    #test::after {
+        display: block;
+        width: 100px;
+        height: 100px;
+        content: "@supports";
+        line-height: 100px;
+        text-align: center;
+        vertical-align: middle;
+        color: green;
+    }
+}
+</code>
+                    </li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmail.com</footer>
+        </div>
+    </body>
+</html>

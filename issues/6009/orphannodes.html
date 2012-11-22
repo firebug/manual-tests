@@ -1,0 +1,33 @@
+<html>
+<head>
+<title>test orphan nodes</title>
+<script type="text/javascript" language="javascript">
+// <![CDATA[
+
+function fill_node() {
+    var elem=document.getElementById('elem');
+    elem.innerHTML=''
+    
+    var new_node;
+    for(var i=0;i<1000;i++) {
+        new_node=document.createElement('div');
+        new_node.innerHTML='<div><div><div><div><div>'+i+'</div></div></div></div></div>'
+        elem.appendChild(new_node);
+    }
+}
+
+function start_test() {
+    for (i=0;i<100;i++) {
+        fill_node();
+    }
+}
+
+
+// ]]>
+</script>
+</head>
+<body onload="start_test()">
+    <div id="elem">
+        
+    </div>
+</body>

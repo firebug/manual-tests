@@ -5,7 +5,7 @@
 
   <Description about="urn:mozilla:install-manifest">
     <em:id>observer@janodvarko.cz</em:id>
-    <em:name>Simple HTTP & XHR Observer</em:name>
+    <em:name>Simple HTTP + XHR Observer</em:name>
     <em:version>1.0</em:version>
     <em:creator>Jan Odvarko</em:creator>
     <em:description>For testing purposes (no 'abort' sent for xhr)</em:description>

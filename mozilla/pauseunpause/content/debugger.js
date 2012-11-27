@@ -157,10 +157,12 @@ function now()
 
 function alertTime(start)
 {
-    var end = now();
-    sysout("end " + end);
-
-    alert(end - start);
+    setTimeout(function()
+    {
+        var end = now();
+        sysout("end " + end);
+        alert(end - start);
+    }, 0)
 }
 
 // ************************************************************************************************

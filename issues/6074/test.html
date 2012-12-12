@@ -1,0 +1,10 @@
+<script>
+   function insertNode()
+   {
+      document.getElementById("node").firstChild.appendChild(document.createElement("div")); // invalid. Firebug should break here but doesn't
+   }
+</script>
+<body>
+   <input type="button" onclick="insertNode()" value="Trigger issue">
+   <div id="node">some text</div>
+</body>

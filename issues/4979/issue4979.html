@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 4979: Group console messages</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
+        <style type="text/css">
+        section#output {
+            display: block;
+        }
+        </style>
+        <script type="text/javascript">
+        function a(p)
+        {
+            console.log(p);
+        }
+
+        function b(p1,p2)
+        {
+            console.log(p1, p2);
+        }
+
+        function c(ch)
+        {
+            var output = document.getElementById("output");
+            output.appendChild(ch);
+            console.log(ch);
+        }
+
+        function d(ch)
+        {
+            var output = document.getElementById("output");
+            output.appendChild(ch);
+            console.log([ch]);
+        }
+
+        window.addEventListener("load", function()
+        {
+            a(1); a(2); // Must not be grouped
+
+            a(true); a(false); // Must not be grouped
+
+            a(null); a(null); // Must be grouped
+
+            a(undefined); a(undefined); // Must be grouped
+
+            a(true); a(true); // Must be grouped
+
+            a(1); a(1); // Must be grouped
+
+            a("test"); a("test"); // Must be grouped
+
+            var obj = {1:1,x:2};
+            a(obj); a(obj); // Must be grouped
+
+            a([1,2,3]); a([1,2,4]); // Must not be grouped
+
+            a([{a:1},2,3]); a([{a:1},2,3]); // Must be grouped
+
+            a([{a:1},2,4]); a([{a:1},2,5]); // Must not be grouped
+
+            a({a:1,b:2}); a({a:1,b:3}); // Must not be grouped
+
+            a(Math.sqrt(-1)); a(Math.sqrt(-1)); // Must be grouped
+
+            b(1,1); b(1,2); // Must not be grouped
+
+            a("1"); a(1); // Must not be grouped
+
+            a("null"); a(null); a(undefined); // Must not be grouped
+
+            var obj = Object.create(null);
+            a(obj); a(obj); // Should be grouped
+
+            c(document.createTextNode("a")); c(document.createTextNode("a")); // Must not be grouped
+
+            d(document.createTextNode("a")); d(document.createTextNode("a")); // Must not be grouped
+
+            a(document.head.firstChild); a(document.head.firstChild); // Should be grouped
+
+            a(document); a(document); // Should be grouped
+
+            var th = function() { throw 0; };
+            var throwy1 = Proxy.create({getOwnPropertyDescriptor: th, getPropertyDescriptor: th, getOwnPropertyNames: th, getPropertyNames: th}, null);
+            var throwy2 = Proxy.create({getOwnPropertyDescriptor: th, getPropertyDescriptor: th, getOwnPropertyNames: th, getPropertyNames: th}, null);
+            a(throwy1); a(throwy2); // Should ideally not be grouped
+        }, false);
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=4979">Issue 4979</a>: Group console messages</h1>
+        </header>
+        <div>
+            <section id="content">
+                <section id="output">
+                </section>
+            </section>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Enable and switch to the <em>Console</em> panel</li>
+                    <li>Reload the page</li>
+                </ol>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>
+                        Parts of the console output should be grouped:<br/>
+                        <code>
+1 issue4979.html (line 15)
+2 issue4979.html (line 15)
+true issue4979.html (line 15)
+false issue4979.html (line 15)
+null issue4979.html (line 15) (2 grouped logs)
+undefined issue4979.html (line 15) (2 grouped logs)
+true issue4979.html (line 15) (2 grouped logs)
+1 issue4979.html (line 15) (2 grouped logs)
+test issue4979.html (line 15) (2 logs grouped)
+Object { 1=1, x=2} issue4979.html (line 15) (2 logs grouped)
+[1, 2, 3] issue4979.html (line 15)
+[1, 2, 4] issue4979.html (line 15)
+[Object { a=1 }, 2, 3] issue4979.html (line 15) (2 logs grouped)
+[Object { a=1 }, 2, 4] issue4979.html (line 15)
+[Object { a=1 }, 2, 5] issue4979.html (line 15)
+Object { a=1, b=2 } issue4979.html (line 15)
+Object { a=1, b=3 } issue4979.html (line 15)
+NaN issue4979.html (line 15)  (2 logs grouped)
+1 1 issue4979.html (line 15)
+1 2 issue4979.html (line 15)
+1 issue4979.html (line 15)
+1 issue4979.html (line 15)
+null issue4979.html (line 15)
+null issue4979.html (line 15)
+undefined issue4979.html (line 15)
+[] {} issue4979.html (line 15)  (2 logs grouped)
+&lt;TextNode textContent="a"&gt; issue4979.html (line 21)
+&lt;TextNode textContent="a"&gt; issue4979.html (line 21)
+[&lt;TextNode textContent="a"&gt;] issue4979.html (line 27)
+[&lt;TextNode textContent="a"&gt;] issue4979.html (line 27)
+&lt;TextNode textContent="\n "&gt; issue4979.html (line 15)
+&lt;TextNode textContent="\n "&gt; issue4979.html (line 15)
+Document issue4979.html issue4979.html (line 15)  (2 logs grouped)
+                        </code>
+                    </li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmail.com</footer>
+        </div>
+    </body>
+</html>

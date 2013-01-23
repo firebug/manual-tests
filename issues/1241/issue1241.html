@@ -40,6 +40,12 @@
             var style = document.getElementById("element").style;
             style.background = (element.style.background == "" ? "#FFFF8C -moz-linear-gradient(135deg, #FFFF8C, #FFFFC8)" : "");
         }
+
+        function addRule()
+        {
+            var styleSheet = document.styleSheets[1];
+            styleSheet.insertRule("#content > div { background: #FF8C78 -moz-linear-gradient(135deg, #FF8C78, #FFC8B4); }", 0);
+        }
         </script>
     </head>
     <body>
@@ -52,15 +58,17 @@
                 <button onclick="changeClass()">Change class</button>
                 <button onclick="changeRule()">Change rule</button>
                 <button onclick="changeInlineStyle()">Change inline style</button>
+                <button onclick="addRule()">Add rule</button>
             </section>
             <section id="description">
+                <p>Note: Reload the page after each test.</p>
                 <h2>Change class</h2>
                 <h3>Steps to reproduce</h3>
                 <ol>
                     <li>Open Firebug</li>
                     <li>Switch to the <em>HTML</em> panel and there to the <em>Style</em> side panel</li>
                     <li>Inspect the blue <code>&lt;div&gt;</code> above</li>
-                    <li>Click the <em>Change class</em> button</li>
+                    <li>Click the <em>Change class</em> button above</li>
                 </ol>
                 <h3>Expected result</h3>
                 <ul>
@@ -73,7 +81,7 @@
                     <li>Open Firebug</li>
                     <li>Switch to the <em>HTML</em> panel and there to the <em>Style</em> side panel</li>
                     <li>Inspect the blue <code>&lt;div&gt;</code> above</li>
-                    <li>Click the <em>Change rule</em> button</li>
+                    <li>Click the <em>Change rule</em> button above</li>
                 </ol>
                 <h3>Expected result</h3>
                 <ul>
@@ -85,6 +93,9 @@
                         An (overwritten) <code>color</code> property with the value <code>white</code> should be added inside the <code>#element</code> rule and the property incl. its
                         value should be highlighted.
                     </li>
+                    <li>
+                        The property should also be highlighted inside the <em>CSS</em> panel.
+                    </li>
                 </ul>
 
                 <h2>Change inline style</h2>
@@ -93,13 +104,29 @@
                     <li>Open Firebug</li>
                     <li>Switch to the <em>HTML</em> panel and there to the <em>Style</em> side panel</li>
                     <li>Inspect the blue <code>&lt;div&gt;</code> above</li>
-                    <li>Click the <em>Change inline style</em> button</li>
+                    <li>Click the <em>Change inline style</em> button above</li>
                 </ol>
                 <h3>Expected result</h3>
                 <ul>
                     <li>
-                        Inside the <em>Style</em> side panel the <code>element.style</code> rule should be added including a <code>background</code> property with the value
-                        <code>#FFFF8C -moz-linear-gradient(135deg, #FFFF8C, #FFFFC8)</code> should be added inside the <code>element.style</code> rule and the property incl. its value should be highlighted.
+                        Inside the <em>Style</em> side panel a <code>element.style</code> rule should be added including a <code>background</code> property with the value
+                        <code>#FFFF8C -moz-linear-gradient(135deg, #FFFF8C, #FFFFC8)</code> and the property incl. its value should be highlighted.
+                    </li>
+                </ul>
+
+                <h2>Add rule</h2>
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Switch to the <em>CSS</em> panel</li>
+                    <li>Select <em>issue1241.html</em> from the Location Menu</li>
+                    <li>Click the <em>Add rule</em> button above</li>
+                </ol>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>
+                        Inside the <em>CSS</em> panel a rule <code>#content &gt; div</code> should be added including a <code>background</code> property with the value
+                        <code>#FF8C78 -moz-linear-gradient(135deg, #FF8C78, #FFC8B4)</code> and the whole rule should be highlighted.
                     </li>
                 </ul>
             </section>

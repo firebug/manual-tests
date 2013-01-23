@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 1241: Highlighting of changed CSS</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
+        <style type="text/css">
+            #element {
+                margin-bottom: 10px;
+                width: 100px;
+                height: 100px;
+                font-size: 1em;
+            }
+
+            .class1 {
+                background: #8C8CFF -moz-linear-gradient(135deg, #788CFF, #B4C8FF);
+            }
+
+            .class2 {
+                background: #8CFF8C -moz-linear-gradient(135deg, #78FF8C, #B4FFC8);
+            }
+        </style>
+        <script type="text/javascript">
+        function changeClass()
+        {
+            var classList = document.getElementById("element").classList;
+            classList.toggle("class1");
+            classList.toggle("class2");
+        }
+
+        function changeRule()
+        {
+            var style = document.styleSheets[1].cssRules[0].style;
+            style.width = (style.width == "100px" ? "200px" : "100px");
+            style.color = (style.color == "" ? "white" : "");
+        }
+
+        function changeInlineStyle()
+        {
+            var style = document.getElementById("element").style;
+            style.background = (element.style.background == "" ? "#FFFF8C -moz-linear-gradient(135deg, #FFFF8C, #FFFFC8)" : "");
+        }
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=1241">Issue 1241</a>: Highlighting of changed CSS</h1>
+        </header>
+        <div>
+            <section id="content">
+                <div id="element" class="class1" style="color: black;"></div>
+                <button onclick="changeClass()">Change class</button>
+                <button onclick="changeRule()">Change rule</button>
+                <button onclick="changeInlineStyle()">Change inline style</button>
+            </section>
+            <section id="description">
+                <h2>Change class</h2>
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Switch to the <em>HTML</em> panel and there to the <em>Style</em> side panel</li>
+                    <li>Inspect the blue <code>&lt;div&gt;</code> above</li>
+                    <li>Click the <em>Change class</em> button</li>
+                </ol>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>Inside the <em>Style</em> side panel the <code>class1</code> rule should be replaced by <code>class2</code> the whole rule should be highlighted.</li>
+                </ul>
+
+                <h2>Change rule</h2>
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Switch to the <em>HTML</em> panel and there to the <em>Style</em> side panel</li>
+                    <li>Inspect the blue <code>&lt;div&gt;</code> above</li>
+                    <li>Click the <em>Change rule</em> button</li>
+                </ol>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>
+                        Inside the <em>Style</em> side panel the value of the <code>width</code> property inside the <code>#element</code> rule should be changed to <code>200px</code>
+                        and the value should be highlighted.
+                    </li>
+                    <li>
+                        An (overwritten) <code>color</code> property with the value <code>white</code> should be added inside the <code>#element</code> rule and the property incl. its
+                        value should be highlighted.
+                    </li>
+                </ul>
+
+                <h2>Change inline style</h2>
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Switch to the <em>HTML</em> panel and there to the <em>Style</em> side panel</li>
+                    <li>Inspect the blue <code>&lt;div&gt;</code> above</li>
+                    <li>Click the <em>Change inline style</em> button</li>
+                </ol>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>
+                        Inside the <em>Style</em> side panel the <code>element.style</code> rule should be added including a <code>background</code> property with the value
+                        <code>#FFFF8C -moz-linear-gradient(135deg, #FFFF8C, #FFFFC8)</code> should be added inside the <code>element.style</code> rule and the property incl. its value should be highlighted.
+                    </li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmail.com</footer>
+        </div>
+    </body>
+</html>

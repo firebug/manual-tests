@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 1241: Mark CSS changes done in Firebug</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
+        <style type="text/css">
+        #element {
+            width: 100px;
+            height: 100px;
+            background: #8C8CFF -moz-linear-gradient(135deg, #788CFF, #B4C8FF);
+        }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=1241">Issue 1241</a>: Mark CSS changes done in Firebug</h1>
+        </header>
+        <div>
+            <section id="content">
+                <div id="element"></div>
+            </section>
+            <section id="description">
+                <h2>Changes inside <em>CSS</em> panel</h2>
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Switch to the <em>CSS</em> panel</li>
+                    <li>Select <em>issue1241.html</em> from the Location Menu</li>
+                    <li>Change the value of the <code>width</code> property inside the <code>#element</code> rule to <code>200px</code></li>
+                </ol>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>The <code>width</code> property should be marked that it was changed within Firebug.</li>
+                </ul>
+
+                <h2>Changes inside <em>Style</em> side panel</h2>
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Switch to the <em>HTML</em> panel and there to the <em>Style</em> side panel</li>
+                    <li>Inspect the blue <code>&lt;div&gt;</code> above</li>
+                    <li>Change the value of the <code>width</code> property inside the <code>#element</code> rule to <code>200px</code></li>
+                </ol>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>The <code>width</code> property should be marked that it was changed within Firebug.</li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmail.com</footer>
+        </div>
+    </body>
+</html>

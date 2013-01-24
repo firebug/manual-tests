@@ -72,6 +72,9 @@
             var obj = Object.create(null);
             a(obj); a(obj); // Should be grouped
 
+            var arr = [1];
+            a(arr); arr[0] = 2; a(arr); // Should not be grouped
+
             c(document.createTextNode("a")); c(document.createTextNode("a")); // Must not be grouped
 
             d(document.createTextNode("a")); d(document.createTextNode("a")); // Must not be grouped
@@ -133,6 +136,8 @@ null issue4979.html (line 15)
 null issue4979.html (line 15)
 undefined issue4979.html (line 15)
 [] {} issue4979.html (line 15)  (2 logs grouped)
+[1]
+[2]
 &lt;TextNode textContent="a"&gt; issue4979.html (line 21)
 &lt;TextNode textContent="a"&gt; issue4979.html (line 21)
 [&lt;TextNode textContent="a"&gt;] issue4979.html (line 27)

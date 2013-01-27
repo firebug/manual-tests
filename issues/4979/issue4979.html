@@ -34,6 +34,16 @@
             console.log([ch]);
         }
 
+        function deleteCookie(name)
+        {
+            document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        }
+
+        function setCookie(name, value)
+        {
+	        document.cookie = name + "=" + escape(value);
+        }
+
         window.addEventListener("load", function()
         {
             a(1); a(2); // Must not be grouped
@@ -70,20 +80,22 @@
             a("null"); a(null); a(undefined); // Must not be grouped
 
             var obj = Object.create(null);
-            a(obj); a(obj); // Should be grouped
+            a(obj); a(obj); // Must be grouped
 
             c(document.createTextNode("a")); c(document.createTextNode("a")); // Must not be grouped
 
             d(document.createTextNode("a")); d(document.createTextNode("a")); // Must not be grouped
 
-            a(document.head.firstChild); a(document.head.firstChild); // Should be grouped
+            a(document.head.firstChild); a(document.head.firstChild); // Must be grouped
 
-            a(document); a(document); // Should be grouped
+            a(document); a(document); // Must be grouped
 
             var th = function() { throw 0; };
             var throwy1 = Proxy.create({getOwnPropertyDescriptor: th, getPropertyDescriptor: th, getOwnPropertyNames: th, getPropertyNames: th}, null);
             var throwy2 = Proxy.create({getOwnPropertyDescriptor: th, getPropertyDescriptor: th, getOwnPropertyNames: th, getPropertyNames: th}, null);
             a(throwy1); a(throwy2); // Should ideally not be grouped
+
+            deleteCookie("issue4979"); setCookie("issue4979", "value"); setCookie("issue4979", "value"); setCookie("issue4979", "value"); // The two cookie changes must be grouped
         }, false);
         </script>
     </head>
@@ -139,7 +151,10 @@ undefined issue4979.html (line 15)
 [&lt;TextNode textContent="a"&gt;] issue4979.html (line 27)
 &lt;TextNode textContent="\n "&gt; issue4979.html (line 15)
 &lt;TextNode textContent="\n "&gt; issue4979.html (line 15)
-Document issue4979.html issue4979.html (line 15)  (2 logs grouped)
+Document issue4979.html issue4979.html (line 15) (2 logs grouped)
+Cookie issue4979 deleted. value <span style="font-style:italic;">&lt;server name&gt;</span>
+Cookie issue4979 added. value <span style="font-style:italic;">&lt;server name&gt;</span>
+Cookie issue4979 changed. value <span style="font-style:italic;">&lt;server name&gt;</span> (2 logs grouped)
                         </code>
                     </li>
                 </ul>

@@ -10,24 +10,24 @@
         }
         </style>
         <script type="text/javascript">
-        function a(p)
+        function log(p)
         {
             console.log(p);
         }
 
-        function b(p1,p2)
+        function logTwo(p1,p2)
         {
             console.log(p1, p2);
         }
 
-        function c(ch)
+        function createElementAndLog(ch)
         {
             var output = document.getElementById("output");
             output.appendChild(ch);
             console.log(ch);
         }
 
-        function d(ch)
+        function createElementInArrayAndLog(ch)
         {
             var output = document.getElementById("output");
             output.appendChild(ch);
@@ -41,62 +41,62 @@
 
         function setCookie(name, value)
         {
-	        document.cookie = name + "=" + escape(value);
+            document.cookie = name + "=" + escape(value);
         }
 
         window.addEventListener("load", function()
         {
-            a(1); a(2); // Must not be grouped
+            log(1); log(2); // Must not be grouped
 
-            a(true); a(false); // Must not be grouped
+            log(true); log(false); // Must not be grouped
 
-            a(null); a(null); // Must be grouped
+            log(null); log(null); // Must be grouped
 
-            a(undefined); a(undefined); // Must be grouped
+            log(undefined); log(undefined); // Must be grouped
 
-            a(true); a(true); // Must be grouped
+            log(true); log(true); // Must be grouped
 
-            a(1); a(1); // Must be grouped
+            log(1); log(1); // Must be grouped
 
-            a("test"); a("test"); // Must be grouped
+            log("test"); log("test"); // Must be grouped
 
             var obj = {1:1,x:2};
-            a(obj); a(obj); // Must be grouped
+            log(obj); log(obj); // Must be grouped
 
-            a([1,2,3]); a([1,2,4]); // Must not be grouped
+            log([1,2,3]); log([1,2,4]); // Must not be grouped
 
-            a([{a:1},2,3]); a([{a:1},2,3]); // Must be grouped
+            log([{a:1},2,3]); log([{a:1},2,3]); // Must be grouped
 
-            a([{a:1},2,4]); a([{a:1},2,5]); // Must not be grouped
+            log([{a:1},2,4]); log([{a:1},2,5]); // Must not be grouped
 
-            a({a:1,b:2}); a({a:1,b:3}); // Must not be grouped
+            log({a:1,b:2}); log({a:1,b:3}); // Must not be grouped
 
-            a(Math.sqrt(-1)); a(Math.sqrt(-1)); // Must be grouped
+            log(Math.sqrt(-1)); log(Math.sqrt(-1)); // Must be grouped
 
-            b(1,1); b(1,2); // Must not be grouped
+            logTwo(1,1); logTwo(1,2); // Must not be grouped
 
-            a("1"); a(1); // Must not be grouped
+            log("1"); log(1); // Must not be grouped
 
-            a("null"); a(null); a(undefined); // Must not be grouped
+            log("null"); log(null); log(undefined); // Must not be grouped
 
             var obj = Object.create(null);
-            a(obj); a(obj); // Must be grouped
+            log(obj); log(obj); // Must be grouped
 
             var arr = [1];
-            a(arr); arr[0] = 2; a(arr); // Should not be grouped
+            log(arr); arr[0] = 2; log(arr); // Should not be grouped
 
-            c(document.createTextNode("a")); c(document.createTextNode("a")); // Must not be grouped
+            createElementAndLog(document.createTextNode("a")); createElementAndLog(document.createTextNode("a")); // Must not be grouped
 
-            d(document.createTextNode("a")); d(document.createTextNode("a")); // Must not be grouped
+            createElementInArrayAndLog(document.createTextNode("a")); createElementInArrayAndLog(document.createTextNode("a")); // Must not be grouped
 
-            a(document.head.firstChild); a(document.head.firstChild); // Must be grouped
+            log(document.head.firstChild); log(document.head.firstChild); // Must be grouped
 
-            a(document); a(document); // Must be grouped
+            log(document); log(document); // Must be grouped
 
             var th = function() { throw 0; };
             var throwy1 = Proxy.create({getOwnPropertyDescriptor: th, getPropertyDescriptor: th, getOwnPropertyNames: th, getPropertyNames: th}, null);
             var throwy2 = Proxy.create({getOwnPropertyDescriptor: th, getPropertyDescriptor: th, getOwnPropertyNames: th, getPropertyNames: th}, null);
-            a(throwy1); a(throwy2); // Should ideally not be grouped
+            log(throwy1); log(throwy2); // Should ideally not be grouped
 
             deleteCookie("issue4979"); setCookie("issue4979", "value"); setCookie("issue4979", "value"); setCookie("issue4979", "value"); // The two cookie changes must be grouped
         }, false);

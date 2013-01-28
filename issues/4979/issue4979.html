@@ -10,9 +10,29 @@
         }
         </style>
         <script type="text/javascript">
-        function log(p)
+        function log(p, type)
         {
-            console.log(p);
+            switch(type)
+            {
+                case "debug":
+                	console.debug(p);
+                	break;
+
+                case "info":
+                    console.info(p);
+                    break;
+
+                case "warning":
+                    console.warn(p);
+                    break;
+
+                case "error":
+                    console.error(p);
+                    break;
+
+                default:
+                    console.log(p);
+            }
         }
 
         function logTwo(p1,p2)
@@ -93,12 +113,20 @@
 
             log(document); log(document); // Must be grouped
 
+            log("debug", "debug"); log("debug", "debug"); // Must be grouped
+
+            log("info", "info"); log("info", "info"); // Must be grouped
+
+            log("warning", "warning"); log("warning", "warning"); // Must be grouped
+
+            log("error", "error"); log("error", "error"); // Must be grouped
+
+            deleteCookie("issue4979"); setCookie("issue4979", "value"); setCookie("issue4979", "value"); setCookie("issue4979", "value"); // The two cookie changes must be grouped
+
             var th = function() { throw 0; };
             var throwy1 = Proxy.create({getOwnPropertyDescriptor: th, getPropertyDescriptor: th, getOwnPropertyNames: th, getPropertyNames: th}, null);
             var throwy2 = Proxy.create({getOwnPropertyDescriptor: th, getPropertyDescriptor: th, getOwnPropertyNames: th, getPropertyNames: th}, null);
             log(throwy1); log(throwy2); // Should ideally not be grouped
-
-            deleteCookie("issue4979"); setCookie("issue4979", "value"); setCookie("issue4979", "value"); setCookie("issue4979", "value"); // The two cookie changes must be grouped
         }, false);
         </script>
     </head>
@@ -122,41 +150,45 @@
                     <li>
                         Parts of the console output should be grouped:<br/>
                         <code>
-1 issue4979.html (line 15)
-2 issue4979.html (line 15)
-true issue4979.html (line 15)
-false issue4979.html (line 15)
-null issue4979.html (line 15) (2 grouped logs)
-undefined issue4979.html (line 15) (2 grouped logs)
-true issue4979.html (line 15) (2 grouped logs)
-1 issue4979.html (line 15) (2 grouped logs)
-test issue4979.html (line 15) (2 logs grouped)
-Object { 1=1, x=2} issue4979.html (line 15) (2 logs grouped)
-[1, 2, 3] issue4979.html (line 15)
-[1, 2, 4] issue4979.html (line 15)
-[Object { a=1 }, 2, 3] issue4979.html (line 15) (2 logs grouped)
-[Object { a=1 }, 2, 4] issue4979.html (line 15)
-[Object { a=1 }, 2, 5] issue4979.html (line 15)
-Object { a=1, b=2 } issue4979.html (line 15)
-Object { a=1, b=3 } issue4979.html (line 15)
-NaN issue4979.html (line 15)  (2 logs grouped)
-1 1 issue4979.html (line 15)
-1 2 issue4979.html (line 15)
-1 issue4979.html (line 15)
-1 issue4979.html (line 15)
-null issue4979.html (line 15)
-null issue4979.html (line 15)
-undefined issue4979.html (line 15)
-[] {} issue4979.html (line 15)  (2 logs grouped)
+1 issue4979.html (line 34)
+2 issue4979.html (line 34)
+true issue4979.html (line 34)
+false issue4979.html (line 34)
+null issue4979.html (line 34) (2 grouped logs)
+undefined issue4979.html (line 34) (2 grouped logs)
+true issue4979.html (line 34) (2 grouped logs)
+1 issue4979.html (line 34) (2 grouped logs)
+test issue4979.html (line 34) (2 logs grouped)
+Object { 1=1, x=2} issue4979.html (line 34) (2 logs grouped)
+[1, 2, 3] issue4979.html (line 34)
+[1, 2, 4] issue4979.html (line 34)
+[Object { a=1 }, 2, 3] issue4979.html (line 34) (2 logs grouped)
+[Object { a=1 }, 2, 4] issue4979.html (line 34)
+[Object { a=1 }, 2, 5] issue4979.html (line 34)
+Object { a=1, b=2 } issue4979.html (line 34)
+Object { a=1, b=3 } issue4979.html (line 34)
+NaN issue4979.html (line 34)  (2 logs grouped)
+1 1 issue4979.html (line 34)
+1 2 issue4979.html (line 34)
+1 issue4979.html (line 34)
+1 issue4979.html (line 34)
+null issue4979.html (line 34)
+null issue4979.html (line 34)
+undefined issue4979.html (line 34)
+[] {} issue4979.html (line 34)  (2 logs grouped)
 [1]
 [2]
-&lt;TextNode textContent="a"&gt; issue4979.html (line 21)
-&lt;TextNode textContent="a"&gt; issue4979.html (line 21)
-[&lt;TextNode textContent="a"&gt;] issue4979.html (line 27)
-[&lt;TextNode textContent="a"&gt;] issue4979.html (line 27)
-&lt;TextNode textContent="\n "&gt; issue4979.html (line 15)
-&lt;TextNode textContent="\n "&gt; issue4979.html (line 15)
-Document issue4979.html issue4979.html (line 15) (2 logs grouped)
+&lt;TextNode textContent="a"&gt; issue4979.html (line 47)
+&lt;TextNode textContent="a"&gt; issue4979.html (line 47)
+[&lt;TextNode textContent="a"&gt;] issue4979.html (line 54)
+[&lt;TextNode textContent="a"&gt;] issue4979.html (line 54)
+&lt;TextNode textContent="\n "&gt; issue4979.html (line 34)
+&lt;TextNode textContent="\n "&gt; issue4979.html (line 34)
+Document issue4979.html issue4979.html (line 34) (2 logs grouped)
+debug issue4979.html (line 18) (2 logs grouped)
+info issue4979.html (line 22) (2 logs grouped)
+warning issue4979.html (line 26) (2 logs grouped)
+error console.error(p); issue4979.html (line 30) (2 logs grouped)
 Cookie issue4979 deleted. value <span style="font-style:italic;">&lt;server name&gt;</span>
 Cookie issue4979 added. value <span style="font-style:italic;">&lt;server name&gt;</span>
 Cookie issue4979 changed. value <span style="font-style:italic;">&lt;server name&gt;</span> (2 logs grouped)

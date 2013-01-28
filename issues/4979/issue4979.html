@@ -54,6 +54,19 @@
             console.log([ch]);
         }
 
+        function logGroup()
+        {
+            console.group("Group");
+            console.log("test");
+            console.groupEnd();
+        }
+
+        function logTime()
+        {
+            console.time("Timer");
+            console.timeEnd("Timer");
+        }
+
         function deleteCookie(name)
         {
             document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
@@ -120,6 +133,10 @@
             log("warning", "warning"); log("warning", "warning"); // Must be grouped
 
             log("error", "error"); log("error", "error"); // Must be grouped
+
+            logGroup(); logGroup(); // Must not be grouped
+
+            logTime(); logTime(); // Must not be grouped
 
             deleteCookie("issue4979"); setCookie("issue4979", "value"); setCookie("issue4979", "value"); setCookie("issue4979", "value"); // The two cookie changes must be grouped
 
@@ -189,6 +206,12 @@ debug issue4979.html (line 18) (2 logs grouped)
 info issue4979.html (line 22) (2 logs grouped)
 warning issue4979.html (line 26) (2 logs grouped)
 error console.error(p); issue4979.html (line 30) (2 logs grouped)
+Group issue4979.html (line 59)
+test issue4979.html (line 60)
+Group issue4979.html (line 59)
+test issue4979.html (line 60)
+Timer: 0ms issue4979.html (line 67)
+Timer: 0ms issue4979.html (line 67)
 Cookie issue4979 deleted. value <span style="font-style:italic;">&lt;server name&gt;</span>
 Cookie issue4979 added. value <span style="font-style:italic;">&lt;server name&gt;</span>
 Cookie issue4979 changed. value <span style="font-style:italic;">&lt;server name&gt;</span> (2 logs grouped)

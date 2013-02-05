@@ -101,6 +101,22 @@
         	console.table(objects);
         }
 
+        function makeXHR(url)
+        {
+            var XHR = new XMLHttpRequest();
+            XHR.open("GET", url);
+            XHR.send(null);
+
+            XHR.onreadystatechange = function()
+            {
+                if (XHR.readyState == 4 && XHR.status == 200)
+                {
+                	var output = document.getElementById("output");
+                	output.innerHTML += "<br/>" + XHR.responseText;
+                }
+            }
+        }
+
         window.addEventListener("load", function()
         {
             log(1); log(2); // Must not be grouped
@@ -167,6 +183,8 @@
             logTable(); logTable(); // Must not be grouped
 
             deleteCookie("issue4979"); setCookie("issue4979", "value"); setCookie("issue4979", "value"); setCookie("issue4979", "value"); // The two cookie changes must be grouped
+
+            makeXHR("issue4979.txt"); makeXHR("issue4979.txt"); // Must not be grouped
 
             var th = function() { throw 0; };
             var throwy1 = Proxy.create({getOwnPropertyDescriptor: th, getPropertyDescriptor: th, getOwnPropertyNames: th, getPropertyNames: th}, null);
@@ -248,6 +266,8 @@ firstName lastName (2 logs grouped)
 Cookie issue4979 deleted. value <span style="font-style:italic;">&lt;server name&gt;</span>
 Cookie issue4979 added. value <span style="font-style:italic;">&lt;server name&gt;</span>
 Cookie issue4979 changed. value <span style="font-style:italic;">&lt;server name&gt;</span> (2 logs grouped)
+GET http://localhost/tests/manual/issues/4979/issue4979.txt 200 OK xxxms
+GET http://localhost/tests/manual/issues/4979/issue4979.txt 200 OK xxxms
                         </code>
                     </li>
                 </ul>

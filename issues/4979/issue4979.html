@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 4979: Group console messages</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
+        <style type="text/css">
+        section#output {
+            display: block;
+        }
+        </style>
+        <script type="text/javascript">
+        function log(p, type)
+        {
+            switch(type)
+            {
+                case "debug":
+                	console.debug(p);
+                	break;
+
+                case "info":
+                    console.info(p);
+                    break;
+
+                case "warning":
+                    console.warn(p);
+                    break;
+
+                case "error":
+                    console.error(p);
+                    break;
+
+                default:
+                    console.log(p);
+            }
+        }
+
+        function logTwo(p1,p2)
+        {
+            console.log(p1, p2);
+        }
+
+        function appendChildAndLog(ch)
+        {
+            var output = document.getElementById("output");
+            output.appendChild(ch);
+            console.log(ch);
+        }
+
+        function appendChildInArrayAndLog(ch)
+        {
+            var output = document.getElementById("output");
+            output.appendChild(ch);
+            console.log([ch]);
+        }
+
+        function logGroup()
+        {
+            console.group("Group");
+            console.log("test");
+            console.groupEnd();
+        }
+
+        function logTime()
+        {
+            console.time("Timer");
+            console.timeEnd("Timer");
+        }
+
+        function deleteCookie(name)
+        {
+            document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        }
+
+        function setCookie(name, value)
+        {
+            document.cookie = name + "=" + escape(value);
+        }
+
+        function profiledFunction()
+        {
+            for (var i = 0; i < 100; ++i)
+                var test = 1;
+        }
+
+        function profile()
+        {
+        	console.profile("Profile");
+        	for (var i = 0; i < 100; ++i)
+        		profiledFunction();
+        	console.profileEnd();
+        }
+
+        function logTable()
+        {
+        	var objects =
+            [
+                {firstName: "Steven", lastName: "Mayers"},
+                {firstName: "John", lastName: "Travers"}
+            ];
+        	console.table(objects);
+        }
+
+        function makeXHR(url)
+        {
+            var XHR = new XMLHttpRequest();
+            XHR.open("GET", url);
+            XHR.send(null);
+
+            XHR.onreadystatechange = function()
+            {
+                if (XHR.readyState == 4 && XHR.status == 200)
+                {
+                	var output = document.getElementById("output");
+                	output.innerHTML += "<br/>" + XHR.responseText;
+                }
+            }
+        }
+
+        window.addEventListener("load", function()
+        {
+            log(1); log(2); // Must not be grouped
+
+            log(true); log(false); // Must not be grouped
+
+            log(null); log(null); // Must be grouped
+
+            log(undefined); log(undefined); // Must be grouped
+
+            log(true); log(true); // Must be grouped
+
+            log(1); log(1); // Must be grouped
+
+            log("test"); log("test"); // Must be grouped
+
+            var obj = {1:1,x:2};
+            log(obj); log(obj); // Must be grouped
+
+            log([1,2,3]); log([1,2,4]); // Must not be grouped
+
+            log([{a:1},2,3]); log([{a:1},2,3]); // Must be grouped
+
+            log([{a:1},2,4]); log([{a:1},2,5]); // Must not be grouped
+
+            log({a:1,b:2}); log({a:1,b:3}); // Must not be grouped
+
+            log(Math.sqrt(-1)); log(Math.sqrt(-1)); // Must be grouped
+
+            logTwo(1,1); logTwo(1,2); // Must not be grouped
+
+            log("1"); log(1); // Must not be grouped
+
+            log("null"); log(null); log(undefined); // Must not be grouped
+
+            var obj = Object.create(null);
+            log(obj); log(obj); // Must be grouped
+
+            var arr = [1];
+            log(arr); arr[0] = 2; log(arr); // Should not be grouped
+
+            appendChildAndLog(document.createTextNode("a")); appendChildAndLog(document.createTextNode("a")); // Must not be grouped
+
+            appendChildInArrayAndLog(document.createTextNode("a")); appendChildInArrayAndLog(document.createTextNode("a")); // Must not be grouped
+
+            log(document.head.firstChild); log(document.head.firstChild); // Must be grouped
+
+            log(document); log(document); // Must be grouped
+
+            log("debug", "debug"); log("debug", "debug"); // Must be grouped
+
+            log("info", "info"); log("info", "info"); // Must be grouped
+
+            log("warning", "warning"); log("warning", "warning"); // Must be grouped
+
+            log("error", "error"); log("error", "error"); // Must be grouped
+
+            logGroup(); logGroup(); // Must not be grouped
+
+            logTime(); logTime(); // Must not be grouped
+
+            profile(); profile(); // Must not be grouped
+
+            logTable(); logTable(); // Must not be grouped
+
+            deleteCookie("issue4979"); setCookie("issue4979", "value"); setCookie("issue4979", "value"); setCookie("issue4979", "value"); // The two cookie changes must be grouped
+
+            makeXHR("issue4979.txt"); makeXHR("issue4979.txt"); // Must not be grouped
+
+            var th = function() { throw 0; };
+            var throwy1 = Proxy.create({getOwnPropertyDescriptor: th, getPropertyDescriptor: th, getOwnPropertyNames: th, getPropertyNames: th}, null);
+            var throwy2 = Proxy.create({getOwnPropertyDescriptor: th, getPropertyDescriptor: th, getOwnPropertyNames: th, getPropertyNames: th}, null);
+            log(throwy1); log(throwy2); // Should ideally not be grouped
+        }, false);
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=4979">Issue 4979</a>: Group console messages</h1>
+        </header>
+        <div>
+            <section id="content">
+                <section id="output">
+                </section>
+            </section>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Enable and switch to the <em>Console</em> panel</li>
+                    <li>Reload the page</li>
+                </ol>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>
+                        Parts of the console output should be grouped:<br/>
+                        <code>
+1 issue4979.html (line 34)
+2 issue4979.html (line 34)
+true issue4979.html (line 34)
+false issue4979.html (line 34)
+null issue4979.html (line 34) (2 grouped logs)
+undefined issue4979.html (line 34) (2 grouped logs)
+true issue4979.html (line 34) (2 grouped logs)
+1 issue4979.html (line 34) (2 grouped logs)
+test issue4979.html (line 34) (2 logs grouped)
+Object { 1=1, x=2} issue4979.html (line 34) (2 logs grouped)
+[1, 2, 3] issue4979.html (line 34)
+[1, 2, 4] issue4979.html (line 34)
+[Object { a=1 }, 2, 3] issue4979.html (line 34) (2 logs grouped)
+[Object { a=1 }, 2, 4] issue4979.html (line 34)
+[Object { a=1 }, 2, 5] issue4979.html (line 34)
+Object { a=1, b=2 } issue4979.html (line 34)
+Object { a=1, b=3 } issue4979.html (line 34)
+NaN issue4979.html (line 34)  (2 logs grouped)
+1 1 issue4979.html (line 34)
+1 2 issue4979.html (line 34)
+1 issue4979.html (line 34)
+1 issue4979.html (line 34)
+null issue4979.html (line 34)
+null issue4979.html (line 34)
+undefined issue4979.html (line 34)
+[] {} issue4979.html (line 34)  (2 logs grouped)
+[1]
+[2]
+&lt;TextNode textContent="a"&gt; issue4979.html (line 47)
+&lt;TextNode textContent="a"&gt; issue4979.html (line 47)
+[&lt;TextNode textContent="a"&gt;] issue4979.html (line 54)
+[&lt;TextNode textContent="a"&gt;] issue4979.html (line 54)
+&lt;TextNode textContent="\n "&gt; issue4979.html (line 34)
+&lt;TextNode textContent="\n "&gt; issue4979.html (line 34)
+Document issue4979.html issue4979.html (line 34) (2 logs grouped)
+debug issue4979.html (line 18) (2 logs grouped)
+info issue4979.html (line 22) (2 logs grouped)
+warning issue4979.html (line 26) (2 logs grouped)
+error console.error(p); issue4979.html (line 30) (2 logs grouped)
+Group issue4979.html (line 59)
+test issue4979.html (line 60)
+Group issue4979.html (line 59)
+test issue4979.html (line 60)
+Timer: 0ms issue4979.html (line 67)
+Timer: 0ms issue4979.html (line 67)
+Profile (x.xxxms, 100 calls)
+Profile (x.xxxms, 100 calls)
+firstName lastName (2 logs grouped)
+"Steven" "Mayers"
+"John" "Travers"
+Cookie issue4979 deleted. value <span style="font-style:italic;">&lt;server name&gt;</span>
+Cookie issue4979 added. value <span style="font-style:italic;">&lt;server name&gt;</span>
+Cookie issue4979 changed. value <span style="font-style:italic;">&lt;server name&gt;</span> (2 logs grouped)
+GET http://localhost/tests/manual/issues/4979/issue4979.txt 200 OK xxxms
+GET http://localhost/tests/manual/issues/4979/issue4979.txt 200 OK xxxms
+                        </code>
+                    </li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmail.com</footer>
+        </div>
+    </body>
+</html>

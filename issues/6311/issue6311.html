@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 6311: LONG POLL/PUSH cause firebug to display incorrect requests</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=6311">Issue 6311</a>: LONG POLL/PUSH cause firebug to display incorrect requests</h1>
+            <script type="text/javascript">
+                var disabled = false;
+                var error = false;
+                (function run()
+                {
+                    if (disabled)
+                        return;
+                    var xhr = new XMLHttpRequest();
+                    xhr.onload = function()
+                    {
+                        error = (xhr.status !== 200);
+                        if (error === false)
+                            run();
+                    };
+                    xhr.open("GET", "test.php", true);
+                    xhr.send(null);
+                })();
+                setTimeout(function()
+                {
+                    disabled = true;
+                }, 2300);
+            </script>
+        </header>
+        <div>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Switch to the Net Panel</li>
+                    <li>Make sure the "Disable the Browser cache" option is <b>disabled</b>
+                        (so the cache is actually enabled)</li>
+                </ol>
+                <h3>Observed result</h3>
+                <ul>
+                    <li>The cache makes the requests are answered immediately</li>
+                </ul>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>A request should be run every seconds (two in our case)</li>
+                </ul>
+            </section>
+            <footer>
+                Florent FAYOLLE, florent.fayolle69@gmail.com
+            </footer>
+        </div>
+    </body>
+</html>

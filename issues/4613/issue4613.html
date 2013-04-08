@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html><!--
+        STEPS TO CREATE A TEST CASE:
+        1. Replace "4613" by number of your issue
+        2. Replace "Issue summary" by title of your issue
+        3. Put inspectable elements, form fields etc. into the "content" section
+        4. Add the exact steps to reproduce your issue under "Steps to reproduce"
+        5. Describe the currently seen result under "Observed result"
+        6. Describe what you would expect to see under "Expected result"
+        7. Add your contact information
+        8. Remove all template comments
+     --><head>
+        <!--
+            Add the issue number and title here. 
+         -->
+        <title>Issue 4613: Console tab will cause large XMLHttpRequest POSTs to hang</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="issue4613_files/testcase.css" type="text/css" rel="stylesheet">
+		<script type="text/javascript">
+			var doXHRSubmit = function(form) {
+				var fd = new FormData();
+				fd.append("file", document.getElementById("file").files[0]);
+				
+				var xhr = new XMLHttpRequest();
+				xhr.open(form.method, form.action);
+				xhr.send(fd);
+			
+				return false;
+			}
+		</script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=4613">Issue 4613</a>: Issue summary</h1>
+        </header>
+        <div>
+            <section id="content">
+                <form id="myForm" action="/endpoint.php" method="POST" enctype="multipart/form-data" onsubmit="doXHRSubmit(this)">
+					<label for="file">Upload a File
+					<input type="file" id="file" name="file" />
+					
+					<button type="submit">Upload This File</button>
+				</form>
+				
+            </section>
+            <section id="description">
+                <!--
+                    The steps to reproduce the test case should be described here in detail.
+                 -->
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open firebug and make sure Show XML HTTP Requests is true</li>
+                    <li>Attempt to upload a large file via XHR (the size that will cause a hang varies. it happened for me with a 225 MB file and I have 6 GB RAM)</li>                    
+                </ol>
+                <h3>Observed result</h3>
+                <ul>
+                    <li>Occasionally it takes multiple attempts to upload to get the hang dependent on file size and system ram, but eventually the XHR will hang and will not show up in the console tab.</li>
+                </ul>
+                <h3>Expected result</h3>
+                <ul>
+					<li>The request will work regardless</li>
+                </ul>
+            </section>
+            <footer>
+                <!--
+                    Your name and your email address (or other contact information) should be placed here.
+                    This is important in the case we need to contact you for further reference. 
+                 -->
+                Josh Ghiloni, ghiloni@us.ibm.com
+            </footer>
+        </div>
+    
+</body></html>

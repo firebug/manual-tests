@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 6385: Firebug influences caching of XHR requests to the same URL</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
+        <script type="text/javascript">
+        window.addEventListener("load", function()
+        {
+            var req = new XMLHttpRequest();
+            req.onload = function () {
+                var req2 = new XMLHttpRequest();
+                req2.onload = function () {
+                    var output = document.getElementById("output");
+                    output.style.display = "block";
+                    output.innerHTML = this.responseText;
+                };
+    
+                req2.open("GET", "response.php", true);
+                req2.send();
+            };
+            req.open("GET", "response.php", true);
+            req.setRequestHeader("Accept", "text/plain");
+            req.send();
+        }, false);
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=6385">Issue 6385</a>: Firebug influences caching of XHR requests to the same URL</h1>
+        </header>
+        <div>
+            <section id="content">
+                <section id="output"></section>
+            </section>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Disable the <em>Net</em> panel</li>
+                    <li>
+                        Reload the page<br/>
+                        <span class="ok">The output above will say <code>ok!</code></span>.
+                    </li>
+                    <li>Enable and switch to the <em>Net</em> panel</li>
+                    <li>Reload the page again</li>
+                </ol>
+                <h3>Observed result</h3>
+                <ul>
+                    <li>The <em>Net</em> panel lists the second request coming from BFCache</li>
+                    <li class="error">
+                        Firebug caches the first response for the request to <code>response.php</code>.
+                        This influences the output, so you'll see <code>bad - you should not be reading this</code> above.
+                    </li>
+                </ul>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>The <em>Net</em> panel should not have any influence on the requests.</li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmail.com</footer>
+        </div>
+    </body>
+</html>

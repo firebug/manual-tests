@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 6434: Very long URLs cause horizontal scroll bar to appear</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
+        <style type="text/css">
+        img {
+            display: none;
+        }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=6434">Issue 6434</a>: Very long URLs cause horizontal scroll bar to appear</h1>
+        </header>
+        <div>
+            <img src="request?extremelyLongParam=aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa" alt=""/>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Switch to the <em>Net</em> panel</li>
+                    <li>
+                        Reload the page<br/>
+                        <span class="ok">&rArr; The last request should be for <code>request?extremelyLongParam...</code></span>
+                    </li>
+                    <li>Hover the request's URL</li>
+                </ol>
+                <h3>Observed result</h3>
+                <ul>
+                    <li>A horizontal scrollbar appears because the panel tries to display the whole URL string.</li>
+                </ul>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>No scrollbar should appear, instead the URL should be cropped or the rest of the URL just hidden.</li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmail.com</footer>
+        </div>
+    </body>
+</html>

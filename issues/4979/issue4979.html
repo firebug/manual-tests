@@ -133,6 +133,8 @@
 
             log("test"); log("test"); // Must be grouped
 
+            log(1); log("1"); // Must not be grouped
+
             var obj = {1:1,x:2};
             log(obj); log(obj); // Must be grouped
 
@@ -222,6 +224,8 @@ undefined issue4979.html (line 34) (2 grouped logs)
 true issue4979.html (line 34) (2 grouped logs)
 1 issue4979.html (line 34) (2 grouped logs)
 test issue4979.html (line 34) (2 logs grouped)
+1 issue4979.html (line 34)
+1 issue4979.html (line 34)
 Object { 1=1, x=2} issue4979.html (line 34) (2 logs grouped)
 [1, 2, 3] issue4979.html (line 34)
 [1, 2, 4] issue4979.html (line 34)

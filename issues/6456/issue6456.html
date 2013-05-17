@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 6456: Rules are listed multiple times when their selector contains several pseudo-elements</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
+        <style type="text/css">
+        #test::after, #test::before {
+            content: "\"";
+            color: green;
+            font-size: 1.5em;
+        }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=6456">Issue 6456</a>: Rules are listed multiple times when their selector contains several pseudo-elements</h1>
+        </header>
+        <div>
+            <section id="content">
+                <div id="test">Hello Firebug user!</div>
+            </section>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Switch to the <em>HTML</em> panel and there to the <em>Style</em> side panel</li>
+                    <li>Inspect the <code>&quot;Hello Firebug user!&quot;</code> above</li>
+                </ol>
+                <h3>Observed result</h3>
+                <ul>
+                    <li>There are two <code>#test::after, #test::before</code> rules listed.</li>
+                </ul>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>Just one such rule should be shown.</li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmail.com</footer>
+        </div>
+    </body>
+</html>

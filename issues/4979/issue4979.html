@@ -133,6 +133,8 @@
 
             log("test"); log("test"); // Must be grouped
 
+            log(1); log("1"); // Must not be grouped
+
             var obj = {1:1,x:2};
             log(obj); log(obj); // Must be grouped
 
@@ -164,7 +166,7 @@
 
             log(document.head.firstChild); log(document.head.firstChild); // Must be grouped
 
-            log(document); log(document); // Must be grouped
+            log(document); log(document); // Must not be grouped
 
             log("debug", "debug"); log("debug", "debug"); // Must be grouped
 
@@ -222,6 +224,8 @@ undefined issue4979.html (line 34) (2 grouped logs)
 true issue4979.html (line 34) (2 grouped logs)
 1 issue4979.html (line 34) (2 grouped logs)
 test issue4979.html (line 34) (2 logs grouped)
+1 issue4979.html (line 34)
+1 issue4979.html (line 34)
 Object { 1=1, x=2} issue4979.html (line 34) (2 logs grouped)
 [1, 2, 3] issue4979.html (line 34)
 [1, 2, 4] issue4979.html (line 34)
@@ -247,22 +251,23 @@ undefined issue4979.html (line 34)
 [&lt;TextNode textContent="a"&gt;] issue4979.html (line 54)
 &lt;TextNode textContent="\n "&gt; issue4979.html (line 34)
 &lt;TextNode textContent="\n "&gt; issue4979.html (line 34)
-Document issue4979.html issue4979.html (line 34) (2 logs grouped)
+Document issue4979.html issue4979.html (line 34)
+Document issue4979.html issue4979.html (line 34)
 debug issue4979.html (line 18) (2 logs grouped)
 info issue4979.html (line 22) (2 logs grouped)
 warning issue4979.html (line 26) (2 logs grouped)
 error console.error(p); issue4979.html (line 30) (2 logs grouped)
 Group issue4979.html (line 59)
-test issue4979.html (line 60)
+  test issue4979.html (line 60)
 Group issue4979.html (line 59)
-test issue4979.html (line 60)
-Timer: 0ms issue4979.html (line 67)
-Timer: 0ms issue4979.html (line 67)
+  test issue4979.html (line 60)
+Timer: xms issue4979.html (line 67)
+Timer: yms issue4979.html (line 67)
 Profile (x.xxxms, 100 calls)
 Profile (x.xxxms, 100 calls)
 firstName lastName (2 logs grouped)
-"Steven" "Mayers"
-"John" "Travers"
+  "Steven" "Mayers"
+  "John" "Travers"
 Cookie issue4979 deleted. value <span style="font-style:italic;">&lt;server name&gt;</span>
 Cookie issue4979 added. value <span style="font-style:italic;">&lt;server name&gt;</span>
 Cookie issue4979 changed. value <span style="font-style:italic;">&lt;server name&gt;</span> (2 logs grouped)

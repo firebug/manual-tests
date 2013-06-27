@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 6565:  	Page mutations cause the Selectors side panel to scroll to the top</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
+        <style type="text/css">
+        .test {
+            margin: 3px;
+            width: 50px;
+            height: 50px;
+            background: #8C8CFF -moz-linear-gradient(135deg, #788CFF, #B4C8FF);
+        }
+
+        section#output {
+            display: flex;
+        }
+        </style>
+        <script type="text/javascript">
+            function createDIV()
+            {
+                var div = document.createElement("div");
+                div.className = "test";
+                var content = document.getElementById("output");
+                content.appendChild(div);
+            }
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=6565">Issue 6565</a>:  	Page mutations cause the Selectors side panel to scroll to the top</h1>
+        </header>
+        <div>
+            <section id="content">
+                <button id="createDIV" onclick="createDIV()">Create &lt;div&gt;</button>
+                <section id="output">
+                    <div class="test"></div>
+                    <div class="test"></div>
+                    <div class="test"></div>
+                    <div class="test"></div>
+                    <div class="test"></div>
+                    <div class="test"></div>
+                    <div class="test"></div>
+                    <div class="test"></div>
+                    <div class="test"></div>
+                    <div class="test"></div>
+                </section>
+            </section>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Switch to the <em>CSS</em> panel and there to the <em>Selectors</em> side panel</li>
+                    <li>
+                        Enter <code>.test</code> into the <em>Try a selector...</em> field and hit <kbd>Enter</kbd><br/>
+                        <span class="ok">&rArr; Ten &lt;div&gt;s should be listed inside the <em>Selectors</em> side panel.</span>
+                    </li>
+                    <li>Resize the panel vertically, so that a vertical scrollbar appears</li>
+                    <li>Scroll the panel down</li>
+                    <li>Click the <em>Create &lt;div&gt;</em> button above</li>
+                </ol>
+                <h3>Observed result</h3>
+                <ul>
+                    <li>The panel is completely refreshed and due to that scrolled up.</li>
+                </ul>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>Just the new &lt;div&gt; should be added to the panel and the scroll position shouldn't change.</li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmail.com</footer>
+        </div>
+    </body>
+</html>

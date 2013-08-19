@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 6579: Highlight used fonts asynchronously</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
+        <style type="text/css">
+        @font-face {
+            font-family: 'TitilliumMaps';
+            src: local('☺'), url(loadFont.php) format('woff');
+            font-weight: bold;
+        }
+
+        #content {
+            font-family: TitilliumMaps, Courier New, sans-serif;
+        }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=6579">Issue 6579</a>: Highlight used fonts asynchronously</h1>
+        </header>
+        <div>
+            <section id="content">
+                Text using a web font
+            </section>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Switch to the <em>HTML</em> panel and there to the <em>Style</em> side panel</li>
+                    <li>Reload the page via <kbd>Ctrl</kbd> + <kbd>F5</kbd></li>
+                </ol>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>
+                        The display of the <em>Style</em> panel contents should not wait until the font
+                        "TitilliumMaps" is loaded and display "Courier New" as the used font.
+                    </li>
+                    <li>
+                        As soon as "TitilliumMaps" is loaded, the font should be highlighted inside the
+                        <em>Style</em> panel.
+                    </li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmail.com</footer>
+        </div>
+    </body>
+</html>

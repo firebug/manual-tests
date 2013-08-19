@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JSD2: Profiler</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="testcase.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<script type="text/javascript">
+function onExecuteTest1()
+{
+    onExecuteTest2();
+    onExecuteTest3();
+}
+
+function onExecuteTest2()
+{
+    onExecuteTest3();
+    onExecuteTest4();
+}
+
+function onExecuteTest3()
+{
+    console.log("done " + fib(10));
+}
+
+function onExecuteTest4()
+{
+    console.log("test 4");
+}
+
+function fib(n)
+{
+    return n<2?n:fib(n-1)+fib(n-2);
+}
+
+</script>
+<header>
+    <h1>JSD2: Profiler</h1>
+</header>
+<div>
+    <section id="description">
+        <h3>Steps to reproduce</h3>
+        <ol>
+            <li>Select and enable the Console panel</li>
+            <li>Click the <code>Profile</code> button in Console panel's toolbar.</li>
+            <li>Click this button: <button id="test"
+                onclick="onExecuteTest1()">Click Me</button></li>
+            <li>Click the <code>Profile</code> button again</li>
+            <li>Observe logged results in the Console panel</li>
+        </ol>
+    </section>
+    <footer>
+        Jan Odvarko &lt;odvarko@gmail.com&gt;
+    </footer>
+</div>
+</body>
+</html>

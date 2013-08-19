@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 4796: Breakpoints for CSS panel</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
+        <style type="text/css">
+        #element {
+            margin-bottom: 1em;
+            width: 100px;
+            height: 100px;
+            background: #8C8CFF -moz-linear-gradient(135deg, #788CFF, #B4C8FF);
+        }
+        </style>
+        <script type="text/javascript">
+        function changeCSS()
+        {
+            var cssRule = document.styleSheets[1].cssRules[0];
+            cssRule.style.backgroundImage = "-moz-linear-gradient(135deg, #78FF8C, #B4FFC8)";
+        }
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=4796">Issue 4796</a>: Breakpoints for CSS panel</h1>
+        </header>
+        <div>
+            <section id="content">
+                <div id="element"></div>
+                <button id="changeCSS" onclick="changeCSS()">Change CSS</button>
+            </section>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Enable the <em>Script</em> panel</li>
+                    <li>Reload the page</li>
+                    <li>Switch to the <em>CSS</em> panel</li>
+                    <li>Switch to <em>issue4796.html</em> via the Location Menu</li>
+                    <li>Right-click the <code>#element</code> rule and choose <em>Break on CSS change</em> (not existing yet)</li>
+                    <li>Click the <em>Change CSS</em> button above</li>
+                </ol>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>The script execution should stop at line 18 of <em>issue4796.html</em>.</li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmail.com</footer>
+        </div>
+    </body>
+</html>

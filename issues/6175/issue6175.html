@@ -17,7 +17,10 @@
                 }
             };
             request.open("patch", "issue6175.php", false);
-            request.send(null);
+            var formData = new FormData();
+            formData.append("username", "johndoe");
+            formData.append("id", 123456);
+            request.send(formData);
         }
         </script>
     </head>
@@ -40,11 +43,14 @@
                         <span class="ok">A <em>PATCH</em> request is listed inside the <em>Net</em> panel</span>
                     </li>
                     <li>Expand the request</li>
-                    <li>Click the <em>Response</em> tab</li>
                 </ol>
                 <h3>Observed result</h3>
                 <ul>
-                    <li class="ok">The <em>Response</em> tab shows <code>Patch successful!</code>.</li>
+                    <li class="error">The form data sent with the request (<code>username=johndoe</code> and <code>id=123456</code>) is not shown.</li>
+                </ul>
+                <h3>Observed result</h3>
+                <ul>
+                    <li class="ok">There should be a tab showing the form data of the request.</li>
                 </ul>
             </section>
             <footer>Sebastian Zartner, sebastianzartner@gmail.com</footer>

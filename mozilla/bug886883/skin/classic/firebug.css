@@ -1,0 +1,12 @@
+
+#fbCloseButton {
+    list-style-image: url(chrome://testcase/skin/deactivate.svg);
+}
+
+#fbCloseButton:hover {
+    filter: url(chrome://testcase/skin/filters.svg#darken);
+}
+
+#fbCloseButton:active {
+    filter: url(chrome://testcase/skin/filters.svg#deepDarken);
+}

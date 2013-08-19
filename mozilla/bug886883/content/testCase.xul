@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://testcase/skin/firebug.css"?>
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+    <script src="chrome://testcase/content/testCase.js" type="application/x-javascript"/>
+
+    <commandset id="mainCommandSet">
+        <command id="cmd_toggleMainFrame" oncommand="TestCase.toggle()"/>
+    </commandset>
+
+    <keyset id="mainKeyset">
+        <key id="key_toggleMainFrame" keycode="VK_F12" command="cmd_toggleMainFrame" position="1"/>
+    </keyset>
+
+    <vbox id="appcontent">
+        <vbox id="testMainFrame" height="100">
+            <hbox>
+                <toolbarbutton id="fbCloseButton" class="toolbarbutton-iconic fbInternational"
+                    command="cmd_toggleMainFrame"/>
+            </hbox>
+        </vbox>
+    </vbox>
+
+</overlay>

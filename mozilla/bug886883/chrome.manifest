@@ -1,0 +1,4 @@
+content  testcase  content/
+overlay  chrome://browser/content/browser.xul  chrome://testcase/content/testCase.xul
+
+skin testcase  classic/1.0 skin/classic/

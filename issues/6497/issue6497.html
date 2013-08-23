@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 6497: Show an error besides an @import rule if the file couldn't be loaded</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
+        <style type="text/css">
+        @import url(notExistingStyleSheet.css);
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=6497">Issue 6497</a>: Show an error besides an @import rule if the file couldn't be loaded</h1>
+        </header>
+        <div>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Switch to the <em>CSS</em> panel</li>
+                    <li>Select <em>issue6497.html</em> from the Location Menu</li>
+                </ol>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>
+                        The <code>@import "notExistingStyleSheet.css";</code> rule should be marked
+                        as erroneous and provide a hint that the file
+                        <em>notExistingStyleSheet.css</em> does not exist.
+                    </li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmail.com</footer>
+        </div>
+    </body>
+</html>

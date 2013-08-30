@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 6727: Side panels broken when an iframe is removed while an element inside it is selected</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
+        <style type="text/css">
+        iframe {
+            width: 100px;
+            height: 100px;
+            border: none;
+        }
+
+        #actions {
+            margin-top: 5px;
+        }
+        </style>
+        <script type="text/javascript">
+        function removeIframe()
+        {
+            var iframe = document.getElementById("iframe");
+            iframe.parentNode.removeChild(iframe);
+        }
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=6727">Issue 6727</a>: Side panels broken when an iframe is removed while an element inside it is selected</h1>
+        </header>
+        <div>
+            <section id="content">
+                <iframe id="iframe" src="issue6727-iframe.html"></iframe>
+                <div id="actions">
+                    <button onclick="removeIframe()">Remove &lt;iframe&gt;</button>
+                </div>
+            </section>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Switch to the <em>HTML</em> panel and there to the <em>Style</em> side panel</li>
+                    <li>Inspect the blue <code>&lt;div&gt;</code> above</li>
+                    <li>Click the <em>Remove &lt;iframe&gt;</em> button above</li>
+                    <li>
+                        Switch to the <em>Computed</em> side panel<br/>
+                        <span class="error">&rArr; The panel is completely empty and an error is thrown:
+<code>
+NS_ERROR_INVALID_POINTER: Component returned failure code: 0x80004003 (NS_ERROR_INVALID_POINTER)
+[inIDOMUtils.hasPseudoClassLock] @ chrome://firebug/content/css/stylePanel.js:750
+</code>
+                        </span>
+                    </li>
+                    <li>
+                        Switch to the <em>Console</em> panel and back to the <em>HTML</em> panel<br/>
+                        <span class="error">&rArr; The side panels are not displayed anymore.</span>
+                    </li>
+                </ol>
+                <h3>Observed result</h3>
+                <ul>
+                    <li>
+                        The side panels are broken when an iframe is removed while an element
+                        inside it is selected.
+                    </li>
+                </ul>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>
+                        The side panels should display the info related to the element, which is
+                        selected after the &lt;iframe&gt; is removed.
+                    </li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmail.com</footer>
+        </div>
+    </body>
+</html>

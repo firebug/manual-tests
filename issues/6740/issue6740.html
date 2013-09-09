@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Issue 6740: Display registered MutationObservers for an element</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="testcase.css" type="text/css" rel="stylesheet"/>
+</head>
+<body onload="onLoad()">
+<header>
+    <h1><a href="http://code.google.com/p/fbug/issues/detail?id=6740">Issue 6740</a>:
+        Display registered MutationObservers for an element</h1>
+</header>
+<div>
+    <section id="content">
+        <div id="testElement">Observe Me! (I am the 'testElement')</div>
+    </section>
+    <section id="description">
+        <h3>Steps to reproduce</h3>
+        <ol>
+            <li>Open Firebug and enabled the Console panel</li>
+            <li>Execute this expression in the Command Line:
+                <code>getMutationObservers($("#testElement"))</code></li>
+            <li>Click one of the buttons below and wath the logs</li>
+            <br/>
+            <button onclick="onChangeAttr()">Change Attribute</button>
+            <button onclick="onAppendChild()">Append Child</button>
+            <button onclick="onCharData()">Change Character Data</button>
+        </ol>
+    </section>
+    <footer>
+        Jan Odvarko &lt;odvarko@gmail.com&gt;
+    </footer>
+</div>
+<script>
+function onLoad()
+{
+    var target1 = document.querySelector("#testElement");
+    var target2 = document.querySelector("#content");
+
+    var config = {
+        attributes: true,
+        childList: true,
+        characterData: true,
+        subtree: true,
+    };
+
+    observe(target1, config);
+    observe(target2, config);
+}
+
+function observe(target, config)
+{
+    var observer = new MutationObserver(function(mutations)
+    {
+        mutations.forEach(function myMutationCallback(mutation)
+        {
+            console.log(target.id + " " + mutation.type);
+        });
+    });
+
+    observer.observe(target, config);
+}
+
+function onChangeAttr()
+{
+   var target = document.querySelector("#testElement");
+   target.setAttribute("time", (new Date()).getTime());
+}
+
+function onAppendChild()
+{
+   var target = document.querySelector("#testElement");
+   target.appendChild(document.createElement("span"));
+}
+
+function onCharData()
+{
+   var target = document.querySelector("#testElement");
+   target.textContent = "Observe Me! " + (new Date()).getTime();
+}
+</script>
+</body>
+</html>

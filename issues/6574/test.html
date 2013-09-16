@@ -1,15 +1,32 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title></title>
-<style>
-</style>
-
+    <title>Issue 6574: New debugger doesn't recognize names of function defined with this.attr = function(){}</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
-<map></map>
-<input type=button value=test onclick='withName()'></input>
+<header>
+    <h1><a href="http://code.google.com/p/fbug/issues/detail?id=6574">Issue 6574</a>:
+        New debugger doesn't recognize names of function defined with this.attr = function(){}</h1>
+</header>
+<div>
+    <section id="description">
+        <h3>Steps to reproduce</h3>
+        <ol>
+            <li>Open a debugger (built-in or Firebug)</li>
+            <li>Click this button <input type=button value=test onclick='withName()'></input></li>
+            <li>The debugger should halt at <code>debugger;</code> keyword</li>
+            <li>Check the stack trace. The current fuction name should be: 'withoutName' but
+            it isn't (it's anonymous) -> BUG</li>
+        </ol>
+    </section>
+    <br/>
+    <footer>
+        Simon Lindholm, &lt;odvarko@gmail.com&gt;<br/>
+        Jan Odvarko, &lt;odvarko@gmail.com&gt;
+    </footer>
+</div>
 <script>
     function withName() {
         withoutName()
@@ -18,8 +35,7 @@
     this.withoutName = function() {
         debugger
     }
-    
-    
 </script>
-<body>
+
+</body>
 </html>

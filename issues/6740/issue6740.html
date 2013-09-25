@@ -12,15 +12,23 @@
 </header>
 <div>
     <section id="content">
-        <div id="testElement">Observe Me! (I am the 'testElement')</div>
+        <div id="testElement">I am the 'testElement'</div>
     </section>
     <section id="description">
         <h3>Steps to reproduce</h3>
         <ol>
             <li>Open Firebug and enabled the Console panel</li>
-            <li>Execute this expression in the Command Line:
-                <code>getMutationObservers($("#testElement"))</code></li>
-            <li>Click one of the buttons below and wath the logs</li>
+            <li>Execute this expression in the Command Line:<br/><br/>
+                <code>getEventListeners($("#testElement"))</code><br/><br/>
+
+                <i>You should see list of event listeners and mutation observers
+                handling events coming from the element (displaying as two tables).
+                You can also click on the return value and inspect all details in
+                the DOM panel.</i>
+               <br/><br/>
+            </li>
+            <li>Click one of the buttons below to see logs from mutation observers
+            in the Console panel.</li>
             <br/>
             <button onclick="onChangeAttr()">Change Attribute</button>
             <button onclick="onAppendChild()">Append Child</button>
@@ -45,7 +53,24 @@ function onLoad()
     };
 
     observe(target1, config);
+    observe(target1, config);
     observe(target2, config);
+
+    target1.addEventListener("click", function() {
+        console.log("click1");
+    }, true);
+
+    target1.addEventListener("click", function() {
+        console.log("click2");
+    }, true);
+
+    target1.addEventListener("mousemove", function() {
+        console.log("mousemove");
+    }, true);
+
+    target2.addEventListener("mousemove", function() {
+        console.log("mousemove");
+    }, true);
 }
 
 function observe(target, config)

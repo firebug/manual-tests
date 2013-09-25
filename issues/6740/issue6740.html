@@ -12,7 +12,7 @@
 </header>
 <div>
     <section id="content">
-        <div id="testElement">I am the 'testElement'</div>
+        <div id="testElement">I am the 'testElement', my parent is 'content'</div>
     </section>
     <section id="description">
         <h3>Steps to reproduce</h3>
@@ -34,6 +34,25 @@
             <button onclick="onAppendChild()">Append Child</button>
             <button onclick="onCharData()">Change Character Data</button>
         </ol>
+    <br/><br/>
+    <table width="100%"><tr><td valign="top">
+            <div>There are four registered event listeners:</div>
+            <ol>
+                <li>'click' => 'testElement'</li>
+                <li>'click' => 'testElement'</li>
+                <li>'mousemove' => 'testElement'</li>
+                <li>'mousemove' => 'content'</li>
+            </ol>
+        </td><td valign="top">
+            <div>There are three egistered mutation observers (subtree=true) for:</div>
+            <ol>
+                <li>'testElement'</li>
+                <li>'testElement'</li>
+                <li>'content'</li>
+            </ol>
+        </td></tr>
+    </table>
+
     </section>
     <footer>
         Jan Odvarko &lt;odvarko@gmail.com&gt;

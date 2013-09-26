@@ -75,26 +75,26 @@ function onLoad()
     observe(target1, config);
     observe(target2, config);
 
-    target1.addEventListener("click", function() {
+    target1.addEventListener("click", function onClick1() {
         console.log("click1");
     }, true);
 
-    target1.addEventListener("click", function() {
+    target1.addEventListener("click", function onClick2() {
         console.log("click2");
     }, true);
 
-    target1.addEventListener("mousemove", function() {
+    target1.addEventListener("mousemove", function onMouseMove1() {
         console.log("mousemove");
     }, true);
 
-    target2.addEventListener("mousemove", function() {
+    target2.addEventListener("mousemove", function onMouseMove2() {
         console.log("mousemove");
     }, true);
 }
 
 function observe(target, config)
 {
-    var observer = new MutationObserver(function(mutations)
+    var observer = new MutationObserver(function myCallback(mutations)
     {
         mutations.forEach(function myMutationCallback(mutation)
         {

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Issue 6832: Erroneous output from console.assert</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="testcase.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<header>
+    <h1><a href="http://code.google.com/p/fbug/issues/detail?id=6832">Issue 6832</a>:
+    Erroneous output from console.assert</h1>
+</header>
+<script>
+var i;
+console.assert(false);
+console.assert(false);
+</script>
+<div>
+    <section id="description">
+        <h3>Steps to reproduce</h3>
+        <ol>
+            <li>Open Firebug (F12)</li>
+            <li>Enable the Console panel</li>
+            <li>Reload this page</li>
+            <li>Check the logs in the Console panel.</li>
+            <li>There should be two asserts. One from line 15
+            and one from line 16, but there are two from line 14 (grouped) -> BUG</li>
+        </ol>
+    </section>
+<br/>
+    <i>If you comment out <code>var i</code> at line 14, console.assert() works as expected.</i>
+    <footer>
+        Jan Odvarko, &lt;odvarko@gmail.com&gt;
+    </footer>
+</div>
+</body>
+</html>

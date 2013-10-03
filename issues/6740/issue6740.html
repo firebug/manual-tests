@@ -36,19 +36,22 @@
         </ol>
     <br/><br/>
     <table width="100%"><tr><td valign="top">
-            <div>There are four registered event listeners:</div>
+            <div>There are following registered event listeners:</div>
             <ol>
                 <li>'click' => 'testElement'</li>
                 <li>'click' => 'testElement'</li>
                 <li>'mousemove' => 'testElement'</li>
                 <li>'mousemove' => 'content'</li>
+                <li>'mousedown' => document</li>
+                <li>'mouseup' => window</li>
             </ol>
         </td><td valign="top">
-            <div>There are three egistered mutation observers (subtree=true) for:</div>
+            <div>There are following registered mutation observers (subtree=true) for:</div>
             <ol>
                 <li>'testElement'</li>
                 <li>'testElement'</li>
                 <li>'content'</li>
+                <li>document</li>
             </ol>
         </td></tr>
     </table>
@@ -74,6 +77,7 @@ function onLoad()
     observe(target1, config);
     observe(target1, config);
     observe(target2, config);
+    observe(document, config);
 
     target1.addEventListener("click", function onClick1() {
         console.log("click1");
@@ -89,6 +93,14 @@ function onLoad()
 
     target2.addEventListener("mousemove", function onMouseMove2() {
         console.log("mousemove");
+    }, true);
+
+    document.addEventListener("mousedown", function onDocMouseDown() {
+        console.log("document mousedown");
+    }, true);
+
+    window.addEventListener("mouseup", function onWinMouseUp() {
+        console.log("window mouse up");
     }, true);
 }
 

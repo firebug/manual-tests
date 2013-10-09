@@ -109,7 +109,7 @@ var SimpleDebugger =
 var FBTrace;
 function sysout(msg, obj)
 {
-    //Components.utils.reportError(msg);
+    Components.utils.reportError(msg);
     dump(msg + "\n");
 
     if (!FBTrace)

@@ -112,12 +112,20 @@ function sysout(msg, obj)
     Components.utils.reportError(msg);
     dump(msg + "\n");
 
-    if (!FBTrace)
+    if (typeof(FBTrace) != "undefined")
     {
-        Cu["import"]("resource://fbtrace/firebug-trace-service.js");
-        FBTrace = traceConsoleService.getTracer("extensions.firebug");
+        try
+        {
+            Cu["import"]("resource://fbtrace/firebug-trace-service.js");
+            FBTrace = traceConsoleService.getTracer("extensions.firebug");
+        }
+        catch (err)
+        {
+        }
     }
-    FBTrace.sysout(msg, obj);
+
+    if (typeof(FBTrace) != "undefined")
+        FBTrace.sysout(msg, obj);
 }
 
 function hook(obj, fn)

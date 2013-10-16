@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<overlay id="simpleDebuggerOverlay"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+    <script src="chrome://simpledebugger/content/debugger.js" type="application/x-javascript"/>
+
+    <commandset id="mainCommandSet">
+        <command id="cmd_testHookAttrMutation" oncommand="SimpleDebugger.hookAttrMutation()"/>
+    </commandset>
+
+    <!-- Firefox page context menu -->
+    <menupopup id="contentAreaContextMenu">
+        <menuseparator/>
+        <menuitem id="menu_testHookAttrMutation" label="Hook Attribute Mutation"
+            command="cmd_testHookAttrMutation" class="menuitem-iconic" />
+    </menupopup>
+</overlay>

@@ -11,7 +11,7 @@
     Erroneous output from console.assert</h1>
 </header>
 <script>
-var i;
+//var i;
 console.assert(false);
 console.assert(false);
 </script>
@@ -29,6 +29,8 @@ console.assert(false);
     </section>
 <br/>
     <i>If you comment out <code>var i</code> at line 14, console.assert() works as expected.</i>
+<br/>
+    <i>If you disable the Script panel it works (since <code>getJSDUserStack()</code> is used).</i>
     <footer>
         Jan Odvarko, &lt;odvarko@gmail.com&gt;
     </footer>

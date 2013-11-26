@@ -6,4 +6,9 @@ header("Content-Type: text/javascript");
 sleep(3);
 ?>
 
-console.log("Hello from sleepy world!");
+function test()
+{
+    console.log("Hello from sleepy world!");
+}
+
+test();

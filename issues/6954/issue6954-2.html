@@ -4,7 +4,7 @@
     <title>Issue 6954: Script panel claims "No JavaScript on this page" before loading</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link href="testcase.css" type="text/css" rel="stylesheet"/>
-    <script src="script.js" defer="true"></script>
+    <script src="script2.js" defer="true"></script>
 </head>
 <body>
 <header>
@@ -13,20 +13,20 @@
 </header>
 <div>
 <section id="description">
-    <h3>Scenario 1.</h3>
+    <h3>Scenario 2.</h3>
     <ol>
         <li>Open Firebug enable and select the Script panel</li>
         <li>Wait for 3 sec.</li>
-        <li>No Script is displayed since the one loaded has been already garbage collected.</li>
+        <li>There should be a script displayed.</li>
         <li>Refresh the page and wait for 3 sec.</li>
-        <li>The Script panel should display a script now. Firebug caught a backend event
-        about new script creation and displayed it. However, the script has also been
-        garbage coolected later.</li>
+        <li>The Script panel should display a script</li>
     </ol>
 </section>
 <br/>
+<i>No garbage collector involved in this scenario, so Firebug works as expected.</i>
 <br/>
-<p>There is <a href="issue6954-2.html">scenario 2.</a> test.</p>
+<br/>
+<p>There is <a href="issue6954.html">scenario 1.</a> test.</p>
 <footer>
     Jan Odvarko &lt;odvarko@gmail.com&gt;
 </footer>

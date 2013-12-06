@@ -16,17 +16,21 @@
     <h3>Scenario #1</h3>
     <ol>
         <li>Open Firebug enable and select the Script panel</li>
-        <li>Wait for 3 sec.</li>
-        <li>No Script is displayed since the one loaded has been already garbage collected.</li>
+        <li>No Script is displayed since the one loaded has been already garbage collected
+        (the script might appear, it also depends on GC timing).</li>
         <li>Refresh the page and wait for 3 sec.</li>
         <li>The Script panel should display a script now. Firebug caught a backend event
-        about new script creation and displayed it. However, the script has also been
+        about new script creation and displayed it. However, the script will be
         garbage coolected later.</li>
     </ol>
 </section>
 <br/>
 <br/>
-<p>There is also <a href="issue6954-2.html">scenario #2</a></p>
+<p>
+<a href="issue6954-2.html">scenario #2</a><br/>
+<a href="issue6954-3.html">scenario #3</a><br/>
+<a href="issue6954-4.html">scenario #4</a><br/>
+</p>
 <footer>
     Jan Odvarko &lt;odvarko@gmail.com&gt;
 </footer>

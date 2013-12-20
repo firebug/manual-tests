@@ -11,6 +11,10 @@ var Cu = Components.utils;
 
 var jsd = Cc["@mozilla.org/js/jsd/debugger-service;1"].getService(Ci.jsdIDebuggerService);
 
+// JSD2
+Cu.import("resource://gre/modules/jsdebugger.jsm");
+addDebuggerToGlobal(this);
+
 // ********************************************************************************************* //
 // Initialization
 
@@ -79,7 +83,7 @@ var SimpleDebugger =
     onDebugger: function(frame, type, rv)
     {
         sysout("onDebugger: " + frame.script.fileName);
-        sysout("onDebugger stack: " + framesToString(frame));
+        sysout("onDebugger stack: ", framesToString(frame));
 
         return Ci.jsdIExecutionHook.RETURN_CONTINUE;
     },
@@ -98,7 +102,12 @@ var SimpleDebugger =
     onMutateAttr: function(event)
     {
         var view = event.target.ownerDocument.defaultView;
-        sysout("onMutateAttr; " + getComponentsStack());
+
+        var jsd2Stack = getJSD2Stack(view);
+        var componentsStack = getComponentsStack();
+
+        sysout("onMutateAttr JSD2 stack: " + jsd2Stack, jsd2Stack);
+        sysout("onMutateAttr Components.stack: " + componentsStack, componentsStack);
         debugger;
     }
 };
@@ -109,10 +118,10 @@ var SimpleDebugger =
 var FBTrace;
 function sysout(msg, obj)
 {
-    Components.utils.reportError(msg);
+    //Components.utils.reportError(msg);
     dump(msg + "\n");
 
-    if (typeof(FBTrace) != "undefined")
+    if (typeof(FBTrace) == "undefined")
     {
         try
         {
@@ -177,6 +186,31 @@ function getComponentsStack()
     for (var frame = Components.stack; frame; frame = frame.caller)
         msg.push(frame.filename + "@" + frame.lineNumber);
     return msg.join("\n");
+}
+
+function getJSD2Stack(win)
+{
+    var result = [];
+    var dbg = new Debugger(win);
+    dbg.enabled = true;
+
+    dbg.onDebuggerStatement = function(frame)
+    {
+        while (frame)
+        {
+            result.push(frame.script.url + ", " + frame.script.startLine);
+            frame = frame.older;
+        }
+    };
+
+    if (win.wrappedJSObject)
+        win = win.wrappedJSObject;
+
+    win.eval("debugger;");
+
+    dbg.enabled = false;
+
+    return result.join("\n");
 }
 
 // ********************************************************************************************* //

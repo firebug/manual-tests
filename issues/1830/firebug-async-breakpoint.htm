@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Issue 1830: setTimeout()s and setInterval()s are not stopped when script execution is stopped</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="testcase.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<header>
+    <h1><a href="http://code.google.com/p/fbug/issues/detail?id=1830">Issue 1830</a>:
+        setTimeout()s and setInterval()s are not stopped when script execution is stopped</h1>
+</header>
+<script type="text/javascript">
+function foo()
+{
+   setTimeout(bar, 5000);
+}
+
+function bar()
+{
+    console.log("log from top level document");
+}
+
+foo();
+
+setTimeout(function()
+{
+    debugger;
+}, 2000);
+
+</script>
+<div>
+    <section id="description">
+        <h3>Steps to reproduce</h3>
+        <ol>
+            <li>Enable the Script and Console panel.</li>
+            <li>Reload the page</li>
+            <li>The debugger should break at line 28 (in two sec)</li>
+            <li>Wait for about 5 sec (all timeouts should be stopped now)</li>
+            <li>Switch to the console, it should be empty</li>
+            <li>Resume the debugger</li>
+            <li>Switch back to the Console, wait for about 3 sec, two logs should be created.</li>
+        </ol>
+    </section>
+    <footer>
+        Jan Odvarko &lt;odvarko@gmail.com&gt;
+    </footer>
+    <br/><br/><br/>
+    <iframe id="iframe" src="iframe.htm" widht="50" height="50" />
+</div>
+</body>
+</html>

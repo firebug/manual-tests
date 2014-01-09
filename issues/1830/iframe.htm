@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<script type="text/javascript">
+function foo()
+{
+   setTimeout(bar, 5000);
+}
+
+function bar()
+{
+   console.log("log from inner iframe");
+}
+
+foo();
+</script>
+
+</body>
+</html>

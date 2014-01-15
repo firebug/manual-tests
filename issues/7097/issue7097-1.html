@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Issue 7097: Support for dynamically evaluated scripts</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="testcase.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<header>
+    <h1><a href="http://code.google.com/p/fbug/issues/detail?id=7097">Issue 7097</a>:
+        Support for dynamically evaluated scripts</h1>
+</header>
+<script>
+function evalScript()
+{
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function()
+    {
+        if (xhr.readyState == 4 && xhr.status == 200)
+        {
+            window.eval(xhr.responseText);
+        }
+    }
+
+    xhr.open("GET", "issue7097-1.js", true);
+    xhr.send(null);
+}
+
+function testScript()
+{
+    // The following line 32 corresponds to line 12 in the dynamically evaluated script.
+    console.log("hi from static script");
+}
+</script>
+<div>
+    <section id="description">
+        <h3>Steps to reproduce</h3>
+        <ol>
+            <li>Open Firebug and enable the Script panel.</li>
+            <li>Click this button to load and evaluate a script:
+                <button id="evalButton" onclick="evalScript()">Eval</button>
+            </li>
+            <li>Create a breakpoint in the parent/static script at line 31</li>
+            <li>Click this button to execute function from the evaluated script:
+                <button id="testButton" onclick="foo()">Test</button>
+            </li>
+        </ol>
+    </section>
+    <footer>
+        Jan Odvarko &lt;odvarko@gmail.com&gt;
+    </footer>
+</div>
+</body>
+</html>

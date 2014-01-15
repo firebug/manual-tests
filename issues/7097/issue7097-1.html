@@ -44,7 +44,13 @@ function testScript()
             <li>Click this button to execute function from the evaluated script:
                 <button id="testButton" onclick="foo()">Test</button>
             </li>
+            <li>The break should happen on line 32 in issue7097-1.html, but it doesn't -> BUG</li>
         </ol>
+<br/><br/>
+<i>The break happens on line 12 in dynamically evaluated script even if the breawkpoint
+has been set on line 32 in the static script. This is because the dynamic script overlaps
+parent's script lines (which could be still ok), and also shares the URL (which is wrong,
+see <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=957798">bug 957798</a>)</i>
     </section>
     <footer>
         Jan Odvarko &lt;odvarko@gmail.com&gt;

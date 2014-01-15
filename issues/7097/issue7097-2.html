@@ -22,35 +22,24 @@ function evalScript()
         }
     }
 
-    xhr.open("GET", "issue7097-1.js", true);
+    xhr.open("GET", "issue7097-2.js", true);
     xhr.send(null);
-}
-
-function testScript()
-{
-    // The following line 32 corresponds to line 12 in the dynamically evaluated script.
-    console.log("hi from static script");
 }
 </script>
 <div>
     <section id="description">
-        <h3>Scenario I. Steps to reproduce</h3>
+        <h3>Scenario II. Steps to reproduce</h3>
         <ol>
             <li>Open Firebug and enable the Script panel.</li>
             <li>Click this button to load and evaluate a script:
                 <button id="evalButton" onclick="evalScript()">Eval</button>
             </li>
-            <li>Create a breakpoint in the parent/static script at line 32</li>
+            <li>Create a breakpoint in the new <code>issue7097-2.html@eval21</code> script at line 3</li>
             <li>Click this button to execute function from the evaluated script:
                 <button id="testButton" onclick="foo()">Test</button>
             </li>
-            <li>The break should happen on line 32 in issue7097-1.html, but it doesn't -> BUG</li>
+            <li>The breakpoint should hit. You can also try to step-over in the debuger.</li>
         </ol>
-<br/><br/>
-<i>The break happens on line 12 in dynamically evaluated script even if the breawkpoint
-has been set on line 32 in the static script. This is because the dynamic script overlaps
-parent's script lines (which could be still ok), and also shares the URL (which is wrong,
-see <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=957798">bug 957798</a>)</i>
     </section>
     <footer>
         Jan Odvarko &lt;odvarko@gmail.com&gt;

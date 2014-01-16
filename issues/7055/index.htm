@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue xxxx: The Script pane displays garbage characters on SJIS html and javascripts using different charsets.</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=shift_jis"/>
+        <script type="text/javascript" src="utf8.js" charset="utf-8"></script>
+        <script type="text/javascript" src="sjis.js"></script>
+        <script type="text/javascript">
+         var a = 'ＳＪＩＳ'
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=xxxx">Issue xxxx</a>: The Script pane displays garbage characters on SJIS html and javascripts using different charsets.</h1>
+        </header>
+        <div>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Display this page.</li>
+                    <li>Switch to Script pane in the FireBug.</li>
+                    <li>Check each scripts every sources are correct.<br />
+                        (My FireBug was displayed like "var a = 'rihr'" in HTML.)</li>
+                </ol>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>Line 9 is "var a = 'ＳＪＩＳ'" in HTML.</li>
+                    <li>Line 2 is "var a = 'ＵＴＦ８'" in utf8.js.</li>
+                    <li>Line 2 is "var a = 'ＳＪＩＳ'" in sjis.js.</li>
+                </ul>
+            </section>
+            <footer>
+                &lt;Takeshi Fujita&gt;, &lt;fujita@octech.co.jp&gt;
+            </footer>
+        </div>
+    </body>
+</html>

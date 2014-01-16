@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Issue 7030: The debugger should not be enabled when the Script panel is disabled</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="testcase.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<header>
+    <h1><a href="http://code.google.com/p/fbug/issues/detail?id=7030">Issue 7030</a>:
+         The debugger should not be enabled when the Script panel is disabled</h1>
+</header>
+<div>
+<script>
+function onExecuteTest()
+{
+    console.log("before debugger;");
+    debugger;
+    console.log("after debugger;");
+}
+</script>
+<section id="description">
+    <h3>Steps to reproduce</h3>
+    <ol>
+        <li>Enable and select the Script panel</li>
+        <li>Click this button: <button onclick="onExecuteTest()">Click Me!</button></li>
+        <li>Disable the Script panel</li>
+        <li>Click this button: <button onclick="onExecuteTest()">Click Me!</button></li>
+        <li>The debugger should pause.</button></li>
+    </ol>
+</section>
+<footer>
+    Jan Odvarko &lt;odvarko@gmail.com&gt;
+</footer>
+</div>
+</body>
+</html>

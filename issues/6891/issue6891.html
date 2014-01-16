@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Issue 6891: window.unwatch doesn't work</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="https://getfirebug.com/tests/head/_common/testcase.css"
+        type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<header>
+    <h1><a href="http://code.google.com/p/fbug/issues/detail?id=6891">Issue 6891</a>:
+        window.unwatch doesn't work</h1>
+</header>
+<script>
+var _testVariable = 10;
+
+function change()
+{
+    _testVariable++;
+}
+
+function watchMe()
+{
+    window.watch("_testVariable", function(prop, oldval, newval)
+    {
+        console.log("_testVariable modified!", prop, oldval, newval);
+    });
+
+    console.log("watching...");
+}
+
+function unwatchMe()
+{
+    window.unwatch("_testVariable");
+
+    console.log("unwatched");
+}
+</script>
+<div>
+    <section id="description">
+        <h3>Steps to reproduce</h3>
+        <ol>
+            <li>Click this button to watch changes of the <code>_testVariable</code>
+                variable defined on this page:
+                <button onclick="watchMe()">Watch</button></li>
+            <li>Click this button to stop monitoring changes of the <code>_testVariable</code> variable:
+                <button onclick="unwatchMe()">Unwatch</button></li>
+            <li>Click this button to change the <code>_testVariable</code> variable:
+                <button onclick="change()">Change</button></li>
+            <li>The variable should not be monitored anymore, but it is -> BUG</li>
+        </ol>
+
+<br/><br/>
+
+<i>Note: use a Debugger console to see <code>console.log</code> messages.</i>
+    </section>
+    <footer>
+        Jan Odvarko, &lt;odvarko@gmail.com&gt;
+    </footer>
+</div>
+</body>
+</html>

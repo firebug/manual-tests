@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Issue 6954: Script panel claims "No JavaScript on this page" before loading</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="testcase.css" type="text/css" rel="stylesheet"/>
+    <link href="test.php" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<header>
+    <h1><a href="http://code.google.com/p/fbug/issues/detail?id=6954">Issue 6954</a>:
+        Script panel claims "No JavaScript on this page" before loading</h1>
+</header>
+<div>
+<section id="description">
+    <h3>Scenario #4</h3>
+    <ol>
+        <li>Open Firebug enable and select the Script panel</li>
+        <li>Reload the page</li>
+        <li>Wait for 3 sec</li>
+        <li>The panel should display 'Loading...' for 3 seconds</li>
+        <li>Since no scripts are loaded the panel should display 'No Javascript on this page'</li>
+    </ol>
+</section>
+<br/>
+<br/>
+<p>
+<a href="issue6954.html">scenario #1</a><br/>
+<a href="issue6954-2.html">scenario #2</a><br/>
+<a href="issue6954-3.html">scenario #3</a><br/>
+</p>
+<footer>
+    Jan Odvarko &lt;odvarko@gmail.com&gt;
+</footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Issue 6870: Breakpoint doesn't work during page reload</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="testcase.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<script>
+(function foo()
+{
+    var i = 10;
+})();
+</script>
+<header>
+    <h1><a href="http://code.google.com/p/fbug/issues/detail?id=6870">Issue 6870</a>:
+     Breakpoint doesn't work during page reload</h1>
+</header>
+<div>
+    <section id="description">
+        <h3>Steps to reproduce</h3>
+        <ol>
+            <li>Open Firebug, enable the Script panel and reload the page</li>
+            <li>Create a breakpoint on line 12</li>
+            <li>Restart Firefox</li>
+            <li>Open Firebug and reload the page</li>
+            <li>The breakpoint doesn't hit</li>
+        </ol>
+    </section>
+    <footer>
+        Jan Odvarko, &lt;odvarko@gmail.com&gt;
+    </footer>
+</div>
+</body>
+</html>

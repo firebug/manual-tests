@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 6967: Breakpoints display persists after switching the source file</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
+        <script type="text/javascript">
+        var test = "bla";
+        </script>
+        <script type="text/javascript" src="issue6967.js"></script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=6967">Issue 6967</a>: Breakpoints display persists after switching the source file</h1>
+        </header>
+        <div>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Enable and switch to the <em>Script</em> panel</li>
+                    <li>Switch to <em>issue6967.js</em> via the Location Menu</li>
+                    <li>Set a breakpoint at line 1 (<code>var hello = "Hello Firebug user!";</code>)</li>
+                    <li>Switch to <em>issue6967.html</em> via the Location Menu</li>
+                </ol>
+                <h3>Observed result</h3>
+                <ul>
+                    <li class="error">The breakpoint at line one is still visible.</li>
+                </ul>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>The breakpoint should only be displayed for <em>issue6967.js</em>.</li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmail.com</footer>
+        </div>
+    </body>
+</html>

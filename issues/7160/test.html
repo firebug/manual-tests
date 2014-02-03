@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Step into function with frames, does not work</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="testcase.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<header>
+    <h1>Step into function with frames, does not work</h1>
+</header>
+<div>
+    <section id="description">
+        <h3>Steps to reproduce</h3>
+        <ol>
+            <li>Open Firebug, enable the Script panel and reload the page.</li>
+            <li>Click the button, debugger should stop at line <code>6</code> in <code>test.js</code></li>
+            <li>Step twice *into* line  <code>173</code></li>
+            <li>Select the Stack lanel and click <code>test-frame.html (line 1)</code></li>
+            <li>Again in the Stack panel, click: <code>test.js (line 7)</code></li>
+            <li>The line <code>7</code> isn't visible in the Script panel -> BUG</li>
+        </ol>
+    </section>
+
+    <br/>
+    <br/>
+    <iframe id="testFrame" src="test-frame.html" width="200" height="41"></iframe>
+
+    <footer>
+        Jan Odvarko, odvarko@gmail.com;
+    </footer>
+    
+    <script>
+        var a = 10;
+    </script>
+</div>
+</body>
+</html>

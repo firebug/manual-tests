@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Issue 7029: Script panel always claims 'No Javascript on this page' until reload</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="testcase.css" type="text/css" rel="stylesheet"/>
+    <script src="issue7029.js"></script>
+</head>
+<body>
+<header>
+    <h1><a href="http://code.google.com/p/fbug/issues/detail?id=7029">Issue 7029</a>:
+        Script panel always claims 'No Javascript on this page' until reload</h1>
+</header>
+<script>
+function testFunction()
+{
+    console.log("test");
+}
+</script>
+<div>
+    <section id="description">
+        <h3>Steps to reproduce</h3>
+        <ol>
+            <li>Open Firebug enable the Script panel.</li>
+            <li>Chech the location list. There should be 8 frames loaded</i>
+            </li>
+            <li>Disable the Script panel and reload the page</li>
+            <li>Enable the Script panel</li>
+            <li>Chech the location list again. There should be 8 frames loaded</i>
+            </li>
+        </ol>
+    </section>
+<br/><br/>
+
+<div>Even if the <i>issue7029.js</i> is missing, the script is there.
+<br/>
+Just click this button to make a log in the Console panel:
+<button onclick="onExecuteTest()">Click Me!</button>
+</div>
+
+<br/>
+
+<i>Only scripts coming from frames are there? Reloading the page might fix it (not always).</i>
+
+<br/><br/>
+    <iframe src="frame-20.html" width="50px" height="50px"></iframe>
+
+    <footer>
+        Jan Odvarko &lt;odvarko@gmail.com&gt;
+    </footer>
+</div>
+</body>
+</html>

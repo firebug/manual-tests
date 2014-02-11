@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 7171: Render JSON for all kinds of variables</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
+        <script type="text/javascript">
+        function fetchEmptyObject()
+        {
+            makeRequest("issue7171-1.json");
+        }
+
+        function fetchEmptyArray()
+        {
+            makeRequest("issue7171-2.json");
+        }
+
+        function fetchString()
+        {
+            makeRequest("issue7171-3.json");
+        }
+
+        function fetchInteger()
+        {
+            makeRequest("issue7171-4.json");
+        }
+
+        function fetchBoolean()
+        {
+            makeRequest("issue7171-5.json");
+        }
+
+        function fetchNull()
+        {
+            makeRequest("issue7171-6.json");
+        }
+
+        function makeRequest(url) 
+        {
+            var request = new XMLHttpRequest();
+            request.onreadystatechange = function () {
+                if (request.readyState === 4 && request.status === 200)
+                    console.log(JSON.parse(request.responseText));
+            };
+
+            request.open("GET", url, true);
+            request.send(null);
+        }
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=7171">Issue 7171</a>: Render JSON for all kinds of variables</h1>
+        </header>
+        <div>
+            <section id="content">
+                <button onclick="fetchEmptyObject()">Empty object</button>
+                <button onclick="fetchEmptyArray()">Empty array</button>
+                <button onclick="fetchString()">String</button>
+                <button onclick="fetchInteger()">Integer</button>
+                <button onclick="fetchBoolean()">Boolean</button>
+                <button onclick="fetchNull()">null</button>
+            </section>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Enable and switch to the <em>Net</em> panel</li>
+                    <li>
+                        Click the buttons above<br/>
+                        <span class="ok">&rArr; For each button there's a request inside the <em>Net</em> panel</span>
+                    </li>
+                    <li>Expand each request</li>
+                    <li>Switch to the <em>JSON</em> tab</li>
+                </ol>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>There should always be a <em>JSON</em> tab.</li>
+                    <li>The <em>JSON</em> tab should display the values as expected (see also the output in the <em>Console</em>) panel.</li>
+                    <li>The <em>JSON</em> tab should not contain a <em>Sort by key</em> link in all these cases.</li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmail.com</footer>
+        </div>
+    </body>
+</html>

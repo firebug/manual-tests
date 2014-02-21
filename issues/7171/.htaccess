@@ -1,0 +1,2 @@
+AddType text/javascript .json
+AddHandler application/x-httpd-php .json

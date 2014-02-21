@@ -1,29 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Issue 7097: Support for dynamically evaluated scripts (2)</title>
+    <title>Issue 7097: Support for dynamically evaluated scripts (4)</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link href="testcase.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
 <header>
     <h1><a href="http://code.google.com/p/fbug/issues/detail?id=7097">Issue 7097</a>:
-        Support for dynamically evaluated scripts (2)</h1>
+        Support for dynamically evaluated scripts (4)</h1>
 </header>
 <script>
+var func;
 function evalScript()
 {
-    var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function()
-    {
-        if (xhr.readyState == 4 && xhr.status == 200)
-        {
-            window.eval(xhr.responseText);
-        }
-    }
+    func = new Function("a", "b", "var sum = a + b;\neval('console.log(sum)');\nreturn sum;");
+    func.displayName = "add";
 
-    xhr.open("GET", "issue7097-2.js", true);
-    xhr.send(null);
+    func(4, 6);
+}
+
+function onTest()
+{
+    func(10, 20);
 }
 </script>
 <div>
@@ -31,12 +30,12 @@ function evalScript()
         <h3>Scenario II. Steps to reproduce</h3>
         <ol>
             <li>Open Firebug and enable the Script panel.</li>
-            <li>Click this button to load and evaluate a script:
+            <li>Click this button to evaluate a script:
                 <button id="evalButton" onclick="evalScript()">Eval</button>
             </li>
-            <li>Create a breakpoint in the new <code>issue7097-2.html@eval21</code> script at line 3</li>
+            <li>Create a breakpoint in the new <code>issue7097-2.html@eval1</code> script at line 1</li>
             <li>Click this button to execute function from the evaluated script:
-                <button id="testButton" onclick="foo()">Test</button>
+                <button id="testButton" onclick="onTest()">Test</button>
             </li>
             <li>The breakpoint should hit. You can also try to step-over in the debugger.</li>
         </ol>

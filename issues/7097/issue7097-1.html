@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Issue 7097: Support for dynamically evaluated scripts</title>
+    <title>Issue 7097: Support for dynamically evaluated scripts (1)</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link href="testcase.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
 <header>
     <h1><a href="http://code.google.com/p/fbug/issues/detail?id=7097">Issue 7097</a>:
-        Support for dynamically evaluated scripts</h1>
+        Support for dynamically evaluated scripts (1)</h1>
 </header>
 <script>
 function evalScript()
@@ -47,7 +47,7 @@ function testScript()
             <li>The break should happen on line 32 in issue7097-1.html, but it doesn't -> BUG</li>
         </ol>
 <br/><br/>
-<i>The break happens on line 12 in dynamically evaluated script even if the breawkpoint
+<i>The break happens on line 12 in dynamically evaluated script even if the breakpoint
 has been set on line 32 in the static script. This is because the dynamic script overlaps
 parent's script lines (which could be still ok), and also shares the URL (which is wrong,
 see <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=957798">bug 957798</a>)</i>

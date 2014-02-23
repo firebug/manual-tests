@@ -43,6 +43,14 @@
                 <ol>
                     <li>Open Firebug</li>
                     <li>Enable the <em>Console</em> and the <em>Script</em> panel</li>
+                    <li>
+                        Switch to the <em>Console</em> panel<br/>
+                        <span class="ok">
+                            &rArr; There should be a log message
+                            <code>Hello Firebug user from eval()'ed code!</code>
+                            with a source link named <em>eval() (line 2)</em>.
+                        </span>
+                    </li>
                     <li>Switch to the <em>Script</em> panel</li>
                     <li>Click the <em>eval()</em> button above</li>
                     <li>
@@ -52,12 +60,17 @@
                             named <em>eval()</em>.
                         </span>
                     </li>
+                    <li>Switch to the <em>Stack</em> side panel</li>
                     <li>
-                        Switch to the <em>Console</em> panel<br/>
+                        Create a breakpoint at line 2 of the dynamically created script
+                        (<code>console.log('Hello Firebug user from eval()\'ed code!'); //# sourceURL=eval()</code>)
+                    </li>
+                    <li>
+                        Click the <em>eval()</em> button again<br/>
                         <span class="ok">
-                            &rArr; There should be a log message
-                            <code>Hello Firebug user from eval()'ed code!</code>
-                            with a source link named <em>eval() (line 2)</em>.
+                            &rArr; The script execution should stop at the breakpoint and the stack
+                            frame link for the function inside the <em>Watch</em> side panel and
+                            the stack frame path tooltip should be named <em>eval() (line 2)</em>
                         </span>
                     </li>
                 </ol>
@@ -74,6 +87,14 @@
                 <ol>
                     <li>Open Firebug</li>
                     <li>Enable the <em>Console</em> and the <em>Script</em> panel</li>
+                    <li>
+                        Switch to the <em>Console</em> panel<br/>
+                        <span class="ok">
+                            &rArr; There should be a log message
+                            <code>Hello Firebug user from code created via 'new Function()'!</code>
+                            with a source link named <em>new-Function() (line 3)</em>.
+                        </span>
+                    </li>
                     <li>Switch to the <em>Script</em> panel</li>
                     <li>Click the <em>new Function()</em> button above</li>
                     <li>
@@ -83,12 +104,17 @@
                             named <em>new-Function()</em>.
                         </span>
                     </li>
+                    <li>Switch to the <em>Stack</em> side panel</li>
                     <li>
-                        Switch to the <em>Console</em> panel<br/>
+                        Create a breakpoint at line 3 of the dynamically created script
+                        (<code>console.log('Hello Firebug user from code created via \'new Function()\'!'); //# sourceURL=new-Function()</code>)
+                    </li>
+                    <li>
+                        Click the <em>new Function()</em> button again<br/>
                         <span class="ok">
-                            &rArr; There should be a log message
-                            <code>Hello Firebug user from code created via 'new Function()'!</code>
-                            with a source link named <em>new-Function() (line 3)</em>.
+                            &rArr; The script execution should stop at the breakpoint and the stack
+                            frame link for the function inside the <em>Watch</em> side panel and
+                            the stack frame path tooltip should be named <em>new-Function() (line 3)</em>
                         </span>
                     </li>
                 </ol>
@@ -105,6 +131,14 @@
                 <ol>
                     <li>Open Firebug</li>
                     <li>Enable the <em>Console</em> and the <em>Script</em> panel</li>
+                    <li>
+                        Switch to the <em>Console</em> panel<br/>
+                        <span class="ok">
+                            &rArr; There should be a log message
+                            <code>Hello Firebug user from code injected via new &lt;script&gt; tag!</code>
+                            with a source link named <em>&lt;script&gt; (line 2)</em>.
+                        </span>
+                    </li>
                     <li>Switch to the <em>Script</em> panel</li>
                     <li>Click the <em>new &lt;script&gt;</em> button above</li>
                     <li>
@@ -114,12 +148,17 @@
                             named <em>&lt;script&gt;</em>.
                         </span>
                     </li>
+                    <li>Switch to the <em>Stack</em> side panel</li>
                     <li>
-                        Switch to the <em>Console</em> panel<br/>
+                        Create a breakpoint at line 2 of the dynamically created script
+                        (<code>console.log('Hello Firebug user from code injected via new &lt;script&gt; tag!'); //# sourceURL=<script></code>)
+                    </li>
+                    <li>
+                        Click the <em>new &lt;script&gt;</em> button again<br/>
                         <span class="ok">
-                            &rArr; There should be a log message
-                            <code>Hello Firebug user from code injected via new &lt;script&gt; tag!</code>
-                            with a source link named <em>&lt;script&gt; (line 2)</em>.
+                            &rArr; The script execution should stop at the breakpoint and the stack
+                            frame link for the function inside the <em>Watch</em> side panel and
+                            the stack frame path tooltip should be named <em><script> (line 2)</em>
                         </span>
                     </li>
                 </ol>

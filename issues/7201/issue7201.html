@@ -14,7 +14,7 @@
         function createNewFunction()
         {
             var source = "\nconsole.log('Hello Firebug user from code created via " +
-                "\\'new Function()\\'!'); //# sourceURL=new-Function()";
+                "\\'new Function()\\'!'); //# sourceURL=new Function()";
             (new Function(source))();
         }
 
@@ -33,12 +33,12 @@
         </header>
         <div>
             <section id="content">
-                <button onclick="evalCode()">eval()</button>
-                <button onclick="createNewFunction()">new Function()</button>
-                <button onclick="createScript()">new &lt;script&gt;</button>
+                <button onclick="evalCode()">Create script via <code>eval()</code></button>
+                <button onclick="createNewFunction()">Create script via <code>new Function()</code></button>
+                <button onclick="createScript()">Create script via <code>&lt;script&gt;</code> tag</button>
             </section>
             <section id="description">
-                <h2><code>eval()</code>'ed script</h2>
+                <h2>Script created via <code>eval()</code></h2>
                 <h3>Steps to reproduce</h3>
                 <ol>
                     <li>Open Firebug</li>
@@ -52,7 +52,7 @@
                         </span>
                     </li>
                     <li>Switch to the <em>Script</em> panel</li>
-                    <li>Click the <em>eval()</em> button above</li>
+                    <li>Click the <em>Create script via <code>eval()</code></em> button above</li>
                     <li>
                         Open the Location Menu<br/>
                         <span class="ok">
@@ -66,7 +66,7 @@
                         (<code>console.log('Hello Firebug user from eval()\'ed code!'); //# sourceURL=eval()</code>)
                     </li>
                     <li>
-                        Click the <em>eval()</em> button again<br/>
+                        Click the <em>Create script via <code>eval()</code></em> button again<br/>
                         <span class="ok">
                             &rArr; The script execution should stop at the breakpoint and the stack
                             frame link for the function inside the <em>Watch</em> side panel and
@@ -96,21 +96,21 @@
                         </span>
                     </li>
                     <li>Switch to the <em>Script</em> panel</li>
-                    <li>Click the <em>new Function()</em> button above</li>
+                    <li>Click the <em>Create script via <code>new Function()</code></em> button above</li>
                     <li>
                         Open the Location Menu<br/>
                         <span class="ok">
                             &rArr; The Location Menu should list a dynamically created script
-                            named <em>new-Function()</em>.
+                            named <em>new Function()</em>.
                         </span>
                     </li>
                     <li>Switch to the <em>Stack</em> side panel</li>
                     <li>
                         Create a breakpoint at line 3 of the dynamically created script
-                        (<code>console.log('Hello Firebug user from code created via \'new Function()\'!'); //# sourceURL=new-Function()</code>)
+                        (<code>console.log('Hello Firebug user from code created via \'new Function()\'!'); //# sourceURL=new Function()</code>)
                     </li>
                     <li>
-                        Click the <em>new Function()</em> button again<br/>
+                        Click the <em>Create script via <code>new Function()</code></em> button again<br/>
                         <span class="ok">
                             &rArr; The script execution should stop at the breakpoint and the stack
                             frame link for the function inside the <em>Watch</em> side panel and
@@ -126,7 +126,7 @@
                     </li>
                 </ul>
 
-                <h2>Script created via new &lt;script&gt; tag</h2>
+                <h2>Script created via &lt;script&gt; tag</h2>
                 <h3>Steps to reproduce</h3>
                 <ol>
                     <li>Open Firebug</li>
@@ -140,7 +140,7 @@
                         </span>
                     </li>
                     <li>Switch to the <em>Script</em> panel</li>
-                    <li>Click the <em>new &lt;script&gt;</em> button above</li>
+                    <li>Click the <em>Create script via <code>&lt;script&gt;</code> tag</em> button above</li>
                     <li>
                         Open the Location Menu<br/>
                         <span class="ok">
@@ -151,14 +151,14 @@
                     <li>Switch to the <em>Stack</em> side panel</li>
                     <li>
                         Create a breakpoint at line 2 of the dynamically created script
-                        (<code>console.log('Hello Firebug user from code injected via new &lt;script&gt; tag!'); //# sourceURL=<script></code>)
+                        (<code>console.log('Hello Firebug user from code injected via new &lt;script&gt; tag!'); //# sourceURL=&lt;script&gt;</code>)
                     </li>
                     <li>
-                        Click the <em>new &lt;script&gt;</em> button again<br/>
+                        Click the <em>Create script via <code>&lt;script&gt;</code> tag</em> button again<br/>
                         <span class="ok">
                             &rArr; The script execution should stop at the breakpoint and the stack
                             frame link for the function inside the <em>Watch</em> side panel and
-                            the stack frame path tooltip should be named <em><script> (line 2)</em>
+                            the stack frame path tooltip should be named <em>&lt;script&gt; (line 2)</em>
                         </span>
                     </li>
                 </ol>

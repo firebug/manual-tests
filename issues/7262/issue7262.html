@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 7262: HTML panel allows to inspect elements not added to the page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
+        <style type="text/css">
+        #element {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(-45deg, #788CFF, #B4C8FF);
+        }
+        </style>
+        <script type="text/javascript">
+        function createDIV()
+        {
+            var div = document.createElement("div");
+            div.id = "element";
+            debugger;
+            document.getElementById("content").appendChild(div);
+        }
+
+        window.addEventListener("DOMContentLoaded", createDIV);
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=7262">Issue 7262</a>: HTML panel allows to inspect elements not added to the page</h1>
+        </header>
+        <div>
+            <section id="content">
+            </section>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Enable and switch to the <em>Script</em> panel</li>
+                    <li>
+                        Reload the page<br/>
+                        <span class="ok">&rArr; The script should stop at line 19 (<code>debugger;</code>)</span>
+                    </li>
+                    <li>
+                        Switch to the <em>Watch</em> side panel<br/>
+                        <span class="ok">
+                            &rArr; The panel should list a <code>div</code> property with a
+                            semi-transparent (because it's not added to the page yet)
+                            <code>div#element</code> as value.
+                        </span>
+                    </li>
+                    <li>Click the <code>div#element</code> value</li>
+                </ol>
+                <h3>Observed result</h3>
+                <ul>
+                    <li>
+                        Firebug switches to the <em>HTML</em> panel and displays the element and
+                        by that hides the page's HTML structure.
+                    </li>
+                </ul>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>Firebug should not allow to inspect the element within the <em>HTML</em> panel.</li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmail.com</footer>
+        </div>
+    </body>
+</html>

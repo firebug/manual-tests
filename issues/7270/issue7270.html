@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 7270: Log grouping is broken when logging multiple groups with equal contents</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
+        <script type="text/javascript">
+        for (var i = 0; i < 20; i++)
+        {
+            console.group("Group");
+            console.table([i]);
+            console.groupEnd(); 
+        }
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=7270">Issue 7270</a>: Log grouping is broken when logging multiple groups with equal contents</h1>
+        </header>
+        <div>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Enable and switch to the <em>Console</em> panel</li>
+                    <li>Reload the page</li>
+                </ol>
+                <h3>Observed result</h3>
+                <ul>
+                    <li class="error">
+                        There are 17 groups listed inside the <em>Console</em> panel.
+                    </li>
+                    <li class="error">
+                        The last group has a message counter of <code>4</code> but expanding it
+                        doesn't display any contents.
+                    </li>
+                    <li class="error">The second group entry contains five tables.</li>
+                </ul>
+                <h3>Expected result</h3>
+                <ul>
+                    <li class="ok">There should be 20 groups logged and each one should contain just one table.</li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmail.com</footer>
+        </div>
+    </body>
+</html>

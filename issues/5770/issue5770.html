@@ -35,6 +35,18 @@ function onExecuteTest()
         });
     }
 }
+
+function onExecuteTest2()
+{
+    for (var i=0; i<5; i++)
+    {
+        request(function(response)
+        {
+            console.log("response " + response);
+            debugger;
+        });
+    }
+}
 </script>
 <div>
     <section id="description">
@@ -43,7 +55,9 @@ function onExecuteTest()
             <li>Open debugger</li>
             <li>Create a breakpoint on line 34</li>
             <li>Click this button: <button onclick="onExecuteTest()">Click Me</button></li>
-            <li>The breakpoint should hit six time, but it hits only the first time -> BUG</li>
+            <li>The breakpoint should hit five times, but it hits only the first time -> BUG</li>
+            <li>Click this button: <button onclick="onExecuteTest2()">Click Me</button></li>
+            <li>The debugger keyword should hit five times, but it hits only the first time -> BUG</li>
         </ol>
 <br/>
 <br/>

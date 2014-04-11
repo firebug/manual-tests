@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <title>Test Case for breakOnError</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+
+<script type="text/javascript">
+function onExecuteTest1()
+{
+    var a = t234();
+}
+
+function onExecuteTest2()
+{
+    try
+    {
+        var a = adsf.adsf;
+    }
+    catch (err)
+    {
+    }
+}
+
+function onExecuteTest3()
+{
+    try
+    {
+        var a = adsf.adsf;
+    }
+    catch (err)
+    {
+    }
+
+    var b = adsf.adsf;
+}
+
+</script>
+
+<p>This test-case is intended for testing various <i>breakOnError</i> feature
+<br/>
+<i>Jan Odvarko, odvarko@gmail.com</i>
+</p>
+
+<hr/>
+
+<a id="BreakOnNextError" />
+<h2>Break On Next Error</h2>
+<ol>
+<li>Open Firebug and enable the Console and Script panel</li>
+<li>Switch to the Console panel and click <code style="color:green">Break On All Errors</code>.</li>
+<li>Press this button
+    <button id="testButton" onclick="onExecuteTest1()">Error</button></li>
+<li>Firebug should switch to the Script panel and break in the debugger
+at the line where the error happened.</li>
+</ol>
+
+<hr/>
+
+<a id="ErrorBreakpoint" />
+<h2>Error Breakpoint</h2>
+<ol>
+<li>Open Firebug and enable the Console and Script panel</li>
+<li>Press this button
+    <button id="testButton" onclick="onExecuteTest1()">Error</button></li>
+<li>You should see an error log in the Console panel allowing to set a breakpoint on it</li>
+<li>Press this button (the same error)
+    <button id="testButton" onclick="onExecuteTest1()">Error</button></li>
+<li>Firebug should switch to the Script panel and break in the debugger
+at the line where the error happened.</li>
+</ol>
+
+<hr/>
+
+<a id="BreakOnExceptions" />
+<h2>Break On Exceptions</h2>
+<ol>
+<li>Open Firebug and enable the Script panel</li>
+<li>Switch to the Script panel and check <code style="color:green">Break On Exceptions</code>
+    option in the panel tab options menu.</li>
+<li>Press this button
+    <button id="testButton" onclick="onExecuteTest2()">Exception</button></li>
+<li>Firebug should switch to the Script panel and break in the debugger.</li>
+</ol>
+
+<hr/>
+
+<a id="IgnoreCaughtExceptions" />
+<h2>Ignore Caught Exceptions</h2>
+<ol>
+<li>Open Firebug and enable the Script panel</li>
+<li>Switch to the Script panel and check <code style="color:green">Break On Exceptions</code>
+    and <code style="color:green">Ignore Caught Exceptions</code> option in the panel tab
+    options menu.</li>
+<li>Press this button
+    <button id="testButton" onclick="onExecuteTest3()">Exception</button></li>
+<li>Firebug should switch to the Script panel and break in the debugger.</li>
+</ol>
+
+</body>
+</html>

@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Issue 7401: Debugger causes second request</title>
+        <title>Issue 7401: Debugger causes second request on POST</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
         <script type="text/javascript">
@@ -17,7 +17,7 @@
     </head>
     <body>
         <header>
-            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=7401">Issue 7401</a>: Debugger causes second request</h1>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=7401">Issue 7401</a>: Debugger causes second request on POST</h1>
         </header>
         <div>
 <?php

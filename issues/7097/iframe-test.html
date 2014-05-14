@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Issue 7097: Support for dynamically evaluated scripts (iframe)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="testcase.css" type="text/css" rel="stylesheet"/>
+</head>
+<body onload="onLoad()">
+<header>
+    <h1><a href="http://code.google.com/p/fbug/issues/detail?id=7097">Issue 7097</a>:
+        Support for dynamically evaluated scripts (iframe)</h1>
+</header>
+<script>
+function onLoad()
+{
+    console.log('onload')
+}
+
+function executeTest()
+{
+    var node = document.createElement("iframe");
+    node.width = 250;
+    node.height = 150;
+    node.src = "iframe-test-iframe.php";
+    document.body.appendChild(node);
+}
+</script>
+
+<div>
+    <section id="description">
+        <h3>Scenario II. Steps to reproduce</h3>
+        <ol>
+            <li>Open Firebug and enable the Script panel.</li>
+            <li>Click this button to create a new iframe tag with embedded script:
+                <button id="executeTest1" onclick="executeTest()">Test</button>
+            </li>
+        </ol>
+    </section>
+    <footer>
+        Jan Odvarko &lt;odvarko@gmail.com&gt;
+    </footer>
+</div>
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+<iframe src="iframe-test-iframe.php" width="250" height="150"/>
+
+</body>
+</html>

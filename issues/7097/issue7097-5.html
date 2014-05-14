@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Issue 7097: Support for dynamically evaluated scripts (5)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="testcase.css" type="text/css" rel="stylesheet"/>
+    <script src="issue7097-5-2.js"></script>
+</head>
+<body>
+<header>
+    <h1><a href="http://code.google.com/p/fbug/issues/detail?id=7097">Issue 7097</a>:
+        Support for dynamically evaluated scripts (4)</h1>
+</header>
+<script>
+function bar()
+{
+    debugger;
+    console.log("bar")
+}
+</script>
+<script>
+function executeTest1()
+{
+    var scriptTag = document.createElement("script");
+    scriptTag.textContent = "console.log('hello');";
+    document.body.appendChild(scriptTag);
+}
+function executeTest2()
+{
+    var scriptTag = document.createElement("script");
+    scriptTag.src = "issue7097-5.js";
+    document.body.appendChild(scriptTag);
+}
+
+function createAttributeScript()
+{
+    var button = document.getElementById("executeTest44");
+    button.setAttribute("onclick", "console.log('onclick')");
+}
+</script>
+<div>
+    <section id="description">
+        <h3>Scenario V. - Create new script via script tag.</h3>
+        <ol>
+            <li>Open Firebug and enable the Script panel.</li>
+            <li>Click this button to create a new script tag:
+                <button id="executeTest1" onclick="executeTest1()">Create Script 1</button>
+                <button id="executeTest11" onclick="scriptTagTest()">Execute Script 1</button>
+            </li>
+            <li>Click this button to create a new script tag:
+                <button id="executeTest2" onclick="executeTest2()">Create Script 2</button>
+                <button id="executeTest22" onclick="foo()">Execute Script 2</button>
+            </li>
+            <li>Execute embedded script:
+                <button id="executeTest3" onclick="bar()">Execute Script 3</button>
+            </li>
+            <li>Button with attribute script created dynamically:
+                <button id="executeTest4" onclick="createAttributeScript()">createAttributeScript</button>
+                <button id="executeTest44" onclick="">Execute Attribute Script</button>
+            </li>
+        </ol>
+    </section>
+    <footer>
+        Jan Odvarko &lt;odvarko@gmail.com&gt;
+    </footer>
+</div>
+</body>
+</html>

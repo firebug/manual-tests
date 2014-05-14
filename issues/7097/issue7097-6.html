@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Issue 7097: Support for dynamically evaluated scripts (6)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="testcase.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<header>
+    <h1><a href="http://code.google.com/p/fbug/issues/detail?id=7097">Issue 7097</a>:
+        Support for dynamically evaluated scripts (6)</h1>
+</header>
+<script>
+function createScriptTag()
+{
+    var scriptTag = document.createElement("script");
+    scriptTag.textContent = "function test() {\n  debugger;\n  console.log('hello');\n }\n";
+    document.body.appendChild(scriptTag);
+}
+function executeScript()
+{
+    test();
+}
+</script>
+<div>
+    <section id="description">
+        <h3>Scenario VI. - Create new script via script tag and
+            use <code>debugger;</code> keyword.</h3>
+        <ol>
+            <li>Open Firebug and enable the Script panel.</li>
+            <li>Click this button to create a new script tag:
+                <button id="executeTest1" onclick="createScriptTag()">Create Script Tag</button>
+            </li>
+            <li>Click this button to execute the new script:
+                <button id="executeTest1" onclick="executeScript()">Execute Script</button>
+            </li>
+        </ol>
+    </section>
+    <footer>
+        Jan Odvarko &lt;odvarko@gmail.com&gt;
+    </footer>
+</div>
+</body>
+</html>

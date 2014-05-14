@@ -12,6 +12,7 @@ SERVER.for(module, __dirname, function(app) {
 			if (err) return next(err);
 
 			var payload = [];
+			payload.push('<h2>Manual Firebug Tests</h2>');
 			payload.push('<ul>');
 			paths.forEach(function(path) {
 				payload.push('<li><a href="' + path + '">' + path + '</a></li>');

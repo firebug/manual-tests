@@ -30,3 +30,6 @@
 # Extensions
 /extension/firebug@software.joehewitt.com
 
+# dev-system
+/node_modules/
+/.pio.cache/

@@ -4,6 +4,7 @@
   "private": true,
   "pm": "npm",
   "dependencies": {
+    "glob": "^3.2.9",
     "smi.cli": "0.x"
   },
   "scripts": {
@@ -26,6 +27,9 @@
     },
     "pio.deploy.converter": {
       "name": "nodejs-server"
+    },
+    "io.pinf.server.www": {
+      "documentRootPath": "."
     }
   }
 }

@@ -16,6 +16,9 @@ function evalScript()
     var func = new Function("a", "b", "var sum = a + b;\n\nreturn sum;\n//# sourceURL=myFunc.js");
     func.displayName = "add";
 
+    var obj = new Object();
+    obj.then = function() {};
+
     var result = func(15, 45);
     console.log(result);
 }

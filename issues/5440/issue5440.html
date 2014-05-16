@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Issue 5440: Integrate EventBug into Firebug</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="testcase.css" type="text/css" rel="stylesheet"/>
+</head>
+<body onload="onLoad()">
+<header>
+    <h1><a href="http://code.google.com/p/fbug/issues/detail?id=5440">Issue 5440</a>:
+        Integrate EventBug into Firebug</h1>
+</header>
+<div>
+    <section id="description">
+        <ol>
+            <li>Open Firebug and enable the Script and Console panel.</li>
+            <li>Use Firebug's inspector to inspect this button
+                <button onclick="onExecuteTest()" onmousemove="console.log('mouse move')">Click Me</button></li>
+            <li></li>
+            <li></li>
+        </ol>
+    </section>
+    <footer>
+        Jan Odvarko &lt;odvarko@gmail.com&gt;
+    </footer>
+</div>
+<script>
+function onLoad()
+{
+    console.log("page loaded");
+}
+
+function onExecuteTest()
+{
+    console.log("button clicked");
+}
+
+var desc = document.getElementById("description");
+desc.addEventListener("onclick", function descriptionOnClick()
+{
+    console.log("clickin on description");
+});
+</script>
+</body>
+</html>

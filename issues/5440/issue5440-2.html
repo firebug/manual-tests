@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Issue 5440: Integrate EventBug into Firebug</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="testcase.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<header>
+    <h1><a href="http://code.google.com/p/fbug/issues/detail?id=5440">Issue 5440</a>:
+        Integrate EventBug into Firebug</h1>
+</header>
+
+<div id="div1" onclick="console.log('click')">Click Me 1</div>
+
+<script>
+var div =
+  document.getElementById("div1");
+  
+div.addEventListener("mousemove",
+  function myMouseMoveHandler() {
+    console.log("mouse move");
+});
+
+</script>
+
+</body>
+</html>

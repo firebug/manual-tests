@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Issue 5176: "Step Over" misbehaves with recursive function</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="testcase.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+
+<script>
+var i = 0;
+function foo() {
+    if (i < 10) {
+        i++;
+        var rv = foo();
+        $('body').append(rv);
+        return rv;
+    }
+    $('body').append('Silly: ' + i);
+    return 'haha';
+};
+
+foo();
+</script>
+
+<header>
+    <h1><a href="http://code.google.com/p/fbug/issues/detail?id=5176">Issue 5176</a>:
+        "Step Over" misbehaves with recursive function</h1>
+</header>
+<div>
+    <section id="description">
+        <h3>Steps to reproduce</h3>
+        <ol>
+        <li>Open testcase, open firebug, open script panel, load _display script (you may need to click 'run' on the jsfiddle first to get it to show up).</li>
+        <li>Set a breakpoint on the 'var rv = foo()' line.</li>
+        <li>Reload. The breakpoint gets hit.</li>
+        <li>Click 'step over' (or use the shortcut key, I doubt it makes a difference).</li>
+        </ol>
+    </section>
+    <footer>
+        Jan Odvarko &lt;odvarko@gmail.com&gt;
+    </footer>
+</div>
+</body>
+</html>

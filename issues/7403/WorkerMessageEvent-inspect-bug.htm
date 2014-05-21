@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>WorkerMessageEvent-inspect-bug</title>
+
+	<script>
+		var wrkr = new Worker("worker.js");
+
+		wrkr.onmessage = function(event) {
+			console.log(event);
+		};
+
+		wrkr.postMessage("");
+	</script>
+</head>
+<body>
+
+</body>
+</html>

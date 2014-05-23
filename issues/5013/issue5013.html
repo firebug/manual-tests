@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 5013: Edit button doesn't work when there's no CSS at all</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    </head>
+    <body>
+        <h1><a href="http://code.google.com/p/fbug/issues/detail?id=1338">Issue 5013</a>: Edit button doesn't work when there's no CSS at all</h1>
+        <div>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Switch to the <em>CSS</em> panel</li>
+                    <li>
+                        Click the <em>Source Edit</em> button<br/>
+                        <span class="error">Nothing happens</span>
+                    </li>
+                    <li>Change to <em>Live Edit</em></li>
+                    <li>
+                        Click the <em>Live Edit</em> button<br/>
+                        <span class="error">Nothing happens</span>
+                    </li>
+                </ol>
+                <h3>Expected Results</h3>
+                <ul>
+                    <li>The <em>Source Edit</em> option should be hidden, because there is no source to edit</li>
+                    <li>The <em>Live Edit</em> option should inject a new stylesheet like it's done when clicking on "create a rule" with the Edit Mode off</li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmx.de</footer>
+        </div>
+    </body>
+</html>

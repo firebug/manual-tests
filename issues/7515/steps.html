@@ -1,0 +1,27 @@
+<html>
+<head>
+	
+</head>
+<body>
+
+<pre>
+Breakpoint doesn't get hit on frames
+-----------------------------
+
+1) Open Firebug on the attached test case file main.html
+2) Enable Script panel and go to "test.js"
+3) Set a breakpoint at line 2;
+4) Right-click the frame and choose This Frame > Reload Frame from the context menu
+
+What is the expected result? 
+  The execution should stop at test.js line 2
+
+What do you see instead?
+  Execution does not stop
+
+Fb30.0
+Fb2.0
+</pre>
+
+</body>
+</html>

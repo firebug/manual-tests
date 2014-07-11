@@ -1,0 +1,40 @@
+<html>
+<head>
+	<script type="text/javascript" src="issue_7301.js"></script>
+</head>
+<body>
+<button onclick="funcTest()">Click me!</button>
+<pre>
+1) Open Firebug on the attached test case file issue_7301.html
+2) Enable Script panel and select issue_7301.js
+3) Set a breakpoint at line 4 and line 5
+4) Edit issue_7301.js adding a line break inside the "funcTest" function
+function funcTest()
+{
+//line break
+	var message = 1234567890;
+	console.log(message);
+}
+5) Now line 4 is non-executable line.
+6) Close tab issue_7301.html
+7) Open issue_7301.html again and select issue_7301.js
+8) Now only a breakpoint at line 5
+9) remove breakpoint
+10) Click on "Click me!"
+
+
+What is the expected result? 
+  Debugger should not stop
+
+What do you see instead?  
+	The debugger is halted at line 5 
+
+I think it's the same problem as described in comment 22 by Farshid
+	
+FF 30.0
+Fb 2.0.2
+</pre>
+
+</body>
+
+</html>

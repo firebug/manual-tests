@@ -13,7 +13,7 @@ $a[]="Anna9";
 // get the q parameter from URL
 $q=$_REQUEST["q"]; $hint="";
 
-ob_start();
+if (ob_get_level() == 0) ob_start(); 
 
 // lookup all hints from array if $q is different from ""
 if ($q !== "") {

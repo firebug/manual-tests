@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 7643: Enable pretty-printing for dynamically evaluated scripts</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
+        <script type="text/javascript" src="test.js"></script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=7643">Issue 7643</a>: Enable pretty-printing for dynamically evaluated scripts</h1>
+        </header>
+        <div>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Enable and switch to the <em>Script</em> panel</li>
+                    <li>Reload the page</li>
+                    <li>Click through the alerts</li>
+                    <li>In the location menu select <em>test.js line 1 > eval</em></li>
+                </ol>
+                <h3>Observed result</h3>
+                <ul>
+                    <li>The pretty-print button is disabled</li>
+                </ul>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>Pretty-printing should be available for the dynamically evaluated script.</li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmail.com</footer>
+        </div>
+    </body>
+</html>

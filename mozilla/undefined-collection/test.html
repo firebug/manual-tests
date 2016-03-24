@@ -1,0 +1,38 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Test Page</title>
+    <script type="text/javascript" src="simpleScript.js"></script>
+</head>
+<body>
+
+<ol>
+<li>Click the button to run the test</li>
+<li>You should see following in the system console (or Firefox Error Console):
+<pre>
+scope: Call
+scope vars: c: false, b: 100, a: hello</li>
+</pre>
+<li>I am seeing following in Linux (Ubuntu 9.04): 
+<pre>
+scope: Call
+scope vars: c: false, -2.21420102685212e-75: 2.143215748267e-312, undefined: a
+</pre>
+</li>
+</ol>
+
+<button onclick="executeTest()">Click Me!</button>
+
+<script type="text/javascript">
+function executeTest()
+{
+    var a = "hello";
+    var b = 100;
+    var c = false;
+
+    debugger;
+}
+</script>
+
+
+</body>
+</html>

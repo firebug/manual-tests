@@ -4,20 +4,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 
-<script>
+<script src="stuff.js"></script>
 
-var FirebugPanel = 
+<script>
+console.log('Greetings earthling.')
+
+function foo()
 {
-    supportsObject: function(object)
-    {
-        return object instanceof Element;
-    },
-    
-    select: function(object)
-    {
-        document.body.innerHTML = object;
-    }
-};
+    console.log("Ruf!");
+}
 
 </script>
 
@@ -31,6 +26,7 @@ body {
 
 </head>
 
-<body>
+<body onload="console.log('Hello from Frameland')">
+    <iframe src="frame2.html">
 </body>
 </html>

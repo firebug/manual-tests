@@ -1,0 +1,35 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<script type="text/javascript">
+function addNewScriptToHead()
+{
+    console.log("state " + document.readyState);
+
+    var newScriptElem;
+    var newScriptText;
+
+    newScriptElem = document.createElement('script');
+    newScriptElem.setAttribute('type', 'text/javascript');
+
+    newScriptElem.text= 'function runNewScript() {alert("hi there")}; function runOtherScript() {alert("hi again!")}; function kilroy(id){document.getElementById(id).innerHTML= id}; function breakIntoDebugger(){debugger}; kilroy("hostDiv1")';
+
+    document.body.appendChild(newScriptElem);
+};
+
+setTimeout(addNewScriptToHead, 1); // wait, so DOM is complete
+setTimeout(function(){kilroy('hostDiv2')}, 3000);
+</script>
+</head>
+<body>
+
+<div id="hostDiv1"></div>
+<div id="hostDiv2"></div>
+<hr />
+<br />
+<button onclick="runNewScript()">Run one of the newly added functions to ensure that it is real. This should alert the string "hi there"</button><br><br>
+<button onclick="runOtherScript()">Run the other newly added function to ensure that it is also real. This should alert the string "hi again!"</button><br><br>
+<button onclick="breakIntoDebugger()">Break into the debugger</button>
+
+</body>
+</html>

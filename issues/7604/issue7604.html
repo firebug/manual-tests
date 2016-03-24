@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 7604: Issue summary</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=7604">Issue 7604</a>: Unrecognized CSS rule types break the display within the CSS and the DOM panel</h1>
+        </header>
+        <div>
+            <section id="description">
+                <h2><em>CSS</em> panel</h2>
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Switch to the <em>CSS</em> panel</li>
+                </ol>
+                <h3>Observed result</h3>
+                <ul>
+                    <li class="error">The display of the <em>CSS</em> panel is broken. (No rules are shown and the side panels of the previous panel are displayed.)</li>
+                </ul>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>The unrecognized rule should just be skipped when displaying the rules.</li>
+                </ul>
+
+                <h2><em>DOM</em> panel</h2>
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Switch to the <em>DOM</em> panel</li>
+                    <li>Expand the tree <code>document</code> &gt; <code>styleSheets</code> &gt; <code>0</code> &gt; <code>cssRules</code></li>
+                </ol>
+                <h3>Observed result</h3>
+                <ul>
+                    <li class="error">The display of the rules is broken. (There's just one empty item instead of two normally displayed ones.)</li>
+                </ul>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>The unrecognized rule should just be displayed as <code>CSSRule</code>.</li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmail.com</footer>
+        </div>
+    </body>
+</html>

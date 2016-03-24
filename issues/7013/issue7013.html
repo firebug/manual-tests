@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Issue 7013: "Refresh" doesn't work within watch panel subtrees</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="testcase.css" type="text/css" rel="stylesheet"/>
+    <script src="issue7013.js" type="text/javascript"></script>
+</head>
+<body>
+<header>
+    <h1><a href="http://code.google.com/p/fbug/issues/detail?id=7013">Issue 7013</a>:
+        "Refresh" doesn't work within watch panel subtrees</h1>
+</header>
+<div>
+    <section id="description">
+        <h3>Steps to reproduce</h3>
+        <ol>
+            <li>Select and enable the Script panel</li>
+            <li>Create a breakpoint at line 6</li>
+            <li>Click this button <button onclick="onExecuteTest()">Click Me!</button></li>
+            <li>The breakpoint should hit</li>
+            <li>Select the Watch panel and expand the <code>son</code> property</li>
+            <li>Open Comand Line Popup and execute: <code>son = {a: 1}</code></li>
+            <li>The Watch panel should be properly updated. The propety <code>son</code>
+                should be still expanded.</li>
+        </ol>
+    </section>
+    <footer>
+        Jan Odvarko &lt;odvarko@gmail.com&gt;
+    </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 6918: Breakpoints for lines with only method calls that have no parameters are disabled and skipped</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
+        <script type="text/javascript">
+        var myCar;
+
+        function car(brand, type, color)
+        {
+            this.brand = brand;
+            this.type = type;
+            this.speed = 0;
+            this.accelerate = function(speedChange)
+            {
+                this.speed += (speedChange || 10);
+                return this;
+            };
+            this.stop = function()
+            {
+                this.speed = 0;
+                return this;
+            };
+
+            return this;
+        }
+
+        function createCar()
+        {
+            myCar = new car("Audi", "A6")
+                .accelerate(100)
+                .accelerate()
+                .stop()
+                .accelerate(50)
+                .accelerate();
+        }
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=6918">Issue 6918</a>: Breakpoints for lines with only method calls that have no parameters are disabled and skipped</h1>
+        </header>
+        <div>
+            <section id="content">
+                <button onclick="createCar()">Create car</button>
+            </section>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Enable and switch to the <em>Script</em> panel</li>
+                    <li>
+                        Reload the page<br/>
+                        <span class="error">&rArr; Line 33 (<code>.accelerate()</code>) and line 34 (<code>.stop()</code>) is not marked as executable.</span>
+                    </li>
+                    <li>
+                        Try to set a breakpoint on line 33<br/>
+                        <span class="error">The breakpoint will be set on line 35.</span>
+                    </li>
+                </ol>
+                <h3>Observed result</h3>
+                <ul>
+                    <li>The functions without parameters are not marked as executable and breakpoints can't be set on them.</li>
+                </ul>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>The user should be able to set a breakpoint at line 33 and 34.</li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmail.com</footer>
+        </div>
+    </body>
+</html>

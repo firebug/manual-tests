@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Issue 6857: Give the ability to modify the returned value</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="testcase.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<script>
+function foo()
+{
+    return 100;
+}
+
+function myFunction()
+{
+    return foo();
+}
+
+function onExecuteTest()
+{
+    var value = myFunction();
+    console.log("value ",
+       value);
+}
+</script>
+<header>
+    <h1><a href="http://code.google.com/p/fbug/issues/detail?id=6857">Issue 6857</a>:
+        Give the ability to modify the returned value</h1>
+</header>
+<div>
+    <section id="description">
+        <h3>Steps to reproduce</h3>
+        <ol>
+            <li>Open Firebug (F12) and Enable the Script and Console panels</li>
+            <li>Select the Script panel and create a breakpoint at line 17</li>
+            <li>Click this button <button onclick="onExecuteTest()">Click Me</button>
+                to stop JS execution at line 17</li>
+            <li>Step over once (F10) and check out the Watch panel. It now displays
+                <code>&lt;return value&gt;</code></li>
+            <li>Double click on the value (number <code>100</code>) and change it.</li>
+            <li>Resume the debugger (F8) and check out the Console panel. The new
+                value is logged.</li>
+        </ol>
+    </section>
+    <footer>
+        Jan Odvarko &lt;odvarko@gmail.com&gt;
+    </footer>
+</div>
+</body>
+</html>

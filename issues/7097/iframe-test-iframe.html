@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="testcase.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<script>
+function executeTest1()
+{
+    var script =
+        "console.log('hello from injected script');\n" +
+        "console.log('hello from injected script2');\n" +
+        "\n" +
+        "function scriptTagTest()\n" +
+        "{\n" +
+        "   var a = 1 + 1;\n" +
+        "   console.log('script tag test ' + a)\n" +
+        "}\n" +
+        "\n" +
+        "//# sourceURL=injected-script.displayname\n";
+
+    var scriptTag = document.createElement("script");
+    scriptTag.textContent = script;
+    document.body.appendChild(scriptTag);
+}
+</script>
+<button id="executeTest1" onclick="executeTest1()">Create Script 1</button>
+<button id="executeTest11" onclick="scriptTagTest()">Execute Script 1</button>
+</body>
+</html>

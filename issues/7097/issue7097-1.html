@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Issue 7097: Support for dynamically evaluated scripts (1)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="testcase.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<header>
+    <h1><a href="http://code.google.com/p/fbug/issues/detail?id=7097">Issue 7097</a>:
+        Support for dynamically evaluated scripts (1)</h1>
+</header>
+<script>
+function evalScript()
+{
+    var xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function()
+    {
+        if (xhr.readyState == 4 && xhr.status == 200)
+        {
+            window.eval(xhr.responseText);
+        }
+    }
+
+    xhr.open("GET", "issue7097-1.js", true);
+    xhr.send(null);
+}
+
+function testScript()
+{
+    // The following line 32 corresponds to line 12 in the dynamically evaluated script.
+    console.log("hi from static script");
+}
+</script>
+<div>
+    <section id="description">
+        <h3>Scenario I. Steps to reproduce</h3>
+        <ol>
+            <li>Open Firebug and enable the Script panel.</li>
+            <li>Click this button to load and evaluate a script:
+                <button id="evalButton" onclick="evalScript()">Eval</button>
+            </li>
+            <li>Create a breakpoint in the parent/static script at line 32</li>
+            <li>Click this button to execute function from the evaluated script:
+                <button id="testButton" onclick="foo()">Test</button>
+            </li>
+            <li>The break should happen on line 32 in issue7097-1.html, but it doesn't -> BUG</li>
+        </ol>
+<br/><br/>
+<i>The break happens on line 12 in dynamically evaluated script even if the breakpoint
+has been set on line 32 in the static script. This is because the dynamic script overlaps
+parent's script lines (which could be still ok), and also shares the URL (which is wrong,
+see <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=957798">bug 957798</a>)</i>
+    </section>
+    <footer>
+        Jan Odvarko &lt;odvarko@gmail.com&gt;
+    </footer>
+</div>
+</body>
+</html>

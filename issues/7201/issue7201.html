@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 7201: (Re-)implement //# sourceURL</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
+        <script type="text/javascript">
+        function evalCode()
+        {
+            eval("\nconsole.log('Hello Firebug user from eval()\\'ed code!'); " +
+                "//# sourceURL=eval()");
+        }
+
+        function createNewFunction()
+        {
+            var source = "\nconsole.log('Hello Firebug user from code created via " +
+                "\\'new Function()\\'!'); //# sourceURL=new-Function()";
+            (new Function(source))();
+        }
+
+        function createScript()
+        {
+            var script = document.createElement("script");
+            script.textContent = "\nconsole.log('Hello Firebug user from code injected via new <script> tag!'); " +
+                "//# sourceURL=<script>";
+            document.body.appendChild(script);
+        }
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=7201">Issue 7201</a>: (Re-)implement //# sourceURL</h1>
+        </header>
+        <div>
+            <section id="content">
+                <button onclick="evalCode()">Create script via <code>eval()</code></button>
+                <button onclick="createNewFunction()">Create script via <code>new Function()</code></button>
+                <button onclick="createScript()">Create script via <code>&lt;script&gt;</code> tag</button>
+            </section>
+            <section id="description">
+                <h2>Script created via <code>eval()</code></h2>
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Enable the <em>Console</em> and the <em>Script</em> panel</li>
+                    <li>
+                        Switch to the <em>Console</em> panel<br/>
+                        <span class="ok">
+                            &rArr; There should be a log message
+                            <code>Hello Firebug user from eval()'ed code!</code>
+                            with a source link named <em>eval() (line 2)</em>.
+                        </span>
+                    </li>
+                    <li>Switch to the <em>Script</em> panel</li>
+                    <li>Click the <em>Create script via <code>eval()</code></em> button above</li>
+                    <li>
+                        Open the Location Menu<br/>
+                        <span class="ok">
+                            &rArr; The Location Menu should list a dynamically created script
+                            named <em>eval()</em>.
+                        </span>
+                    </li>
+                    <li>Switch to the <em>Stack</em> side panel</li>
+                    <li>
+                        Create a breakpoint at line 2 of the dynamically created script
+                        (<code>console.log('Hello Firebug user from eval()\'ed code!'); //# sourceURL=eval()</code>)
+                    </li>
+                    <li>
+                        Click the <em>Create script via <code>eval()</code></em> button again<br/>
+                        <span class="ok">
+                            &rArr; The script execution should stop at the breakpoint and the stack
+                            frame link for the function inside the <em>Watch</em> side panel and
+                            the stack frame path tooltip should be named <em>eval() (line 2)</em>
+                        </span>
+                    </li>
+                </ol>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>
+                        eval()'ed scripts should allow to be given a name via
+                        <code>//# sourceURL</code>.
+                    </li>
+                </ul>
+
+                <h2>Script created via <code>new Function()</code></h2>
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Enable the <em>Console</em> and the <em>Script</em> panel</li>
+                    <li>
+                        Switch to the <em>Console</em> panel<br/>
+                        <span class="ok">
+                            &rArr; There should be a log message
+                            <code>Hello Firebug user from code created via 'new Function()'!</code>
+                            with a source link named <em>new-Function() (line 3)</em>.
+                        </span>
+                    </li>
+                    <li>Switch to the <em>Script</em> panel</li>
+                    <li>Click the <em>Create script via <code>new Function()</code></em> button above</li>
+                    <li>
+                        Open the Location Menu<br/>
+                        <span class="ok">
+                            &rArr; The Location Menu should list a dynamically created script
+                            named <em>new Function()</em>.
+                        </span>
+                    </li>
+                    <li>Switch to the <em>Stack</em> side panel</li>
+                    <li>
+                        Create a breakpoint at line 3 of the dynamically created script
+                        (<code>console.log('Hello Firebug user from code created via \'new Function()\'!'); //# sourceURL=new-Function()</code>)
+                    </li>
+                    <li>
+                        Click the <em>Create script via <code>new Function()</code></em> button again<br/>
+                        <span class="ok">
+                            &rArr; The script execution should stop at the breakpoint and the stack
+                            frame link for the function inside the <em>Watch</em> side panel and
+                            the stack frame path tooltip should be named <em>new-Function() (line 3)</em>
+                        </span>
+                    </li>
+                </ol>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>
+                        Scripts created via <code>new Function</code> should allow to be given a
+                        name via <code>//# sourceURL</code>.
+                    </li>
+                </ul>
+
+                <h2>Script created via &lt;script&gt; tag</h2>
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Enable the <em>Console</em> and the <em>Script</em> panel</li>
+                    <li>
+                        Switch to the <em>Console</em> panel<br/>
+                        <span class="ok">
+                            &rArr; There should be a log message
+                            <code>Hello Firebug user from code injected via new &lt;script&gt; tag!</code>
+                            with a source link named <em>&lt;script&gt; (line 2)</em>.
+                        </span>
+                    </li>
+                    <li>Switch to the <em>Script</em> panel</li>
+                    <li>Click the <em>Create script via <code>&lt;script&gt;</code> tag</em> button above</li>
+                    <li>
+                        Open the Location Menu<br/>
+                        <span class="ok">
+                            &rArr; The Location Menu should list a dynamically created script
+                            named <em>&lt;script&gt;</em>.
+                        </span>
+                    </li>
+                    <li>Switch to the <em>Stack</em> side panel</li>
+                    <li>
+                        Create a breakpoint at line 2 of the dynamically created script
+                        (<code>console.log('Hello Firebug user from code injected via new &lt;script&gt; tag!'); //# sourceURL=&lt;script&gt;</code>)
+                    </li>
+                    <li>
+                        Click the <em>Create script via <code>&lt;script&gt;</code> tag</em> button again<br/>
+                        <span class="ok">
+                            &rArr; The script execution should stop at the breakpoint and the stack
+                            frame link for the function inside the <em>Watch</em> side panel and
+                            the stack frame path tooltip should be named <em>&lt;script&gt; (line 2)</em>
+                        </span>
+                    </li>
+                </ol>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>
+                        Scripts created via injecting a new <code>&lt;script&gt;</code> tag should
+                        allow to be given a name via <code>//# sourceURL</code>.
+                    </li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmail.com</footer>
+        </div>
+    </body>
+</html>

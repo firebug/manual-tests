@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+
+<script>
+	function changeFrame(url)
+	{
+		var iframe = document.getElementById("id_iframe");
+		var random = "random="+(new Date()).getTime();
+		iframe.src=url+"?"+random;
+	}
+</script>
+
+</head>
+<body>
+
+	<button onclick="javascript:changeFrame('iframe1.html')">Load iframe1.html</button><br/>
+	<button onclick="javascript:changeFrame('iframe2.html')">Load iframe2.html</button><br/><br/>
+
+	<iframe id="id_iframe" src="iframe1.html" style="height:200px; width:200px; border:2px solid grey"></iframe>
+	<button onclick="javascript:x()">Run function</button><br/>
+
+</body>
+</html>

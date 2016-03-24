@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bug 865313: It is not possible to debug dynamically evaluated scripts</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
+        <script type="text/javascript">
+        function createScriptViaEval()
+        {
+            eval("function evalTest()\n{\nconsole.log('Hello from script evaluated via \\'eval()\\'!');\n}\n\nevalTest();");
+        }
+        
+        function createScriptViaScriptTag()
+        {
+            var scriptTag = document.createElement("script");
+            scriptTag.textContent = "function scriptTagTest()\n{\nconsole.log('Hello from script evaluated by appending a <script> tag!');\n}\n\nscriptTagTest();";
+            document.body.appendChild(scriptTag);
+        }
+
+        function createScriptViaNewFunction()
+        {
+            newFunctionTest = new Function("console.log(\"Hello from script evaluated via 'new Function()'!\");");
+            newFunctionTest();
+        }
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="https://bugzilla.mozilla.org/show_bug.cgi?id=865313">Bug 865313</a>: It is not possible to debug dynamically evaluated scripts</h1>
+        </header>
+        <div>
+            <section id="content">
+                <button onclick="createScriptViaEval()">Create script via <code>eval()</code></button>
+                <button onclick="createScriptViaScriptTag()">Create script via <code>&lt;script&gt;</code> tag</button>
+                <button onclick="createScriptViaNewFunction()">Create script via <code>new Function()</code></button>
+            </section>
+            <section id="description">
+                <h2>Via <code>eval()</code></h2>
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Enable and switch to the <em>Script</em> panel</li>
+                    <li>Reload the page</li>
+                    <li>Click the <em>Create script via <code>eval()</code></em> button above</li>
+                    <li>
+                        Open the Script Location Menu<br/>
+                        <span class="ok">
+                            &rArr; There should be two dynamically evaluated scripts listed,
+                            one related to the onclick event handler and one containing the
+                            <code>function evalTest()...</code> code. (not implemented yet)
+                        </span>
+                    </li>
+                    <li>
+                        Choose the eval()ed code from the list<br/>
+                        <span class="ok">
+                            &rArr; The <em>Script</em> panel should list this:
+<code>
+function evalTest()
+{
+console.log('Hello from script evaluated via \'eval()\'!');
+}
+
+evalTest();
+</code>
+                        </span>
+                    </li>
+                    <li>Set a breakpoint at line 3 (<code>console.log('Hello from script evaluated via \'eval()\'!');</code>)</li>
+                    <li>Click the <em>Create script via <code>eval()</code></em> button again</li>
+                </ol>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>The script execution should halt at line 3 and allow to step debug the dynamically generated code.</li>
+                </ul>
+
+                <h2>Via appending a <code>&lt;script&gt;</code> tag</h2>
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Enable and switch to the <em>Script</em> panel</li>
+                    <li>Reload the page</li>
+                    <li>Click the <em>Create script via <code>eval()</code></em> button above</li>
+                    <li>
+                        Open the Script Location Menu<br/>
+                        <span class="ok">
+                            &rArr; There should be two dynamically evaluated scripts listed,
+                            one related to the onclick event handler and one containing the
+                            <code>function evalTest()...</code> code. (not implemented yet)
+                        </span>
+                    </li>
+                    <li>
+                        Choose the eval()ed code from the list<br/>
+                        <span class="ok">
+                            &rArr; The <em>Script</em> panel should list this:
+<code>
+function evalTest()
+{
+console.log('Hello from script evaluated via \'eval()\'!');
+}
+
+evalTest();
+</code>
+                        </span>
+                    </li>
+                    <li>Set a breakpoint at line 3 (<code>console.log('Hello from script evaluated via \'eval()\'!');</code>)</li>
+                    <li>Click the <em>Create script via <code>eval()</code></em> button again</li>
+                </ol>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>The script execution should halt at line 3 and allow to step debug the dynamically generated code.</li>
+                </ul>
+
+                <h2>Via <code>new Function()</code></h2>
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Enable and switch to the <em>Script</em> panel</li>
+                    <li>Reload the page</li>
+                    <li>Click the <em>Create script via <code>eval()</code></em> button above</li>
+                    <li>
+                        Open the Script Location Menu<br/>
+                        <span class="ok">
+                            &rArr; There should be two dynamically evaluated scripts listed,
+                            one related to the onclick event handler and one containing the
+                            <code>function evalTest()...</code> code. (not implemented yet)
+                        </span>
+                    </li>
+                    <li>
+                        Choose the eval()ed code from the list<br/>
+                        <span class="ok">
+                            &rArr; The <em>Script</em> panel should list this:
+<code>
+function evalTest()
+{
+console.log('Hello from script evaluated via \'eval()\'!');
+}
+
+evalTest();
+</code>
+                        </span>
+                    </li>
+                    <li>Set a breakpoint at line 3 (<code>console.log('Hello from script evaluated via \'eval()\'!');</code>)</li>
+                    <li>Click the <em>Create script via <code>eval()</code></em> button again</li>
+                </ol>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>The script execution should halt at line 3 and allow to step debug the dynamically generated code.</li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmail.com</footer>
+        </div>
+    </body>
+</html>

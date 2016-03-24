@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 7209: Security error related to password fields has '0' as source sample</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=7209">Issue 7209</a>: Security error related to password fields has '0' as source sample</h1>
+        </header>
+        <div>
+            <section id="content">
+                <form action="asdf">
+                    <input type="password">
+                </form>
+            </section>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Enable and switch to the <em>Console</em> panel</li>
+                    <li>Reload the page</li>
+                </ol>
+                <h3>Observed result</h3>
+                <ul>
+                    <li class="ok">&rArr; Two errors are shown saying related to password fields on an insecure page.</li>
+                    <li class="error">&rArr; There is a source sample for the error containing <code>0</code>.</li>
+                </ul>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>There should not be a source sample for this error.</li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmail.com</footer>
+        </div>
+    </body>
+</html>

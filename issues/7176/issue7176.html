@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Issue 7176: Firebug fails to mark lines as executable when previous line ends a function</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="testcase.css" type="text/css" rel="stylesheet"/>
+    <script src="issue7176.js" type="text/javascript"></script>
+</head>
+<body>
+<script type="text/javascript">
+function g(b)
+{
+    console.log(function() {
+        return 0;});
+    return b;
+}
+
+function h()
+{
+    console.log("test");
+    return 10;
+}
+</script>
+<header>
+    <h1><a href="http://code.google.com/p/fbug/issues/detail?id=7176">Issue 7176</a>:
+        Firebug fails to mark lines as executable when previous line ends a function</h1>
+</header>
+<div>
+    <section id="description">
+        <h3>Steps to reproduce</h3>
+        <ol>
+            <li>Click this button <button onclick="g(10)">Click Me</button></li>
+            <li>Click this button <button onclick="test()">test</button></li>
+            <li>Step 3</li>
+        </ol>
+    </section>
+    <footer>
+        Jan Odvarko &lt;odvarko@gmail.com&gt;
+    </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 5176: "Step Over" should not halt on breakpoint within deeper stack frame</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
+        <script type="text/javascript">
+        function test1()
+        {
+            test2();
+            console.log("Hello from the first function!");
+        }
+
+        function test2()
+        {
+            console.log("Hello from the second function!");
+        }
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1>
+                <a href="http://code.google.com/p/fbug/issues/detail?id=5176">Issue 5176</a>:
+                "Step Over" should not halt on breakpoint within deeper stack frame
+            </h1>
+        </header>
+        <div>
+            <section id="content">
+                <button onclick="test1()">Call function</button>
+            </section>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Enable and switch to the <em>Script</em> panel</li>
+                    <li>
+                        Set a breakpoint at line 10 (<code>test2();</code>) and one at line 16
+                        (<code>console.log("Hello from the second function!");</code>) of
+                        <em>issue5176-2.html</em>
+                    </li>
+                    <li>
+                        Click the <em>Call function</em> button above<br/>
+                        <span class="ok">&rArr; The script execution will halt at line 10.</span>
+                    </li>
+                    <li>Press <kbd>F10</kbd> to step over the statement</li>
+                </ol>
+                <h3>Observed result</h3>
+                <ul>
+                    <li>The script execution halts at line 16.</li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmail.com</footer>
+        </div>
+    </body>
+</html>

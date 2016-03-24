@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 7469: HTML structure collapses when it's changed</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
+        <script type="text/javascript">
+        function changeStructure()
+        {
+            var div = document.createElement("div");
+            document.documentElement.appendChild(div);
+        }
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=7469">Issue 7469</a>: HTML structure collapses when it's changed</h1>
+        </header>
+        <div>
+            <section id="content">
+                <button onclick="changeStructure()">Change structure</button>
+                <p>Text</p>
+            </section>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Switch to the <em>HTML</em> panel</li>
+                    <li>Inspect the paragraph element containing <em>Text</em> above</li>
+                    <li>Click the <em>Change structure</em> button above</li>
+                </ol>
+                <h3>Observed result</h3>
+                <ul>
+                    <li>The HTML tree collapses.</li>
+                </ul>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>The tree should stay expanded and keep the paragraph element selected.</li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmail.com</footer>
+        </div>
+    </body>
+</html>

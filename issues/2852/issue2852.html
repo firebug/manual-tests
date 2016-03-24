@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 2852: Hovering JavaScript variables while debugging is not always showing an info popup</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
+        <script type="text/javascript">
+        window.addEventListener("load", () =>
+        {
+            var array = [652,19,271,86,430],
+                object = {project: {name: "Firebug", version: 1.6}, arrayInObject: array},
+                sameArrayAsAbove = object.arrayInObject[2],
+                projectName = object.project.name;
+            debugger;
+        });
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=2852">Issue 2852</a>: Hovering JavaScript variables while debugging is not always showing an info popup</h1>
+        </header>
+        <div>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Enable and switch to the <em>Script</em> panel</li>
+                    <li>
+                        Reload the page<br/>
+                        <span class="ok">&rArr; The script execution should stop at the <code>debugger</code> keyword</span>
+                    </li>
+                    <li>Hover over the different variables and properties inside the <em>Script</em> panel</li>
+                </ol>
+                <h3>Observed result</h3>
+                <ul>
+                    <li class="error">There's no infotip shown for the variables except for the global ones and <code>name</code>.</li>
+                    <li class="error"><code>name</code> shows an empty string</li>
+                </ul>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>Hovering <code>arrayInObject</code> should show the array like hovering <code>array</code> in line 10</li>
+                    <li>Hovering the index should show the value of the array at that index (271)</li>
+                    <li>Hovering <code>project</code> should show the object with <code>name</code> an <code>version</code></li>
+                    <li>Hovering <code>name</code> should show <code>"Firebug"</code></li>
+                    <li>Hovering <code>version</code> should show <code>1.6</code></li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmail.com</footer>
+        </div>
+    </body>
+</html>

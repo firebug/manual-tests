@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 7381: Execution stops on error after reload when 'Break On All Errors' is not active</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
+        <script type="text/javascript">
+        undefinedFunction();
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1>
+                <a href="http://code.google.com/p/fbug/issues/detail?id=7381">Issue 7381</a>:
+                Execution stops on error after reload when 'Break On All Errors' is not active
+            </h1>
+        </header>
+        <div>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Enable the <em>Console</em> and the <em>Script</em> panel</li>
+                    <li>
+                        Ensure the <em>Script</em> panel option <em>Break On Exceptions</em> is not
+                        checked
+                    </li>
+                    <li>Switch to the <em>Console</em> panel</li>
+                    <li>Click the <em>Break On All Errors</em> button</li>
+                    <li>
+                        Reload the page<br/>
+                        <span class="ok">
+                            &rArr; Firebug switches to the <em>Script</em> panel
+                        </span>
+                        <span class="ok">
+                            &rArr; The script execution is stopped at the error at line 8
+                            (<code>undefinedFunction();</code>)
+                        </span>
+                    </li>
+                    <li>Click the <em>Continue</em> button</li>
+                    <li>
+                        Switch to the <em>Console</em> panel again<br/>
+                        <span class="ok">
+                            &rArr; The <em>Break On All Errors</em> button is not pressed anymore.
+                        </span>
+                    </li>
+                    <li>Reload the page again</li>
+                </ol>
+                <h3>Observed result</h3>
+                <ul>
+                    <li class="error">
+                        Firebug switches to the <em>Script</em> panel again and the script
+                        execution stops again at the error
+                    </li>
+                </ul>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>
+                        Because the <em>Break On All Errors</em> button is not pressed anymore,
+                        i.e. breaking on exceptions disabled, the script execution should not
+                        stop a second time.</li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmail.com</footer>
+        </div>
+    </body>
+</html>

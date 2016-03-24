@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Issue 6954: Script panel claims "No JavaScript on this page" before loading</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="testcase.css" type="text/css" rel="stylesheet"/>
+    <script src="script.js" defer="true"></script>
+</head>
+<body>
+<header>
+    <h1><a href="http://code.google.com/p/fbug/issues/detail?id=6954">Issue 6954</a>:
+        Script panel claims "No JavaScript on this page" before loading</h1>
+</header>
+<div>
+<section id="description">
+    <h3>Scenario #1</h3>
+    <ol>
+        <li>Open Firebug enable and select the Script panel</li>
+        <li>No Script is displayed since the one loaded has been already garbage collected
+        (the script might appear, it also depends on GC timing).</li>
+        <li>Refresh the page and wait for 3 sec.</li>
+        <li>The Script panel should display a script now. Firebug caught a backend event
+        about new script creation and displayed it. However, the script will be
+        garbage coolected later.</li>
+    </ol>
+</section>
+<br/>
+<br/>
+<p>
+<a href="issue6954-2.html">scenario #2</a><br/>
+<a href="issue6954-3.html">scenario #3</a><br/>
+<a href="issue6954-4.html">scenario #4</a><br/>
+</p>
+<footer>
+    Jan Odvarko &lt;odvarko@gmail.com&gt;
+</footer>
+</div>
+</body>
+</html>

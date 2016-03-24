@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Issue 7387: Improve display of monitored functions</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="https://getfirebug.com/tests/head/_common/testcase.css" type="text/css" rel="stylesheet"/>
+        <style type="text/css">
+        img {
+            display: block;
+            margin: 5px;
+        }
+        </style>
+        <script type="text/javascript">
+        function test1()
+        {
+            return function()
+            {
+                return "Hello Firebug user!";
+            };
+        }
+
+        function test2()
+        {
+            return function sayHi()
+            {
+                return "Hello Firebug user!";
+            };
+        }
+
+        function test3()
+        {
+            var f = function()
+            {
+                return "Hello Firebug user!";
+            };
+
+            return f;
+        }
+
+        function test4()
+        {
+            var f = new Function("return \"Hello Firebug user!\";");
+            return f;
+        }
+
+        function test5()
+        {
+            return new Function("return \"Hello Firebug user!\";");
+        }
+
+        var someVariable = 1; function test6() { return "Hello Firebug user!"; } var someOtherVariable = 2;
+        </script>
+    </head>
+    <body>
+        <header>
+            <h1><a href="http://code.google.com/p/fbug/issues/detail?id=7387">Issue 7387</a>: Improve display of monitored functions</h1>
+        </header>
+        <div>
+            <section id="description">
+                <h3>Steps to reproduce</h3>
+                <ol>
+                    <li>Open Firebug</li>
+                    <li>Enable the <em>Console</em> and the <em>Script</em> panel</li>
+                    <li>Switch to the <em>Script</em> panel and there to the <em>Breakpoints</em> side panel</li>
+                    <li>Open the Command Line Popup</li>
+                    <li>
+                        Execute the following statements within the Command Line Popup:
+                        <code>
+monitor(test1)
+monitor(test2)
+monitor(test3)
+monitor(test4)
+monitor(test5)
+monitor(test6)
+                        </code>
+                    </li>
+                </ol>
+                <h3>Observed result</h3>
+                <ul>
+                    <li>
+                        The monitored functions are listed under a <em>Logged Functions</em> section as follows:
+                        <img src="currentDisplay.png" alt="Current display of monitored functions">
+                    </li>
+                </ul>
+                <h3>Expected result</h3>
+                <ul>
+                    <li>
+                        The display should look like this:
+                        <img src="improvedDisplay.png" alt="Current display of monitored functions">
+                    </li>
+                </ul>
+            </section>
+            <footer>Sebastian Zartner, sebastianzartner@gmail.com</footer>
+        </div>
+    </body>
+</html>

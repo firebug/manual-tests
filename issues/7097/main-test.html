@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Issue 7097: Support for dynamically evaluated scripts (main)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="testcase.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<header>
+    <h1><a href="http://code.google.com/p/fbug/issues/detail?id=7097">Issue 7097</a>:
+        Support for dynamically evaluated scripts (main)</h1>
+</header>
+<script>
+var func;
+function evalScript()
+{
+    func = new Function("a", "b", "adf.adf; var sum = a + b;\n\nreturn sum;\n//# sourceURL=myFunc.js");
+    func.displayName = "add";
+
+    func(4, 6);
+}
+
+function onTest()
+{
+    func(10, 20);
+}
+
+function testTimeout()
+{
+    setTimeout("console.log('Hello from timeout');", 3000);
+}
+
+function evalXHR()
+{
+    var request = new XMLHttpRequest();
+    request.open("POST", "main-test-xhr.js", true);
+    request.onreadystatechange = function()
+    {
+        if (request.readyState == 4 && request.status == 200)
+        {
+            window.eval(request.responseText);
+        }
+    }
+
+    request.send(null);
+}
+
+function testXHR()
+{
+    xhr();
+}
+
+function executeTest1()
+{
+    var script =
+        "console.log('hello from injected script');\n" +
+        "console.log('hello from injected script2');\n" +
+        "\n" +
+        "function scriptTagTest()\n" +
+        "{\n" +
+        "   var a = 1 + 1;\n" +
+        "   console.log('script tag test ' + a)\n" +
+        "}\n" +
+        "\n" +
+        "//# sourceURL=injected-script.displayname\n";
+
+    var scriptTag = document.createElement("script");
+    scriptTag.textContent = script;
+    scriptTag.src = " ";
+    document.body.appendChild(scriptTag);
+}
+
+function executeTest2()
+{
+    var scriptTag = document.createElement("script");
+    scriptTag.src = "issue7097-5.js";
+    document.body.appendChild(scriptTag);
+}
+
+function createWorker()
+{
+    var myWorker = new Worker("main-test-worker.js");
+
+    myWorker.onmessage = function (oEvent)
+    {
+        console.log("Called back by the worker!", oEvent);
+    };
+
+    myWorker.postMessage(""); // start the worker.
+}
+</script>
+<div>
+    <section id="description">
+        <h3>Scenario II. Steps to reproduce</h3>
+        <ol>
+            <li>Open Firebug and enable the Script panel.</li>
+            <li>Click this button to evaluate a script:
+                <button onclick="console.log('Hello from event handler!')">Event Handler</button>
+            </li>
+            <li>Click this button to evaluate a script:
+                <button id="evalButton" onclick="evalScript()">new Function</button>
+                <button id="testButton" onclick="onTest()">Test</button>
+            </li>
+            <li>Click this button to create a timeout:
+                <button id="evalButton" onclick="testTimeout()">Timeout</button>
+            </li>
+            <li>Click this button to eval XHR:
+                <button id="evalXhrButton1" onclick="evalXHR()">XHR</button>
+                <button id="evalXhrButton2" onclick="testXHR()">Exe</button>
+            </li>
+            <li>Click this button to create a new script tag with embedded script:
+                <button id="executeTest1" onclick="executeTest1()">Create Script 1</button>
+                <button id="executeTest11" onclick="scriptTagTest()">Execute Script 1</button>
+            </li>
+            <li>Click this button to create a new script tag with external script:
+                <button id="executeTest2" onclick="executeTest2()">Create Script 2</button>
+                <button id="executeTest22" onclick="foo()">Execute Script 2</button>
+            </li>
+            <li>Click this button to create a worker thread:
+                <button id="evalButton" onclick="createWorker()">Worker</button>
+            </li>
+        </ol>
+    </section>
+    <footer>
+        Jan Odvarko &lt;odvarko@gmail.com&gt;
+    </footer>
+
+<script>
+var button = document.getElementById("evalButton");
+button.addEventListener("mousemove", function test() {
+    console.log("adfasd")
+})
+</script>
+</div>
+</body>
+</html>

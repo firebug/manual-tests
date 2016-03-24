@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Issue 7462: Stepping over resumes early</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="testcase.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<header>
+    <h1><a href="http://code.google.com/p/fbug/issues/detail?id=7462">Issue 7462</a>:
+        Stepping over resumes early</h1>
+</header>
+<script>
+function evalScript()
+{
+    var func = new Function("a", "b", "var sum = a + b;\n\nreturn sum;\n//# sourceURL=myFunc.js");
+    func.displayName = "add";
+
+    var obj = new Object();
+    obj.then = function() {};
+
+    var result = func(15, 45);
+    console.log(result);
+}
+</script>
+<div>
+    <section id="description">
+        <ol>
+            <li>Open Firebug and enable the Script and Console panel.</li>
+            <li>Select the Script panel and create a breakpoint on line 22</li>
+            <li>Click this button to hit the breakpoint
+                <button id="evalButton" onclick="evalScript()">Click Me</button>
+            <li>Step over, the debugger resumes instead of moving to line 23 -> BUG</li>
+            </li>
+        </ol>
+    </section>
+    <footer>
+        Jan Odvarko &lt;odvarko@gmail.com&gt;
+    </footer>
+</div>
+</body>
+</html>

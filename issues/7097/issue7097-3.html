@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Issue 7097: Support for dynamically evaluated scripts (3)</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="testcase.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+<header>
+    <h1><a href="http://code.google.com/p/fbug/issues/detail?id=7097">Issue 7097</a>:
+        Support for dynamically evaluated scripts (3)</h1>
+</header>
+<script>
+var func;
+function evalScript()
+{
+    func = new Function("a", "b", "console.log(a+b);\nconsole.log(2+2);");
+    func.displayName = "myfunction";
+}
+
+function onTest()
+{
+    func(10, 20);
+}
+</script>
+<div>
+    <section id="description">
+        <h3>Scenario II. Steps to reproduce</h3>
+        <ol>
+            <li>Open Firebug and enable the Script panel.</li>
+            <li>Click this button to evaluate a script:
+                <button id="evalButton" onclick="evalScript()">Eval</button>
+            </li>
+            <li>Create a breakpoint in the new <code>issue7097-2.html@eval1</code> script at line 1</li>
+            <li>Click this button to execute function from the evaluated script:
+                <button id="testButton" onclick="onTest()">Test</button>
+            </li>
+            <li>The breakpoint should hit. You can also try to step-over in the debugger.</li>
+        </ol>
+    </section>
+    <footer>
+        Jan Odvarko &lt;odvarko@gmail.com&gt;
+    </footer>
+</div>
+</body>
+</html>

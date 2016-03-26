@@ -1,0 +1,35 @@
+{
+  "name": "manual-tests",
+  "version": "0.0.0",
+  "private": true,
+  "pm": "npm",
+  "dependencies": {
+    "glob": "^3.2.9",
+    "smi.cli": "0.x"
+  },
+  "scripts": {
+    "install": "./node_modules/.bin/smi install"
+  },
+  "upstream": {
+    "packages": {
+      "top": [
+        "../../*",
+        "../../../../*"
+      ]
+    }
+  },
+  "mappings": {
+    "io.pinf.server.www": "top/io.pinf.server.www"
+  },
+  "config": {
+    "smi.cli": {
+      "packagesDirectory": "node_modules"
+    },
+    "pio.deploy.converter": {
+      "name": "nodejs-server"
+    },
+    "io.pinf.server.www": {
+      "documentRootPath": "."
+    }
+  }
+}
